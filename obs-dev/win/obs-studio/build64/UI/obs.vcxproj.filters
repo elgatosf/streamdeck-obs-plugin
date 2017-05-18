@@ -1,0 +1,319 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\platform-windows.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\obs-app.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\api-interface.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\window-basic-main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\window-basic-filters.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\window-basic-settings.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\window-basic-interaction.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\window-basic-properties.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\window-basic-main-outputs.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\window-basic-source-select.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\window-basic-main-scene-collections.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\window-basic-main-transitions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\window-basic-main-dropfiles.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\window-basic-main-profiles.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\window-license-agreement.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\window-basic-status-bar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\window-basic-adv-audio.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\window-basic-transform.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\window-basic-preview.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\window-namedialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\window-log-reply.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\window-projector.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\window-remux.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\properties-view.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\focus-list.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\menu-button.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\double-slider.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\volume-control.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\adv-audio-control.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\item-widget-helpers.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\visibility-checkbox.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\vertical-scroll-area.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\visibility-item-widget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\slider-absoluteset-style.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\source-list-widget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\qt-display.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\crash-report.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\hotkey-edit.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\source-label.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\remote-text.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\audio-encoders.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\qt-wrappers.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\build64\UI\qrc_obs.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\build64\UI\obs_automoc.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\obs-app.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\platform.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\window-main.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\window-basic-main.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\window-basic-filters.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\window-basic-settings.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\window-basic-interaction.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\window-basic-properties.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\window-basic-main-outputs.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\window-basic-source-select.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\window-license-agreement.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\window-basic-status-bar.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\window-basic-adv-audio.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\window-basic-transform.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\window-basic-preview.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\window-namedialog.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\window-log-reply.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\window-projector.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\window-remux.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\properties-view.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\properties-view.moc.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\display-helpers.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\double-slider.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\focus-list.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\menu-button.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\mute-checkbox.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\volume-control.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\adv-audio-control.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\item-widget-helpers.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\visibility-checkbox.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\vertical-scroll-area.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\visibility-item-widget.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\slider-absoluteset-style.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\source-list-widget.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\qt-display.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\crash-report.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\hotkey-edit.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\source-label.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\remote-text.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\audio-encoders.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\qt-wrappers.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\build64\UI\ui_NameDialog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\build64\UI\ui_OBSLicenseAgreement.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\build64\UI\ui_OBSLogReply.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\build64\UI\ui_OBSBasic.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\build64\UI\ui_OBSBasicTransform.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\build64\UI\ui_OBSBasicFilters.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\build64\UI\ui_OBSBasicSettings.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\build64\UI\ui_OBSBasicSourceSelect.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\build64\UI\ui_OBSBasicInteraction.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\build64\UI\ui_OBSRemux.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\CMakeLists.txt" />
+    <CustomBuild Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\forms\NameDialog.ui" />
+    <CustomBuild Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\forms\OBSLicenseAgreement.ui" />
+    <CustomBuild Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\forms\OBSLogReply.ui" />
+    <CustomBuild Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\forms\OBSBasic.ui" />
+    <CustomBuild Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\forms\OBSBasicTransform.ui" />
+    <CustomBuild Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\forms\OBSBasicFilters.ui" />
+    <CustomBuild Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\forms\OBSBasicSettings.ui" />
+    <CustomBuild Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\forms\OBSBasicSourceSelect.ui" />
+    <CustomBuild Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\forms\OBSBasicInteraction.ui" />
+    <CustomBuild Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\forms\OBSRemux.ui" />
+    <CustomBuild Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\forms\obs.qrc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\obs.rc">
+      <Filter>Source Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{A5CF637A-DDF7-39E8-B7B6-F7BC1892D376}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{CD97B140-67DC-325A-B8CE-EF435B57894F}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,1185 @@
+The system is: Windows - 10.0.14393 - AMD64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler:  
+Build flags: 
+Id flags: 
+
+The output was:
+0
+Microsoft (R) Build Engine version 14.0.25420.1
+Copyright (C) Microsoft Corporation. 著作權所有，並保留一切權利。
+
+已經開始建置於 2/2/17 11:42:20。
+節點 1 (預設目標) 上的專案 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\3.7.2\CompilerIdC\CompilerIdC.vcxproj"。
+PrepareForBuild:
+  正在建立目錄 "Debug\"。
+  正在建立目錄 "Debug\CompilerIdC.tlog\"。
+InitializeBuildStatus:
+  由於指定了 "AlwaysCreate"，因此正在建立 "Debug\CompilerIdC.tlog\unsuccessfulbuild"。
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\CL.exe /c /nologo /W0 /WX- /Od /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TC /errorReport:queue CMakeCCompilerId.c
+  CMakeCCompilerId.c
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:QUEUE /OUT:".\CompilerIdC.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\CompilerIdC.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\CompilerIdC.lib" /MACHINE:X64 Debug\CMakeCCompilerId.obj
+  CompilerIdC.vcxproj -> C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\3.7.2\CompilerIdC\.\CompilerIdC.exe
+PostBuildEvent:
+  for %%i in (cl.exe) do @echo CMAKE_C_COMPILER=%%~$PATH:i
+  :VCEnd
+  CMAKE_C_COMPILER=C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\cl.exe
+FinalizeBuildStatus:
+  正在刪除檔案 "Debug\CompilerIdC.tlog\unsuccessfulbuild"。
+  正在變更時間戳記 "Debug\CompilerIdC.tlog\CompilerIdC.lastbuildstate"。
+專案 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\3.7.2\CompilerIdC\CompilerIdC.vcxproj" (預設目標) 建置完成。
+
+建置成功。
+    0 個警告
+    0 個錯誤
+
+經過時間 00:00:01.60
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.exe"
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.vcxproj"
+
+The C compiler identification is MSVC, found in "C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/3.7.2/CompilerIdC/CompilerIdC.exe"
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler:  
+Build flags: 
+Id flags: 
+
+The output was:
+0
+Microsoft (R) Build Engine version 14.0.25420.1
+Copyright (C) Microsoft Corporation. 著作權所有，並保留一切權利。
+
+已經開始建置於 2/2/17 11:42:22。
+節點 1 (預設目標) 上的專案 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\3.7.2\CompilerIdCXX\CompilerIdCXX.vcxproj"。
+PrepareForBuild:
+  正在建立目錄 "Debug\"。
+  正在建立目錄 "Debug\CompilerIdCXX.tlog\"。
+InitializeBuildStatus:
+  由於指定了 "AlwaysCreate"，因此正在建立 "Debug\CompilerIdCXX.tlog\unsuccessfulbuild"。
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\CL.exe /c /nologo /W0 /WX- /Od /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /errorReport:queue CMakeCXXCompilerId.cpp
+  CMakeCXXCompilerId.cpp
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:QUEUE /OUT:".\CompilerIdCXX.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\CompilerIdCXX.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\CompilerIdCXX.lib" /MACHINE:X64 Debug\CMakeCXXCompilerId.obj
+  CompilerIdCXX.vcxproj -> C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\3.7.2\CompilerIdCXX\.\CompilerIdCXX.exe
+PostBuildEvent:
+  for %%i in (cl.exe) do @echo CMAKE_CXX_COMPILER=%%~$PATH:i
+  :VCEnd
+  CMAKE_CXX_COMPILER=C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\cl.exe
+FinalizeBuildStatus:
+  正在刪除檔案 "Debug\CompilerIdCXX.tlog\unsuccessfulbuild"。
+  正在變更時間戳記 "Debug\CompilerIdCXX.tlog\CompilerIdCXX.lastbuildstate"。
+專案 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\3.7.2\CompilerIdCXX\CompilerIdCXX.vcxproj" (預設目標) 建置完成。
+
+建置成功。
+    0 個警告
+    0 個錯誤
+
+經過時間 00:00:00.56
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.exe"
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.vcxproj"
+
+The CXX compiler identification is MSVC, found in "C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/3.7.2/CompilerIdCXX/CompilerIdCXX.exe"
+
+Determining if the C compiler works passed with the following output:
+Change Dir: C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_97f29.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) Build Engine version 14.0.25420.1
+Copyright (C) Microsoft Corporation. 著作權所有，並保留一切權利。
+
+已經開始建置於 2/2/17 11:42:22。
+節點 1 (預設目標) 上的專案 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\cmTC_97f29.vcxproj"。
+PrepareForBuild:
+  正在建立目錄 "cmTC_97f29.dir\Debug\"。
+  正在建立目錄 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\"。
+  正在建立目錄 "cmTC_97f29.dir\Debug\cmTC_97f29.tlog\"。
+InitializeBuildStatus:
+  由於指定了 "AlwaysCreate"，因此正在建立 "cmTC_97f29.dir\Debug\cmTC_97f29.tlog\unsuccessfulbuild"。
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\CL.exe /c /Zi /W3 /WX- /Od /Ob0 /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_97f29.dir\Debug\\" /Fd"cmTC_97f29.dir\Debug\vc140.pdb" /Gd /TC /errorReport:queue "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\testCCompiler.c"
+  Microsoft (R) C/C++ Optimizing Compiler Version 19.00.24215.1 for x64
+  Copyright (C) Microsoft Corporation.  All rights reserved.
+  
+  cl /c /Zi /W3 /WX- /Od /Ob0 /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_97f29.dir\Debug\\" /Fd"cmTC_97f29.dir\Debug\vc140.pdb" /Gd /TC /errorReport:queue "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\testCCompiler.c"
+  
+  testCCompiler.c
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:QUEUE /OUT:"C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\cmTC_97f29.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp/Debug/cmTC_97f29.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp/Debug/cmTC_97f29.lib" /MACHINE:X64  /machine:x64 cmTC_97f29.dir\Debug\testCCompiler.obj
+  cmTC_97f29.vcxproj -> C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\cmTC_97f29.exe
+FinalizeBuildStatus:
+  正在刪除檔案 "cmTC_97f29.dir\Debug\cmTC_97f29.tlog\unsuccessfulbuild"。
+  正在變更時間戳記 "cmTC_97f29.dir\Debug\cmTC_97f29.tlog\cmTC_97f29.lastbuildstate"。
+專案 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\cmTC_97f29.vcxproj" (預設目標) 建置完成。
+
+建置成功。
+    0 個警告
+    0 個錯誤
+
+經過時間 00:00:01.01
+
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_e14a2.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) Build Engine version 14.0.25420.1
+Copyright (C) Microsoft Corporation. 著作權所有，並保留一切權利。
+
+已經開始建置於 2/2/17 11:42:24。
+節點 1 (預設目標) 上的專案 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\cmTC_e14a2.vcxproj"。
+PrepareForBuild:
+  正在建立目錄 "cmTC_e14a2.dir\Debug\"。
+  正在建立目錄 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\"。
+  正在建立目錄 "cmTC_e14a2.dir\Debug\cmTC_e14a2.tlog\"。
+InitializeBuildStatus:
+  由於指定了 "AlwaysCreate"，因此正在建立 "cmTC_e14a2.dir\Debug\cmTC_e14a2.tlog\unsuccessfulbuild"。
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\CL.exe /c /Zi /W3 /WX- /Od /Ob0 /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_e14a2.dir\Debug\\" /Fd"cmTC_e14a2.dir\Debug\vc140.pdb" /Gd /TC /errorReport:queue "C:\Program Files\CMake\share\cmake-3.7\Modules\CMakeCCompilerABI.c"
+  Microsoft (R) C/C++ Optimizing Compiler Version 19.00.24215.1 for x64
+  Copyright (C) Microsoft Corporation.  All rights reserved.
+  
+  cl /c /Zi /W3 /WX- /Od /Ob0 /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_e14a2.dir\Debug\\" /Fd"cmTC_e14a2.dir\Debug\vc140.pdb" /Gd /TC /errorReport:queue "C:\Program Files\CMake\share\cmake-3.7\Modules\CMakeCCompilerABI.c"
+  
+  CMakeCCompilerABI.c
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:QUEUE /OUT:"C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\cmTC_e14a2.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp/Debug/cmTC_e14a2.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp/Debug/cmTC_e14a2.lib" /MACHINE:X64  /machine:x64 cmTC_e14a2.dir\Debug\CMakeCCompilerABI.obj
+  cmTC_e14a2.vcxproj -> C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\cmTC_e14a2.exe
+FinalizeBuildStatus:
+  正在刪除檔案 "cmTC_e14a2.dir\Debug\cmTC_e14a2.tlog\unsuccessfulbuild"。
+  正在變更時間戳記 "cmTC_e14a2.dir\Debug\cmTC_e14a2.tlog\cmTC_e14a2.lastbuildstate"。
+專案 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\cmTC_e14a2.vcxproj" (預設目標) 建置完成。
+
+建置成功。
+    0 個警告
+    0 個錯誤
+
+經過時間 00:00:00.75
+
+
+Determining if the CXX compiler works passed with the following output:
+Change Dir: C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_f1201.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) Build Engine version 14.0.25420.1
+Copyright (C) Microsoft Corporation. 著作權所有，並保留一切權利。
+
+已經開始建置於 2/2/17 11:42:25。
+節點 1 (預設目標) 上的專案 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\cmTC_f1201.vcxproj"。
+PrepareForBuild:
+  正在建立目錄 "cmTC_f1201.dir\Debug\"。
+  正在建立目錄 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\"。
+  正在建立目錄 "cmTC_f1201.dir\Debug\cmTC_f1201.tlog\"。
+InitializeBuildStatus:
+  由於指定了 "AlwaysCreate"，因此正在建立 "cmTC_f1201.dir\Debug\cmTC_f1201.tlog\unsuccessfulbuild"。
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\CL.exe /c /Zi /W3 /WX- /Od /Ob0 /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_f1201.dir\Debug\\" /Fd"cmTC_f1201.dir\Debug\vc140.pdb" /Gd /TP /errorReport:queue "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\testCXXCompiler.cxx"
+  Microsoft (R) C/C++ Optimizing Compiler Version 19.00.24215.1 for x64
+  Copyright (C) Microsoft Corporation.  All rights reserved.
+  
+  cl /c /Zi /W3 /WX- /Od /Ob0 /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_f1201.dir\Debug\\" /Fd"cmTC_f1201.dir\Debug\vc140.pdb" /Gd /TP /errorReport:queue "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\testCXXCompiler.cxx"
+  
+  testCXXCompiler.cxx
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:QUEUE /OUT:"C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\cmTC_f1201.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp/Debug/cmTC_f1201.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp/Debug/cmTC_f1201.lib" /MACHINE:X64  /machine:x64 cmTC_f1201.dir\Debug\testCXXCompiler.obj
+  cmTC_f1201.vcxproj -> C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\cmTC_f1201.exe
+FinalizeBuildStatus:
+  正在刪除檔案 "cmTC_f1201.dir\Debug\cmTC_f1201.tlog\unsuccessfulbuild"。
+  正在變更時間戳記 "cmTC_f1201.dir\Debug\cmTC_f1201.tlog\cmTC_f1201.lastbuildstate"。
+專案 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\cmTC_f1201.vcxproj" (預設目標) 建置完成。
+
+建置成功。
+    0 個警告
+    0 個錯誤
+
+經過時間 00:00:00.67
+
+
+Detecting CXX compiler ABI info compiled with the following output:
+Change Dir: C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_08ef7.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) Build Engine version 14.0.25420.1
+Copyright (C) Microsoft Corporation. 著作權所有，並保留一切權利。
+
+已經開始建置於 2/2/17 11:42:26。
+節點 1 (預設目標) 上的專案 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\cmTC_08ef7.vcxproj"。
+PrepareForBuild:
+  正在建立目錄 "cmTC_08ef7.dir\Debug\"。
+  正在建立目錄 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\"。
+  正在建立目錄 "cmTC_08ef7.dir\Debug\cmTC_08ef7.tlog\"。
+InitializeBuildStatus:
+  由於指定了 "AlwaysCreate"，因此正在建立 "cmTC_08ef7.dir\Debug\cmTC_08ef7.tlog\unsuccessfulbuild"。
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\CL.exe /c /Zi /W3 /WX- /Od /Ob0 /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_08ef7.dir\Debug\\" /Fd"cmTC_08ef7.dir\Debug\vc140.pdb" /Gd /TP /errorReport:queue "C:\Program Files\CMake\share\cmake-3.7\Modules\CMakeCXXCompilerABI.cpp"
+  Microsoft (R) C/C++ Optimizing Compiler Version 19.00.24215.1 for x64
+  Copyright (C) Microsoft Corporation.  All rights reserved.
+  
+  cl /c /Zi /W3 /WX- /Od /Ob0 /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_08ef7.dir\Debug\\" /Fd"cmTC_08ef7.dir\Debug\vc140.pdb" /Gd /TP /errorReport:queue "C:\Program Files\CMake\share\cmake-3.7\Modules\CMakeCXXCompilerABI.cpp"
+  
+  CMakeCXXCompilerABI.cpp
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:QUEUE /OUT:"C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\cmTC_08ef7.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp/Debug/cmTC_08ef7.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp/Debug/cmTC_08ef7.lib" /MACHINE:X64  /machine:x64 cmTC_08ef7.dir\Debug\CMakeCXXCompilerABI.obj
+  cmTC_08ef7.vcxproj -> C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\cmTC_08ef7.exe
+FinalizeBuildStatus:
+  正在刪除檔案 "cmTC_08ef7.dir\Debug\cmTC_08ef7.tlog\unsuccessfulbuild"。
+  正在變更時間戳記 "cmTC_08ef7.dir\Debug\cmTC_08ef7.tlog\cmTC_08ef7.lastbuildstate"。
+專案 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\cmTC_08ef7.vcxproj" (預設目標) 建置完成。
+
+建置成功。
+    0 個警告
+    0 個錯誤
+
+經過時間 00:00:00.67
+
+
+
+
+Detecting CXX [] compiler features compiled with the following output:
+Change Dir: C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_a65f1.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) Build Engine version 14.0.25420.1
+Copyright (C) Microsoft Corporation. 著作權所有，並保留一切權利。
+
+已經開始建置於 2/2/17 11:42:27。
+節點 1 (預設目標) 上的專案 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\cmTC_a65f1.vcxproj"。
+PrepareForBuild:
+  正在建立目錄 "cmTC_a65f1.dir\Debug\"。
+  正在建立目錄 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\"。
+  正在建立目錄 "cmTC_a65f1.dir\Debug\cmTC_a65f1.tlog\"。
+InitializeBuildStatus:
+  由於指定了 "AlwaysCreate"，因此正在建立 "cmTC_a65f1.dir\Debug\cmTC_a65f1.tlog\unsuccessfulbuild"。
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\CL.exe /c /Zi /W3 /WX- /Od /Ob0 /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_a65f1.dir\Debug\\" /Fd"cmTC_a65f1.dir\Debug\vc140.pdb" /Gd /TP /errorReport:queue "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\feature_tests.cxx"
+  Microsoft (R) C/C++ Optimizing Compiler Version 19.00.24215.1 for x64
+  Copyright (C) Microsoft Corporation.  All rights reserved.
+  
+  cl /c /Zi /W3 /WX- /Od /Ob0 /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_a65f1.dir\Debug\\" /Fd"cmTC_a65f1.dir\Debug\vc140.pdb" /Gd /TP /errorReport:queue "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\feature_tests.cxx"
+  
+  feature_tests.cxx
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:QUEUE /OUT:"C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\cmTC_a65f1.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp/Debug/cmTC_a65f1.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp/Debug/cmTC_a65f1.lib" /MACHINE:X64  /machine:x64 cmTC_a65f1.dir\Debug\feature_tests.obj
+  cmTC_a65f1.vcxproj -> C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\cmTC_a65f1.exe
+FinalizeBuildStatus:
+  正在刪除檔案 "cmTC_a65f1.dir\Debug\cmTC_a65f1.tlog\unsuccessfulbuild"。
+  正在變更時間戳記 "cmTC_a65f1.dir\Debug\cmTC_a65f1.tlog\cmTC_a65f1.lastbuildstate"。
+專案 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\cmTC_a65f1.vcxproj" (預設目標) 建置完成。
+
+建置成功。
+    0 個警告
+    0 個錯誤
+
+經過時間 00:00:00.68
+
+
+    Feature record: CXX_FEATURE:0cxx_aggregate_default_initializers
+    Feature record: CXX_FEATURE:1cxx_alias_templates
+    Feature record: CXX_FEATURE:1cxx_alignas
+    Feature record: CXX_FEATURE:1cxx_alignof
+    Feature record: CXX_FEATURE:1cxx_attributes
+    Feature record: CXX_FEATURE:1cxx_attribute_deprecated
+    Feature record: CXX_FEATURE:1cxx_auto_type
+    Feature record: CXX_FEATURE:1cxx_binary_literals
+    Feature record: CXX_FEATURE:1cxx_constexpr
+    Feature record: CXX_FEATURE:1cxx_contextual_conversions
+    Feature record: CXX_FEATURE:1cxx_decltype
+    Feature record: CXX_FEATURE:1cxx_decltype_auto
+    Feature record: CXX_FEATURE:1cxx_default_function_template_args
+    Feature record: CXX_FEATURE:1cxx_defaulted_functions
+    Feature record: CXX_FEATURE:1cxx_defaulted_move_initializers
+    Feature record: CXX_FEATURE:1cxx_delegating_constructors
+    Feature record: CXX_FEATURE:1cxx_deleted_functions
+    Feature record: CXX_FEATURE:1cxx_digit_separators
+    Feature record: CXX_FEATURE:1cxx_enum_forward_declarations
+    Feature record: CXX_FEATURE:1cxx_explicit_conversions
+    Feature record: CXX_FEATURE:1cxx_extended_friend_declarations
+    Feature record: CXX_FEATURE:1cxx_extern_templates
+    Feature record: CXX_FEATURE:1cxx_final
+    Feature record: CXX_FEATURE:1cxx_func_identifier
+    Feature record: CXX_FEATURE:1cxx_generalized_initializers
+    Feature record: CXX_FEATURE:1cxx_generic_lambdas
+    Feature record: CXX_FEATURE:1cxx_inheriting_constructors
+    Feature record: CXX_FEATURE:1cxx_inline_namespaces
+    Feature record: CXX_FEATURE:1cxx_lambdas
+    Feature record: CXX_FEATURE:1cxx_lambda_init_captures
+    Feature record: CXX_FEATURE:1cxx_local_type_template_args
+    Feature record: CXX_FEATURE:1cxx_long_long_type
+    Feature record: CXX_FEATURE:1cxx_noexcept
+    Feature record: CXX_FEATURE:1cxx_nonstatic_member_init
+    Feature record: CXX_FEATURE:1cxx_nullptr
+    Feature record: CXX_FEATURE:1cxx_override
+    Feature record: CXX_FEATURE:1cxx_range_for
+    Feature record: CXX_FEATURE:1cxx_raw_string_literals
+    Feature record: CXX_FEATURE:1cxx_reference_qualified_functions
+    Feature record: CXX_FEATURE:1cxx_return_type_deduction
+    Feature record: CXX_FEATURE:1cxx_right_angle_brackets
+    Feature record: CXX_FEATURE:1cxx_rvalue_references
+    Feature record: CXX_FEATURE:1cxx_sizeof_member
+    Feature record: CXX_FEATURE:1cxx_static_assert
+    Feature record: CXX_FEATURE:1cxx_strong_enums
+    Feature record: CXX_FEATURE:1cxx_template_template_parameters
+    Feature record: CXX_FEATURE:1cxx_thread_local
+    Feature record: CXX_FEATURE:1cxx_trailing_return_types
+    Feature record: CXX_FEATURE:1cxx_unicode_literals
+    Feature record: CXX_FEATURE:1cxx_uniform_initialization
+    Feature record: CXX_FEATURE:1cxx_unrestricted_unions
+    Feature record: CXX_FEATURE:1cxx_user_literals
+    Feature record: CXX_FEATURE:1cxx_variable_templates
+    Feature record: CXX_FEATURE:1cxx_variadic_macros
+    Feature record: CXX_FEATURE:1cxx_variadic_templates
+Performing C++ SOURCE FILE Test CXX11_FLAG_DETECTED succeeded with the following output:
+Change Dir: C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_e0df3.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) Build Engine version 14.0.25420.1
+Copyright (C) Microsoft Corporation. 著作權所有，並保留一切權利。
+
+已經開始建置於 2/2/17 11:42:28。
+節點 1 (預設目標) 上的專案 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\cmTC_e0df3.vcxproj"。
+PrepareForBuild:
+  正在建立目錄 "cmTC_e0df3.dir\Debug\"。
+  正在建立目錄 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\"。
+  正在建立目錄 "cmTC_e0df3.dir\Debug\cmTC_e0df3.tlog\"。
+InitializeBuildStatus:
+  由於指定了 "AlwaysCreate"，因此正在建立 "cmTC_e0df3.dir\Debug\cmTC_e0df3.tlog\unsuccessfulbuild"。
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\CL.exe /c /Zi /W3 /WX- /Od /Ob0 /D WIN32 /D _WINDOWS /D CXX11_FLAG_DETECTED /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_e0df3.dir\Debug\\" /Fd"cmTC_e0df3.dir\Debug\vc140.pdb" /Gd /TP /errorReport:queue "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\src.cxx"
+  Microsoft (R) C/C++ Optimizing Compiler Version 19.00.24215.1 for x64
+  Copyright (C) Microsoft Corporation.  All rights reserved.
+  
+  cl /c /Zi /W3 /WX- /Od /Ob0 /D WIN32 /D _WINDOWS /D CXX11_FLAG_DETECTED /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_e0df3.dir\Debug\\" /Fd"cmTC_e0df3.dir\Debug\vc140.pdb" /Gd /TP /errorReport:queue "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\src.cxx"
+  
+  src.cxx
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:QUEUE /OUT:"C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\cmTC_e0df3.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp/Debug/cmTC_e0df3.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp/Debug/cmTC_e0df3.lib" /MACHINE:X64  /machine:x64 cmTC_e0df3.dir\Debug\src.obj
+  cmTC_e0df3.vcxproj -> C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\cmTC_e0df3.exe
+FinalizeBuildStatus:
+  正在刪除檔案 "cmTC_e0df3.dir\Debug\cmTC_e0df3.tlog\unsuccessfulbuild"。
+  正在變更時間戳記 "cmTC_e0df3.dir\Debug\cmTC_e0df3.tlog\cmTC_e0df3.lastbuildstate"。
+專案 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\cmTC_e0df3.vcxproj" (預設目標) 建置完成。
+
+建置成功。
+    0 個警告
+    0 個錯誤
+
+經過時間 00:00:00.69
+
+Source file was:
+
+int main()
+{
+    int n[] = {4,7,6,1,2};
+	int r;
+	auto f = [&](int j) { r = j; };
+	
+    for (auto i : n)
+        f(i);
+    return 0;
+}
+
+Determining if files sys/types.h exist passed with the following output:
+Change Dir: C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_e774f.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) Build Engine version 14.0.25420.1
+Copyright (C) Microsoft Corporation. 著作權所有，並保留一切權利。
+
+已經開始建置於 2/2/17 11:42:29。
+節點 1 (預設目標) 上的專案 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\cmTC_e774f.vcxproj"。
+PrepareForBuild:
+  正在建立目錄 "cmTC_e774f.dir\Debug\"。
+  正在建立目錄 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\"。
+  正在建立目錄 "cmTC_e774f.dir\Debug\cmTC_e774f.tlog\"。
+InitializeBuildStatus:
+  由於指定了 "AlwaysCreate"，因此正在建立 "cmTC_e774f.dir\Debug\cmTC_e774f.tlog\unsuccessfulbuild"。
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\CL.exe /c /Zi /W3 /WX- /Od /Ob0 /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_e774f.dir\Debug\\" /Fd"cmTC_e774f.dir\Debug\vc140.pdb" /Gd /TC /errorReport:queue "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\CheckIncludeFiles.c"
+  Microsoft (R) C/C++ Optimizing Compiler Version 19.00.24215.1 for x64
+  Copyright (C) Microsoft Corporation.  All rights reserved.
+  
+  cl /c /Zi /W3 /WX- /Od /Ob0 /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_e774f.dir\Debug\\" /Fd"cmTC_e774f.dir\Debug\vc140.pdb" /Gd /TC /errorReport:queue "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\CheckIncludeFiles.c"
+  
+  CheckIncludeFiles.c
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:QUEUE /OUT:"C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\cmTC_e774f.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp/Debug/cmTC_e774f.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp/Debug/cmTC_e774f.lib" /MACHINE:X64  /machine:x64 cmTC_e774f.dir\Debug\CheckIncludeFiles.obj
+  cmTC_e774f.vcxproj -> C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\cmTC_e774f.exe
+FinalizeBuildStatus:
+  正在刪除檔案 "cmTC_e774f.dir\Debug\cmTC_e774f.tlog\unsuccessfulbuild"。
+  正在變更時間戳記 "cmTC_e774f.dir\Debug\cmTC_e774f.tlog\cmTC_e774f.lastbuildstate"。
+專案 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\cmTC_e774f.vcxproj" (預設目標) 建置完成。
+
+建置成功。
+    0 個警告
+    0 個錯誤
+
+經過時間 00:00:00.67
+
+
+Determining if files inttypes.h exist passed with the following output:
+Change Dir: C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_ff1dd.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) Build Engine version 14.0.25420.1
+Copyright (C) Microsoft Corporation. 著作權所有，並保留一切權利。
+
+已經開始建置於 2/2/17 11:42:30。
+節點 1 (預設目標) 上的專案 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\cmTC_ff1dd.vcxproj"。
+PrepareForBuild:
+  正在建立目錄 "cmTC_ff1dd.dir\Debug\"。
+  正在建立目錄 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\"。
+  正在建立目錄 "cmTC_ff1dd.dir\Debug\cmTC_ff1dd.tlog\"。
+InitializeBuildStatus:
+  由於指定了 "AlwaysCreate"，因此正在建立 "cmTC_ff1dd.dir\Debug\cmTC_ff1dd.tlog\unsuccessfulbuild"。
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\CL.exe /c /Zi /W3 /WX- /Od /Ob0 /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_ff1dd.dir\Debug\\" /Fd"cmTC_ff1dd.dir\Debug\vc140.pdb" /Gd /TC /errorReport:queue "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\CheckIncludeFiles.c"
+  Microsoft (R) C/C++ Optimizing Compiler Version 19.00.24215.1 for x64
+  Copyright (C) Microsoft Corporation.  All rights reserved.
+  
+  cl /c /Zi /W3 /WX- /Od /Ob0 /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_ff1dd.dir\Debug\\" /Fd"cmTC_ff1dd.dir\Debug\vc140.pdb" /Gd /TC /errorReport:queue "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\CheckIncludeFiles.c"
+  
+  CheckIncludeFiles.c
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:QUEUE /OUT:"C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\cmTC_ff1dd.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp/Debug/cmTC_ff1dd.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp/Debug/cmTC_ff1dd.lib" /MACHINE:X64  /machine:x64 cmTC_ff1dd.dir\Debug\CheckIncludeFiles.obj
+  cmTC_ff1dd.vcxproj -> C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\cmTC_ff1dd.exe
+FinalizeBuildStatus:
+  正在刪除檔案 "cmTC_ff1dd.dir\Debug\cmTC_ff1dd.tlog\unsuccessfulbuild"。
+  正在變更時間戳記 "cmTC_ff1dd.dir\Debug\cmTC_ff1dd.tlog\cmTC_ff1dd.lastbuildstate"。
+專案 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\cmTC_ff1dd.vcxproj" (預設目標) 建置完成。
+
+建置成功。
+    0 個警告
+    0 個錯誤
+
+經過時間 00:00:00.80
+
+
+Determining if files stdint.h exist passed with the following output:
+Change Dir: C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_a99c5.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) Build Engine version 14.0.25420.1
+Copyright (C) Microsoft Corporation. 著作權所有，並保留一切權利。
+
+已經開始建置於 2/2/17 11:42:31。
+節點 1 (預設目標) 上的專案 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\cmTC_a99c5.vcxproj"。
+PrepareForBuild:
+  正在建立目錄 "cmTC_a99c5.dir\Debug\"。
+  正在建立目錄 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\"。
+  正在建立目錄 "cmTC_a99c5.dir\Debug\cmTC_a99c5.tlog\"。
+InitializeBuildStatus:
+  由於指定了 "AlwaysCreate"，因此正在建立 "cmTC_a99c5.dir\Debug\cmTC_a99c5.tlog\unsuccessfulbuild"。
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\CL.exe /c /Zi /W3 /WX- /Od /Ob0 /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_a99c5.dir\Debug\\" /Fd"cmTC_a99c5.dir\Debug\vc140.pdb" /Gd /TC /errorReport:queue "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\CheckIncludeFiles.c"
+  Microsoft (R) C/C++ Optimizing Compiler Version 19.00.24215.1 for x64
+  Copyright (C) Microsoft Corporation.  All rights reserved.
+  
+  cl /c /Zi /W3 /WX- /Od /Ob0 /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_a99c5.dir\Debug\\" /Fd"cmTC_a99c5.dir\Debug\vc140.pdb" /Gd /TC /errorReport:queue "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\CheckIncludeFiles.c"
+  
+  CheckIncludeFiles.c
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:QUEUE /OUT:"C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\cmTC_a99c5.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp/Debug/cmTC_a99c5.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp/Debug/cmTC_a99c5.lib" /MACHINE:X64  /machine:x64 cmTC_a99c5.dir\Debug\CheckIncludeFiles.obj
+  cmTC_a99c5.vcxproj -> C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\cmTC_a99c5.exe
+FinalizeBuildStatus:
+  正在刪除檔案 "cmTC_a99c5.dir\Debug\cmTC_a99c5.tlog\unsuccessfulbuild"。
+  正在變更時間戳記 "cmTC_a99c5.dir\Debug\cmTC_a99c5.tlog\cmTC_a99c5.lastbuildstate"。
+專案 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\cmTC_a99c5.vcxproj" (預設目標) 建置完成。
+
+建置成功。
+    0 個警告
+    0 個錯誤
+
+經過時間 00:00:00.65
+
+
+Determining if the include file stddef.h exists passed with the following output:
+Change Dir: C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_6cd35.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) Build Engine version 14.0.25420.1
+Copyright (C) Microsoft Corporation. 著作權所有，並保留一切權利。
+
+已經開始建置於 2/2/17 11:42:32。
+節點 1 (預設目標) 上的專案 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\cmTC_6cd35.vcxproj"。
+PrepareForBuild:
+  正在建立目錄 "cmTC_6cd35.dir\Debug\"。
+  正在建立目錄 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\"。
+  正在建立目錄 "cmTC_6cd35.dir\Debug\cmTC_6cd35.tlog\"。
+InitializeBuildStatus:
+  由於指定了 "AlwaysCreate"，因此正在建立 "cmTC_6cd35.dir\Debug\cmTC_6cd35.tlog\unsuccessfulbuild"。
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\CL.exe /c /Zi /W3 /WX- /Od /Ob0 /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_6cd35.dir\Debug\\" /Fd"cmTC_6cd35.dir\Debug\vc140.pdb" /Gd /TC /errorReport:queue "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\CheckIncludeFile.c"
+  Microsoft (R) C/C++ Optimizing Compiler Version 19.00.24215.1 for x64
+  Copyright (C) Microsoft Corporation.  All rights reserved.
+  
+  cl /c /Zi /W3 /WX- /Od /Ob0 /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_6cd35.dir\Debug\\" /Fd"cmTC_6cd35.dir\Debug\vc140.pdb" /Gd /TC /errorReport:queue "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\CheckIncludeFile.c"
+  
+  CheckIncludeFile.c
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:QUEUE /OUT:"C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\cmTC_6cd35.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp/Debug/cmTC_6cd35.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp/Debug/cmTC_6cd35.lib" /MACHINE:X64  /machine:x64 cmTC_6cd35.dir\Debug\CheckIncludeFile.obj
+  cmTC_6cd35.vcxproj -> C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\cmTC_6cd35.exe
+FinalizeBuildStatus:
+  正在刪除檔案 "cmTC_6cd35.dir\Debug\cmTC_6cd35.tlog\unsuccessfulbuild"。
+  正在變更時間戳記 "cmTC_6cd35.dir\Debug\cmTC_6cd35.tlog\cmTC_6cd35.lastbuildstate"。
+專案 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\cmTC_6cd35.vcxproj" (預設目標) 建置完成。
+
+建置成功。
+    0 個警告
+    0 個錯誤
+
+經過時間 00:00:00.67
+
+
+Determining size of __int64 passed with the following output:
+Change Dir: C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_6b5aa.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) Build Engine version 14.0.25420.1
+Copyright (C) Microsoft Corporation. 著作權所有，並保留一切權利。
+
+已經開始建置於 2/2/17 11:42:33。
+節點 1 (預設目標) 上的專案 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\cmTC_6b5aa.vcxproj"。
+PrepareForBuild:
+  正在建立目錄 "cmTC_6b5aa.dir\Debug\"。
+  正在建立目錄 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\"。
+  正在建立目錄 "cmTC_6b5aa.dir\Debug\cmTC_6b5aa.tlog\"。
+InitializeBuildStatus:
+  由於指定了 "AlwaysCreate"，因此正在建立 "cmTC_6b5aa.dir\Debug\cmTC_6b5aa.tlog\unsuccessfulbuild"。
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\CL.exe /c /Zi /W3 /WX- /Od /Ob0 /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_6b5aa.dir\Debug\\" /Fd"cmTC_6b5aa.dir\Debug\vc140.pdb" /Gd /TC /errorReport:queue "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CheckTypeSize\__INT64.c"
+  Microsoft (R) C/C++ Optimizing Compiler Version 19.00.24215.1 for x64
+  Copyright (C) Microsoft Corporation.  All rights reserved.
+  
+  cl /c /Zi /W3 /WX- /Od /Ob0 /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_6b5aa.dir\Debug\\" /Fd"cmTC_6b5aa.dir\Debug\vc140.pdb" /Gd /TC /errorReport:queue "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CheckTypeSize\__INT64.c"
+  
+  __INT64.c
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:QUEUE /OUT:"C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\cmTC_6b5aa.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp/Debug/cmTC_6b5aa.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp/Debug/cmTC_6b5aa.lib" /MACHINE:X64  /machine:x64 cmTC_6b5aa.dir\Debug\__INT64.obj
+  cmTC_6b5aa.vcxproj -> C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\cmTC_6b5aa.exe
+FinalizeBuildStatus:
+  正在刪除檔案 "cmTC_6b5aa.dir\Debug\cmTC_6b5aa.tlog\unsuccessfulbuild"。
+  正在變更時間戳記 "cmTC_6b5aa.dir\Debug\cmTC_6b5aa.tlog\cmTC_6b5aa.lastbuildstate"。
+專案 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\cmTC_6b5aa.vcxproj" (預設目標) 建置完成。
+
+建置成功。
+    0 個警告
+    0 個錯誤
+
+經過時間 00:00:00.64
+
+
+Determining size of int64_t passed with the following output:
+Change Dir: C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_36db9.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) Build Engine version 14.0.25420.1
+Copyright (C) Microsoft Corporation. 著作權所有，並保留一切權利。
+
+已經開始建置於 2/2/17 11:42:33。
+節點 1 (預設目標) 上的專案 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\cmTC_36db9.vcxproj"。
+PrepareForBuild:
+  正在建立目錄 "cmTC_36db9.dir\Debug\"。
+  正在建立目錄 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\"。
+  正在建立目錄 "cmTC_36db9.dir\Debug\cmTC_36db9.tlog\"。
+InitializeBuildStatus:
+  由於指定了 "AlwaysCreate"，因此正在建立 "cmTC_36db9.dir\Debug\cmTC_36db9.tlog\unsuccessfulbuild"。
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\CL.exe /c /Zi /W3 /WX- /Od /Ob0 /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_36db9.dir\Debug\\" /Fd"cmTC_36db9.dir\Debug\vc140.pdb" /Gd /TC /errorReport:queue "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CheckTypeSize\INT64_T.c"
+  Microsoft (R) C/C++ Optimizing Compiler Version 19.00.24215.1 for x64
+  Copyright (C) Microsoft Corporation.  All rights reserved.
+  
+  cl /c /Zi /W3 /WX- /Od /Ob0 /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_36db9.dir\Debug\\" /Fd"cmTC_36db9.dir\Debug\vc140.pdb" /Gd /TC /errorReport:queue "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CheckTypeSize\INT64_T.c"
+  
+  INT64_T.c
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:QUEUE /OUT:"C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\cmTC_36db9.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp/Debug/cmTC_36db9.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp/Debug/cmTC_36db9.lib" /MACHINE:X64  /machine:x64 cmTC_36db9.dir\Debug\INT64_T.obj
+  cmTC_36db9.vcxproj -> C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\cmTC_36db9.exe
+FinalizeBuildStatus:
+  正在刪除檔案 "cmTC_36db9.dir\Debug\cmTC_36db9.tlog\unsuccessfulbuild"。
+  正在變更時間戳記 "cmTC_36db9.dir\Debug\cmTC_36db9.tlog\cmTC_36db9.lastbuildstate"。
+專案 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\cmTC_36db9.vcxproj" (預設目標) 建置完成。
+
+建置成功。
+    0 個警告
+    0 個錯誤
+
+經過時間 00:00:00.72
+
+
+Determining size of long long passed with the following output:
+Change Dir: C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_6ba19.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) Build Engine version 14.0.25420.1
+Copyright (C) Microsoft Corporation. 著作權所有，並保留一切權利。
+
+已經開始建置於 2/2/17 11:42:34。
+節點 1 (預設目標) 上的專案 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\cmTC_6ba19.vcxproj"。
+PrepareForBuild:
+  正在建立目錄 "cmTC_6ba19.dir\Debug\"。
+  正在建立目錄 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\"。
+  正在建立目錄 "cmTC_6ba19.dir\Debug\cmTC_6ba19.tlog\"。
+InitializeBuildStatus:
+  由於指定了 "AlwaysCreate"，因此正在建立 "cmTC_6ba19.dir\Debug\cmTC_6ba19.tlog\unsuccessfulbuild"。
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\CL.exe /c /Zi /W3 /WX- /Od /Ob0 /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_6ba19.dir\Debug\\" /Fd"cmTC_6ba19.dir\Debug\vc140.pdb" /Gd /TC /errorReport:queue "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CheckTypeSize\LONG_LONG_INT.c"
+  Microsoft (R) C/C++ Optimizing Compiler Version 19.00.24215.1 for x64
+  Copyright (C) Microsoft Corporation.  All rights reserved.
+  
+  cl /c /Zi /W3 /WX- /Od /Ob0 /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_6ba19.dir\Debug\\" /Fd"cmTC_6ba19.dir\Debug\vc140.pdb" /Gd /TC /errorReport:queue "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CheckTypeSize\LONG_LONG_INT.c"
+  
+  LONG_LONG_INT.c
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:QUEUE /OUT:"C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\cmTC_6ba19.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp/Debug/cmTC_6ba19.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp/Debug/cmTC_6ba19.lib" /MACHINE:X64  /machine:x64 cmTC_6ba19.dir\Debug\LONG_LONG_INT.obj
+  cmTC_6ba19.vcxproj -> C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\cmTC_6ba19.exe
+FinalizeBuildStatus:
+  正在刪除檔案 "cmTC_6ba19.dir\Debug\cmTC_6ba19.tlog\unsuccessfulbuild"。
+  正在變更時間戳記 "cmTC_6ba19.dir\Debug\cmTC_6ba19.tlog\cmTC_6ba19.lastbuildstate"。
+專案 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\cmTC_6ba19.vcxproj" (預設目標) 建置完成。
+
+建置成功。
+    0 個警告
+    0 個錯誤
+
+經過時間 00:00:00.65
+
+
+Determining size of int32_t passed with the following output:
+Change Dir: C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_da3b6.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) Build Engine version 14.0.25420.1
+Copyright (C) Microsoft Corporation. 著作權所有，並保留一切權利。
+
+已經開始建置於 2/2/17 11:42:35。
+節點 1 (預設目標) 上的專案 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\cmTC_da3b6.vcxproj"。
+PrepareForBuild:
+  正在建立目錄 "cmTC_da3b6.dir\Debug\"。
+  正在建立目錄 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\"。
+  正在建立目錄 "cmTC_da3b6.dir\Debug\cmTC_da3b6.tlog\"。
+InitializeBuildStatus:
+  由於指定了 "AlwaysCreate"，因此正在建立 "cmTC_da3b6.dir\Debug\cmTC_da3b6.tlog\unsuccessfulbuild"。
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\CL.exe /c /Zi /W3 /WX- /Od /Ob0 /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_da3b6.dir\Debug\\" /Fd"cmTC_da3b6.dir\Debug\vc140.pdb" /Gd /TC /errorReport:queue "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CheckTypeSize\INT32_T.c"
+  Microsoft (R) C/C++ Optimizing Compiler Version 19.00.24215.1 for x64
+  Copyright (C) Microsoft Corporation.  All rights reserved.
+  
+  cl /c /Zi /W3 /WX- /Od /Ob0 /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_da3b6.dir\Debug\\" /Fd"cmTC_da3b6.dir\Debug\vc140.pdb" /Gd /TC /errorReport:queue "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CheckTypeSize\INT32_T.c"
+  
+  INT32_T.c
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:QUEUE /OUT:"C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\cmTC_da3b6.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp/Debug/cmTC_da3b6.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp/Debug/cmTC_da3b6.lib" /MACHINE:X64  /machine:x64 cmTC_da3b6.dir\Debug\INT32_T.obj
+  cmTC_da3b6.vcxproj -> C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\cmTC_da3b6.exe
+FinalizeBuildStatus:
+  正在刪除檔案 "cmTC_da3b6.dir\Debug\cmTC_da3b6.tlog\unsuccessfulbuild"。
+  正在變更時間戳記 "cmTC_da3b6.dir\Debug\cmTC_da3b6.tlog\cmTC_da3b6.lastbuildstate"。
+專案 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\cmTC_da3b6.vcxproj" (預設目標) 建置完成。
+
+建置成功。
+    0 個警告
+    0 個錯誤
+
+經過時間 00:00:00.66
+
+
+Determining size of __int32 passed with the following output:
+Change Dir: C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_bfe02.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) Build Engine version 14.0.25420.1
+Copyright (C) Microsoft Corporation. 著作權所有，並保留一切權利。
+
+已經開始建置於 2/2/17 11:42:36。
+節點 1 (預設目標) 上的專案 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\cmTC_bfe02.vcxproj"。
+PrepareForBuild:
+  正在建立目錄 "cmTC_bfe02.dir\Debug\"。
+  正在建立目錄 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\"。
+  正在建立目錄 "cmTC_bfe02.dir\Debug\cmTC_bfe02.tlog\"。
+InitializeBuildStatus:
+  由於指定了 "AlwaysCreate"，因此正在建立 "cmTC_bfe02.dir\Debug\cmTC_bfe02.tlog\unsuccessfulbuild"。
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\CL.exe /c /Zi /W3 /WX- /Od /Ob0 /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_bfe02.dir\Debug\\" /Fd"cmTC_bfe02.dir\Debug\vc140.pdb" /Gd /TC /errorReport:queue "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CheckTypeSize\__INT32.c"
+  Microsoft (R) C/C++ Optimizing Compiler Version 19.00.24215.1 for x64
+  Copyright (C) Microsoft Corporation.  All rights reserved.
+  
+  cl /c /Zi /W3 /WX- /Od /Ob0 /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_bfe02.dir\Debug\\" /Fd"cmTC_bfe02.dir\Debug\vc140.pdb" /Gd /TC /errorReport:queue "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CheckTypeSize\__INT32.c"
+  
+  __INT32.c
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:QUEUE /OUT:"C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\cmTC_bfe02.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp/Debug/cmTC_bfe02.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp/Debug/cmTC_bfe02.lib" /MACHINE:X64  /machine:x64 cmTC_bfe02.dir\Debug\__INT32.obj
+  cmTC_bfe02.vcxproj -> C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\cmTC_bfe02.exe
+FinalizeBuildStatus:
+  正在刪除檔案 "cmTC_bfe02.dir\Debug\cmTC_bfe02.tlog\unsuccessfulbuild"。
+  正在變更時間戳記 "cmTC_bfe02.dir\Debug\cmTC_bfe02.tlog\cmTC_bfe02.lastbuildstate"。
+專案 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\cmTC_bfe02.vcxproj" (預設目標) 建置完成。
+
+建置成功。
+    0 個警告
+    0 個錯誤
+
+經過時間 00:00:00.69
+
+
+Determining size of long passed with the following output:
+Change Dir: C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_217b1.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) Build Engine version 14.0.25420.1
+Copyright (C) Microsoft Corporation. 著作權所有，並保留一切權利。
+
+已經開始建置於 2/2/17 11:42:37。
+節點 1 (預設目標) 上的專案 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\cmTC_217b1.vcxproj"。
+PrepareForBuild:
+  正在建立目錄 "cmTC_217b1.dir\Debug\"。
+  正在建立目錄 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\"。
+  正在建立目錄 "cmTC_217b1.dir\Debug\cmTC_217b1.tlog\"。
+InitializeBuildStatus:
+  由於指定了 "AlwaysCreate"，因此正在建立 "cmTC_217b1.dir\Debug\cmTC_217b1.tlog\unsuccessfulbuild"。
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\CL.exe /c /Zi /W3 /WX- /Od /Ob0 /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_217b1.dir\Debug\\" /Fd"cmTC_217b1.dir\Debug\vc140.pdb" /Gd /TC /errorReport:queue "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CheckTypeSize\LONG_INT.c"
+  Microsoft (R) C/C++ Optimizing Compiler Version 19.00.24215.1 for x64
+  Copyright (C) Microsoft Corporation.  All rights reserved.
+  
+  cl /c /Zi /W3 /WX- /Od /Ob0 /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_217b1.dir\Debug\\" /Fd"cmTC_217b1.dir\Debug\vc140.pdb" /Gd /TC /errorReport:queue "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CheckTypeSize\LONG_INT.c"
+  
+  LONG_INT.c
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:QUEUE /OUT:"C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\cmTC_217b1.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp/Debug/cmTC_217b1.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp/Debug/cmTC_217b1.lib" /MACHINE:X64  /machine:x64 cmTC_217b1.dir\Debug\LONG_INT.obj
+  cmTC_217b1.vcxproj -> C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\cmTC_217b1.exe
+FinalizeBuildStatus:
+  正在刪除檔案 "cmTC_217b1.dir\Debug\cmTC_217b1.tlog\unsuccessfulbuild"。
+  正在變更時間戳記 "cmTC_217b1.dir\Debug\cmTC_217b1.tlog\cmTC_217b1.lastbuildstate"。
+專案 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\cmTC_217b1.vcxproj" (預設目標) 建置完成。
+
+建置成功。
+    0 個警告
+    0 個錯誤
+
+經過時間 00:00:00.66
+
+
+Determining size of int passed with the following output:
+Change Dir: C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_c955c.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) Build Engine version 14.0.25420.1
+Copyright (C) Microsoft Corporation. 著作權所有，並保留一切權利。
+
+已經開始建置於 2/2/17 11:42:38。
+節點 1 (預設目標) 上的專案 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\cmTC_c955c.vcxproj"。
+PrepareForBuild:
+  正在建立目錄 "cmTC_c955c.dir\Debug\"。
+  正在建立目錄 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\"。
+  正在建立目錄 "cmTC_c955c.dir\Debug\cmTC_c955c.tlog\"。
+InitializeBuildStatus:
+  由於指定了 "AlwaysCreate"，因此正在建立 "cmTC_c955c.dir\Debug\cmTC_c955c.tlog\unsuccessfulbuild"。
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\CL.exe /c /Zi /W3 /WX- /Od /Ob0 /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_c955c.dir\Debug\\" /Fd"cmTC_c955c.dir\Debug\vc140.pdb" /Gd /TC /errorReport:queue "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CheckTypeSize\INT.c"
+  Microsoft (R) C/C++ Optimizing Compiler Version 19.00.24215.1 for x64
+  Copyright (C) Microsoft Corporation.  All rights reserved.
+  
+  cl /c /Zi /W3 /WX- /Od /Ob0 /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_c955c.dir\Debug\\" /Fd"cmTC_c955c.dir\Debug\vc140.pdb" /Gd /TC /errorReport:queue "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CheckTypeSize\INT.c"
+  
+  INT.c
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:QUEUE /OUT:"C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\cmTC_c955c.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp/Debug/cmTC_c955c.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp/Debug/cmTC_c955c.lib" /MACHINE:X64  /machine:x64 cmTC_c955c.dir\Debug\INT.obj
+  cmTC_c955c.vcxproj -> C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\cmTC_c955c.exe
+FinalizeBuildStatus:
+  正在刪除檔案 "cmTC_c955c.dir\Debug\cmTC_c955c.tlog\unsuccessfulbuild"。
+  正在變更時間戳記 "cmTC_c955c.dir\Debug\cmTC_c955c.tlog\cmTC_c955c.lastbuildstate"。
+專案 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\cmTC_c955c.vcxproj" (預設目標) 建置完成。
+
+建置成功。
+    0 個警告
+    0 個錯誤
+
+經過時間 00:00:00.65
+
+
+Determining if the function strtoll exists passed with the following output:
+Change Dir: C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_6b704.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) Build Engine version 14.0.25420.1
+Copyright (C) Microsoft Corporation. 著作權所有，並保留一切權利。
+
+已經開始建置於 2/2/17 11:42:40。
+節點 1 (預設目標) 上的專案 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\cmTC_6b704.vcxproj"。
+PrepareForBuild:
+  正在建立目錄 "cmTC_6b704.dir\Debug\"。
+  正在建立目錄 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\"。
+  正在建立目錄 "cmTC_6b704.dir\Debug\cmTC_6b704.tlog\"。
+InitializeBuildStatus:
+  由於指定了 "AlwaysCreate"，因此正在建立 "cmTC_6b704.dir\Debug\cmTC_6b704.tlog\unsuccessfulbuild"。
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\CL.exe /c /Zi /W3 /WX- /Od /Ob0 /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=strtoll /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_6b704.dir\Debug\\" /Fd"cmTC_6b704.dir\Debug\vc140.pdb" /Gd /TC /errorReport:queue "C:\Program Files\CMake\share\cmake-3.7\Modules\CheckFunctionExists.c"
+  Microsoft (R) C/C++ Optimizing Compiler Version 19.00.24215.1 for x64
+  Copyright (C) Microsoft Corporation.  All rights reserved.
+  
+  cl /c /Zi /W3 /WX- /Od /Ob0 /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=strtoll /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_6b704.dir\Debug\\" /Fd"cmTC_6b704.dir\Debug\vc140.pdb" /Gd /TC /errorReport:queue "C:\Program Files\CMake\share\cmake-3.7\Modules\CheckFunctionExists.c"
+  
+  CheckFunctionExists.c
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:QUEUE /OUT:"C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\cmTC_6b704.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp/Debug/cmTC_6b704.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp/Debug/cmTC_6b704.lib" /MACHINE:X64  /machine:x64 cmTC_6b704.dir\Debug\CheckFunctionExists.obj
+  cmTC_6b704.vcxproj -> C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\cmTC_6b704.exe
+FinalizeBuildStatus:
+  正在刪除檔案 "cmTC_6b704.dir\Debug\cmTC_6b704.tlog\unsuccessfulbuild"。
+  正在變更時間戳記 "cmTC_6b704.dir\Debug\cmTC_6b704.tlog\cmTC_6b704.lastbuildstate"。
+專案 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\cmTC_6b704.vcxproj" (預設目標) 建置完成。
+
+建置成功。
+    0 個警告
+    0 個錯誤
+
+經過時間 00:00:00.65
+
+
+Determining if the function _strtoi64 exists passed with the following output:
+Change Dir: C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_b11f2.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) Build Engine version 14.0.25420.1
+Copyright (C) Microsoft Corporation. 著作權所有，並保留一切權利。
+
+已經開始建置於 2/2/17 11:42:41。
+節點 1 (預設目標) 上的專案 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\cmTC_b11f2.vcxproj"。
+PrepareForBuild:
+  正在建立目錄 "cmTC_b11f2.dir\Debug\"。
+  正在建立目錄 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\"。
+  正在建立目錄 "cmTC_b11f2.dir\Debug\cmTC_b11f2.tlog\"。
+InitializeBuildStatus:
+  由於指定了 "AlwaysCreate"，因此正在建立 "cmTC_b11f2.dir\Debug\cmTC_b11f2.tlog\unsuccessfulbuild"。
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\CL.exe /c /Zi /W3 /WX- /Od /Ob0 /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=_strtoi64 /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_b11f2.dir\Debug\\" /Fd"cmTC_b11f2.dir\Debug\vc140.pdb" /Gd /TC /errorReport:queue "C:\Program Files\CMake\share\cmake-3.7\Modules\CheckFunctionExists.c"
+  Microsoft (R) C/C++ Optimizing Compiler Version 19.00.24215.1 for x64
+  Copyright (C) Microsoft Corporation.  All rights reserved.
+  
+  cl /c /Zi /W3 /WX- /Od /Ob0 /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=_strtoi64 /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_b11f2.dir\Debug\\" /Fd"cmTC_b11f2.dir\Debug\vc140.pdb" /Gd /TC /errorReport:queue "C:\Program Files\CMake\share\cmake-3.7\Modules\CheckFunctionExists.c"
+  
+  CheckFunctionExists.c
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:QUEUE /OUT:"C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\cmTC_b11f2.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp/Debug/cmTC_b11f2.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp/Debug/cmTC_b11f2.lib" /MACHINE:X64  /machine:x64 cmTC_b11f2.dir\Debug\CheckFunctionExists.obj
+  cmTC_b11f2.vcxproj -> C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\cmTC_b11f2.exe
+FinalizeBuildStatus:
+  正在刪除檔案 "cmTC_b11f2.dir\Debug\cmTC_b11f2.tlog\unsuccessfulbuild"。
+  正在變更時間戳記 "cmTC_b11f2.dir\Debug\cmTC_b11f2.tlog\cmTC_b11f2.lastbuildstate"。
+專案 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\cmTC_b11f2.vcxproj" (預設目標) 建置完成。
+
+建置成功。
+    0 個警告
+    0 個錯誤
+
+經過時間 00:00:00.65
+
+
+Determining if files locale.h exist passed with the following output:
+Change Dir: C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_89ddf.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) Build Engine version 14.0.25420.1
+Copyright (C) Microsoft Corporation. 著作權所有，並保留一切權利。
+
+已經開始建置於 2/2/17 11:42:42。
+節點 1 (預設目標) 上的專案 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\cmTC_89ddf.vcxproj"。
+PrepareForBuild:
+  正在建立目錄 "cmTC_89ddf.dir\Debug\"。
+  正在建立目錄 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\"。
+  正在建立目錄 "cmTC_89ddf.dir\Debug\cmTC_89ddf.tlog\"。
+InitializeBuildStatus:
+  由於指定了 "AlwaysCreate"，因此正在建立 "cmTC_89ddf.dir\Debug\cmTC_89ddf.tlog\unsuccessfulbuild"。
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\CL.exe /c /Zi /W3 /WX- /Od /Ob0 /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_89ddf.dir\Debug\\" /Fd"cmTC_89ddf.dir\Debug\vc140.pdb" /Gd /TC /errorReport:queue "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\CheckIncludeFiles.c"
+  Microsoft (R) C/C++ Optimizing Compiler Version 19.00.24215.1 for x64
+  Copyright (C) Microsoft Corporation.  All rights reserved.
+  
+  cl /c /Zi /W3 /WX- /Od /Ob0 /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_89ddf.dir\Debug\\" /Fd"cmTC_89ddf.dir\Debug\vc140.pdb" /Gd /TC /errorReport:queue "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\CheckIncludeFiles.c"
+  
+  CheckIncludeFiles.c
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:QUEUE /OUT:"C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\cmTC_89ddf.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp/Debug/cmTC_89ddf.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp/Debug/cmTC_89ddf.lib" /MACHINE:X64  /machine:x64 cmTC_89ddf.dir\Debug\CheckIncludeFiles.obj
+  cmTC_89ddf.vcxproj -> C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\cmTC_89ddf.exe
+FinalizeBuildStatus:
+  正在刪除檔案 "cmTC_89ddf.dir\Debug\cmTC_89ddf.tlog\unsuccessfulbuild"。
+  正在變更時間戳記 "cmTC_89ddf.dir\Debug\cmTC_89ddf.tlog\cmTC_89ddf.lastbuildstate"。
+專案 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\cmTC_89ddf.vcxproj" (預設目標) 建置完成。
+
+建置成功。
+    0 個警告
+    0 個錯誤
+
+經過時間 00:00:00.68
+
+
+Determining if the function localeconv exists passed with the following output:
+Change Dir: C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_d678a.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) Build Engine version 14.0.25420.1
+Copyright (C) Microsoft Corporation. 著作權所有，並保留一切權利。
+
+已經開始建置於 2/2/17 11:42:43。
+節點 1 (預設目標) 上的專案 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\cmTC_d678a.vcxproj"。
+PrepareForBuild:
+  正在建立目錄 "cmTC_d678a.dir\Debug\"。
+  正在建立目錄 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\"。
+  正在建立目錄 "cmTC_d678a.dir\Debug\cmTC_d678a.tlog\"。
+InitializeBuildStatus:
+  由於指定了 "AlwaysCreate"，因此正在建立 "cmTC_d678a.dir\Debug\cmTC_d678a.tlog\unsuccessfulbuild"。
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\CL.exe /c /Zi /W3 /WX- /Od /Ob0 /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=localeconv /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_d678a.dir\Debug\\" /Fd"cmTC_d678a.dir\Debug\vc140.pdb" /Gd /TC /errorReport:queue "C:\Program Files\CMake\share\cmake-3.7\Modules\CheckFunctionExists.c"
+  Microsoft (R) C/C++ Optimizing Compiler Version 19.00.24215.1 for x64
+  Copyright (C) Microsoft Corporation.  All rights reserved.
+  
+  cl /c /Zi /W3 /WX- /Od /Ob0 /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=localeconv /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_d678a.dir\Debug\\" /Fd"cmTC_d678a.dir\Debug\vc140.pdb" /Gd /TC /errorReport:queue "C:\Program Files\CMake\share\cmake-3.7\Modules\CheckFunctionExists.c"
+  
+  CheckFunctionExists.c
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:QUEUE /OUT:"C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\cmTC_d678a.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp/Debug/cmTC_d678a.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp/Debug/cmTC_d678a.lib" /MACHINE:X64  /machine:x64 cmTC_d678a.dir\Debug\CheckFunctionExists.obj
+  cmTC_d678a.vcxproj -> C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\cmTC_d678a.exe
+FinalizeBuildStatus:
+  正在刪除檔案 "cmTC_d678a.dir\Debug\cmTC_d678a.tlog\unsuccessfulbuild"。
+  正在變更時間戳記 "cmTC_d678a.dir\Debug\cmTC_d678a.tlog\cmTC_d678a.lastbuildstate"。
+專案 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\cmTC_d678a.vcxproj" (預設目標) 建置完成。
+
+建置成功。
+    0 個警告
+    0 個錯誤
+
+經過時間 00:00:00.66
+
+
+Determining if the function setlocale exists passed with the following output:
+Change Dir: C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_acac9.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) Build Engine version 14.0.25420.1
+Copyright (C) Microsoft Corporation. 著作權所有，並保留一切權利。
+
+已經開始建置於 2/2/17 11:42:44。
+節點 1 (預設目標) 上的專案 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\cmTC_acac9.vcxproj"。
+PrepareForBuild:
+  正在建立目錄 "cmTC_acac9.dir\Debug\"。
+  正在建立目錄 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\"。
+  正在建立目錄 "cmTC_acac9.dir\Debug\cmTC_acac9.tlog\"。
+InitializeBuildStatus:
+  由於指定了 "AlwaysCreate"，因此正在建立 "cmTC_acac9.dir\Debug\cmTC_acac9.tlog\unsuccessfulbuild"。
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\CL.exe /c /Zi /W3 /WX- /Od /Ob0 /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=setlocale /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_acac9.dir\Debug\\" /Fd"cmTC_acac9.dir\Debug\vc140.pdb" /Gd /TC /errorReport:queue "C:\Program Files\CMake\share\cmake-3.7\Modules\CheckFunctionExists.c"
+  Microsoft (R) C/C++ Optimizing Compiler Version 19.00.24215.1 for x64
+  Copyright (C) Microsoft Corporation.  All rights reserved.
+  
+  cl /c /Zi /W3 /WX- /Od /Ob0 /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=setlocale /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_acac9.dir\Debug\\" /Fd"cmTC_acac9.dir\Debug\vc140.pdb" /Gd /TC /errorReport:queue "C:\Program Files\CMake\share\cmake-3.7\Modules\CheckFunctionExists.c"
+  
+  CheckFunctionExists.c
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:QUEUE /OUT:"C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\cmTC_acac9.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp/Debug/cmTC_acac9.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp/Debug/cmTC_acac9.lib" /MACHINE:X64  /machine:x64 cmTC_acac9.dir\Debug\CheckFunctionExists.obj
+  cmTC_acac9.vcxproj -> C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\cmTC_acac9.exe
+FinalizeBuildStatus:
+  正在刪除檔案 "cmTC_acac9.dir\Debug\cmTC_acac9.tlog\unsuccessfulbuild"。
+  正在變更時間戳記 "cmTC_acac9.dir\Debug\cmTC_acac9.tlog\cmTC_acac9.lastbuildstate"。
+專案 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\cmTC_acac9.vcxproj" (預設目標) 建置完成。
+
+建置成功。
+    0 個警告
+    0 個錯誤
+
+經過時間 00:00:00.65
+
+
+Performing C SOURCE FILE Test HAVE_INLINE succeeded with the following output:
+Change Dir: C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_56d1c.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) Build Engine version 14.0.25420.1
+Copyright (C) Microsoft Corporation. 著作權所有，並保留一切權利。
+
+已經開始建置於 2/2/17 11:42:45。
+節點 1 (預設目標) 上的專案 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\cmTC_56d1c.vcxproj"。
+PrepareForBuild:
+  正在建立目錄 "cmTC_56d1c.dir\Debug\"。
+  正在建立目錄 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\"。
+  正在建立目錄 "cmTC_56d1c.dir\Debug\cmTC_56d1c.tlog\"。
+InitializeBuildStatus:
+  由於指定了 "AlwaysCreate"，因此正在建立 "cmTC_56d1c.dir\Debug\cmTC_56d1c.tlog\unsuccessfulbuild"。
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\CL.exe /c /Zi /W3 /WX- /Od /Ob0 /D WIN32 /D _WINDOWS /D HAVE_INLINE /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_56d1c.dir\Debug\\" /Fd"cmTC_56d1c.dir\Debug\vc140.pdb" /Gd /TC /errorReport:queue "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\src.c"
+  Microsoft (R) C/C++ Optimizing Compiler Version 19.00.24215.1 for x64
+  Copyright (C) Microsoft Corporation.  All rights reserved.
+  
+  cl /c /Zi /W3 /WX- /Od /Ob0 /D WIN32 /D _WINDOWS /D HAVE_INLINE /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_56d1c.dir\Debug\\" /Fd"cmTC_56d1c.dir\Debug\vc140.pdb" /Gd /TC /errorReport:queue "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\src.c"
+  
+  src.c
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:QUEUE /OUT:"C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\cmTC_56d1c.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp/Debug/cmTC_56d1c.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp/Debug/cmTC_56d1c.lib" /MACHINE:X64  /machine:x64 cmTC_56d1c.dir\Debug\src.obj
+  cmTC_56d1c.vcxproj -> C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\cmTC_56d1c.exe
+FinalizeBuildStatus:
+  正在刪除檔案 "cmTC_56d1c.dir\Debug\cmTC_56d1c.tlog\unsuccessfulbuild"。
+  正在變更時間戳記 "cmTC_56d1c.dir\Debug\cmTC_56d1c.tlog\cmTC_56d1c.lastbuildstate"。
+專案 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\cmTC_56d1c.vcxproj" (預設目標) 建置完成。
+
+建置成功。
+    0 個警告
+    0 個錯誤
+
+經過時間 00:00:00.65
+
+Source file was:
+inline void func(); void func() { } int main() { func(); return 0; }
+Performing C SOURCE FILE Test HAVE___INLINE succeeded with the following output:
+Change Dir: C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_bec45.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) Build Engine version 14.0.25420.1
+Copyright (C) Microsoft Corporation. 著作權所有，並保留一切權利。
+
+已經開始建置於 2/2/17 11:42:46。
+節點 1 (預設目標) 上的專案 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\cmTC_bec45.vcxproj"。
+PrepareForBuild:
+  正在建立目錄 "cmTC_bec45.dir\Debug\"。
+  正在建立目錄 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\"。
+  正在建立目錄 "cmTC_bec45.dir\Debug\cmTC_bec45.tlog\"。
+InitializeBuildStatus:
+  由於指定了 "AlwaysCreate"，因此正在建立 "cmTC_bec45.dir\Debug\cmTC_bec45.tlog\unsuccessfulbuild"。
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\CL.exe /c /Zi /W3 /WX- /Od /Ob0 /D WIN32 /D _WINDOWS /D HAVE___INLINE /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_bec45.dir\Debug\\" /Fd"cmTC_bec45.dir\Debug\vc140.pdb" /Gd /TC /errorReport:queue "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\src.c"
+  Microsoft (R) C/C++ Optimizing Compiler Version 19.00.24215.1 for x64
+  Copyright (C) Microsoft Corporation.  All rights reserved.
+  
+  cl /c /Zi /W3 /WX- /Od /Ob0 /D WIN32 /D _WINDOWS /D HAVE___INLINE /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_bec45.dir\Debug\\" /Fd"cmTC_bec45.dir\Debug\vc140.pdb" /Gd /TC /errorReport:queue "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\src.c"
+  
+  src.c
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:QUEUE /OUT:"C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\cmTC_bec45.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp/Debug/cmTC_bec45.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp/Debug/cmTC_bec45.lib" /MACHINE:X64  /machine:x64 cmTC_bec45.dir\Debug\src.obj
+  cmTC_bec45.vcxproj -> C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\cmTC_bec45.exe
+FinalizeBuildStatus:
+  正在刪除檔案 "cmTC_bec45.dir\Debug\cmTC_bec45.tlog\unsuccessfulbuild"。
+  正在變更時間戳記 "cmTC_bec45.dir\Debug\cmTC_bec45.tlog\cmTC_bec45.lastbuildstate"。
+專案 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\cmTC_bec45.vcxproj" (預設目標) 建置完成。
+
+建置成功。
+    0 個警告
+    0 個錯誤
+
+經過時間 00:00:00.64
+
+Source file was:
+__inline void func(); void func() { } int main() { func(); return 0; }
+Determining if the snprintf exist passed with the following output:
+Change Dir: C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_5ea84.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) Build Engine version 14.0.25420.1
+Copyright (C) Microsoft Corporation. 著作權所有，並保留一切權利。
+
+已經開始建置於 2/2/17 11:42:47。
+節點 1 (預設目標) 上的專案 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\cmTC_5ea84.vcxproj"。
+PrepareForBuild:
+  正在建立目錄 "cmTC_5ea84.dir\Debug\"。
+  正在建立目錄 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\"。
+  正在建立目錄 "cmTC_5ea84.dir\Debug\cmTC_5ea84.tlog\"。
+InitializeBuildStatus:
+  由於指定了 "AlwaysCreate"，因此正在建立 "cmTC_5ea84.dir\Debug\cmTC_5ea84.tlog\unsuccessfulbuild"。
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\CL.exe /c /Zi /W3 /WX- /Od /Ob0 /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_5ea84.dir\Debug\\" /Fd"cmTC_5ea84.dir\Debug\vc140.pdb" /Gd /TC /errorReport:queue "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\CheckSymbolExists.c"
+  Microsoft (R) C/C++ Optimizing Compiler Version 19.00.24215.1 for x64
+  Copyright (C) Microsoft Corporation.  All rights reserved.
+  
+  cl /c /Zi /W3 /WX- /Od /Ob0 /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_5ea84.dir\Debug\\" /Fd"cmTC_5ea84.dir\Debug\vc140.pdb" /Gd /TC /errorReport:queue "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\CheckSymbolExists.c"
+  
+  CheckSymbolExists.c
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:QUEUE /OUT:"C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\cmTC_5ea84.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp/Debug/cmTC_5ea84.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp/Debug/cmTC_5ea84.lib" /MACHINE:X64  /machine:x64 cmTC_5ea84.dir\Debug\CheckSymbolExists.obj
+  cmTC_5ea84.vcxproj -> C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\cmTC_5ea84.exe
+FinalizeBuildStatus:
+  正在刪除檔案 "cmTC_5ea84.dir\Debug\cmTC_5ea84.tlog\unsuccessfulbuild"。
+  正在變更時間戳記 "cmTC_5ea84.dir\Debug\cmTC_5ea84.tlog\cmTC_5ea84.lastbuildstate"。
+專案 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\cmTC_5ea84.vcxproj" (預設目標) 建置完成。
+
+建置成功。
+    0 個警告
+    0 個錯誤
+
+經過時間 00:00:00.69
+
+File C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <stdio.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef snprintf
+  return ((int*)(&snprintf))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the _snprintf exist passed with the following output:
+Change Dir: C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_a5bf9.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) Build Engine version 14.0.25420.1
+Copyright (C) Microsoft Corporation. 著作權所有，並保留一切權利。
+
+已經開始建置於 2/2/17 11:42:48。
+節點 1 (預設目標) 上的專案 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\cmTC_a5bf9.vcxproj"。
+PrepareForBuild:
+  正在建立目錄 "cmTC_a5bf9.dir\Debug\"。
+  正在建立目錄 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\"。
+  正在建立目錄 "cmTC_a5bf9.dir\Debug\cmTC_a5bf9.tlog\"。
+InitializeBuildStatus:
+  由於指定了 "AlwaysCreate"，因此正在建立 "cmTC_a5bf9.dir\Debug\cmTC_a5bf9.tlog\unsuccessfulbuild"。
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\CL.exe /c /Zi /W3 /WX- /Od /Ob0 /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_a5bf9.dir\Debug\\" /Fd"cmTC_a5bf9.dir\Debug\vc140.pdb" /Gd /TC /errorReport:queue "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\CheckSymbolExists.c"
+  Microsoft (R) C/C++ Optimizing Compiler Version 19.00.24215.1 for x64
+  Copyright (C) Microsoft Corporation.  All rights reserved.
+  
+  cl /c /Zi /W3 /WX- /Od /Ob0 /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_a5bf9.dir\Debug\\" /Fd"cmTC_a5bf9.dir\Debug\vc140.pdb" /Gd /TC /errorReport:queue "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\CheckSymbolExists.c"
+  
+  CheckSymbolExists.c
+C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\CheckSymbolExists.c(8): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details. [C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\cmTC_a5bf9.vcxproj]
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.14393.0\ucrt\stdio.h(1952): note: see declaration of '_snprintf'
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:QUEUE /OUT:"C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\cmTC_a5bf9.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp/Debug/cmTC_a5bf9.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp/Debug/cmTC_a5bf9.lib" /MACHINE:X64  /machine:x64 cmTC_a5bf9.dir\Debug\CheckSymbolExists.obj
+  cmTC_a5bf9.vcxproj -> C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\Debug\cmTC_a5bf9.exe
+FinalizeBuildStatus:
+  正在刪除檔案 "cmTC_a5bf9.dir\Debug\cmTC_a5bf9.tlog\unsuccessfulbuild"。
+  正在變更時間戳記 "cmTC_a5bf9.dir\Debug\cmTC_a5bf9.tlog\cmTC_a5bf9.lastbuildstate"。
+專案 "C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\cmTC_a5bf9.vcxproj" (預設目標) 建置完成。
+
+建置成功。
+
+"C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\cmTC_a5bf9.vcxproj" (預設目標) (1) ->
+(ClCompile 目標) -> 
+  C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\CheckSymbolExists.c(8): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details. [C:\Users\vic\Documents\obs-dev\obs-studio\build64\CMakeFiles\CMakeTmp\cmTC_a5bf9.vcxproj]
+
+    1 個警告
+    0 個錯誤
+
+經過時間 00:00:00.66
+
+File C:/Users/vic/Documents/obs-dev/obs-studio/build64/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <stdio.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef _snprintf
+  return ((int*)(&_snprintf))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+

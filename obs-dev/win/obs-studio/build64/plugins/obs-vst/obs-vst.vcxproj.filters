@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\plugins\obs-vst\obs-vst.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\plugins\obs-vst\VSTPlugin.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\plugins\obs-vst\EditorWidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\plugins\obs-vst\win\VSTPlugin-win.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\plugins\obs-vst\win\EditorWidget-win.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\plugins\obs-vst\headers\vst-plugin-callbacks.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\plugins\obs-vst\headers\EditorWidget.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\plugins\obs-vst\headers\VSTPlugin.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\vic\Documents\obs-dev\obs-studio\plugins\obs-vst\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{A5CF637A-DDF7-39E8-B7B6-F7BC1892D376}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{CD97B140-67DC-325A-B8CE-EF435B57894F}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

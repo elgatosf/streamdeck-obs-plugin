@@ -1,0 +1,39 @@
+# CMake generation dependency list for this directory.
+C:/Users/vic/Documents/obs-dev/obs-studio/UI/CMakeLists.txt
+C:/Qt/Qt5.7.0/5.7/msvc2015_64/lib/cmake/Qt5Widgets/Qt5WidgetsConfigVersion.cmake
+C:/Qt/Qt5.7.0/5.7/msvc2015_64/lib/cmake/Qt5Widgets/Qt5WidgetsConfig.cmake
+C:/Qt/Qt5.7.0/5.7/msvc2015_64/lib/cmake/Qt5Gui/Qt5GuiConfigVersion.cmake
+C:/Qt/Qt5.7.0/5.7/msvc2015_64/lib/cmake/Qt5Gui/Qt5GuiConfig.cmake
+C:/Qt/Qt5.7.0/5.7/msvc2015_64/lib/cmake/Qt5Core/Qt5CoreConfigVersion.cmake
+C:/Qt/Qt5.7.0/5.7/msvc2015_64/lib/cmake/Qt5Core/Qt5CoreConfig.cmake
+C:/Qt/Qt5.7.0/5.7/msvc2015_64/lib/cmake/Qt5Core/Qt5CoreConfigExtras.cmake
+C:/Qt/Qt5.7.0/5.7/msvc2015_64/lib/cmake/Qt5Core/Qt5CoreConfigExtrasMkspecDir.cmake
+C:/Qt/Qt5.7.0/5.7/msvc2015_64/lib/cmake/Qt5Core/Qt5CoreMacros.cmake
+C:/Program Files/CMake/share/cmake-3.7/Modules/CMakeParseArguments.cmake
+C:/Qt/Qt5.7.0/5.7/msvc2015_64/lib/cmake/Qt5Gui/Qt5Gui_QDDSPlugin.cmake
+C:/Qt/Qt5.7.0/5.7/msvc2015_64/lib/cmake/Qt5Gui/Qt5Gui_QGifPlugin.cmake
+C:/Qt/Qt5.7.0/5.7/msvc2015_64/lib/cmake/Qt5Gui/Qt5Gui_QICNSPlugin.cmake
+C:/Qt/Qt5.7.0/5.7/msvc2015_64/lib/cmake/Qt5Gui/Qt5Gui_QICOPlugin.cmake
+C:/Qt/Qt5.7.0/5.7/msvc2015_64/lib/cmake/Qt5Gui/Qt5Gui_QJpegPlugin.cmake
+C:/Qt/Qt5.7.0/5.7/msvc2015_64/lib/cmake/Qt5Gui/Qt5Gui_QMinimalIntegrationPlugin.cmake
+C:/Qt/Qt5.7.0/5.7/msvc2015_64/lib/cmake/Qt5Gui/Qt5Gui_QOffscreenIntegrationPlugin.cmake
+C:/Qt/Qt5.7.0/5.7/msvc2015_64/lib/cmake/Qt5Gui/Qt5Gui_QTgaPlugin.cmake
+C:/Qt/Qt5.7.0/5.7/msvc2015_64/lib/cmake/Qt5Gui/Qt5Gui_QTiffPlugin.cmake
+C:/Qt/Qt5.7.0/5.7/msvc2015_64/lib/cmake/Qt5Gui/Qt5Gui_QTuioTouchPlugin.cmake
+C:/Qt/Qt5.7.0/5.7/msvc2015_64/lib/cmake/Qt5Gui/Qt5Gui_QWbmpPlugin.cmake
+C:/Qt/Qt5.7.0/5.7/msvc2015_64/lib/cmake/Qt5Gui/Qt5Gui_QWebpPlugin.cmake
+C:/Qt/Qt5.7.0/5.7/msvc2015_64/lib/cmake/Qt5Gui/Qt5Gui_QWindowsIntegrationPlugin.cmake
+C:/Qt/Qt5.7.0/5.7/msvc2015_64/lib/cmake/Qt5Gui/Qt5GuiConfigExtras.cmake
+C:/Qt/Qt5.7.0/5.7/msvc2015_64/lib/cmake/Qt5Widgets/Qt5WidgetsConfigExtras.cmake
+C:/Qt/Qt5.7.0/5.7/msvc2015_64/lib/cmake/Qt5Widgets/Qt5WidgetsMacros.cmake
+C:/Program Files/CMake/share/cmake-3.7/Modules/CMakeParseArguments.cmake
+C:/Users/vic/Documents/obs-dev/obs-studio/cmake/Modules/FindLibcurl.cmake
+C:/Program Files/CMake/share/cmake-3.7/Modules/FindPkgConfig.cmake
+C:/Program Files/CMake/share/cmake-3.7/Modules/FindPackageHandleStandardArgs.cmake
+C:/Program Files/CMake/share/cmake-3.7/Modules/FindPackageMessage.cmake
+C:/Program Files/CMake/share/cmake-3.7/Modules/CMakeParseArguments.cmake
+C:/Program Files/CMake/share/cmake-3.7/Modules/FindPackageHandleStandardArgs.cmake
+C:/Program Files/CMake/share/cmake-3.7/Modules/FindPackageMessage.cmake
+C:/Program Files/CMake/share/cmake-3.7/Modules/CMakeParseArguments.cmake
+C:/Users/vic/Documents/obs-dev/obs-studio/UI/forms/obs.qrc
+C:/Program Files/CMake/share/cmake-3.7/Modules/AutogenInfo.cmake.in

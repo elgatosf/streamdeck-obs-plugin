@@ -1,0 +1,4 @@
+﻿  Building Custom Rule C:/Users/vic/Documents/obs-dev/obs-studio/deps/blake2/CMakeLists.txt
+  CMake does not need to re-run because C:\Users\vic\Documents\obs-dev\obs-studio\build32\deps\blake2\CMakeFiles\generate.stamp is up-to-date.
+  blake2b-ref.c
+  blake2.vcxproj -> C:\Users\vic\Documents\obs-dev\obs-studio\build32\deps\blake2\Release\blake2.lib

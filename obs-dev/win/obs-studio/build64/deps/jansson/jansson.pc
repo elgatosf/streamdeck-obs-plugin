@@ -1,0 +1,10 @@
+prefix=C:/Program Files/obs-studio
+exec_prefix=C:/Program Files/obs-studio
+libdir=C:/Program Files/obs-studio/lib
+includedir=${prefix}/include
+
+Name: Jansson
+Description: Library for encoding, decoding and manipulating JSON data
+Version: 2.5
+Libs: -L${libdir} -ljansson
+Cflags: -I${includedir}

@@ -1,0 +1,12 @@
+﻿  Building Custom Rule C:/Users/vic/Documents/obs-dev/obs-studio/plugins/win-mf/CMakeLists.txt
+  CMake does not need to re-run because C:\Users\vic\Documents\obs-dev\obs-studio\build32\plugins\win-mf\CMakeFiles\generate.stamp is up-to-date.
+  mf-plugin.cpp
+  mf-aac.cpp
+  mf-aac-encoder.cpp
+  mf-common.cpp
+  mf-encoder-descriptor.cpp
+  mf-h264.cpp
+  mf-h264-encoder.cpp
+  Generating Code...
+     Creating library C:/Users/vic/Documents/obs-dev/obs-studio/build32/plugins/win-mf/Release/win-mf.lib and object C:/Users/vic/Documents/obs-dev/obs-studio/build32/plugins/win-mf/Release/win-mf.exp
+  win-mf.vcxproj -> C:\Users\vic\Documents\obs-dev\obs-studio\build32\plugins\win-mf\Release\win-mf.dll

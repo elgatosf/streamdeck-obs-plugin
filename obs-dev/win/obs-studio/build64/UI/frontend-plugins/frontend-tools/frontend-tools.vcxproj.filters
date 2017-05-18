@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\frontend-plugins\frontend-tools\auto-scene-switcher.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\frontend-plugins\frontend-tools\frontend-tools.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\frontend-plugins\frontend-tools\output-timer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\frontend-plugins\frontend-tools\auto-scene-switcher-win.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\build64\UI\frontend-plugins\frontend-tools\frontend-tools_automoc.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\frontend-plugins\frontend-tools\auto-scene-switcher.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\build64\config\frontend-tools-config.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\frontend-plugins\frontend-tools\output-timer.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\frontend-plugins\frontend-tools\tool-helpers.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\build64\UI\frontend-plugins\frontend-tools\ui_auto-scene-switcher.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\build64\UI\frontend-plugins\frontend-tools\ui_output-timer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\frontend-plugins\frontend-tools\CMakeLists.txt" />
+    <CustomBuild Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\frontend-plugins\frontend-tools\forms\auto-scene-switcher.ui" />
+    <CustomBuild Include="C:\Users\vic\Documents\obs-dev\obs-studio\UI\frontend-plugins\frontend-tools\forms\output-timer.ui" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{A5CF637A-DDF7-39E8-B7B6-F7BC1892D376}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{CD97B140-67DC-325A-B8CE-EF435B57894F}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

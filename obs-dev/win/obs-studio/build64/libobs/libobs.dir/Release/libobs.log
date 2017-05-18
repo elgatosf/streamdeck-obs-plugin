@@ -1,0 +1,98 @@
+﻿  Building Custom Rule C:/Users/vic/Documents/obs-dev/obs-studio/libobs/CMakeLists.txt
+  CMake does not need to re-run because C:\Users\vic\Documents\obs-dev\obs-studio\build64\libobs\CMakeFiles\generate.stamp is up-to-date.
+  calldata.c
+  decl.c
+  signal.c
+  proc.c
+  graphics-ffmpeg.c
+c:\users\vic\documents\obs-dev\deps\win64\include\libavutil\rational.h : warning C4819: The file contains a character that cannot be represented in the current code page (950). Save the file in Unicode format to prevent data loss
+C:\Users\vic\Documents\obs-dev\obs-studio\libobs\graphics\graphics-ffmpeg.c(167): warning C4996: 'avcodec_decode_video2': was declared deprecated
+  C:\Users\vic\Documents\obs-dev\deps\win64\include\libavcodec/avcodec.h(4830): note: see declaration of 'avcodec_decode_video2'
+C:\Users\vic\Documents\obs-dev\obs-studio\libobs\graphics\graphics-ffmpeg.c(179): warning C4996: 'av_free_packet': was declared deprecated
+  C:\Users\vic\Documents\obs-dev\deps\win64\include\libavcodec/avcodec.h(4491): note: see declaration of 'av_free_packet'
+  quat.c
+  effect-parser.c
+  axisang.c
+  vec4.c
+  vec2.c
+  libnsgif.c
+  texture-render.c
+  image-file.c
+  bounds.c
+  matrix3.c
+  matrix4.c
+  vec3.c
+  graphics.c
+  shader-parser.c
+  plane.c
+  Generating Code...
+  Compiling...
+  effect.c
+  math-extra.c
+  graphics-imports.c
+  video-io.c
+  video-fourcc.c
+  video-matrices.c
+  audio-io.c
+  video-frame.c
+  format-conversion.c
+  audio-resampler-ffmpeg.c
+c:\users\vic\documents\obs-dev\deps\win64\include\libavutil\rational.h : warning C4819: The file contains a character that cannot be represented in the current code page (950). Save the file in Unicode format to prevent data loss
+  video-scaler-ffmpeg.c
+c:\users\vic\documents\obs-dev\deps\win64\include\libavutil\rational.h : warning C4819: The file contains a character that cannot be represented in the current code page (950). Save the file in Unicode format to prevent data loss
+  media-remux.c
+c:\users\vic\documents\obs-dev\deps\win64\include\libavutil\rational.h : warning C4819: The file contains a character that cannot be represented in the current code page (950). Save the file in Unicode format to prevent data loss
+C:\Users\vic\Documents\obs-dev\obs-studio\libobs\media-io\media-remux.c(89): warning C4996: 'avcodec_copy_context': was declared deprecated
+  C:\Users\vic\Documents\obs-dev\deps\win64\include\libavcodec/avcodec.h(4259): note: see declaration of 'avcodec_copy_context'
+C:\Users\vic\Documents\obs-dev\obs-studio\libobs\media-io\media-remux.c(191): warning C4996: 'av_free_packet': was declared deprecated
+  C:\Users\vic\Documents\obs-dev\deps\win64\include\libavcodec/avcodec.h(4491): note: see declaration of 'av_free_packet'
+  array-serializer.c
+  file-serializer.c
+  base.c
+  platform.c
+  cf-lexer.c
+  bmem.c
+  config-file.c
+  lexer.c
+  Generating Code...
+  Compiling...
+  dstr.c
+  utf8.c
+  crc32.c
+  text-lookup.c
+  cf-parser.c
+  profiler.c
+  obs-win-crash-handler.c
+C:\Users\vic\Documents\obs-dev\obs-studio\libobs\obs-win-crash-handler.c(228): warning C4996: 'strlwr': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _strlwr. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.14393.0\ucrt\string.h(552): note: see declaration of 'strlwr'
+C:\Users\vic\Documents\obs-dev\obs-studio\libobs\obs-win-crash-handler.c(287): warning C4996: 'strlwr': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _strlwr. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.14393.0\ucrt\string.h(552): note: see declaration of 'strlwr'
+  obs-windows.c
+  threading-windows.c
+  pipe-windows.c
+  platform-windows.c
+  obs-audio-controls.c
+  obs-avc.c
+  obs-encoder.c
+  obs-service.c
+  obs-source.c
+  obs-source-deinterlace.c
+  obs-source-transition.c
+  obs-output.c
+  obs-output-delay.c
+  Generating Code...
+  Compiling...
+  obs.c
+  obs-properties.c
+  obs-data.c
+  obs-hotkey.c
+  obs-hotkey-name-map.c
+  obs-module.c
+  obs-display.c
+  obs-view.c
+  obs-scene.c
+  obs-audio.c
+  obs-video.c
+  Generating Code...
+     Creating library C:/Users/vic/Documents/obs-dev/obs-studio/build64/libobs/Release/obs.lib and object C:/Users/vic/Documents/obs-dev/obs-studio/build64/libobs/Release/obs.exp
+  libobs.vcxproj -> C:\Users\vic\Documents\obs-dev\obs-studio\build64\libobs\Release\obs.dll

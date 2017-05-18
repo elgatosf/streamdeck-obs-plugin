@@ -1,0 +1,7 @@
+﻿  Building Custom Rule C:/Users/vic/Documents/obs-dev/obs-studio/plugins/image-source/CMakeLists.txt
+  CMake does not need to re-run because C:\Users\vic\Documents\obs-dev\obs-studio\build64\plugins\image-source\CMakeFiles\generate.stamp is up-to-date.
+  image-source.c
+  obs-slideshow.c
+  Generating Code...
+     Creating library C:/Users/vic/Documents/obs-dev/obs-studio/build64/plugins/image-source/Release/image-source.lib and object C:/Users/vic/Documents/obs-dev/obs-studio/build64/plugins/image-source/Release/image-source.exp
+  image-source.vcxproj -> C:\Users\vic\Documents\obs-dev\obs-studio\build64\plugins\image-source\Release\image-source.dll

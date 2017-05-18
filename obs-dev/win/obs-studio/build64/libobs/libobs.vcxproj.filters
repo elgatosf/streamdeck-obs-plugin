@@ -1,0 +1,531 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\callback\calldata.c">
+      <Filter>callback\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\callback\decl.c">
+      <Filter>callback\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\callback\signal.c">
+      <Filter>callback\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\callback\proc.c">
+      <Filter>callback\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\graphics\graphics-ffmpeg.c">
+      <Filter>graphics\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\graphics\quat.c">
+      <Filter>graphics\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\graphics\effect-parser.c">
+      <Filter>graphics\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\graphics\axisang.c">
+      <Filter>graphics\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\graphics\vec4.c">
+      <Filter>graphics\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\graphics\vec2.c">
+      <Filter>graphics\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\graphics\libnsgif\libnsgif.c">
+      <Filter>graphics\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\graphics\texture-render.c">
+      <Filter>graphics\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\graphics\image-file.c">
+      <Filter>graphics\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\graphics\bounds.c">
+      <Filter>graphics\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\graphics\matrix3.c">
+      <Filter>graphics\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\graphics\matrix4.c">
+      <Filter>graphics\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\graphics\vec3.c">
+      <Filter>graphics\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\graphics\graphics.c">
+      <Filter>graphics\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\graphics\shader-parser.c">
+      <Filter>graphics\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\graphics\plane.c">
+      <Filter>graphics\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\graphics\effect.c">
+      <Filter>graphics\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\graphics\math-extra.c">
+      <Filter>graphics\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\graphics\graphics-imports.c">
+      <Filter>graphics\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\media-io\video-io.c">
+      <Filter>media-io\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\media-io\video-fourcc.c">
+      <Filter>media-io\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\media-io\video-matrices.c">
+      <Filter>media-io\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\media-io\audio-io.c">
+      <Filter>media-io\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\media-io\video-frame.c">
+      <Filter>media-io\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\media-io\format-conversion.c">
+      <Filter>media-io\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\media-io\audio-resampler-ffmpeg.c">
+      <Filter>media-io\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\media-io\video-scaler-ffmpeg.c">
+      <Filter>media-io\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\media-io\media-remux.c">
+      <Filter>media-io\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\util\array-serializer.c">
+      <Filter>util\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\util\file-serializer.c">
+      <Filter>util\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\util\base.c">
+      <Filter>util\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\util\platform.c">
+      <Filter>util\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\util\cf-lexer.c">
+      <Filter>util\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\util\bmem.c">
+      <Filter>util\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\util\config-file.c">
+      <Filter>util\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\util\lexer.c">
+      <Filter>util\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\util\dstr.c">
+      <Filter>util\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\util\utf8.c">
+      <Filter>util\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\util\crc32.c">
+      <Filter>util\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\util\text-lookup.c">
+      <Filter>util\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\util\cf-parser.c">
+      <Filter>util\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\util\profiler.c">
+      <Filter>util\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\obs-win-crash-handler.c">
+      <Filter>libobs\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\obs-windows.c">
+      <Filter>libobs\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\util\threading-windows.c">
+      <Filter>libobs\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\util\pipe-windows.c">
+      <Filter>libobs\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\util\platform-windows.c">
+      <Filter>libobs\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\obs-audio-controls.c">
+      <Filter>libobs\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\obs-avc.c">
+      <Filter>libobs\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\obs-encoder.c">
+      <Filter>libobs\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\obs-service.c">
+      <Filter>libobs\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\obs-source.c">
+      <Filter>libobs\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\obs-source-deinterlace.c">
+      <Filter>libobs\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\obs-source-transition.c">
+      <Filter>libobs\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\obs-output.c">
+      <Filter>libobs\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\obs-output-delay.c">
+      <Filter>libobs\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\obs.c">
+      <Filter>libobs\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\obs-properties.c">
+      <Filter>libobs\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\obs-data.c">
+      <Filter>libobs\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\obs-hotkey.c">
+      <Filter>libobs\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\obs-hotkey-name-map.c">
+      <Filter>libobs\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\obs-module.c">
+      <Filter>libobs\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\obs-display.c">
+      <Filter>libobs\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\obs-view.c">
+      <Filter>libobs\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\obs-scene.c">
+      <Filter>libobs\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\obs-audio.c">
+      <Filter>libobs\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\obs-video.c">
+      <Filter>libobs\Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\build64\config\obsconfig.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\obs-config.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\callback\calldata.h">
+      <Filter>callback\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\callback\decl.h">
+      <Filter>callback\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\callback\proc.h">
+      <Filter>callback\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\callback\signal.h">
+      <Filter>callback\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\graphics\plane.h">
+      <Filter>graphics\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\graphics\quat.h">
+      <Filter>graphics\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\graphics\input.h">
+      <Filter>graphics\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\graphics\axisang.h">
+      <Filter>graphics\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\graphics\shader-parser.h">
+      <Filter>graphics\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\graphics\effect.h">
+      <Filter>graphics\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\graphics\math-defs.h">
+      <Filter>graphics\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\graphics\matrix4.h">
+      <Filter>graphics\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\graphics\graphics.h">
+      <Filter>graphics\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\graphics\graphics-internal.h">
+      <Filter>graphics\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\graphics\libnsgif\libnsgif.h">
+      <Filter>graphics\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\graphics\device-exports.h">
+      <Filter>graphics\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\graphics\image-file.h">
+      <Filter>graphics\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\graphics\vec2.h">
+      <Filter>graphics\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\graphics\vec4.h">
+      <Filter>graphics\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\graphics\matrix3.h">
+      <Filter>graphics\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\graphics\vec3.h">
+      <Filter>graphics\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\graphics\math-extra.h">
+      <Filter>graphics\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\graphics\bounds.h">
+      <Filter>graphics\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\graphics\effect-parser.h">
+      <Filter>graphics\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\media-io\media-io-defs.h">
+      <Filter>media-io\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\media-io\video-io.h">
+      <Filter>media-io\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\media-io\audio-io.h">
+      <Filter>media-io\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\media-io\audio-math.h">
+      <Filter>media-io\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\media-io\video-frame.h">
+      <Filter>media-io\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\media-io\format-conversion.h">
+      <Filter>media-io\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\media-io\audio-resampler.h">
+      <Filter>media-io\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\media-io\video-scaler.h">
+      <Filter>media-io\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\media-io\media-remux.h">
+      <Filter>media-io\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\media-io\frame-rate.h">
+      <Filter>media-io\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\util\array-serializer.h">
+      <Filter>util\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\util\file-serializer.h">
+      <Filter>util\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\util\utf8.h">
+      <Filter>util\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\util\crc32.h">
+      <Filter>util\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\util\base.h">
+      <Filter>util\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\util\text-lookup.h">
+      <Filter>util\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\util\vc\vc_inttypes.h">
+      <Filter>util\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\util\vc\vc_stdbool.h">
+      <Filter>util\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\util\vc\vc_stdint.h">
+      <Filter>util\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\util\bmem.h">
+      <Filter>util\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\util\c99defs.h">
+      <Filter>util\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\util\util_uint128.h">
+      <Filter>util\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\util\cf-parser.h">
+      <Filter>util\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\util\threading.h">
+      <Filter>util\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\util\pipe.h">
+      <Filter>util\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\util\cf-lexer.h">
+      <Filter>util\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\util\darray.h">
+      <Filter>util\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\util\circlebuf.h">
+      <Filter>util\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\util\dstr.h">
+      <Filter>util\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\util\serializer.h">
+      <Filter>util\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\util\config-file.h">
+      <Filter>util\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\util\lexer.h">
+      <Filter>util\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\util\platform.h">
+      <Filter>util\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\util\profiler.h">
+      <Filter>util\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\util\profiler.hpp">
+      <Filter>util\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\util\threading-windows.h">
+      <Filter>libobs\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\util\windows\win-version.h">
+      <Filter>libobs\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\util\windows\ComPtr.hpp">
+      <Filter>libobs\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\util\windows\CoTaskMemPtr.hpp">
+      <Filter>libobs\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\util\windows\HRError.hpp">
+      <Filter>libobs\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\util\windows\WinHandle.hpp">
+      <Filter>libobs\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\obs-audio-controls.h">
+      <Filter>libobs\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\obs-defs.h">
+      <Filter>libobs\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\obs-avc.h">
+      <Filter>libobs\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\obs-encoder.h">
+      <Filter>libobs\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\obs-service.h">
+      <Filter>libobs\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\obs-internal.h">
+      <Filter>libobs\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\obs.h">
+      <Filter>libobs\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\obs-ui.h">
+      <Filter>libobs\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\obs-properties.h">
+      <Filter>libobs\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\obs-data.h">
+      <Filter>libobs\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\obs-interaction.h">
+      <Filter>libobs\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\obs-hotkey.h">
+      <Filter>libobs\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\obs-hotkeys.h">
+      <Filter>libobs\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\obs-module.h">
+      <Filter>libobs\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\obs-scene.h">
+      <Filter>libobs\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\obs-source.h">
+      <Filter>libobs\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\obs-output.h">
+      <Filter>libobs\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\obs-ffmpeg-compat.h">
+      <Filter>libobs\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\obs.hpp">
+      <Filter>libobs\Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\vic\Documents\obs-dev\obs-studio\libobs\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{CD97B140-67DC-325A-B8CE-EF435B57894F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="callback">
+      <UniqueIdentifier>{B35F0D07-0264-3D1E-8D6A-403689A659EA}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="graphics">
+      <UniqueIdentifier>{883EBA2B-5187-3726-8697-DCC032569548}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="libobs">
+      <UniqueIdentifier>{9A402EED-2407-3C0B-9530-C5D19D181B68}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="media-io">
+      <UniqueIdentifier>{DFFDB951-480F-3C5A-AEEB-265CA72B892B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="util">
+      <UniqueIdentifier>{E77A3625-2AC8-3EE2-9919-79B7793DE983}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="media-io\Source Files">
+      <UniqueIdentifier>{03AA67FD-D6FD-3D38-B483-1C8BC09638A6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="media-io\Header Files">
+      <UniqueIdentifier>{68F150B7-A959-358F-BCD4-E9C6FC0FE32A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="graphics\Source Files">
+      <UniqueIdentifier>{32C3C302-7295-3E67-80DA-5086A9381D12}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="graphics\Header Files">
+      <UniqueIdentifier>{91B5BB64-3859-386B-B827-7A8D15CACD10}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="util\Source Files">
+      <UniqueIdentifier>{F68A15FA-C68A-3EE6-9877-22AB8B239280}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="util\Header Files">
+      <UniqueIdentifier>{D0447A4F-F17E-3EE2-899E-6DFD4A0ECC35}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="callback\Source Files">
+      <UniqueIdentifier>{5B1D3608-04D2-317E-90D0-605FEB2FD7A9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="callback\Header Files">
+      <UniqueIdentifier>{DC949707-E6DB-33CE-B816-6152C178372D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="libobs\Source Files">
+      <UniqueIdentifier>{C39B6881-985C-3E8A-938B-A88E357DCA6B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="libobs\Header Files">
+      <UniqueIdentifier>{7FAEAAE6-D42A-33BE-9296-661A1EB692DD}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

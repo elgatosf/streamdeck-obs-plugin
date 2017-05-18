@@ -1,0 +1,16 @@
+﻿  Building Custom Rule C:/Users/vic/Documents/obs-dev/obs-studio/libobs-opengl/CMakeLists.txt
+  CMake does not need to re-run because C:\Users\vic\Documents\obs-dev\obs-studio\build32\libobs-opengl\CMakeFiles\generate.stamp is up-to-date.
+  gl-windows.c
+  gl-helpers.c
+  gl-indexbuffer.c
+  gl-shader.c
+  gl-shaderparser.c
+  gl-stagesurf.c
+  gl-subsystem.c
+  gl-texture2d.c
+  gl-texturecube.c
+  gl-vertexbuffer.c
+  gl-zstencil.c
+  Generating Code...
+     Creating library C:/Users/vic/Documents/obs-dev/obs-studio/build32/libobs-opengl/Release/libobs-opengl.lib and object C:/Users/vic/Documents/obs-dev/obs-studio/build32/libobs-opengl/Release/libobs-opengl.exp
+  libobs-opengl.vcxproj -> C:\Users\vic\Documents\obs-dev\obs-studio\build32\libobs-opengl\Release\libobs-opengl.dll

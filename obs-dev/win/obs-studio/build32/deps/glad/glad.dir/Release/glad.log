@@ -1,0 +1,7 @@
+﻿  Building Custom Rule C:/Users/vic/Documents/obs-dev/obs-studio/deps/glad/CMakeLists.txt
+  CMake does not need to re-run because C:\Users\vic\Documents\obs-dev\obs-studio\build32\deps\glad\CMakeFiles\generate.stamp is up-to-date.
+  glad.c
+  glad_wgl.c
+  Generating Code...
+     Creating library C:/Users/vic/Documents/obs-dev/obs-studio/build32/deps/glad/Release/obsglad.lib and object C:/Users/vic/Documents/obs-dev/obs-studio/build32/deps/glad/Release/obsglad.exp
+  glad.vcxproj -> C:\Users\vic\Documents\obs-dev\obs-studio\build32\deps\glad\Release\obsglad.dll

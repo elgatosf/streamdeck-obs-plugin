@@ -1,0 +1,33 @@
+# CMake generation dependency list for this directory.
+C:/Users/vic/Documents/obs-dev/obs-studio/CMakeLists.txt
+C:/Users/vic/Documents/obs-dev/obs-studio/build32/CMakeFiles/3.7.2/CMakeSystem.cmake
+C:/Program Files/CMake/share/cmake-3.7/Modules/CMakeSystemSpecificInitialize.cmake
+C:/Users/vic/Documents/obs-dev/obs-studio/build32/CMakeFiles/3.7.2/CMakeCCompiler.cmake
+C:/Users/vic/Documents/obs-dev/obs-studio/build32/CMakeFiles/3.7.2/CMakeCXXCompiler.cmake
+C:/Program Files/CMake/share/cmake-3.7/Modules/CMakeSystemSpecificInformation.cmake
+C:/Program Files/CMake/share/cmake-3.7/Modules/CMakeGenericSystem.cmake
+C:/Program Files/CMake/share/cmake-3.7/Modules/Platform/Windows.cmake
+C:/Program Files/CMake/share/cmake-3.7/Modules/Platform/WindowsPaths.cmake
+C:/Program Files/CMake/share/cmake-3.7/Modules/CMakeCInformation.cmake
+C:/Program Files/CMake/share/cmake-3.7/Modules/CMakeLanguageInformation.cmake
+C:/Program Files/CMake/share/cmake-3.7/Modules/Platform/Windows-MSVC-C.cmake
+C:/Program Files/CMake/share/cmake-3.7/Modules/Platform/Windows-MSVC.cmake
+C:/Users/vic/Documents/obs-dev/obs-studio/build32/CMakeFiles/3.7.2/CMakeRCCompiler.cmake
+C:/Program Files/CMake/share/cmake-3.7/Modules/CMakeRCInformation.cmake
+C:/Program Files/CMake/share/cmake-3.7/Modules/CMakeCommonLanguageInclude.cmake
+C:/Program Files/CMake/share/cmake-3.7/Modules/CMakeCXXInformation.cmake
+C:/Program Files/CMake/share/cmake-3.7/Modules/CMakeLanguageInformation.cmake
+C:/Program Files/CMake/share/cmake-3.7/Modules/Compiler/MSVC-CXX.cmake
+C:/Program Files/CMake/share/cmake-3.7/Modules/Platform/Windows-MSVC-CXX.cmake
+C:/Program Files/CMake/share/cmake-3.7/Modules/Platform/Windows-MSVC.cmake
+C:/Program Files/CMake/share/cmake-3.7/Modules/CMakeCommonLanguageInclude.cmake
+C:/Users/vic/Documents/obs-dev/obs-studio/cmake/Modules/ObsHelpers.cmake
+C:/Users/vic/Documents/obs-dev/obs-studio/cmake/Modules/ObsCpack.cmake
+C:/Program Files/CMake/share/cmake-3.7/Modules/CPack.cmake
+C:/Program Files/CMake/share/cmake-3.7/Modules/CPackComponent.cmake
+C:/Program Files/CMake/share/cmake-3.7/Templates/CPackConfig.cmake.in
+C:/Program Files/CMake/share/cmake-3.7/Templates/CPackConfig.cmake.in
+C:/Program Files/CMake/share/cmake-3.7/Modules/GNUInstallDirs.cmake
+C:/Users/vic/Documents/obs-dev/obs-studio/cmake/Modules/FindCXX11.cmake
+C:/Users/vic/Documents/obs-dev/obs-studio/cmake/Modules/CopyMSVCBins.cmake
+C:/Users/vic/Documents/obs-dev/obs-studio/cmake/ALL_BUILD.vcxproj.user.in

@@ -1,0 +1,11 @@
+# CMake generation dependency list for this directory.
+C:/Users/vic/Documents/obs-dev/obs-studio/plugins/obs-filters/CMakeLists.txt
+C:/Users/vic/Documents/obs-dev/obs-studio/cmake/Modules/FindLibspeexdsp.cmake
+C:/Program Files/CMake/share/cmake-3.7/Modules/FindPkgConfig.cmake
+C:/Program Files/CMake/share/cmake-3.7/Modules/FindPackageHandleStandardArgs.cmake
+C:/Program Files/CMake/share/cmake-3.7/Modules/FindPackageMessage.cmake
+C:/Program Files/CMake/share/cmake-3.7/Modules/CMakeParseArguments.cmake
+C:/Program Files/CMake/share/cmake-3.7/Modules/FindPackageHandleStandardArgs.cmake
+C:/Program Files/CMake/share/cmake-3.7/Modules/FindPackageMessage.cmake
+C:/Program Files/CMake/share/cmake-3.7/Modules/CMakeParseArguments.cmake
+C:/Users/vic/Documents/obs-dev/obs-studio/plugins/obs-filters/obs-filters-config.h.in

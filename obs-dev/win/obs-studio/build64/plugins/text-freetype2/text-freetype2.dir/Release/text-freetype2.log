@@ -1,0 +1,14 @@
+﻿  Building Custom Rule C:/Users/vic/Documents/obs-dev/obs-studio/plugins/text-freetype2/CMakeLists.txt
+  CMake does not need to re-run because C:\Users\vic\Documents\obs-dev\obs-studio\build64\plugins\text-freetype2\CMakeFiles\generate.stamp is up-to-date.
+  find-font.c
+C:\Users\vic\Documents\obs-dev\deps\win64\include\freetype/freetype.h(2675): warning C4819: The file contains a character that cannot be represented in the current code page (950). Save the file in Unicode format to prevent data loss
+  find-font-windows.c
+C:\Users\vic\Documents\obs-dev\deps\win64\include\freetype/freetype.h(2675): warning C4819: The file contains a character that cannot be represented in the current code page (950). Save the file in Unicode format to prevent data loss
+  obs-convenience.c
+  text-functionality.c
+C:\Users\vic\Documents\obs-dev\deps\win64\include\freetype/freetype.h(2675): warning C4819: The file contains a character that cannot be represented in the current code page (950). Save the file in Unicode format to prevent data loss
+  text-freetype2.c
+C:\Users\vic\Documents\obs-dev\deps\win64\include\freetype/freetype.h(2675): warning C4819: The file contains a character that cannot be represented in the current code page (950). Save the file in Unicode format to prevent data loss
+  Generating Code...
+     Creating library C:/Users/vic/Documents/obs-dev/obs-studio/build64/plugins/text-freetype2/Release/text-freetype2.lib and object C:/Users/vic/Documents/obs-dev/obs-studio/build64/plugins/text-freetype2/Release/text-freetype2.exp
+  text-freetype2.vcxproj -> C:\Users\vic\Documents\obs-dev\obs-studio\build64\plugins\text-freetype2\Release\text-freetype2.dll

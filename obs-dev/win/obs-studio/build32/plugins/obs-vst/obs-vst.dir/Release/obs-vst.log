@@ -1,0 +1,15 @@
+﻿  Building Custom Rule C:/Users/vic/Documents/obs-dev/obs-studio/plugins/obs-vst/CMakeLists.txt
+  CMake does not need to re-run because C:\Users\vic\Documents\obs-dev\obs-studio\build32\plugins\obs-vst\CMakeFiles\generate.stamp is up-to-date.
+  obs-vst.cpp
+  VSTPlugin.cpp
+C:\Users\vic\Documents\obs-dev\obs-studio\plugins\obs-vst\VSTPlugin.cpp(163): warning C4458: declaration of 'effect' hides class member
+  c:\users\vic\documents\obs-dev\obs-studio\plugins\obs-vst\headers\VSTPlugin.h(40): note: see declaration of 'VSTPlugin::effect'
+C:\Users\vic\Documents\obs-dev\obs-studio\plugins\obs-vst\VSTPlugin.cpp(258): warning C4389: '!=': signed/unsigned mismatch
+  EditorWidget.cpp
+  VSTPlugin-win.cpp
+  EditorWidget-win.cpp
+C:\Users\vic\Documents\obs-dev\obs-studio\plugins\obs-vst\win\EditorWidget-win.cpp(50): warning C4100: 'height': unreferenced formal parameter
+C:\Users\vic\Documents\obs-dev\obs-studio\plugins\obs-vst\win\EditorWidget-win.cpp(50): warning C4100: 'width': unreferenced formal parameter
+  Generating Code...
+     Creating library C:/Users/vic/Documents/obs-dev/obs-studio/build32/plugins/obs-vst/Release/obs-vst.lib and object C:/Users/vic/Documents/obs-dev/obs-studio/build32/plugins/obs-vst/Release/obs-vst.exp
+  obs-vst.vcxproj -> C:\Users\vic\Documents\obs-dev\obs-studio\build32\plugins\obs-vst\Release\obs-vst.dll

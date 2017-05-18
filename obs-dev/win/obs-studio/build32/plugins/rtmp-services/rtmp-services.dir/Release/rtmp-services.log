@@ -1,0 +1,8 @@
+﻿  Building Custom Rule C:/Users/vic/Documents/obs-dev/obs-studio/plugins/rtmp-services/CMakeLists.txt
+  CMake does not need to re-run because C:\Users\vic\Documents\obs-dev\obs-studio\build32\plugins\rtmp-services\CMakeFiles\generate.stamp is up-to-date.
+  rtmp-common.c
+  rtmp-custom.c
+  rtmp-services-main.c
+  Generating Code...
+     Creating library C:/Users/vic/Documents/obs-dev/obs-studio/build32/plugins/rtmp-services/Release/rtmp-services.lib and object C:/Users/vic/Documents/obs-dev/obs-studio/build32/plugins/rtmp-services/Release/rtmp-services.exp
+  rtmp-services.vcxproj -> C:\Users\vic\Documents\obs-dev\obs-studio\build32\plugins\rtmp-services\Release\rtmp-services.dll

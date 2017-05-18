@@ -1,0 +1,7 @@
+﻿  Building Custom Rule C:/Users/vic/Documents/obs-dev/obs-studio/plugins/obs-x264/CMakeLists.txt
+  CMake does not need to re-run because C:\Users\vic\Documents\obs-dev\obs-studio\build32\plugins\obs-x264\CMakeFiles\generate.stamp is up-to-date.
+  obs-x264.c
+  obs-x264-plugin-main.c
+  Generating Code...
+     Creating library C:/Users/vic/Documents/obs-dev/obs-studio/build32/plugins/obs-x264/Release/obs-x264.lib and object C:/Users/vic/Documents/obs-dev/obs-studio/build32/plugins/obs-x264/Release/obs-x264.exp
+  obs-x264.vcxproj -> C:\Users\vic\Documents\obs-dev\obs-studio\build32\plugins\obs-x264\Release\obs-x264.dll

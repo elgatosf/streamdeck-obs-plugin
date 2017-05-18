@@ -1,0 +1,39 @@
+﻿  Building Custom Rule C:/Users/vic/Documents/obs-dev/obs-studio/plugins/obs-ffmpeg/CMakeLists.txt
+  CMake does not need to re-run because C:\Users\vic\Documents\obs-dev\obs-studio\build64\plugins\obs-ffmpeg\CMakeFiles\generate.stamp is up-to-date.
+  obs-ffmpeg.c
+c:\users\vic\documents\obs-dev\deps\win64\include\libavutil\rational.h : warning C4819: The file contains a character that cannot be represented in the current code page (950). Save the file in Unicode format to prevent data loss
+  obs-ffmpeg-aac.c
+c:\users\vic\documents\obs-dev\deps\win64\include\libavutil\rational.h : warning C4819: The file contains a character that cannot be represented in the current code page (950). Save the file in Unicode format to prevent data loss
+C:\Users\vic\Documents\obs-dev\obs-studio\plugins\obs-ffmpeg\obs-ffmpeg-aac.c(214): warning C4996: 'avcodec_encode_audio2': was declared deprecated
+  C:\Users\vic\Documents\obs-dev\deps\win64\include\libavcodec/avcodec.h(5302): note: see declaration of 'avcodec_encode_audio2'
+  obs-ffmpeg-nvenc.c
+c:\users\vic\documents\obs-dev\deps\win64\include\libavutil\rational.h : warning C4819: The file contains a character that cannot be represented in the current code page (950). Save the file in Unicode format to prevent data loss
+C:\Users\vic\Documents\obs-dev\obs-studio\plugins\obs-ffmpeg\obs-ffmpeg-nvenc.c(111): warning C4996: 'avpicture_alloc': was declared deprecated
+  C:\Users\vic\Documents\obs-dev\deps\win64\include\libavcodec/avcodec.h(5459): note: see declaration of 'avpicture_alloc'
+C:\Users\vic\Documents\obs-dev\obs-studio\plugins\obs-ffmpeg\obs-ffmpeg-nvenc.c(248): warning C4996: 'avcodec_encode_video2': was declared deprecated
+  C:\Users\vic\Documents\obs-dev\deps\win64\include\libavcodec/avcodec.h(5341): note: see declaration of 'avcodec_encode_video2'
+C:\Users\vic\Documents\obs-dev\obs-studio\plugins\obs-ffmpeg\obs-ffmpeg-nvenc.c(253): warning C4996: 'av_free_packet': was declared deprecated
+  C:\Users\vic\Documents\obs-dev\deps\win64\include\libavcodec/avcodec.h(4491): note: see declaration of 'av_free_packet'
+C:\Users\vic\Documents\obs-dev\obs-studio\plugins\obs-ffmpeg\obs-ffmpeg-nvenc.c(259): warning C4996: 'avpicture_free': was declared deprecated
+  C:\Users\vic\Documents\obs-dev\deps\win64\include\libavcodec/avcodec.h(5465): note: see declaration of 'avpicture_free'
+C:\Users\vic\Documents\obs-dev\obs-studio\plugins\obs-ffmpeg\obs-ffmpeg-nvenc.c(342): warning C4996: 'avcodec_encode_video2': was declared deprecated
+  C:\Users\vic\Documents\obs-dev\deps\win64\include\libavcodec/avcodec.h(5341): note: see declaration of 'avcodec_encode_video2'
+C:\Users\vic\Documents\obs-dev\obs-studio\plugins\obs-ffmpeg\obs-ffmpeg-nvenc.c(377): warning C4996: 'av_free_packet': was declared deprecated
+  C:\Users\vic\Documents\obs-dev\deps\win64\include\libavcodec/avcodec.h(4491): note: see declaration of 'av_free_packet'
+  obs-ffmpeg-output.c
+c:\users\vic\documents\obs-dev\deps\win64\include\libavutil\rational.h : warning C4819: The file contains a character that cannot be represented in the current code page (950). Save the file in Unicode format to prevent data loss
+C:\Users\vic\Documents\obs-dev\obs-studio\plugins\obs-ffmpeg\obs-ffmpeg-output.c(189): warning C4996: 'avpicture_alloc': was declared deprecated
+  C:\Users\vic\Documents\obs-dev\deps\win64\include\libavcodec/avcodec.h(5459): note: see declaration of 'avpicture_alloc'
+C:\Users\vic\Documents\obs-dev\obs-studio\plugins\obs-ffmpeg\obs-ffmpeg-output.c(415): warning C4996: 'avpicture_free': was declared deprecated
+  C:\Users\vic\Documents\obs-dev\deps\win64\include\libavcodec/avcodec.h(5465): note: see declaration of 'avpicture_free'
+C:\Users\vic\Documents\obs-dev\obs-studio\plugins\obs-ffmpeg\obs-ffmpeg-output.c(690): warning C4996: 'avcodec_encode_video2': was declared deprecated
+  C:\Users\vic\Documents\obs-dev\deps\win64\include\libavcodec/avcodec.h(5341): note: see declaration of 'avcodec_encode_video2'
+C:\Users\vic\Documents\obs-dev\obs-studio\plugins\obs-ffmpeg\obs-ffmpeg-output.c(749): warning C4996: 'avcodec_encode_audio2': was declared deprecated
+  C:\Users\vic\Documents\obs-dev\deps\win64\include\libavcodec/avcodec.h(5302): note: see declaration of 'avcodec_encode_audio2'
+  obs-ffmpeg-mux.c
+c:\users\vic\documents\obs-dev\deps\win64\include\libavutil\rational.h : warning C4819: The file contains a character that cannot be represented in the current code page (950). Save the file in Unicode format to prevent data loss
+  obs-ffmpeg-source.c
+c:\users\vic\documents\obs-dev\deps\win64\include\libavutil\rational.h : warning C4819: The file contains a character that cannot be represented in the current code page (950). Save the file in Unicode format to prevent data loss
+  Generating Code...
+     Creating library C:/Users/vic/Documents/obs-dev/obs-studio/build64/plugins/obs-ffmpeg/Release/obs-ffmpeg.lib and object C:/Users/vic/Documents/obs-dev/obs-studio/build64/plugins/obs-ffmpeg/Release/obs-ffmpeg.exp
+  obs-ffmpeg.vcxproj -> C:\Users\vic\Documents\obs-dev\obs-studio\build64\plugins\obs-ffmpeg\Release\obs-ffmpeg.dll

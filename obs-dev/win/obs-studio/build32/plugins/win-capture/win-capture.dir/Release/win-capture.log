@@ -1,0 +1,21 @@
+﻿  Building Custom Rule C:/Users/vic/Documents/obs-dev/obs-studio/plugins/win-capture/CMakeLists.txt
+  CMake does not need to re-run because C:\Users\vic\Documents\obs-dev\obs-studio\build32\plugins\win-capture\CMakeFiles\generate.stamp is up-to-date.
+  dc-capture.c
+  obfuscate.c
+  app-helpers.c
+  inject-library.c
+  cursor-capture.c
+  game-capture.c
+C:\Users\vic\Documents\obs-dev\obs-studio\plugins\win-capture\game-capture.c(936): warning C4996: 'strcmpi': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _strcmpi. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.14393.0\ucrt\string.h(540): note: see declaration of 'strcmpi'
+  window-helpers.c
+C:\Users\vic\Documents\obs-dev\obs-studio\plugins\win-capture\window-helpers.c(151): warning C4996: 'strcmpi': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _strcmpi. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.14393.0\ucrt\string.h(540): note: see declaration of 'strcmpi'
+  monitor-capture.c
+  window-capture.c
+  load-graphics-offsets.c
+  duplicator-monitor-capture.c
+  plugin-main.c
+  Generating Code...
+     Creating library C:/Users/vic/Documents/obs-dev/obs-studio/build32/plugins/win-capture/Release/win-capture.lib and object C:/Users/vic/Documents/obs-dev/obs-studio/build32/plugins/win-capture/Release/win-capture.exp
+  win-capture.vcxproj -> C:\Users\vic\Documents\obs-dev\obs-studio\build32\plugins\win-capture\Release\win-capture.dll

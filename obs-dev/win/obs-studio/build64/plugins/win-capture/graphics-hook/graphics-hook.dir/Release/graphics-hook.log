@@ -1,0 +1,20 @@
+﻿  Building Custom Rule C:/Users/vic/Documents/obs-dev/obs-studio/plugins/win-capture/graphics-hook/CMakeLists.txt
+  CMake does not need to re-run because C:\Users\vic\Documents\obs-dev\obs-studio\build64\plugins\win-capture\graphics-hook\CMakeFiles\generate.stamp is up-to-date.
+  graphics-hook.c
+  funchook.c
+  obfuscate.c
+  gl-capture.c
+  Generating Code...
+  d3d8-capture.cpp
+  d3d9-capture.cpp
+c:\users\vic\documents\obs-dev\obs-studio\plugins\win-capture\graphics-hook\d3d9-patches.hpp(197): warning C4459: declaration of 'patch' hides global declaration
+  c:\users\vic\documents\obs-dev\obs-studio\plugins\win-capture\graphics-hook\d3d9-patches.hpp(101): note: see declaration of 'patch'
+  dxgi-capture.cpp
+C:\Users\vic\Documents\obs-dev\obs-studio\plugins\win-capture\graphics-hook\dxgi-capture.cpp(31): warning C4459: declaration of 'process_name' hides global declaration
+  c:\users\vic\documents\obs-dev\obs-studio\plugins\win-capture\graphics-hook\graphics-hook.h(100): note: see declaration of 'process_name'
+  d3d10-capture.cpp
+  d3d11-capture.cpp
+  d3d12-capture.cpp
+  Generating Code...
+     Creating library C:/Users/vic/Documents/obs-dev/obs-studio/build64/plugins/win-capture/graphics-hook/Release/graphics-hook64.lib and object C:/Users/vic/Documents/obs-dev/obs-studio/build64/plugins/win-capture/graphics-hook/Release/graphics-hook64.exp
+  graphics-hook.vcxproj -> C:\Users\vic\Documents\obs-dev\obs-studio\build64\plugins\win-capture\graphics-hook\Release\graphics-hook64.dll

@@ -1,0 +1,12 @@
+﻿  Building Custom Rule C:/Users/vic/Documents/obs-dev/obs-studio/plugins/win-wasapi/CMakeLists.txt
+  CMake does not need to re-run because C:\Users\vic\Documents\obs-dev\obs-studio\build32\plugins\win-wasapi\CMakeFiles\generate.stamp is up-to-date.
+  win-wasapi.cpp
+C:\Users\vic\Documents\obs-dev\obs-studio\plugins\win-wasapi\win-wasapi.cpp(19): warning C4005: 'KSAUDIO_SPEAKER_2POINT1': macro redefinition
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.14393.0\shared\ksmedia.h(1720): note: see previous definition of 'KSAUDIO_SPEAKER_2POINT1'
+C:\Users\vic\Documents\obs-dev\obs-studio\plugins\win-wasapi\win-wasapi.cpp(202): warning C4458: declaration of 'client' hides class member
+  C:\Users\vic\Documents\obs-dev\obs-studio\plugins\win-wasapi\win-wasapi.cpp(23): note: see declaration of 'WASAPISource::client'
+  enum-wasapi.cpp
+  plugin-main.cpp
+  Generating Code...
+     Creating library C:/Users/vic/Documents/obs-dev/obs-studio/build32/plugins/win-wasapi/Release/win-wasapi.lib and object C:/Users/vic/Documents/obs-dev/obs-studio/build32/plugins/win-wasapi/Release/win-wasapi.exp
+  win-wasapi.vcxproj -> C:\Users\vic\Documents\obs-dev\obs-studio\build32\plugins\win-wasapi\Release\win-wasapi.dll

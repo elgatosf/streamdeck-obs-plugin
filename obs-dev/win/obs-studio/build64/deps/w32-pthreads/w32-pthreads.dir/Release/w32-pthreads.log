@@ -1,0 +1,5 @@
+﻿  Building Custom Rule C:/Users/vic/Documents/obs-dev/obs-studio/deps/w32-pthreads/CMakeLists.txt
+  CMake does not need to re-run because C:\Users\vic\Documents\obs-dev\obs-studio\build64\deps\w32-pthreads\CMakeFiles\generate.stamp is up-to-date.
+  pthread.c
+     Creating library C:/Users/vic/Documents/obs-dev/obs-studio/build64/deps/w32-pthreads/Release/w32-pthreads.lib and object C:/Users/vic/Documents/obs-dev/obs-studio/build64/deps/w32-pthreads/Release/w32-pthreads.exp
+  w32-pthreads.vcxproj -> C:\Users\vic\Documents\obs-dev\obs-studio\build64\deps\w32-pthreads\Release\w32-pthreads.dll

@@ -1,0 +1,22 @@
+﻿  Building Custom Rule C:/Users/vic/Documents/obs-dev/obs-studio/plugins/obs-filters/CMakeLists.txt
+  CMake does not need to re-run because C:\Users\vic\Documents\obs-dev\obs-studio\build64\plugins\obs-filters\CMakeFiles\generate.stamp is up-to-date.
+  obs-filters.c
+  color-correction-filter.c
+  async-delay-filter.c
+  crop-filter.c
+  scale-filter.c
+  scroll-filter.c
+  chroma-key-filter.c
+  color-key-filter.c
+  color-grade-filter.c
+  sharpness-filter.c
+  gain-filter.c
+  noise-gate-filter.c
+  mask-filter.c
+  noise-suppress-filter.c
+  Generating Code...
+  speexdsp.lib(preprocess.obj) : MSIL .netmodule or module compiled with /GL found; restarting link with /LTCG; add /LTCG to the link command line to improve linker performance
+     Creating library C:/Users/vic/Documents/obs-dev/obs-studio/build64/plugins/obs-filters/Release/obs-filters.lib and object C:/Users/vic/Documents/obs-dev/obs-studio/build64/plugins/obs-filters/Release/obs-filters.exp
+  Generating code
+  Finished generating code
+  obs-filters.vcxproj -> C:\Users\vic\Documents\obs-dev\obs-studio\build64\plugins\obs-filters\Release\obs-filters.dll

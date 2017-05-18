@@ -1,0 +1,500 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGUID>{B083F024-E7B4-3831-875B-DD300E168246}</ProjectGUID>
+    <WindowsTargetPlatformVersion>10.0.14393.0</WindowsTargetPlatformVersion>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>x64</Platform>
+    <ProjectName>obs-ffmpeg</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+    <PropertyGroup>
+      <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+      <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\vic\Documents\obs-dev\obs-studio\build64\plugins\obs-ffmpeg\Debug\</OutDir>
+      <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">obs-ffmpeg.dir\Debug\</IntDir>
+      <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">obs-ffmpeg</TargetName>
+      <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.dll</TargetExt>
+      <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
+      <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
+      <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\vic\Documents\obs-dev\obs-studio\build64\plugins\obs-ffmpeg\Release\</OutDir>
+      <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">obs-ffmpeg.dir\Release\</IntDir>
+      <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">obs-ffmpeg</TargetName>
+      <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.dll</TargetExt>
+      <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+      <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
+      <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\vic\Documents\obs-dev\obs-studio\build64\plugins\obs-ffmpeg\MinSizeRel\</OutDir>
+      <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">obs-ffmpeg.dir\MinSizeRel\</IntDir>
+      <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">obs-ffmpeg</TargetName>
+      <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.dll</TargetExt>
+      <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkIncremental>
+      <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</GenerateManifest>
+      <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\vic\Documents\obs-dev\obs-studio\build64\plugins\obs-ffmpeg\RelWithDebInfo\</OutDir>
+      <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">obs-ffmpeg.dir\RelWithDebInfo\</IntDir>
+      <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">obs-ffmpeg</TargetName>
+      <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.dll</TargetExt>
+      <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</LinkIncremental>
+      <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</GenerateManifest>
+    </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\vic\Documents\obs-dev\deps\win64\include;C:\Users\vic\Documents\obs-dev\obs-studio\libobs;C:\Users\vic\Documents\obs-dev\obs-studio\build64\config;C:\Users\vic\Documents\obs-dev\obs-studio\deps\libff\.;C:\Users\vic\Documents\obs-dev\obs-studio\deps\w32-pthreads;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>Debug/</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <CompileAs>CompileAsC</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;DEBUG=1;_DEBUG=1;_DEBUG;UNICODE;_UNICODE;_CRT_SECURE_NO_WARNINGS;HAVE_OBSCONFIG_H;CMAKE_INTDIR="Debug";obs_ffmpeg_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;DEBUG=1;_DEBUG=1;_DEBUG;UNICODE;_UNICODE;_CRT_SECURE_NO_WARNINGS;HAVE_OBSCONFIG_H;CMAKE_INTDIR=\"Debug\";obs_ffmpeg_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\vic\Documents\obs-dev\deps\win64\include;C:\Users\vic\Documents\obs-dev\obs-studio\libobs;C:\Users\vic\Documents\obs-dev\obs-studio\build64\config;C:\Users\vic\Documents\obs-dev\obs-studio\deps\libff\.;C:\Users\vic\Documents\obs-dev\obs-studio\deps\w32-pthreads;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\vic\Documents\obs-dev\deps\win64\include;C:\Users\vic\Documents\obs-dev\obs-studio\libobs;C:\Users\vic\Documents\obs-dev\obs-studio\build64\config;C:\Users\vic\Documents\obs-dev\obs-studio\deps\libff\.;C:\Users\vic\Documents\obs-dev\obs-studio\deps\w32-pthreads;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PostBuildEvent>
+      <Message>			</Message>
+      <Command>setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:/Users/vic/Documents/obs-dev/obs-studio/build64/plugins/obs-ffmpeg/Debug/obs-ffmpeg.dll C:/Users/vic/Documents/obs-dev/obs-studio/build64/rundir/Debug/obs-plugins/64bit/obs-ffmpeg.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -DCONFIG=Debug -DFNAME=obs-ffmpeg.dll -DINPUT=C:/Users/vic/Documents/obs-dev/obs-studio/build64/plugins/obs-ffmpeg/Debug -DOUTPUT=C:/Users/vic/Documents/obs-dev/obs-studio/build64/plugins/obs-ffmpeg/pdbs -P C:/Users/vic/Documents/obs-dev/obs-studio/cmake/copy_on_debug_helper.cmake
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -DCONFIG=Debug -DFNAME=obs-ffmpeg.dll -DINPUT=C:/Users/vic/Documents/obs-dev/obs-studio/build64/plugins/obs-ffmpeg/Debug -DOUTPUT=C:/Users/vic/Documents/obs-dev/obs-studio/build64/rundir/Debug/obs-plugins/64bit -P C:/Users/vic/Documents/obs-dev/obs-studio/cmake/copy_on_debug_helper.cmake
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy_directory C:/Users/vic/Documents/obs-dev/obs-studio/plugins/obs-ffmpeg/data C:/Users/vic/Documents/obs-dev/obs-studio/build64/rundir/Debug/data/obs-plugins/obs-ffmpeg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalOptions> /machine:x64 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;..\..\libobs\Debug\obs.lib;..\..\deps\libff\Debug\libff.lib;..\..\deps\w32-pthreads\Debug\w32-pthreads.lib;C:\Users\vic\Documents\obs-dev\deps\win64\bin\avcodec.lib;C:\Users\vic\Documents\obs-dev\deps\win64\bin\avfilter.lib;C:\Users\vic\Documents\obs-dev\deps\win64\bin\avdevice.lib;C:\Users\vic\Documents\obs-dev\deps\win64\bin\avutil.lib;C:\Users\vic\Documents\obs-dev\deps\win64\bin\swscale.lib;C:\Users\vic\Documents\obs-dev\deps\win64\bin\avformat.lib;C:\Users\vic\Documents\obs-dev\deps\win64\bin\swresample.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>Debug</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/vic/Documents/obs-dev/obs-studio/build64/plugins/obs-ffmpeg/Debug/obs-ffmpeg.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/vic/Documents/obs-dev/obs-studio/build64/plugins/obs-ffmpeg/Debug/obs-ffmpeg.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+      <Version></Version>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\vic\Documents\obs-dev\deps\win64\include;C:\Users\vic\Documents\obs-dev\obs-studio\libobs;C:\Users\vic\Documents\obs-dev\obs-studio\build64\config;C:\Users\vic\Documents\obs-dev\obs-studio\deps\libff\.;C:\Users\vic\Documents\obs-dev\obs-studio\deps\w32-pthreads;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>Release/</AssemblerListingLocation>
+      <CompileAs>CompileAsC</CompileAs>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;UNICODE;_UNICODE;_CRT_SECURE_NO_WARNINGS;HAVE_OBSCONFIG_H;CMAKE_INTDIR="Release";obs_ffmpeg_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat></DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;UNICODE;_UNICODE;_CRT_SECURE_NO_WARNINGS;HAVE_OBSCONFIG_H;CMAKE_INTDIR=\"Release\";obs_ffmpeg_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\vic\Documents\obs-dev\deps\win64\include;C:\Users\vic\Documents\obs-dev\obs-studio\libobs;C:\Users\vic\Documents\obs-dev\obs-studio\build64\config;C:\Users\vic\Documents\obs-dev\obs-studio\deps\libff\.;C:\Users\vic\Documents\obs-dev\obs-studio\deps\w32-pthreads;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\vic\Documents\obs-dev\deps\win64\include;C:\Users\vic\Documents\obs-dev\obs-studio\libobs;C:\Users\vic\Documents\obs-dev\obs-studio\build64\config;C:\Users\vic\Documents\obs-dev\obs-studio\deps\libff\.;C:\Users\vic\Documents\obs-dev\obs-studio\deps\w32-pthreads;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PostBuildEvent>
+      <Message>			</Message>
+      <Command>setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:/Users/vic/Documents/obs-dev/obs-studio/build64/plugins/obs-ffmpeg/Release/obs-ffmpeg.dll C:/Users/vic/Documents/obs-dev/obs-studio/build64/rundir/Release/obs-plugins/64bit/obs-ffmpeg.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -DCONFIG=Release -DFNAME=obs-ffmpeg.dll -DINPUT=C:/Users/vic/Documents/obs-dev/obs-studio/build64/plugins/obs-ffmpeg/Release -DOUTPUT=C:/Users/vic/Documents/obs-dev/obs-studio/build64/plugins/obs-ffmpeg/pdbs -P C:/Users/vic/Documents/obs-dev/obs-studio/cmake/copy_on_debug_helper.cmake
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -DCONFIG=Release -DFNAME=obs-ffmpeg.dll -DINPUT=C:/Users/vic/Documents/obs-dev/obs-studio/build64/plugins/obs-ffmpeg/Release -DOUTPUT=C:/Users/vic/Documents/obs-dev/obs-studio/build64/rundir/Release/obs-plugins/64bit -P C:/Users/vic/Documents/obs-dev/obs-studio/cmake/copy_on_debug_helper.cmake
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy_directory C:/Users/vic/Documents/obs-dev/obs-studio/plugins/obs-ffmpeg/data C:/Users/vic/Documents/obs-dev/obs-studio/build64/rundir/Release/data/obs-plugins/obs-ffmpeg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalOptions> /machine:x64 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;..\..\libobs\Release\obs.lib;..\..\deps\libff\Release\libff.lib;..\..\deps\w32-pthreads\Release\w32-pthreads.lib;C:\Users\vic\Documents\obs-dev\deps\win64\bin\avcodec.lib;C:\Users\vic\Documents\obs-dev\deps\win64\bin\avfilter.lib;C:\Users\vic\Documents\obs-dev\deps\win64\bin\avdevice.lib;C:\Users\vic\Documents\obs-dev\deps\win64\bin\avutil.lib;C:\Users\vic\Documents\obs-dev\deps\win64\bin\swscale.lib;C:\Users\vic\Documents\obs-dev\deps\win64\bin\avformat.lib;C:\Users\vic\Documents\obs-dev\deps\win64\bin\swresample.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>No</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/vic/Documents/obs-dev/obs-studio/build64/plugins/obs-ffmpeg/Release/obs-ffmpeg.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/vic/Documents/obs-dev/obs-studio/build64/plugins/obs-ffmpeg/Release/obs-ffmpeg.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+      <Version></Version>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\vic\Documents\obs-dev\deps\win64\include;C:\Users\vic\Documents\obs-dev\obs-studio\libobs;C:\Users\vic\Documents\obs-dev\obs-studio\build64\config;C:\Users\vic\Documents\obs-dev\obs-studio\deps\libff\.;C:\Users\vic\Documents\obs-dev\obs-studio\deps\w32-pthreads;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>MinSizeRel/</AssemblerListingLocation>
+      <CompileAs>CompileAsC</CompileAs>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;UNICODE;_UNICODE;_CRT_SECURE_NO_WARNINGS;HAVE_OBSCONFIG_H;CMAKE_INTDIR="MinSizeRel";obs_ffmpeg_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat></DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;UNICODE;_UNICODE;_CRT_SECURE_NO_WARNINGS;HAVE_OBSCONFIG_H;CMAKE_INTDIR=\"MinSizeRel\";obs_ffmpeg_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\vic\Documents\obs-dev\deps\win64\include;C:\Users\vic\Documents\obs-dev\obs-studio\libobs;C:\Users\vic\Documents\obs-dev\obs-studio\build64\config;C:\Users\vic\Documents\obs-dev\obs-studio\deps\libff\.;C:\Users\vic\Documents\obs-dev\obs-studio\deps\w32-pthreads;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\vic\Documents\obs-dev\deps\win64\include;C:\Users\vic\Documents\obs-dev\obs-studio\libobs;C:\Users\vic\Documents\obs-dev\obs-studio\build64\config;C:\Users\vic\Documents\obs-dev\obs-studio\deps\libff\.;C:\Users\vic\Documents\obs-dev\obs-studio\deps\w32-pthreads;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PostBuildEvent>
+      <Message>			</Message>
+      <Command>setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:/Users/vic/Documents/obs-dev/obs-studio/build64/plugins/obs-ffmpeg/MinSizeRel/obs-ffmpeg.dll C:/Users/vic/Documents/obs-dev/obs-studio/build64/rundir/MinSizeRel/obs-plugins/64bit/obs-ffmpeg.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -DCONFIG=MinSizeRel -DFNAME=obs-ffmpeg.dll -DINPUT=C:/Users/vic/Documents/obs-dev/obs-studio/build64/plugins/obs-ffmpeg/MinSizeRel -DOUTPUT=C:/Users/vic/Documents/obs-dev/obs-studio/build64/plugins/obs-ffmpeg/pdbs -P C:/Users/vic/Documents/obs-dev/obs-studio/cmake/copy_on_debug_helper.cmake
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -DCONFIG=MinSizeRel -DFNAME=obs-ffmpeg.dll -DINPUT=C:/Users/vic/Documents/obs-dev/obs-studio/build64/plugins/obs-ffmpeg/MinSizeRel -DOUTPUT=C:/Users/vic/Documents/obs-dev/obs-studio/build64/rundir/MinSizeRel/obs-plugins/64bit -P C:/Users/vic/Documents/obs-dev/obs-studio/cmake/copy_on_debug_helper.cmake
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy_directory C:/Users/vic/Documents/obs-dev/obs-studio/plugins/obs-ffmpeg/data C:/Users/vic/Documents/obs-dev/obs-studio/build64/rundir/MinSizeRel/data/obs-plugins/obs-ffmpeg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalOptions> /machine:x64 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;..\..\libobs\MinSizeRel\obs.lib;..\..\deps\libff\MinSizeRel\libff.lib;..\..\deps\w32-pthreads\MinSizeRel\w32-pthreads.lib;C:\Users\vic\Documents\obs-dev\deps\win64\bin\avcodec.lib;C:\Users\vic\Documents\obs-dev\deps\win64\bin\avfilter.lib;C:\Users\vic\Documents\obs-dev\deps\win64\bin\avdevice.lib;C:\Users\vic\Documents\obs-dev\deps\win64\bin\avutil.lib;C:\Users\vic\Documents\obs-dev\deps\win64\bin\swscale.lib;C:\Users\vic\Documents\obs-dev\deps\win64\bin\avformat.lib;C:\Users\vic\Documents\obs-dev\deps\win64\bin\swresample.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>No</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/vic/Documents/obs-dev/obs-studio/build64/plugins/obs-ffmpeg/MinSizeRel/obs-ffmpeg.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/vic/Documents/obs-dev/obs-studio/build64/plugins/obs-ffmpeg/MinSizeRel/obs-ffmpeg.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+      <Version></Version>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\vic\Documents\obs-dev\deps\win64\include;C:\Users\vic\Documents\obs-dev\obs-studio\libobs;C:\Users\vic\Documents\obs-dev\obs-studio\build64\config;C:\Users\vic\Documents\obs-dev\obs-studio\deps\libff\.;C:\Users\vic\Documents\obs-dev\obs-studio\deps\w32-pthreads;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>RelWithDebInfo/</AssemblerListingLocation>
+      <CompileAs>CompileAsC</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;UNICODE;_UNICODE;_CRT_SECURE_NO_WARNINGS;HAVE_OBSCONFIG_H;CMAKE_INTDIR="RelWithDebInfo";obs_ffmpeg_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;UNICODE;_UNICODE;_CRT_SECURE_NO_WARNINGS;HAVE_OBSCONFIG_H;CMAKE_INTDIR=\"RelWithDebInfo\";obs_ffmpeg_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\vic\Documents\obs-dev\deps\win64\include;C:\Users\vic\Documents\obs-dev\obs-studio\libobs;C:\Users\vic\Documents\obs-dev\obs-studio\build64\config;C:\Users\vic\Documents\obs-dev\obs-studio\deps\libff\.;C:\Users\vic\Documents\obs-dev\obs-studio\deps\w32-pthreads;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\vic\Documents\obs-dev\deps\win64\include;C:\Users\vic\Documents\obs-dev\obs-studio\libobs;C:\Users\vic\Documents\obs-dev\obs-studio\build64\config;C:\Users\vic\Documents\obs-dev\obs-studio\deps\libff\.;C:\Users\vic\Documents\obs-dev\obs-studio\deps\w32-pthreads;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PostBuildEvent>
+      <Message>			</Message>
+      <Command>setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:/Users/vic/Documents/obs-dev/obs-studio/build64/plugins/obs-ffmpeg/RelWithDebInfo/obs-ffmpeg.dll C:/Users/vic/Documents/obs-dev/obs-studio/build64/rundir/RelWithDebInfo/obs-plugins/64bit/obs-ffmpeg.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -DCONFIG=RelWithDebInfo -DFNAME=obs-ffmpeg.dll -DINPUT=C:/Users/vic/Documents/obs-dev/obs-studio/build64/plugins/obs-ffmpeg/RelWithDebInfo -DOUTPUT=C:/Users/vic/Documents/obs-dev/obs-studio/build64/plugins/obs-ffmpeg/pdbs -P C:/Users/vic/Documents/obs-dev/obs-studio/cmake/copy_on_debug_helper.cmake
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -DCONFIG=RelWithDebInfo -DFNAME=obs-ffmpeg.dll -DINPUT=C:/Users/vic/Documents/obs-dev/obs-studio/build64/plugins/obs-ffmpeg/RelWithDebInfo -DOUTPUT=C:/Users/vic/Documents/obs-dev/obs-studio/build64/rundir/RelWithDebInfo/obs-plugins/64bit -P C:/Users/vic/Documents/obs-dev/obs-studio/cmake/copy_on_debug_helper.cmake
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy_directory C:/Users/vic/Documents/obs-dev/obs-studio/plugins/obs-ffmpeg/data C:/Users/vic/Documents/obs-dev/obs-studio/build64/rundir/RelWithDebInfo/data/obs-plugins/obs-ffmpeg
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalOptions> /machine:x64 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;..\..\libobs\RelWithDebInfo\obs.lib;..\..\deps\libff\RelWithDebInfo\libff.lib;..\..\deps\w32-pthreads\RelWithDebInfo\w32-pthreads.lib;C:\Users\vic\Documents\obs-dev\deps\win64\bin\avcodec.lib;C:\Users\vic\Documents\obs-dev\deps\win64\bin\avfilter.lib;C:\Users\vic\Documents\obs-dev\deps\win64\bin\avdevice.lib;C:\Users\vic\Documents\obs-dev\deps\win64\bin\avutil.lib;C:\Users\vic\Documents\obs-dev\deps\win64\bin\swscale.lib;C:\Users\vic\Documents\obs-dev\deps\win64\bin\avformat.lib;C:\Users\vic\Documents\obs-dev\deps\win64\bin\swresample.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>Debug</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/vic/Documents/obs-dev/obs-studio/build64/plugins/obs-ffmpeg/RelWithDebInfo/obs-ffmpeg.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/vic/Documents/obs-dev/obs-studio/build64/plugins/obs-ffmpeg/RelWithDebInfo/obs-ffmpeg.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+      <Version></Version>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\vic\Documents\obs-dev\obs-studio\plugins\obs-ffmpeg\CMakeLists.txt">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Users/vic/Documents/obs-dev/obs-studio/plugins/obs-ffmpeg/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -HC:/Users/vic/Documents/obs-dev/obs-studio -BC:/Users/vic/Documents/obs-dev/obs-studio/build64 --check-stamp-file C:\Users\vic\Documents\obs-dev\obs-studio\build64\plugins\obs-ffmpeg\CMakeFiles\generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:/Users/vic/Documents/obs-dev/obs-studio/plugins/obs-ffmpeg/CMakeLists.txt;C:\Users\vic\Documents\obs-dev\obs-studio\plugins\obs-ffmpeg\CMakeLists.txt;C:\Users\vic\Documents\obs-dev\obs-studio\cmake\Modules\FindFFmpeg.cmake;C:\Program Files\CMake\share\cmake-3.7\Modules\FindPkgConfig.cmake;C:\Program Files\CMake\share\cmake-3.7\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.7\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.7\Modules\CMakeParseArguments.cmake;C:\Program Files\CMake\share\cmake-3.7\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.7\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.7\Modules\CMakeParseArguments.cmake;C:\Users\vic\Documents\obs-dev\obs-studio\plugins\obs-ffmpeg\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\vic\Documents\obs-dev\obs-studio\build64\plugins\obs-ffmpeg\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Users/vic/Documents/obs-dev/obs-studio/plugins/obs-ffmpeg/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -HC:/Users/vic/Documents/obs-dev/obs-studio -BC:/Users/vic/Documents/obs-dev/obs-studio/build64 --check-stamp-file C:\Users\vic\Documents\obs-dev\obs-studio\build64\plugins\obs-ffmpeg\CMakeFiles\generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:/Users/vic/Documents/obs-dev/obs-studio/plugins/obs-ffmpeg/CMakeLists.txt;C:\Users\vic\Documents\obs-dev\obs-studio\plugins\obs-ffmpeg\CMakeLists.txt;C:\Users\vic\Documents\obs-dev\obs-studio\cmake\Modules\FindFFmpeg.cmake;C:\Program Files\CMake\share\cmake-3.7\Modules\FindPkgConfig.cmake;C:\Program Files\CMake\share\cmake-3.7\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.7\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.7\Modules\CMakeParseArguments.cmake;C:\Program Files\CMake\share\cmake-3.7\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.7\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.7\Modules\CMakeParseArguments.cmake;C:\Users\vic\Documents\obs-dev\obs-studio\plugins\obs-ffmpeg\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\vic\Documents\obs-dev\obs-studio\build64\plugins\obs-ffmpeg\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/Users/vic/Documents/obs-dev/obs-studio/plugins/obs-ffmpeg/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -HC:/Users/vic/Documents/obs-dev/obs-studio -BC:/Users/vic/Documents/obs-dev/obs-studio/build64 --check-stamp-file C:\Users\vic\Documents\obs-dev\obs-studio\build64\plugins\obs-ffmpeg\CMakeFiles\generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:/Users/vic/Documents/obs-dev/obs-studio/plugins/obs-ffmpeg/CMakeLists.txt;C:\Users\vic\Documents\obs-dev\obs-studio\plugins\obs-ffmpeg\CMakeLists.txt;C:\Users\vic\Documents\obs-dev\obs-studio\cmake\Modules\FindFFmpeg.cmake;C:\Program Files\CMake\share\cmake-3.7\Modules\FindPkgConfig.cmake;C:\Program Files\CMake\share\cmake-3.7\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.7\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.7\Modules\CMakeParseArguments.cmake;C:\Program Files\CMake\share\cmake-3.7\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.7\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.7\Modules\CMakeParseArguments.cmake;C:\Users\vic\Documents\obs-dev\obs-studio\plugins\obs-ffmpeg\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\vic\Documents\obs-dev\obs-studio\build64\plugins\obs-ffmpeg\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/Users/vic/Documents/obs-dev/obs-studio/plugins/obs-ffmpeg/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -HC:/Users/vic/Documents/obs-dev/obs-studio -BC:/Users/vic/Documents/obs-dev/obs-studio/build64 --check-stamp-file C:\Users\vic\Documents\obs-dev\obs-studio\build64\plugins\obs-ffmpeg\CMakeFiles\generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:/Users/vic/Documents/obs-dev/obs-studio/plugins/obs-ffmpeg/CMakeLists.txt;C:\Users\vic\Documents\obs-dev\obs-studio\plugins\obs-ffmpeg\CMakeLists.txt;C:\Users\vic\Documents\obs-dev\obs-studio\cmake\Modules\FindFFmpeg.cmake;C:\Program Files\CMake\share\cmake-3.7\Modules\FindPkgConfig.cmake;C:\Program Files\CMake\share\cmake-3.7\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.7\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.7\Modules\CMakeParseArguments.cmake;C:\Program Files\CMake\share\cmake-3.7\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.7\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.7\Modules\CMakeParseArguments.cmake;C:\Users\vic\Documents\obs-dev\obs-studio\plugins\obs-ffmpeg\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\vic\Documents\obs-dev\obs-studio\build64\plugins\obs-ffmpeg\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\plugins\obs-ffmpeg\obs-ffmpeg-formats.h" />
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\plugins\obs-ffmpeg\obs-ffmpeg-compat.h" />
+    <ClInclude Include="C:\Users\vic\Documents\obs-dev\obs-studio\plugins\obs-ffmpeg\closest-pixel-format.h" />
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\plugins\obs-ffmpeg\obs-ffmpeg.c"  />
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\plugins\obs-ffmpeg\obs-ffmpeg-aac.c"  />
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\plugins\obs-ffmpeg\obs-ffmpeg-nvenc.c"  />
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\plugins\obs-ffmpeg\obs-ffmpeg-output.c"  />
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\plugins\obs-ffmpeg\obs-ffmpeg-mux.c"  />
+    <ClCompile Include="C:\Users\vic\Documents\obs-dev\obs-studio\plugins\obs-ffmpeg\obs-ffmpeg-source.c"  />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:/Users/vic/Documents/obs-dev/obs-studio/build64/ZERO_CHECK.vcxproj">
+      <Project>80221285-675C-3FB1-9F9A-18B891B73F3D</Project>
+    </ProjectReference>
+    <ProjectReference Include="C:/Users/vic/Documents/obs-dev/obs-studio/build64/deps/libff/libff.vcxproj">
+      <Project>2343F5FC-6AAC-3C6B-B694-91B4BE74673D</Project>
+    </ProjectReference>
+    <ProjectReference Include="C:/Users/vic/Documents/obs-dev/obs-studio/build64/libobs/libobs.vcxproj">
+      <Project>A54A0B0D-7C85-3165-803A-216A1072A30F</Project>
+    </ProjectReference>
+    <ProjectReference Include="C:/Users/vic/Documents/obs-dev/obs-studio/build64/deps/w32-pthreads/w32-pthreads.vcxproj">
+      <Project>E6DA8DA4-D4B9-3F04-8FD8-189B5E78DE4C</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
