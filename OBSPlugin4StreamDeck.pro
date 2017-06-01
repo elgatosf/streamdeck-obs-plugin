@@ -34,8 +34,8 @@ QMAKE_TARGET_COPYRIGHT = "Copyright \\251 2017, Elgato Systems GmbH"
 
 DEFINES += VERSION_STR=\\\"$$VERSION\\\"
 
-include(../SharedFile/SharedFile.pri)   # IPC
-INCLUDEPATH += ../SharedFile/
+include(./SharedFile/SharedFile.pri)   # IPC
+INCLUDEPATH += ./SharedFile/
 
 win32 {
     # Qt 5.8.0-64bit VS2015
