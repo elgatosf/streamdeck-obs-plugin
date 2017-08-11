@@ -75,10 +75,15 @@ bool SharedFile::create(qint64 size, QString &err)
                                QFileDevice::ReadGroup | QFileDevice::WriteGroup | QFileDevice::ExeGroup |
                                QFileDevice::ReadOther | QFileDevice::WriteOther | QFileDevice::ExeOther );
 
-    if (f.size()<_mapSize) {
-        qDebug() << "Warning: Opened SHF size is smaller than needed, resized to " << _mapSize;
+    if (f.size()<_mapSize)
+    {
+		if(f.size() > 0)
+		{
+			qDebug() << "Warning: Opened SHF size is smaller than needed, resized to " << _mapSize;
+		}
 
-        if (!mapFileHdl->resize(_mapSize)) {
+        if (!mapFileHdl->resize(_mapSize))
+        {
             mapFileHdl->close();
             err = "Error: Could not resize SharedFile.";
             qDebug() << err;
