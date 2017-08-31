@@ -54,6 +54,7 @@ typedef enum _StreamDeckIPCCmd {
     SDIPCCMD_Req_VerInfo,
     SDIPCCMD_ShowWindow,
     SDIPCCMD_Notify,
+	SDIPCCMD_ImportProfile,
 
     SDIPCCMD_COUNT
 }SDIPCCmd;
