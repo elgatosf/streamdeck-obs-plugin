@@ -279,6 +279,12 @@ void InitStreamDeckPlugin()
     // setup obs event callback
     obs_frontend_add_save_callback(SaveCallback, nullptr);
     obs_frontend_add_event_callback(OBSEvent, nullptr);
+
+    if (actionHelpPtr->getSendNotifyFlag())
+    {
+        QMetaObject::invokeMethod(ipcThreadPtr, "onNotify", Q_ARG(ShmID, ShmId_StreamDeck),
+                                                            Q_ARG(QStringList, QStringList("obs_started")));
+    }
 }
 
 // ----------------------------------------------------------------------------
