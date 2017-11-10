@@ -129,24 +129,43 @@ void OBSEvent(enum obs_frontend_event event, void* data)
         break;
     case OBS_FRONTEND_EVENT_STREAMING_STARTED:
         qDebug() << "OBS_FRONTEND_EVENT_STREAMING_STARTED";
+
+        if (actionHelpPtr->getSendNotifyFlag()) {
+            QMetaObject::invokeMethod(ipcThreadPtr, "onNotify", Q_ARG(ShmID, ShmId_StreamDeck),
+                                                                Q_ARG(QStringList, QStringList("streamingStarted")));
+        }
         break;
     case OBS_FRONTEND_EVENT_STREAMING_STOPPING:
         qDebug() << "OBS_FRONTEND_EVENT_STREAMING_STOPPING";
         break;
     case OBS_FRONTEND_EVENT_STREAMING_STOPPED:
         qDebug() << "OBS_FRONTEND_EVENT_STREAMING_STOPPED";
+
+        if (actionHelpPtr->getSendNotifyFlag()) {
+            QMetaObject::invokeMethod(ipcThreadPtr, "onNotify", Q_ARG(ShmID, ShmId_StreamDeck),
+                                                                Q_ARG(QStringList, QStringList("streamingStopped")));
+        }
         break;
     case OBS_FRONTEND_EVENT_RECORDING_STARTING:
         qDebug() << "OBS_FRONTEND_EVENT_RECORDING_STARTING";
         break;
     case OBS_FRONTEND_EVENT_RECORDING_STARTED:
         qDebug() << "OBS_FRONTEND_EVENT_RECORDING_STARTED";
+
+        if (actionHelpPtr->getSendNotifyFlag()) {
+            QMetaObject::invokeMethod(ipcThreadPtr, "onNotify", Q_ARG(ShmID, ShmId_StreamDeck),
+                                                                Q_ARG(QStringList, QStringList("recordingStarted")));
+        }
         break;
     case OBS_FRONTEND_EVENT_RECORDING_STOPPING:
         qDebug() << "OBS_FRONTEND_EVENT_RECORDING_STOPPING";
         break;
     case OBS_FRONTEND_EVENT_RECORDING_STOPPED:
         qDebug() << "OBS_FRONTEND_EVENT_RECORDING_STOPPED";
+        if (actionHelpPtr->getSendNotifyFlag()) {
+            QMetaObject::invokeMethod(ipcThreadPtr, "onNotify", Q_ARG(ShmID, ShmId_StreamDeck),
+                                                                Q_ARG(QStringList, QStringList("recordingStopped")));
+        }
         break;
     case OBS_FRONTEND_EVENT_SCENE_CHANGED:
         qDebug() << "OBS_FRONTEND_EVENT_SCENE_CHANGED";       
