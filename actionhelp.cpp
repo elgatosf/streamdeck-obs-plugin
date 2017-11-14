@@ -351,7 +351,34 @@ void ActionHelp::reqToggleRecord()
 {
 	sendNotifyFlag = false;
 
-	toggleRecord();
+	if (obs_frontend_recording_active())
+	{
+		obs_frontend_recording_stop();
+		ipcThreadPtr->onNotify(ShmId_StreamDeck, QStringList("recording_stopped"));
+	}
+	else
+	{
+		obs_frontend_recording_start();
+		ipcThreadPtr->onNotify(ShmId_StreamDeck, QStringList("recording_started"));
+	}
+
+	sendNotifyFlag = true;
+}
+
+void ActionHelp::reqToggleStream()
+{
+	sendNotifyFlag = false;
+
+	if (obs_frontend_streaming_active())
+	{
+		obs_frontend_streaming_stop();
+		ipcThreadPtr->onNotify(ShmId_StreamDeck, QStringList("streaming_stopped"));
+	}
+	else
+	{
+		obs_frontend_streaming_start();
+		ipcThreadPtr->onNotify(ShmId_StreamDeck, QStringList("streaming_started"));
+	}
 
 	sendNotifyFlag = true;
 }
@@ -439,18 +466,6 @@ bool ActionHelp::selectScene(QString scName, QString sceneName, QString &errStr)
     errStr = "can't find match scene name in list!";
     qDebug() << errStr;
     return false;
-}
-
-void ActionHelp::toggleRecord()
-{
-	if (obs_frontend_recording_active())
-	{
-		obs_frontend_recording_stop();
-	}
-	else
-	{
-		obs_frontend_recording_start();
-	}
 }
 
 void ActionHelp::toggleSource(bool isMixerSrc, QString sceneName, QString srcName, QString sourceIdStr)

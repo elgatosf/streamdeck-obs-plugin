@@ -331,6 +331,13 @@ void IPC_Thread::cmdHandle(const ShfPayload &payload, SDIPCCmd cmd, QDataStream 
 		QMetaObject::invokeMethod(actionHelpPtr, "reqToggleRecord");
 		break;
 	}
+
+	case SDIPCCMD_Toggle_OBS_Stream:
+	{
+		QMetaObject::invokeMethod(actionHelpPtr, "reqToggleStream");
+		break;
+	}
+
     case SDIPCCMD_Req_VerInfo:
     case SDIPCCMD_ShowWindow:
     {
