@@ -347,6 +347,16 @@ void ActionHelp::reqToggleSource(bool isMixerSrc,
     reqSourcesState(isMixerSrc, scName, sceneName, sourceName, sourceIdStr);
 }
 
+void ActionHelp::reqToggleRecord()
+{
+	sendNotifyFlag = false;
+
+	toggleRecord();
+
+	sendNotifyFlag = true;
+}
+
+
 void ActionHelp::reqCurrentCollectionAndSceneName()
 {
     qDebug() << __FUNCTION__ << __LINE__;
@@ -429,6 +439,18 @@ bool ActionHelp::selectScene(QString scName, QString sceneName, QString &errStr)
     errStr = "can't find match scene name in list!";
     qDebug() << errStr;
     return false;
+}
+
+void ActionHelp::toggleRecord()
+{
+	if (obs_frontend_recording_active())
+	{
+		obs_frontend_recording_stop();
+	}
+	else
+	{
+		obs_frontend_recording_start();
+	}
 }
 
 void ActionHelp::toggleSource(bool isMixerSrc, QString sceneName, QString srcName, QString sourceIdStr)

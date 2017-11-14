@@ -58,6 +58,8 @@ public:
     void selectSceneCollection(QString scName);
     bool selectScene(QString scName, QString sceneName, QString &errStr);
     void toggleSource(bool isMixerSrc, QString sceneName, QString srcName, QString sourceIdStr);
+	void toggleRecord();
+
     bool isSourceVisible(bool isMixerSrc, QString scName, QString sceneName, QString sourceName, QString sourceIdStr);
 
 signals:
@@ -69,6 +71,8 @@ public slots:
     void reqUpdateSourcesListOfAll(QString scName);
     void reqSelectSecene(QString scName, QString sceneName);
     void reqToggleSource(bool isMixerSrc, QString scName, QString sceneName, QString sourceName, QString sourceIdStr);
+	void reqToggleRecord();
+
     void reqCurrentCollectionAndSceneName();
     void reqSourcesState(bool isMixerSrc, QString scName, QString sceneName, QString sourceName, QString sourceIdStr);
 

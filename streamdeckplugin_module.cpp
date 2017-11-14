@@ -132,7 +132,7 @@ void OBSEvent(enum obs_frontend_event event, void* data)
 
         if (actionHelpPtr->getSendNotifyFlag()) {
             QMetaObject::invokeMethod(ipcThreadPtr, "onNotify", Q_ARG(ShmID, ShmId_StreamDeck),
-                                                                Q_ARG(QStringList, QStringList("streamingStarted")));
+                                                                Q_ARG(QStringList, QStringList("streaming_started")));
         }
         break;
     case OBS_FRONTEND_EVENT_STREAMING_STOPPING:
@@ -143,7 +143,7 @@ void OBSEvent(enum obs_frontend_event event, void* data)
 
         if (actionHelpPtr->getSendNotifyFlag()) {
             QMetaObject::invokeMethod(ipcThreadPtr, "onNotify", Q_ARG(ShmID, ShmId_StreamDeck),
-                                                                Q_ARG(QStringList, QStringList("streamingStopped")));
+                                                                Q_ARG(QStringList, QStringList("streaming_stopped")));
         }
         break;
     case OBS_FRONTEND_EVENT_RECORDING_STARTING:
@@ -154,7 +154,7 @@ void OBSEvent(enum obs_frontend_event event, void* data)
 
         if (actionHelpPtr->getSendNotifyFlag()) {
             QMetaObject::invokeMethod(ipcThreadPtr, "onNotify", Q_ARG(ShmID, ShmId_StreamDeck),
-                                                                Q_ARG(QStringList, QStringList("recordingStarted")));
+                                                                Q_ARG(QStringList, QStringList("recording_started")));
         }
         break;
     case OBS_FRONTEND_EVENT_RECORDING_STOPPING:
@@ -164,7 +164,7 @@ void OBSEvent(enum obs_frontend_event event, void* data)
         qDebug() << "OBS_FRONTEND_EVENT_RECORDING_STOPPED";
         if (actionHelpPtr->getSendNotifyFlag()) {
             QMetaObject::invokeMethod(ipcThreadPtr, "onNotify", Q_ARG(ShmID, ShmId_StreamDeck),
-                                                                Q_ARG(QStringList, QStringList("recordingStopped")));
+                                                                Q_ARG(QStringList, QStringList("recording_stopped")));
         }
         break;
     case OBS_FRONTEND_EVENT_SCENE_CHANGED:
