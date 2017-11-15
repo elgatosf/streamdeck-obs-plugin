@@ -131,7 +131,7 @@ void OBSEvent(enum obs_frontend_event event, void* data)
 
         if (actionHelpPtr->getSendNotifyFlag()) {
             QMetaObject::invokeMethod(ipcThreadPtr, "onNotify", Q_ARG(ShmID, ShmId_StreamDeck),
-                                                                Q_ARG(QStringList, QStringList("stream")));
+                                                                Q_ARG(QStringList, QStringList("streaming_started")));
         }
         break;
     case OBS_FRONTEND_EVENT_STREAMING_STOPPING:
@@ -139,6 +139,11 @@ void OBSEvent(enum obs_frontend_event event, void* data)
         break;
     case OBS_FRONTEND_EVENT_STREAMING_STOPPED:
         qDebug() << "OBS_FRONTEND_EVENT_STREAMING_STOPPED";
+
+        if (actionHelpPtr->getSendNotifyFlag()) {
+            QMetaObject::invokeMethod(ipcThreadPtr, "onNotify", Q_ARG(ShmID, ShmId_StreamDeck),
+                                                                Q_ARG(QStringList, QStringList("streaming_stopped")));
+        }
         break;
     case OBS_FRONTEND_EVENT_RECORDING_STARTING:
         qDebug() << "OBS_FRONTEND_EVENT_RECORDING_STARTING";
@@ -148,7 +153,7 @@ void OBSEvent(enum obs_frontend_event event, void* data)
 
         if (actionHelpPtr->getSendNotifyFlag()) {
             QMetaObject::invokeMethod(ipcThreadPtr, "onNotify", Q_ARG(ShmID, ShmId_StreamDeck),
-                                                                Q_ARG(QStringList, QStringList("recording")));
+                                                                Q_ARG(QStringList, QStringList("recording_started")));
         }
         break;
     case OBS_FRONTEND_EVENT_RECORDING_STOPPING:
@@ -156,6 +161,10 @@ void OBSEvent(enum obs_frontend_event event, void* data)
         break;
     case OBS_FRONTEND_EVENT_RECORDING_STOPPED:
         qDebug() << "OBS_FRONTEND_EVENT_RECORDING_STOPPED";
+        if (actionHelpPtr->getSendNotifyFlag()) {
+            QMetaObject::invokeMethod(ipcThreadPtr, "onNotify", Q_ARG(ShmID, ShmId_StreamDeck),
+                                                                Q_ARG(QStringList, QStringList("recording_stopped")));
+        }
         break;
     case OBS_FRONTEND_EVENT_SCENE_CHANGED:
         qDebug() << "OBS_FRONTEND_EVENT_SCENE_CHANGED";       
@@ -288,6 +297,12 @@ void InitStreamDeckPlugin()
     // setup obs event callback
     obs_frontend_add_save_callback(SaveCallback, nullptr);
     obs_frontend_add_event_callback(OBSEvent, nullptr);
+
+    if (actionHelpPtr->getSendNotifyFlag())
+    {
+        QMetaObject::invokeMethod(ipcThreadPtr, "onNotify", Q_ARG(ShmID, ShmId_StreamDeck),
+                                                            Q_ARG(QStringList, QStringList("obs_started")));
+    }
 }
 
 // ----------------------------------------------------------------------------

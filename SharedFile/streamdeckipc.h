@@ -47,14 +47,18 @@ typedef enum _StreamDeckIPCCmd {
     SDIPCCMD_Req_OBS_SourceState,
 
     SDIPCCMD_Select_OBS_SceneCollection,
-    SDIPCCMD_Select_OBS_Scene,
-    SDIPCCMD_Toggle_OBS_Source,
+	SDIPCCMD_Select_OBS_Scene,
+	SDIPCCMD_Toggle_OBS_Source,
 
     // Common
     SDIPCCMD_Req_VerInfo,
     SDIPCCMD_ShowWindow,
     SDIPCCMD_Notify,
 	SDIPCCMD_ImportProfile,
+	
+	// OBS (additional)
+	SDIPCCMD_Toggle_OBS_Stream,
+	SDIPCCMD_Toggle_OBS_Record,
 
     SDIPCCMD_COUNT
 }SDIPCCmd;
