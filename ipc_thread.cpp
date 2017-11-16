@@ -29,7 +29,7 @@ IPC_Thread::~IPC_Thread()
     }
 
     bkTimerThread.quit();
-    bkTimerThread.wait(3000);
+    bkTimerThread.wait();
 }
 
 void IPC_Thread::start()
@@ -78,8 +78,14 @@ void IPC_Thread::fillDataBuf(QByteArray &buf, const QString &errStr, const QList
 
 void IPC_Thread::onBkTimerTimeout()
 {
-    static float t = 0;
     bool resetTimerInterval = false;
+
+	static int counter = -1;
+	static double idleStepCount = 1.0;
+	counter++;
+
+	if (counter % (int)idleStepCount != 0)
+		return;
 
     QString err;
     if (!shf.isCreated() && !shf.create(SHF_SIZE, err)) {
@@ -150,17 +156,16 @@ void IPC_Thread::onBkTimerTimeout()
         cmdListMutex.unlock();
     }
 
-    // set next timer interval
-    if (resetTimerInterval) {
-        t = 0;
-        bkTimer.setInterval(16+t);
-        resetTimerInterval = false;
-
-    } else {
-        t = (t + 2);
-        CHK_IN_RANGE(490, 0, t);
-        bkTimer.setInterval(10+t);
-    }
+	if (resetTimerInterval)
+	{
+		resetTimerInterval = false;
+		(void)resetTimerInterval; // Fix warning in the Clang Static Analyzer caused by the variable being never used
+		idleStepCount = 1.0;
+	}
+	else
+	{
+		idleStepCount = idleStepCount + 0.02 < 10.0 ? idleStepCount + 0.02 : 10.0;
+	}
 }
 
 IPC_CMD IPC_Thread::makeIpcCmd(ShmID recId, const QByteArray &buf, const quint64 cmdId, quint64 expiredMs)
