@@ -326,6 +326,8 @@ void ActionHelp::reqSelectSecene(QString scName, QString sceneName)
     selectScene(scName, sceneName, errStr);
 
     sendNotifyFlag = true;
+
+    reqCurrentCollectionAndSceneName();
 }
 
 void ActionHelp::reqToggleSource(bool isMixerSrc,
