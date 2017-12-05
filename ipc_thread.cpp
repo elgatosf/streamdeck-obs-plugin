@@ -23,9 +23,13 @@ IPC_Thread::~IPC_Thread()
     onNotify(ShmId_StreamDeck, QStringList("obs_terminated"));
 
     // make sure all cmd sent before destroy class.
-    for (int i=0; i<15&&sendCmdList.count(); i++) {
-        qDebug() << __FUNCTION__ << QString("waiting for send all cmd, elapsed %1 ms").arg(i*100);
-        QThread::msleep(100);
+    if(sendCmdList.count() > 0)
+    {
+        for (int i = 0 ; i < 15; i++)
+        {
+            qDebug() << __FUNCTION__ << QString("waiting for send all cmd, elapsed %1 ms").arg(i*100);
+            QThread::msleep(100);
+        }
     }
 
     bkTimerThread.quit();
