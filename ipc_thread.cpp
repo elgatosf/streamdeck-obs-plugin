@@ -105,29 +105,23 @@ void IPC_Thread::onBkTimerTimeout()
     ShfPayload payload;
     memcpy(&payload, shf.data(), sizeof(ShfPayload));
 
-    if ((payload.receviedId == ShmId_OBS) &&
-        (shf.lock()))
+    if ((payload.receviedId == ShmId_OBS) && (shf.lock()))
     {
         QByteArray cmdData;
         getPayloadAndCmdData((char*)shf.data(), payload, cmdData);
 
-        if (payload.receviedId==ShmId_OBS) {
-            // check cmd time stamp
-            quint64 curTm = QDateTime::currentDateTime().toMSecsSinceEpoch();
-            if ((curTm-payload.timeStamp)>=payload.expiredMs) {
-                qDebug() << __FUNCTION__ << "skip expired cmd, form id: " << payload.senderId;
-                IPC_CMD cmd = makeIpcCmd(ShmId_Invalid, QByteArray(), SDIPCCMD_Invalid);
-                sendCmd(cmd);
-
-            } else {
-                QDataStream ds(&cmdData, QIODevice::ReadOnly);
-                cmdHandle(payload, (SDIPCCmd)payload.cmd, ds);
-            }
-
-        } else {
-            qDebug() << __FUNCTION__ << __LINE__ << "ID NOT MATCH!!!";
-            shf.unlock();
-            return;
+        // check cmd time stamp
+        quint64 curTm = QDateTime::currentDateTime().toMSecsSinceEpoch();
+        if ((curTm-payload.timeStamp)>=payload.expiredMs)
+        {
+            qDebug() << __FUNCTION__ << "skip expired cmd, form id: " << payload.senderId;
+            IPC_CMD cmd = makeIpcCmd(ShmId_Invalid, QByteArray(), SDIPCCMD_Invalid);
+            sendCmd(cmd);
+        }
+        else
+        {
+            QDataStream ds(&cmdData, QIODevice::ReadOnly);
+            cmdHandle(payload, (SDIPCCmd)payload.cmd, ds);
         }
 
         shf.unlock();
@@ -137,23 +131,28 @@ void IPC_Thread::onBkTimerTimeout()
     // send cmd
 #if 1
     quint64 curTm = QDateTime::currentDateTime().toMSecsSinceEpoch();
-    if ((payload.cmd != SDIPCCMD_Invalid) && (curTm-payload.timeStamp)>=payload.expiredMs) {
+    if ((payload.cmd != SDIPCCMD_Invalid) && (curTm-payload.timeStamp)>=payload.expiredMs)
+    {
         qDebug() << __FUNCTION__ << "skip expired cmd, form id: " << payload.senderId;
         IPC_CMD cmd = makeIpcCmd(ShmId_Invalid, QByteArray(), SDIPCCMD_Invalid);
         sendCmd(cmd);
         return;
 
-    } else if (payload.receviedId != ShmId_Invalid) {
+    }
+    else if (payload.receviedId != ShmId_Invalid)
+    {
         return;
     }
 #endif
 
 
-    if (sendCmdList.count()) {
+    if (sendCmdList.count())
+    {
         cmdListMutex.lock();
         IPC_CMD cmd = sendCmdList.first();
 
-        if (sendCmd(cmd)) {
+        if (sendCmd(cmd))
+        {
             sendCmdList.removeFirst();
             resetTimerInterval = true;
         }
