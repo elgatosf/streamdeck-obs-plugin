@@ -21,7 +21,6 @@ void ItemMuted(void* ptr, calldata_t* calldata)
 
     obs_source_t* source = (obs_source_t*)calldata_ptr(calldata, "source");
     std::string name = obs_source_get_name(source);
-    obs_source_type  type = obs_source_get_type(source);
     std::string id = obs_source_get_id(source);
     std::string displayName = obs_source_get_display_name(id.c_str());
 
