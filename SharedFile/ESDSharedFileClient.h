@@ -1,39 +1,37 @@
-#ifndef SHAREDFILE_H
-#define SHAREDFILE_H
+
+#pragma once
 
 #include <QObject>
 #include <QFile>
 #include <QSystemSemaphore>
 
-class SharedFile
+class ESDSharedFileClient
 {
 public:
-    SharedFile(const QString &key, qint64 size);    // if exist attach other create
-    ~SharedFile();
+    ESDSharedFileClient(const QString &key);    // if exist attach other create
+    ~ESDSharedFileClient();
 
-    bool create(qint64 size, QString &err);
+    bool closeIfNeeded();
+    bool open();
     bool attach();
     void detach();
-    bool isCreated();
-    bool isLocked();
+
     bool isAttached();
+    bool isLocked();
+
     bool lock();
     bool unlock();
     void* data();
-    qint64 getMapSize();
     QString key();
 
 private:
+
     bool close();
 
-    bool createFlag;
     bool lockedFlag;
     QString _key;
     QString mapfile;
-    qint64 _mapSize;
     QFile *mapFileHdl;
     uchar *mapFilePtr;  // ptr to attach map
     QSystemSemaphore *sem;
 };
-
-#endif // SHAREDFILE_H

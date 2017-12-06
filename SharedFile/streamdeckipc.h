@@ -2,11 +2,10 @@
 #define STREAMDECKIPC
 
 #include <QString>
-#include <sharedfile.h>
 
 #define SHF_KEY     ("STREAMDECKSHM")
-#define SHF_SIZE    (100 * 1000)
 
+#define SHF_SIZE    (100 * 1000)
 // ----------------------------------------------------------------------------
 typedef enum _ShmID {
     ShmId_OBS,

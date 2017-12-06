@@ -1,6 +1,6 @@
 # SharedFile
 
-SOURCES += ./SharedFile/sharedfile.cpp
+SOURCES += ./SharedFile/ESDSharedFileClient.cpp
 
-HEADERS += ./SharedFile/sharedfile.h \
+HEADERS += ./SharedFile/ESDSharedFileClient.h \
            ./SharedFile/streamdeckipc.h

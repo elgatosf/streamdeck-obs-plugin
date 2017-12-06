@@ -1,9 +1,9 @@
-#ifndef IPC_THREAD_H
-#define IPC_THREAD_H
+
+#pragma once
 
 #include "actionhelp.h"
 #include <QObject>
-#include <sharedfile.h>
+#include "ESDSharedFileClient.h"
 #include <streamdeckipc.h>
 #include <QThread>
 #include <QTimer>
@@ -36,11 +36,9 @@ private:
     void cmdHandle(const ShfPayload &payload, SDIPCCmd cmd, QDataStream &ds);
     bool sendCmd(const IPC_CMD &cmd);
 
-    SharedFile shf;
+    ESDSharedFileClient shf;
     QTimer bkTimer;
     QThread bkTimerThread;
     QMutex cmdListMutex;
     QList<IPC_CMD> sendCmdList;
 };
-
-#endif // IPC_THREAD_H

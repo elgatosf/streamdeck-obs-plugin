@@ -7,7 +7,7 @@ extern ActionHelp *actionHelpPtr;
 // ----------------------------------------------------------------------------
 IPC_Thread::IPC_Thread(QObject *parent) :
     QObject(parent),
-    shf(SHF_KEY, SHF_SIZE)
+    shf(SHF_KEY)
 {
     bkTimerThread.setObjectName("SD IPC Thread");
     bkTimer.setInterval(10);
@@ -91,11 +91,21 @@ void IPC_Thread::onBkTimerTimeout()
 	if (counter % (int)idleStepCount != 0)
 		return;
 
-    QString err;
-    if (!shf.isCreated() && !shf.create(SHF_SIZE, err)) {
-        qDebug() << __FUNCTION__ << "shf create fail!!!";
-        qDebug() << __FUNCTION__ << err;
-        return;
+    // Close if the file doesn't exist
+    if(shf.closeIfNeeded())
+    {
+        qDebug() << __FUNCTION__ << "Closed shf";
+    }
+
+    if (!shf.isAttached())
+    {
+        qDebug() << __FUNCTION__ << "shf is not attached";
+
+        if(!shf.open())
+        {
+            qDebug() << __FUNCTION__ << "shf open fail!!!";
+            return;
+        }
     }
 
 //    qDebug() << __FUNCTION__ << "t:" << t;
