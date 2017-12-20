@@ -250,6 +250,11 @@ void ActionHelp::reqUpdateSceneList(QString scName)
 {
     sendNotifyFlag = false;
 
+	QString currentCollectionName, sceneName;
+	if (!getCurrentCollectionAndSceneName(currentCollectionName, sceneName))
+		return;
+
+
     // ensure in correct scene collection
     selectSceneCollection(scName);
 
@@ -259,6 +264,8 @@ void ActionHelp::reqUpdateSceneList(QString scName)
     QStringList strList;
     for (int i=0; i<list.count(); i++)
         strList << QString(list.at(i).name.c_str());
+
+	selectSceneCollection(currentCollectionName);
 
     QByteArray buf;
     ipcThreadPtr->fillDataBuf(buf, strList);
@@ -285,6 +292,10 @@ void ActionHelp::reqUpdateSourcesList(QString sceneName)
 void ActionHelp::reqUpdateSourcesListOfAll(QString scName)
 {
     sendNotifyFlag = false;
+
+	QString currentCollectionName, sceneName;
+	if (!getCurrentCollectionAndSceneName(currentCollectionName, sceneName))
+		return;
 
     // ensure in correct scene collection
     selectSceneCollection(scName);
@@ -314,6 +325,8 @@ void ActionHelp::reqUpdateSourcesListOfAll(QString scName)
     QByteArray buf;
     ipcThreadPtr->fillDataBuf(buf, errStr, sourceStrList);
     ipcThreadPtr->sendCmdToList(ShmId_StreamDeck, buf, SDIPCCMD_Req_OBS_SourceListOfAll);
+
+	selectSceneCollection(currentCollectionName);
 
     sendNotifyFlag = true;
 }
