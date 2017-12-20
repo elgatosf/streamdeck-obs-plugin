@@ -283,9 +283,9 @@ void IPC_Thread::cmdHandle(const ShfPayload &payload, SDIPCCmd cmd, QDataStream 
     }
     case SDIPCCMD_Req_OBS_SourceList:
     {
-        QString sceneName;
-        ds >> sceneName;
-        QMetaObject::invokeMethod(actionHelpPtr, "reqUpdateSourcesList", Q_ARG(QString, sceneName));
+        QString inCollectionName, inSceneName;
+        ds >> inCollectionName >> inSceneName;
+        QMetaObject::invokeMethod(actionHelpPtr, "reqUpdateSourcesList", Q_ARG(QString, inCollectionName), Q_ARG(QString, inSceneName));
         break;
     }
     case SDIPCCMD_Req_OBS_SourceListOfAll:

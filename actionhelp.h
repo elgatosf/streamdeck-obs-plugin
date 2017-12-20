@@ -66,7 +66,7 @@ signals:
 public slots:
     void reqUpdateSCList();
     void reqUpdateSceneList(QString scName);
-    void reqUpdateSourcesList(QString sceneName);
+    void reqUpdateSourcesList(QString inCollectionName, QString inSceneName);
     void reqUpdateSourcesListOfAll(QString scName);
     void reqSelectSecene(QString scName, QString sceneName);
     void reqToggleSource(bool isMixerSrc, QString scName, QString sceneName, QString sourceName, QString sourceIdStr);

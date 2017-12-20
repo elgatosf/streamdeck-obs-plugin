@@ -274,13 +274,22 @@ void ActionHelp::reqUpdateSceneList(QString scName)
     sendNotifyFlag = true;
 }
 
-void ActionHelp::reqUpdateSourcesList(QString sceneName)
+void ActionHelp::reqUpdateSourcesList(QString inCollectionName, QString inSceneName)
 {
     sendNotifyFlag = false;
 
+	QString currentCollectionName, sceneName;
+	if (!getCurrentCollectionAndSceneName(currentCollectionName, sceneName))
+		return;
+
+	// ensure in correct scene collection
+	selectSceneCollection(inCollectionName);
+
     QList<SourceInfo> list;
     QString errStr;
-    updateSourcesList(sceneName, list, errStr);
+    updateSourcesList(inSceneName, list, errStr);
+
+	selectSceneCollection(currentCollectionName);
 
     QByteArray buf;
     ipcThreadPtr->fillDataBuf(buf, errStr, list);
