@@ -75,6 +75,19 @@ void IPC_Thread::fillDataBuf(QByteArray &buf, const QString &errStr, const QList
     }
 }
 
+void IPC_Thread::fillDataBuf(QByteArray &buf, const QList<SceneInfo> &list)
+{
+	QDataStream out(&buf, QIODevice::WriteOnly);
+
+	quint16 cnt = list.count();
+	out << cnt;
+
+	for (int i = 0; i<cnt; i++) {
+		out << QString(list.at(i).name.c_str());
+		out << bool(list.at(i).isSelected);
+	}
+}
+
 // ----------------------------------------------------------------------------
 // Slot functions
 // ----------------------------------------------------------------------------

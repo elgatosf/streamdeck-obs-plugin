@@ -26,6 +26,7 @@ typedef struct _SceneInfo
 {
     obs_source_t* scene;
     std::string   name;
+	bool   isSelected;
 }SceneInfo;
 
 typedef struct _SourceInfo
@@ -52,8 +53,8 @@ public:
     static bool getCurrentCollectionAndSceneName(QString &scName, QString&sceneName);
 
     void updateSceneCollectionList(QStringList &list);
-    void updateScenesList(QList<SceneInfo> &list);
-    void updateSourcesList(QString sceneName, QList<SourceInfo> &list, QString &errStr);
+	void updateScenesList(QList<SceneInfo> &list);
+	void updateSourcesList(QString sceneName, QList<SourceInfo> &list, QString &errStr);
 
     void selectSceneCollection(QString scName);
     bool selectScene(QString scName, QString sceneName, QString &errStr);

@@ -97,10 +97,19 @@ void ActionHelp::updateScenesList(QList<SceneInfo> &list)
     struct obs_frontend_source_list scenes = {};
     obs_frontend_get_scenes(&scenes);
 
-    for (size_t i=0; i<scenes.sources.num; i++) {
+
+	auto selectedSceneName = ActionHelp::getCurrentSceneName();
+
+    for (size_t i=0; i<scenes.sources.num; i++) 
+	{
         SceneInfo sceneInfo = {};
         sceneInfo.scene = scenes.sources.array[i];
-        sceneInfo.name  = obs_source_get_name(scenes.sources.array[i]);
+
+		std::string sceneName = obs_source_get_name(scenes.sources.array[i]);
+
+		sceneInfo.name = sceneName;
+		sceneInfo.isSelected = selectedSceneName.toStdString() == sceneName;
+
         list.append(sceneInfo);
     }
 
@@ -250,8 +259,8 @@ void ActionHelp::reqUpdateSceneList(QString scName)
 {
     sendNotifyFlag = false;
 
-	QString currentCollectionName, sceneName;
-	if (!getCurrentCollectionAndSceneName(currentCollectionName, sceneName))
+	QString currentCollectionName, currentSceneName;
+	if (!getCurrentCollectionAndSceneName(currentCollectionName, currentSceneName))
 		return;
 
 
@@ -261,15 +270,11 @@ void ActionHelp::reqUpdateSceneList(QString scName)
     QList<SceneInfo> list;
     ActionHelp::updateScenesList(list);
 
-    QStringList strList;
-    for (int i=0; i<list.count(); i++)
-        strList << QString(list.at(i).name.c_str());
-
 	selectSceneCollection(currentCollectionName);
 
     QByteArray buf;
-    ipcThreadPtr->fillDataBuf(buf, strList);
-    ipcThreadPtr->sendCmdToList(ShmId_StreamDeck, buf, SDIPCCMD_Req_OBS_ScenesList);
+	ipcThreadPtr->fillDataBuf(buf, list);
+	ipcThreadPtr->sendCmdToList(ShmId_StreamDeck, buf, SDIPCCMD_Req_OBS_ScenesList);
 
     sendNotifyFlag = true;
 }

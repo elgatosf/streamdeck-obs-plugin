@@ -21,6 +21,7 @@ public:
 
     static void fillDataBuf(QByteArray &buf, const QStringList &list, const QString appendStr=QString());
     static void fillDataBuf(QByteArray &buf, const QString &errStr, const QList<SourceInfo> &list);
+	static void fillDataBuf(QByteArray &buf, const QList<SceneInfo> &list);
 
 signals:
 
