@@ -401,11 +401,23 @@ void ActionHelp::reqToggleStream()
 	if (obs_frontend_streaming_active())
 	{
 		obs_frontend_streaming_stop();
+
+		if (!obs_frontend_recording_active())
+		{
+			ipcThreadPtr->onNotify(ShmId_StreamDeck, QStringList("recording_stopped"));
+		}
+
 		ipcThreadPtr->onNotify(ShmId_StreamDeck, QStringList("streaming_stopped"));
 	}
 	else
 	{
 		obs_frontend_streaming_start();
+
+		if (obs_frontend_recording_active())
+		{
+			ipcThreadPtr->onNotify(ShmId_StreamDeck, QStringList("recording_started"));
+		}
+
 		ipcThreadPtr->onNotify(ShmId_StreamDeck, QStringList("streaming_started"));
 	}
 
