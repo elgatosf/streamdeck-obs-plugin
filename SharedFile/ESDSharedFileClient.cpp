@@ -5,6 +5,9 @@
 #include <QDebug>
 #include <QStandardPaths>
 
+// For blog
+#include <obs-module.h>
+
 // ----------------------------------------------------------------------------
 ESDSharedFileClient::ESDSharedFileClient(const QString &key) :
     lockedFlag(false),
@@ -22,6 +25,7 @@ ESDSharedFileClient::ESDSharedFileClient(const QString &key) :
 
     mapFileHdl = new QFile(mapfile);
 
+    blog(LOG_INFO, "mapfile location %s", mapfile.toStdString().c_str());
     qDebug() << "mapfile location:" << mapfile;
 
     open();
@@ -55,6 +59,7 @@ bool ESDSharedFileClient::open()
         sem = new QSystemSemaphore(_key, 1, QSystemSemaphore::Create);
         if (sem->error() != QSystemSemaphore::NoError)
         {
+            blog(LOG_ERROR, "Unable to create semaphore %s", sem->errorString().toStdString().c_str());
             err = QString("Error: Unable to create semaphore: %1").arg(sem->errorString());
             qDebug() << err;
             return false;
@@ -67,6 +72,7 @@ bool ESDSharedFileClient::open()
     {
         if (!mapFileHdl->open(QIODevice::ReadWrite | QIODevice::Unbuffered))
         {
+            blog(LOG_ERROR, "Could not open SharedFile");
             err = "Error: Could not open SharedFile.";
             qDebug() << err;
             return false;
@@ -75,6 +81,7 @@ bool ESDSharedFileClient::open()
     else
     {
         err = "Error: SharedFile doesn't exist";
+        blog(LOG_ERROR, "SharedFile doesn't exist");
         qDebug() << err;
         return false;
     }
@@ -121,6 +128,7 @@ bool ESDSharedFileClient::attach()
 
     if (!mapFileHdl->isOpen())
     {
+        blog(LOG_ERROR, "Unable to open or create SharedFile");
         qDebug() << "Error: Unable to open or create SharedFile.";
         return false;
     }
@@ -128,6 +136,7 @@ bool ESDSharedFileClient::attach()
     mapFilePtr = mapFileHdl->map(0, mapFileHdl->size(), QFileDevice::NoOptions);
     if (!mapFilePtr)
     {
+        blog(LOG_ERROR, "Could not map SharedFile");
         qDebug() << "Error: Could not map SharedFile.";
         return false;
     }
@@ -139,6 +148,7 @@ void ESDSharedFileClient::detach()
 {
     if (!isAttached())
     {
+        blog(LOG_WARNING, "Asked to detach while not attached");
         qDebug() << __FUNCTION__ << "Warning: Asked to detach while not attached.";
         return;
     }
@@ -152,12 +162,14 @@ bool ESDSharedFileClient::lock()
 {
     if (!isAttached())
     {
+        blog(LOG_WARNING, "Asked to lock while not attached");
         qDebug() << "Warning: Asked to lock while not attached.";
         return false;
     }
 
     if (!sem->acquire())
     {
+        blog(LOG_WARNING, "Could not acquire lock due to %s", sem->errorString().toStdString().c_str());
         qDebug() << sem->errorString();
         return false;
     }
@@ -170,12 +182,14 @@ bool ESDSharedFileClient::unlock()
 {
     if (!isAttached())
     {
+        blog(LOG_WARNING, "Asked to unlock while not attached");
         qDebug() << "Warning: Asked to unlock while not attached.";
         return false;
     }
 
     if (!sem->release())
     {
+        blog(LOG_WARNING, "Could not release lock due to %s", sem->errorString().toStdString().c_str());
         qDebug() << sem->errorString();
         return false;
     }
@@ -198,6 +212,7 @@ void* ESDSharedFileClient::data()
 {
     if (!isAttached())
     {
+        blog(LOG_WARNING, "Asked for data while not attached");
         qDebug() << "Warning: Asked for data while not attached.";
         return NULL;
     }
