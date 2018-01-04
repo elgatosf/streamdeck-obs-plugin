@@ -8,6 +8,49 @@
 // For blog
 #include <obs-module.h>
 
+#if defined(Q_OS_WIN64) || defined(Q_OS_WIN32)
+    #include <Shlobj.h>
+    #include <atlstr.h>		// for namespace ATL
+    #include <atlconv.h>	// for string conversion macros
+#endif
+
+static std::string GetApplicationDataFolder(bool inForAllUsers)
+{
+    std::string retPath;
+
+#if defined(Q_OS_WIN64) || defined(Q_OS_WIN32)
+    PWSTR path = nullptr;
+    HRESULT success;
+
+    if(inForAllUsers)
+    {
+        success = SHGetKnownFolderPath(FOLDERID_ProgramData, 0, 0, &path);
+    }
+    else
+    {
+        success = SHGetKnownFolderPath(FOLDERID_RoamingAppData, 0, 0, &path);
+    }
+
+    if (SUCCEEDED(success))
+        retPath = CW2A(path, CP_UTF8);
+    if (path)
+        CoTaskMemFree(path);
+#else
+
+    if(inForAllUsers)
+    {
+        retPath = "/Library/Application Support";
+    }
+    else
+    {
+        retPath = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation).toStdString();
+    }
+
+#endif
+
+    return retPath;
+}
+
 // ----------------------------------------------------------------------------
 ESDSharedFileClient::ESDSharedFileClient(const QString &key) :
     lockedFlag(false),
@@ -16,12 +59,14 @@ ESDSharedFileClient::ESDSharedFileClient(const QString &key) :
     sem(NULL)
 {
 #if defined(Q_OS_MAC)
-    mapfile = QStandardPaths::standardLocations(QStandardPaths::GenericCacheLocation).at(0);
-    mapfile.append(QString("/" + _key));
-
-#elif defined(Q_OS_WIN64) || defined(Q_OS_WIN32)
-    mapfile = QString(QDir::tempPath() + "/" + _key);
+    QString sharedFilePath = QString(GetApplicationDataFolder(false).c_str());
+#else
+    QString sharedFilePath = QString(GetApplicationDataFolder(true).c_str());
 #endif
+
+    sharedFilePath = QDir::cleanPath(sharedFilePath + QDir::separator() + "Elgato");
+    sharedFilePath = QDir::cleanPath(sharedFilePath + QDir::separator() + "StreamDeck");
+    mapfile = QDir::cleanPath(sharedFilePath + QDir::separator() + _key);
 
     mapFileHdl = new QFile(mapfile);
 
