@@ -60,13 +60,14 @@ ESDSharedFileClient::ESDSharedFileClient(const QString &key) :
 {
 #if defined(Q_OS_MAC)
     QString sharedFilePath = QString(GetApplicationDataFolder(false).c_str());
+    sharedFilePath = QDir::cleanPath(sharedFilePath + QDir::separator() + "com.elgato.streamdeck");
+    mapfile = QDir::cleanPath(sharedFilePath + QDir::separator() + _key);
 #else
     QString sharedFilePath = QString(GetApplicationDataFolder(true).c_str());
-#endif
-
     sharedFilePath = QDir::cleanPath(sharedFilePath + QDir::separator() + "Elgato");
     sharedFilePath = QDir::cleanPath(sharedFilePath + QDir::separator() + "StreamDeck");
     mapfile = QDir::cleanPath(sharedFilePath + QDir::separator() + _key);
+#endif
 
     mapFileHdl = new QFile(mapfile);
 
