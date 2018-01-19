@@ -3,7 +3,8 @@
 
 #include <QString>
 
-#define SHF_KEY     ("STREAMDECKSHM")
+#define SHF_KEY				("STREAMDECKSHM")
+#define SHF_INTERNAL_KEY    ("STREAMDECKINTERNALSHM")
 
 #define SHF_SIZE    (100 * 1000)
 // ----------------------------------------------------------------------------
