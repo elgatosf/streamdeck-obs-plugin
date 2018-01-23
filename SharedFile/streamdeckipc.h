@@ -53,13 +53,15 @@ typedef enum _StreamDeckIPCCmd {
     // Common
     SDIPCCMD_Req_VerInfo,
     SDIPCCMD_ShowWindow,
-	SDIPCCMD_QuitSession,
     SDIPCCMD_Notify,
 	SDIPCCMD_ImportProfile,
 	
 	// OBS (additional)
 	SDIPCCMD_Toggle_OBS_Stream,
 	SDIPCCMD_Toggle_OBS_Record,
+	
+	// Force quit
+	SDIPCCMD_QuitSession,
 
     SDIPCCMD_COUNT
 }SDIPCCmd;
