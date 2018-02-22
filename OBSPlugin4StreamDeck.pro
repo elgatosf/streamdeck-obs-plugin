@@ -44,27 +44,18 @@ win32 {
     #   https://obsproject.com/forum/threads/install-instructions-windows-tips.44391/#post-228066
 
     CONFIG += dynamiclib
-    INCLUDEPATH += $$PWD/obs-dev/win/obs-studio/libobs \
-                += $$PWD/obs-dev/win/obs-studio/UI/obs-frontend-api \
-                += $$PWD/obs-dev/win/obs-studio/deps
+    INCLUDEPATH += $$PWD/obs-dev/obs-studio/libobs \
+                += $$PWD/obs-dev/obs-studio/UI/obs-frontend-api \
+                += $$PWD/obs-dev/obs-studio/deps
 
 
-    !contains(QMAKE_TARGET.arch, x86_64) {
-        message("x86 build")
-        LIBS += -L$$PWD/obs-dev/win/obs-studio/build32/libobs/Release \
-                -L$$PWD/obs-dev/win/obs-studio/build32/UI/obs-frontend-api/Release \
-                -lobs \
-                -lobs-frontend-api
-        ## Windows x86 (32bit) specific build here
 
-    } else {
         message("x86_64 build")
-        LIBS += -L$$PWD/obs-dev/win/obs-studio/build64/libobs/Release \
-                -L$$PWD/obs-dev/win/obs-studio/build64/UI/obs-frontend-api/Release \
+        LIBS += -L$$PWD/obs-dev/bin/win/libobs/Release \
+                -L$$PWD/obs-dev/bin/win/UI/obs-frontend-api/Release \
                 -lobs \
                 -lobs-frontend-api
         ## Windows x64 (64bit) specific build here
-    }
 
 
 } else: macx {
@@ -77,9 +68,9 @@ win32 {
     QMAKE_LFLAGS_PLUGIN -= -dynamiclib
     QMAKE_LFLAGS_PLUGIN += -bundle
     QMAKE_EXTENSION_SHLIB = so
-    INCLUDEPATH += $$PWD/obs-dev/mac/obs-studio/build-obs-studio/include \
-                += $$PWD/obs-dev/mac/obs-studio/UI/obs-frontend-api/
-    LIBS += -L$$PWD/obs-dev/mac/obs-studio/build-obs-studio/bin \
+    INCLUDEPATH += $$PWD/obs-dev/bin/mac/build-obs-studio/include \
+                += $$PWD/obs-dev/bin/mac/UI/obs-frontend-api/
+    LIBS += -L$$PWD/obs-dev/bin/mac/build-obs-studio/bin \
             -lobs \
             -lobs-frontend-api
 }

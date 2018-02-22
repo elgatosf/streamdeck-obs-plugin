@@ -1,5 +1,0 @@
-﻿  Building Custom Rule C:/Users/vic/Documents/obs-dev/obs-studio/UI/obs-frontend-api/CMakeLists.txt
-  CMake does not need to re-run because C:\Users\vic\Documents\obs-dev\obs-studio\build64\UI\obs-frontend-api\CMakeFiles\generate.stamp is up-to-date.
-  obs-frontend-api.cpp
-     Creating library C:/Users/vic/Documents/obs-dev/obs-studio/build64/UI/obs-frontend-api/Release/obs-frontend-api.lib and object C:/Users/vic/Documents/obs-dev/obs-studio/build64/UI/obs-frontend-api/Release/obs-frontend-api.exp
-  obs-frontend-api.vcxproj -> C:\Users\vic\Documents\obs-dev\obs-studio\build64\UI\obs-frontend-api\Release\obs-frontend-api.dll

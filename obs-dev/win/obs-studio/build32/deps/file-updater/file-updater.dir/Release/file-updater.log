@@ -1,4 +1,0 @@
-﻿  Building Custom Rule C:/Users/vic/Documents/obs-dev/obs-studio/deps/file-updater/CMakeLists.txt
-  CMake does not need to re-run because C:\Users\vic\Documents\obs-dev\obs-studio\build32\deps\file-updater\CMakeFiles\generate.stamp is up-to-date.
-  file-updater.c
-  file-updater.vcxproj -> C:\Users\vic\Documents\obs-dev\obs-studio\build32\deps\file-updater\Release\file-updater.lib

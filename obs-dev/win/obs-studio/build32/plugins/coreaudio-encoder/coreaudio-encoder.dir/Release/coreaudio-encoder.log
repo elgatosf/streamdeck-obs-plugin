@@ -1,7 +1,0 @@
-﻿  Building Custom Rule C:/Users/vic/Documents/obs-dev/obs-studio/plugins/coreaudio-encoder/CMakeLists.txt
-  CMake does not need to re-run because C:\Users\vic\Documents\obs-dev\obs-studio\build32\plugins\coreaudio-encoder\CMakeFiles\generate.stamp is up-to-date.
-  encoder.cpp
-C:\Users\vic\Documents\obs-dev\obs-studio\plugins\coreaudio-encoder\encoder.cpp(475): warning C4592: 'aac_formats': symbol will be dynamically initialized (implementation limitation)
-C:\Users\vic\Documents\obs-dev\obs-studio\plugins\coreaudio-encoder\encoder.cpp(481): warning C4592: 'aac_lc_formats': symbol will be dynamically initialized (implementation limitation)
-     Creating library C:/Users/vic/Documents/obs-dev/obs-studio/build32/plugins/coreaudio-encoder/Release/coreaudio-encoder.lib and object C:/Users/vic/Documents/obs-dev/obs-studio/build32/plugins/coreaudio-encoder/Release/coreaudio-encoder.exp
-  coreaudio-encoder.vcxproj -> C:\Users\vic\Documents\obs-dev\obs-studio\build32\plugins\coreaudio-encoder\Release\coreaudio-encoder.dll

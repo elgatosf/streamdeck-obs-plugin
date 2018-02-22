@@ -1,4 +1,0 @@
-﻿  Building Custom Rule C:/Users/vic/Documents/obs-dev/obs-studio/deps/ipc-util/CMakeLists.txt
-  CMake does not need to re-run because C:\Users\vic\Documents\obs-dev\obs-studio\build32\deps\ipc-util\CMakeFiles\generate.stamp is up-to-date.
-  pipe-windows.c
-  ipc-util.vcxproj -> C:\Users\vic\Documents\obs-dev\obs-studio\build32\deps\ipc-util\Release\ipc-util.lib

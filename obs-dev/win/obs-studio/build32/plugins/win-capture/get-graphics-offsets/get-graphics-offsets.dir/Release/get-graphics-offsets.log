@@ -1,8 +1,0 @@
-﻿  Building Custom Rule C:/Users/vic/Documents/obs-dev/obs-studio/plugins/win-capture/get-graphics-offsets/CMakeLists.txt
-  CMake does not need to re-run because C:\Users\vic\Documents\obs-dev\obs-studio\build32\plugins\win-capture\get-graphics-offsets\CMakeFiles\generate.stamp is up-to-date.
-  get-graphics-offsets.c
-  dxgi-offsets.cpp
-  d3d8-offsets.cpp
-  d3d9-offsets.cpp
-  Generating Code...
-  get-graphics-offsets.vcxproj -> C:\Users\vic\Documents\obs-dev\obs-studio\build32\plugins\win-capture\get-graphics-offsets\Release\get-graphics-offsets32.exe

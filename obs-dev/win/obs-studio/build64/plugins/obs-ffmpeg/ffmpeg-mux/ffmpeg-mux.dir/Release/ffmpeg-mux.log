@@ -1,5 +1,0 @@
-﻿  Building Custom Rule C:/Users/vic/Documents/obs-dev/obs-studio/plugins/obs-ffmpeg/ffmpeg-mux/CMakeLists.txt
-  CMake does not need to re-run because C:\Users\vic\Documents\obs-dev\obs-studio\build64\plugins\obs-ffmpeg\ffmpeg-mux\CMakeFiles\generate.stamp is up-to-date.
-  ffmpeg-mux.c
-c:\users\vic\documents\obs-dev\deps\win64\include\libavutil\rational.h : warning C4819: The file contains a character that cannot be represented in the current code page (950). Save the file in Unicode format to prevent data loss
-  ffmpeg-mux.vcxproj -> C:\Users\vic\Documents\obs-dev\obs-studio\build64\plugins\obs-ffmpeg\ffmpeg-mux\Release\ffmpeg-mux64.exe
