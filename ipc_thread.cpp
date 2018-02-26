@@ -71,7 +71,8 @@ void IPC_Thread::fillDataBuf(QByteArray &buf, const QString &errStr, const QList
     for (int i=0; i<cnt; i++) {
         out << QString(list.at(i).sceneName.c_str());
         out << QString(list.at(i).name.c_str());
-        out << QString(list.at(i).idStr.c_str());
+		out << QString(list.at(i).idStr.c_str());
+		out << QString::number(list.at(i).sceneItemId);
     }
 }
 
@@ -317,13 +318,17 @@ void IPC_Thread::cmdHandle(const ShfPayload &payload, SDIPCCmd cmd, QDataStream 
     {
         bool isMixerSrc;
         QString scName, sceneName, sourceName, sourceIdStr;
+		int64_t sceneItemId;
+
         ds >> isMixerSrc >> scName >> sceneName >> sourceName >> sourceIdStr;
+		ds >> sceneItemId;
 
         QMetaObject::invokeMethod(actionHelpPtr, "reqSourcesState", Q_ARG(bool, isMixerSrc),
                                                                     Q_ARG(QString, scName),
                                                                     Q_ARG(QString, sceneName),
                                                                     Q_ARG(QString, sourceName),
-                                                                    Q_ARG(QString, sourceIdStr));
+                                                                    Q_ARG(QString, sourceIdStr),
+																	Q_ARG(int64_t, sceneItemId));
         break;
     }
     case SDIPCCMD_Select_OBS_SceneCollection:
@@ -339,21 +344,24 @@ void IPC_Thread::cmdHandle(const ShfPayload &payload, SDIPCCmd cmd, QDataStream 
         QString scName, sceneName;
         ds >> scName >> sceneName;
 
-        QMetaObject::invokeMethod(actionHelpPtr, "reqSelectSecene", Q_ARG(QString, scName), Q_ARG(QString, sceneName));
+        QMetaObject::invokeMethod(actionHelpPtr, "reqSelectScene", Q_ARG(QString, scName), Q_ARG(QString, sceneName));
         break;
     }
     case SDIPCCMD_Toggle_OBS_Source:
     {
         bool isMixerSrc;
         QString scName, sceneName, srcName, srcIdStr;
+		int64_t sceneItemId;
+
         ds >> isMixerSrc >> scName >> sceneName >> srcName >> srcIdStr;
+		ds >> sceneItemId;
 
         QMetaObject::invokeMethod(actionHelpPtr, "reqToggleSource",
                                                  Q_ARG(bool, isMixerSrc),
                                                  Q_ARG(QString, scName),
                                                  Q_ARG(QString, sceneName),
                                                  Q_ARG(QString, srcName),
-                                                 Q_ARG(QString, srcIdStr));
+                                                 Q_ARG(int64_t, sceneItemId));
         break;
     }
 

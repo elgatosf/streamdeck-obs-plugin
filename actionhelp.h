@@ -37,6 +37,7 @@ typedef struct _SourceInfo
     std::string     name;
     std::string     idStr;
     std::string     displayName;
+	int64_t     sceneItemId;
     obs_source_type type;
 }SourceInfo;
 
@@ -58,9 +59,9 @@ public:
 
     void selectSceneCollection(QString scName);
     bool selectScene(QString scName, QString sceneName, QString &errStr);
-    void toggleSource(bool isMixerSrc, QString sceneName, QString srcName, QString sourceIdStr);
+    void toggleSource(bool isMixerSrc, QString sceneName, QString srcName, QString sourceIdStr, int64_t sceneItemId);
 
-    bool isSourceVisible(bool isMixerSrc, QString scName, QString sceneName, QString sourceName, QString sourceIdStr);
+    bool isSourceVisible(bool isMixerSrc, QString scName, QString sceneName, QString sourceName, QString sourceIdStr, int64_t sceneItemId);
 
 signals:
 
@@ -69,13 +70,13 @@ public slots:
     void reqUpdateSceneList(QString scName);
     void reqUpdateSourcesList(QString inCollectionName, QString inSceneName);
     void reqUpdateSourcesListOfAll(QString scName);
-    void reqSelectSecene(QString scName, QString sceneName);
-    void reqToggleSource(bool isMixerSrc, QString scName, QString sceneName, QString sourceName, QString sourceIdStr);
+    void reqSelectScene(QString scName, QString sceneName);
+    void reqToggleSource(bool isMixerSrc, QString scName, QString sceneName, QString sourceName, QString sourceIdStr, int64_t sceneItemId);
 	void reqToggleRecord();
 	void reqToggleStream();
 
     void reqCurrentCollectionAndSceneName();
-    void reqSourcesState(bool isMixerSrc, QString scName, QString sceneName, QString sourceName, QString sourceIdStr);
+    void reqSourcesState(bool isMixerSrc, QString scName, QString sceneName, QString sourceName, QString sourceIdStr, int64_t sceneItemId);
 
 private:
 

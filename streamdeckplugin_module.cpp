@@ -38,7 +38,8 @@ void ItemMuted(void* ptr, calldata_t* calldata)
         QStringList list;
         QString isMixerSrcStr = QString("%1").arg(true);
         QString activeFlagStr = QString("%1").arg(!muted);
-        list << "syncSourceState" << isMixerSrcStr << scName << sceneName << name.c_str() << id.c_str() << activeFlagStr;
+
+        list << "syncSourceState" << isMixerSrcStr << scName << sceneName << name.c_str() << id.c_str() << "1" << activeFlagStr;
 
         // add to cmd list
         QMetaObject::invokeMethod(ipcThreadPtr, "onNotify", Q_ARG(ShmID, ShmId_StreamDeck),
@@ -68,6 +69,9 @@ void ItemVisible(void* ptr, calldata_t* calldata)
     Q_UNUSED(ptr)
 
     obs_sceneitem_t* sceneItem = (obs_sceneitem_t*)calldata_ptr(calldata, "item");
+
+	int64_t sceneItemId = obs_sceneitem_get_id(sceneItem);
+	
     obs_source_t* source = obs_sceneitem_get_source(sceneItem);
     std::string name = obs_source_get_name(source);
 //    obs_source_type  type = obs_source_get_type(source);
@@ -88,7 +92,9 @@ void ItemVisible(void* ptr, calldata_t* calldata)
         QStringList list;
         QString isMixerSrcStr = QString("%1").arg(false);
         QString flagStr = QString("%1").arg(visible);
-        list << "syncSourceState" << isMixerSrcStr << scName << sceneName << name.c_str() << id.c_str() << flagStr;
+		QString sceneItemIdString = QString::number(sceneItemId);
+
+        list << "syncSourceState" << isMixerSrcStr << scName << sceneName << name.c_str() << id.c_str() << sceneItemIdString << flagStr;
 
         // add to cmd list
         QMetaObject::invokeMethod(ipcThreadPtr, "onNotify", Q_ARG(ShmID, ShmId_StreamDeck),
