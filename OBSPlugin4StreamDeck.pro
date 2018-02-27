@@ -68,7 +68,7 @@ win32 {
     QMAKE_LFLAGS_PLUGIN -= -dynamiclib
     QMAKE_LFLAGS_PLUGIN += -bundle
     QMAKE_EXTENSION_SHLIB = so
-    INCLUDEPATH += $$PWD/obs-dev/bin/mac/build-obs-studio/include \
+    INCLUDEPATH += $$PWD/obs-dev/src/libobs/ \
                 += $$PWD/obs-dev/bin/mac/UI/obs-frontend-api/
     LIBS += -L$$PWD/obs-dev/bin/mac/build-obs-studio/bin \
             -lobs \
