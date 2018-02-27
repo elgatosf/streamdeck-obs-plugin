@@ -43,10 +43,8 @@ INCLUDEPATH += $$PWD/obs-dev/headers/libobs/ \
 win32 {
 	
     CONFIG += dynamiclib
-
-	message("x86_64 build")
-	LIBS += -L$$PWD/obs-dev/bin/win/libobs/Release \
-			-L$$PWD/obs-dev/bin/win/UI/obs-frontend-api/Release \
+    
+	LIBS += -L$$PWD/obs-dev/bin/win \
 			-lobs \
 			-lobs-frontend-api
 
