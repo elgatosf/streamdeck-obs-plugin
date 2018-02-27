@@ -328,7 +328,7 @@ void IPC_Thread::cmdHandle(const ShfPayload &payload, SDIPCCmd cmd, QDataStream 
                                                                     Q_ARG(QString, sceneName),
                                                                     Q_ARG(QString, sourceName),
                                                                     Q_ARG(QString, sourceIdStr),
-																	Q_ARG(int64_t, sceneItemId));
+																	Q_ARG(int, (int) sceneItemId));
         break;
     }
     case SDIPCCMD_Select_OBS_SceneCollection:
@@ -361,7 +361,8 @@ void IPC_Thread::cmdHandle(const ShfPayload &payload, SDIPCCmd cmd, QDataStream 
                                                  Q_ARG(QString, scName),
                                                  Q_ARG(QString, sceneName),
                                                  Q_ARG(QString, srcName),
-                                                 Q_ARG(int64_t, sceneItemId));
+												 Q_ARG(QString, srcIdStr),
+                                                 Q_ARG(int, (int) sceneItemId));
         break;
     }
 

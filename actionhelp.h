@@ -71,12 +71,12 @@ public slots:
     void reqUpdateSourcesList(QString inCollectionName, QString inSceneName);
     void reqUpdateSourcesListOfAll(QString scName);
     void reqSelectScene(QString scName, QString sceneName);
-    void reqToggleSource(bool isMixerSrc, QString scName, QString sceneName, QString sourceName, QString sourceIdStr, int64_t sceneItemId);
+    void reqToggleSource(bool isMixerSrc, QString scName, QString sceneName, QString sourceName, QString sourceIdStr, int sceneItemId);
 	void reqToggleRecord();
 	void reqToggleStream();
 
     void reqCurrentCollectionAndSceneName();
-    void reqSourcesState(bool isMixerSrc, QString scName, QString sceneName, QString sourceName, QString sourceIdStr, int64_t sceneItemId);
+    void reqSourcesState(bool isMixerSrc, QString scName, QString sceneName, QString sourceName, QString sourceIdStr, int sceneItemId);
 
 private:
 

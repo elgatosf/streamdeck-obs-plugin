@@ -365,12 +365,12 @@ void ActionHelp::reqToggleSource(bool isMixerSrc,
                                  QString sceneName,
                                  QString sourceName,
 								 QString sourceIdStr,
-                                 int64_t sceneItemId)
+								 int sceneItemId)
 {
     sendNotifyFlag = false;
 
     if (scName==getCurrentSceneCollectionName())
-        toggleSource(isMixerSrc, sceneName, sourceName, sourceIdStr, sceneItemId);
+        toggleSource(isMixerSrc, sceneName, sourceName, sourceIdStr, (int64_t) sceneItemId);
     else
         qDebug() << __FUNCTION__ << "ignore request, because the source is not in current collection.";
 
@@ -445,9 +445,9 @@ void ActionHelp::reqCurrentCollectionAndSceneName()
     ipcThreadPtr->sendCmdToList(ShmId_StreamDeck, buf, SDIPCCMD_Req_OBS_CurrentCollectionAndSceneName);
 }
 
-void ActionHelp::reqSourcesState(bool isMixerSrc, QString scName, QString sceneName, QString sourceName, QString sourceIdStr, int64_t sceneItemId)
+void ActionHelp::reqSourcesState(bool isMixerSrc, QString scName, QString sceneName, QString sourceName, QString sourceIdStr, int sceneItemId)
 {
-    bool flag = isSourceVisible(isMixerSrc, scName, sceneName, sourceName, sourceIdStr, sceneItemId);
+    bool flag = isSourceVisible(isMixerSrc, scName, sceneName, sourceName, sourceIdStr, (int64_t) sceneItemId);
 
     QStringList list;
     QString isMixerSrcStr = QString("%1").arg(isMixerSrc);
