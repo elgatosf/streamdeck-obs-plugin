@@ -37,21 +37,18 @@ DEFINES += VERSION_STR=\\\"$$VERSION\\\"
 include(./SharedFile/SharedFile.pri)   # IPC
 INCLUDEPATH += ./SharedFile/
 
+INCLUDEPATH += $$PWD/obs-dev/headers/libobs/ \
+				$$PWD/obs-dev/headers/UI/
+
 win32 {
 	
     CONFIG += dynamiclib
-    INCLUDEPATH += $$PWD/obs-dev/src/libobs \
-                += $$PWD/obs-dev/src/UI/obs-frontend-api \
-                += $$PWD/obs-dev/stc/deps
 
-
-
-        message("x86_64 build")
-        LIBS += -L$$PWD/obs-dev/bin/win/libobs/Release \
-                -L$$PWD/obs-dev/bin/win/UI/obs-frontend-api/Release \
-                -lobs \
-                -lobs-frontend-api
-        ## Windows x64 (64bit) specific build here
+	message("x86_64 build")
+	LIBS += -L$$PWD/obs-dev/bin/win/libobs/Release \
+			-L$$PWD/obs-dev/bin/win/UI/obs-frontend-api/Release \
+			-lobs \
+			-lobs-frontend-api
 
 
 } else: macx {
@@ -60,9 +57,6 @@ win32 {
     QMAKE_LFLAGS_PLUGIN -= -dynamiclib
     QMAKE_LFLAGS_PLUGIN += -bundle
     QMAKE_EXTENSION_SHLIB = so
-    
-    INCLUDEPATH += $$PWD/obs-dev/headers/libobs/ \
-    				$$PWD/obs-dev/headers/UI/
     
     LIBS += -L$$PWD/obs-dev/bin/mac \
             -lobs \
