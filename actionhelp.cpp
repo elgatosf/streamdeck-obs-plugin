@@ -561,9 +561,17 @@ void ActionHelp::toggleSource(bool isMixerSrc, QString sceneName, QString srcNam
     }
 
     obs_sceneitem_t* item = obs_scene_find_sceneitem_by_id(scene, sceneItemId);
-    if (!item) {
-        qDebug() << __FUNCTION__ << __LINE__ << "obs_scene_find_sceneitem_by_id() got NULL";
-        return;
+    if (!item)
+	{
+		qDebug() << __FUNCTION__ << __LINE__ << "obs_scene_find_sceneitem_by_id() got NULL";
+
+		item = obs_scene_find_source(scene, srcName.toStdString().c_str());
+
+		if (!item)
+		{
+			qDebug() << __FUNCTION__ << __LINE__ << "obs_scene_find_source() got NULL";
+			return;
+		}
     }
 
     obs_source_t *source = obs_sceneitem_get_source(item);
@@ -643,9 +651,16 @@ bool ActionHelp::isSourceVisible(bool isMixerSrc, QString scName, QString sceneN
 
 	obs_sceneitem_t* item = obs_scene_find_sceneitem_by_id(scene, sceneItemId);
 	if (!item) {
-        qDebug() << __FUNCTION__ << __LINE__ << "obs_scene_find_sceneitem_by_id() got NULL";
-        return false;
-    }
+		qDebug() << __FUNCTION__ << __LINE__ << "obs_scene_find_sceneitem_by_id() got NULL";
+
+		item = obs_scene_find_source(scene, sourceName.toStdString().c_str());
+
+		if (!item)
+		{
+			qDebug() << __FUNCTION__ << __LINE__ << "obs_scene_find_source() got NULL";
+			return false;
+		}
+	}
 
     obs_source_t *source = obs_sceneitem_get_source(item);
     if (!source) {
