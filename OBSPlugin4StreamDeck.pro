@@ -44,9 +44,9 @@ win32 {
     #   https://obsproject.com/forum/threads/install-instructions-windows-tips.44391/#post-228066
 
     CONFIG += dynamiclib
-    INCLUDEPATH += $$PWD/obs-dev/obs-studio/libobs \
-                += $$PWD/obs-dev/obs-studio/UI/obs-frontend-api \
-                += $$PWD/obs-dev/obs-studio/deps
+    INCLUDEPATH += $$PWD/obs-dev/src/libobs \
+                += $$PWD/obs-dev/src/UI/obs-frontend-api \
+                += $$PWD/obs-dev/stc/deps
 
 
 

@@ -5,7 +5,7 @@
 
 #include <graphics/matrix4.h>
 #if defined(Q_OS_WIN64) || defined(Q_OS_WIN32)
-    #include <w32-pthreads/pthread.h>
+    #include <obs-dev/src/deps/w32-pthreads/pthread.h>
 #endif
 
 // ----------------------------------------------------------------------------
