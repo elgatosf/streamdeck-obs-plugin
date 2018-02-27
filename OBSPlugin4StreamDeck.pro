@@ -38,11 +38,7 @@ include(./SharedFile/SharedFile.pri)   # IPC
 INCLUDEPATH += ./SharedFile/
 
 win32 {
-    # Qt 5.8.0-64bit VS2015
-    # OBS 18.0.1
-    #   https://github.com/jp9000/obs-studio/wiki/Install-Instructions#windows
-    #   https://obsproject.com/forum/threads/install-instructions-windows-tips.44391/#post-228066
-
+	
     CONFIG += dynamiclib
     INCLUDEPATH += $$PWD/obs-dev/src/libobs \
                 += $$PWD/obs-dev/src/UI/obs-frontend-api \
@@ -59,21 +55,18 @@ win32 {
 
 
 } else: macx {
-    # Qt 5.8.0
-    # OBS 18.0.1
-    #   https://github.com/jp9000/obs-studio/wiki
-    #   https://github.com/jp9000/obs-studio/wiki/Install-Instructions
-
+	
     CONFIG += plugin
     QMAKE_LFLAGS_PLUGIN -= -dynamiclib
     QMAKE_LFLAGS_PLUGIN += -bundle
     QMAKE_EXTENSION_SHLIB = so
+    
     INCLUDEPATH += $$PWD/obs-dev/src/libobs/ \
-                += $$PWD/obs-dev/bin/mac/UI/obs-frontend-api/
-    LIBS += -L$$PWD/obs-dev/bin/mac/build-obs-studio/bin \
+    				$$PWD/obs-dev/src/UI/obs-frontend-api/
+    
+    LIBS += -L$$PWD/obs-dev/bin/mac \
             -lobs \
             -lobs-frontend-api
 }
 
-FORMS += \
-    infodialog.ui
+FORMS += infodialog.ui
