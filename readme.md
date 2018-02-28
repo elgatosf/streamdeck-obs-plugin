@@ -26,6 +26,7 @@ https://github.com/jp9000/obs-studio/releases
 3. Copy the following files to obs-dev/bin/win:
 	- bin/64bit/obs.dll
 	- bin/64bit/obs-frontend-api.dll
+4. Run the Batch script obs-dev/bin/win/RegenerateLIBs.bat to geenrate obs.lib and obs-frontend-api.lib
 
 
 ### macOS
