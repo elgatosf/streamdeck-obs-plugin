@@ -59,7 +59,7 @@ public:
 
     void selectSceneCollection(QString scName);
     bool selectScene(QString scName, QString sceneName, QString &errStr);
-    void toggleSource(bool isMixerSrc, QString sceneName, QString srcName, QString sourceIdStr, int64_t sceneItemId);
+    bool toggleSource(bool isMixerSrc, QString sceneName, QString srcName, QString sourceIdStr, int64_t sceneItemId);
 
     bool isSourceVisible(bool isMixerSrc, QString scName, QString sceneName, QString sourceName, QString sourceIdStr, int64_t sceneItemId);
 

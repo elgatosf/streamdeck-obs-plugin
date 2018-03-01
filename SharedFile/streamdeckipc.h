@@ -63,7 +63,11 @@ typedef enum _StreamDeckIPCCmd {
 	// Force quit
 	SDIPCCMD_QuitSession,
 
-    SDIPCCMD_COUNT
+	// OBS error handling
+	SDIPCCMD_Select_OBS_Scene_Error,
+	SDIPCCMD_Toggle_OBS_Source_Error,
+    
+	SDIPCCMD_COUNT,
 }SDIPCCmd;
 
 #endif // STREAMDECKIPC

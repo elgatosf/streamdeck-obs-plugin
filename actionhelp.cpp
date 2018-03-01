@@ -348,11 +348,24 @@ void ActionHelp::reqSelectScene(QString scName, QString sceneName)
     sendNotifyFlag = false;
 
     QString errStr;
-    selectScene(scName, sceneName, errStr);
+    bool isSelected = selectScene(scName, sceneName, errStr);
 
     sendNotifyFlag = true;
 
-    reqCurrentCollectionAndSceneName();
+	QStringList list;
+	list << scName << sceneName;
+
+	QByteArray buf;
+	ipcThreadPtr->fillDataBuf(buf, list);
+
+	if (isSelected)
+	{
+		ipcThreadPtr->sendCmdToList(ShmId_StreamDeck, buf, SDIPCCMD_Req_OBS_CurrentCollectionAndSceneName);
+	}
+	else
+	{
+		ipcThreadPtr->sendCmdToList(ShmId_StreamDeck, buf, SDIPCCMD_Select_OBS_Scene_Error);
+	}
 }
 
 void ActionHelp::reqToggleSource(bool isMixerSrc,
@@ -364,15 +377,35 @@ void ActionHelp::reqToggleSource(bool isMixerSrc,
 {
     sendNotifyFlag = false;
 
-    if (scName==getCurrentSceneCollectionName())
-        toggleSource(isMixerSrc, sceneName, sourceName, sourceIdStr, (int64_t) sceneItemId);
+	bool isToggled = false;
+
+	if (scName == getCurrentSceneCollectionName())
+	{
+		isToggled = toggleSource(isMixerSrc, sceneName, sourceName, sourceIdStr, (int64_t)sceneItemId);
+	}
     else
         qDebug() << __FUNCTION__ << "ignore request, because the source is not in current collection.";
 
     sendNotifyFlag = true;
 
-    // since mute / unmute doesn't callback
-    reqSourcesState(isMixerSrc, scName, sceneName, sourceName, sourceIdStr, sceneItemId);
+	if (isToggled)
+	{
+		// since mute / unmute doesn't callback
+		reqSourcesState(isMixerSrc, scName, sceneName, sourceName, sourceIdStr, sceneItemId);
+	}
+	else
+	{
+		QStringList list;
+		QString isMixerSrcStr = QString("%1").arg(isMixerSrc);
+
+		list << isMixerSrcStr << scName << sceneName << sourceName << sourceIdStr << QString::number(sceneItemId);
+
+		qDebug() << __FUNCTION__ << list;
+
+		QByteArray buf;
+		ipcThreadPtr->fillDataBuf(buf, list);
+		ipcThreadPtr->sendCmdToList(ShmId_StreamDeck, buf, SDIPCCMD_Toggle_OBS_Source_Error);
+	}
 }
 
 void ActionHelp::reqToggleRecord()
@@ -508,7 +541,7 @@ bool ActionHelp::selectScene(QString scName, QString sceneName, QString &errStr)
     return false;
 }
 
-void ActionHelp::toggleSource(bool isMixerSrc, QString sceneName, QString srcName, QString sourceIdStr, int64_t sceneItemId)
+bool ActionHelp::toggleSource(bool isMixerSrc, QString sceneName, QString srcName, QString sourceIdStr, int64_t sceneItemId)
 {
     qDebug() << __FUNCTION__ << __LINE__ << sceneName << srcName << sourceIdStr << sceneItemId;
 
@@ -528,7 +561,7 @@ void ActionHelp::toggleSource(bool isMixerSrc, QString sceneName, QString srcNam
 
             obs_source_set_muted(src, !setFlag);
             obs_source_release(src);  // use obs_source_release to release it when complete.
-            return;
+            return true;
         }
     }
 
@@ -546,13 +579,13 @@ void ActionHelp::toggleSource(bool isMixerSrc, QString sceneName, QString srcNam
 
     if (!sceneAsSource) {
         qDebug() << __FUNCTION__ << __LINE__ << "can't find match scene!";
-        return;
+        return false;
     }
 
     obs_scene_t* scene = obs_scene_from_source(sceneAsSource);
     if (!scene) {
         qDebug() << __FUNCTION__ << __LINE__ << "not a scene!";
-        return;
+        return false;
     }
 
     obs_sceneitem_t* item = obs_scene_find_sceneitem_by_id(scene, sceneItemId);
@@ -565,14 +598,14 @@ void ActionHelp::toggleSource(bool isMixerSrc, QString sceneName, QString srcNam
 		if (!item)
 		{
 			qDebug() << __FUNCTION__ << __LINE__ << "obs_scene_find_source() got NULL";
-			return;
+			return false;
 		}
     }
 
     obs_source_t *source = obs_sceneitem_get_source(item);
     if (!source) {
         qDebug() << __FUNCTION__ << __LINE__ << "obs_sceneitem_get_source() got NULL";
-        return;
+        return false;
     }
 
     const char *srcId = obs_source_get_id(source);
@@ -580,20 +613,23 @@ void ActionHelp::toggleSource(bool isMixerSrc, QString sceneName, QString srcNam
         qDebug() << __FUNCTION__ << __LINE__ << "source identifier not match,"
                  << "expect: " << sourceIdStr
                  << "actual:"  << srcId;
-        return;
+        return false;
     }
 
+	bool hasToggled = false;
 
     if (isMixerSrc) {
         bool setFlag = obs_source_muted(source);
         qDebug() << __FUNCTION__ << __LINE__ << sceneName << srcName << sourceIdStr << "set mixer source: " << !setFlag;
         obs_source_set_muted(source, !setFlag);
-
+		hasToggled = true;
     } else {
         bool setFlag = isSourceVisible(isMixerSrc, getCurrentSceneCollectionName(), sceneName, srcName, sourceIdStr, sceneItemId);
         qDebug() << __FUNCTION__ << __LINE__ << sceneName << srcName << sourceIdStr << sceneItemId << "set normal source: " << !setFlag;
-        obs_sceneitem_set_visible(item, !setFlag);
+        hasToggled = obs_sceneitem_set_visible(item, !setFlag);
     }
+
+	return hasToggled;
 }
 
 bool ActionHelp::isSourceVisible(bool isMixerSrc, QString scName, QString sceneName, QString sourceName, QString sourceIdStr, int64_t sceneItemId)
