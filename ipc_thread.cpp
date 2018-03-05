@@ -269,7 +269,7 @@ void IPC_Thread::getPayloadAndCmdData(const char *shfPtr, ShfPayload &payload, Q
     memcpy(&payload, shfPtr, sizeof(ShfPayload));
 
     const char* dataPtr = (shfPtr + sizeof(ShfPayload));
-    cmdData = QByteArray(dataPtr, payload.totalSize);
+    cmdData = QByteArray(dataPtr, (int)payload.totalSize);
 }
 
 
