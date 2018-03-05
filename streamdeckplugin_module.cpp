@@ -29,7 +29,8 @@ void ItemMuted(void* ptr, calldata_t* calldata)
 //    qDebug() << __FUNCTION__ << muted << QString::fromStdString(name) << type << QString::fromStdString(id) << QString::fromStdString(displayName);
 
     // send to SD
-    if (actionHelpPtr && actionHelpPtr->getSendNotifyFlag()) {
+    if (actionHelpPtr && actionHelpPtr->getSendNotifyFlag())
+    {
         QString scName, sceneName;
         if (!actionHelpPtr->getCurrentCollectionAndSceneName(scName, sceneName))
             return;
@@ -42,8 +43,7 @@ void ItemMuted(void* ptr, calldata_t* calldata)
         list << "syncSourceState" << isMixerSrcStr << scName << sceneName << name.c_str() << id.c_str() << "1" << activeFlagStr;
 
         // add to cmd list
-        QMetaObject::invokeMethod(ipcThreadPtr, "onNotify", Q_ARG(ShmID, ShmId_StreamDeck),
-                                                            Q_ARG(QStringList, list));
+        QMetaObject::invokeMethod(ipcThreadPtr, "onNotify", Q_ARG(ShmID, ShmId_StreamDeck), Q_ARG(QStringList, list));
     }
 
 }
@@ -57,7 +57,8 @@ void UpdateSource()
 
     actionHelpPtr->updateSourcesList("", list, errStr);
 
-    for (int i=0; i<list.count(); i++) {
+    for (int i=0; i<list.count(); i++)
+    {
         SourceInfo srcInfo = list.at(i);
         signal_handler_t* signalHandler = obs_source_get_signal_handler(srcInfo.source);
         signal_handler_connect(signalHandler, "mute", ItemMuted, nullptr);
@@ -83,7 +84,8 @@ void ItemVisible(void* ptr, calldata_t* calldata)
 //    qDebug() << __FUNCTION__ << name.c_str() << type << id.c_str() << displayName.c_str() << visible;
 
     // send to SD
-    if (actionHelpPtr && actionHelpPtr->getSendNotifyFlag()) {
+    if (actionHelpPtr && actionHelpPtr->getSendNotifyFlag())
+    {
         QString scName, sceneName;
         if (!actionHelpPtr->getCurrentCollectionAndSceneName(scName, sceneName))
             return;
@@ -97,8 +99,7 @@ void ItemVisible(void* ptr, calldata_t* calldata)
         list << "syncSourceState" << isMixerSrcStr << scName << sceneName << name.c_str() << id.c_str() << sceneItemIdString << flagStr;
 
         // add to cmd list
-        QMetaObject::invokeMethod(ipcThreadPtr, "onNotify", Q_ARG(ShmID, ShmId_StreamDeck),
-                                                            Q_ARG(QStringList, list));
+        QMetaObject::invokeMethod(ipcThreadPtr, "onNotify", Q_ARG(ShmID, ShmId_StreamDeck), Q_ARG(QStringList, list));
     }
 }
 
@@ -128,93 +129,154 @@ void OBSEvent(enum obs_frontend_event event, void* data)
 
     qDebug() << __FUNCTION__ << QThread::currentThread();
 
-    switch (event) {
-    case OBS_FRONTEND_EVENT_STREAMING_STARTING:
-        qDebug() << "OBS_FRONTEND_EVENT_STREAMING_STARTING";        break;
-    case OBS_FRONTEND_EVENT_STREAMING_STARTED:
-        qDebug() << "OBS_FRONTEND_EVENT_STREAMING_STARTED";
+	switch (event)
+	{
+		case OBS_FRONTEND_EVENT_STREAMING_STARTING:
+		{
+			qDebug() << "OBS_FRONTEND_EVENT_STREAMING_STARTING";
+		}
+		break;
+		
+		case OBS_FRONTEND_EVENT_STREAMING_STARTED:
+		{
+			qDebug() << "OBS_FRONTEND_EVENT_STREAMING_STARTED";
 
-        if (actionHelpPtr->getSendNotifyFlag()) {
-            QMetaObject::invokeMethod(ipcThreadPtr, "onNotify", Q_ARG(ShmID, ShmId_StreamDeck),
-                                                                Q_ARG(QStringList, QStringList("streaming_started")));
-        }
-        break;
-    case OBS_FRONTEND_EVENT_STREAMING_STOPPING:
-        qDebug() << "OBS_FRONTEND_EVENT_STREAMING_STOPPING";
-        break;
-    case OBS_FRONTEND_EVENT_STREAMING_STOPPED:
-        qDebug() << "OBS_FRONTEND_EVENT_STREAMING_STOPPED";
+			if (actionHelpPtr->getSendNotifyFlag())
+			{
+				QMetaObject::invokeMethod(ipcThreadPtr, "onNotify", Q_ARG(ShmID, ShmId_StreamDeck), Q_ARG(QStringList, QStringList("streaming_started")));
+			}
+		}
+		break;
+			
+		case OBS_FRONTEND_EVENT_STREAMING_STOPPING:
+		{
+			qDebug() << "OBS_FRONTEND_EVENT_STREAMING_STOPPING";
+		}
+		break;
+		
+		case OBS_FRONTEND_EVENT_STREAMING_STOPPED:
+		{
+			qDebug() << "OBS_FRONTEND_EVENT_STREAMING_STOPPED";
 
-        if (actionHelpPtr->getSendNotifyFlag()) {
-            QMetaObject::invokeMethod(ipcThreadPtr, "onNotify", Q_ARG(ShmID, ShmId_StreamDeck),
-                                                                Q_ARG(QStringList, QStringList("streaming_stopped")));
-        }
-        break;
-    case OBS_FRONTEND_EVENT_RECORDING_STARTING:
-        qDebug() << "OBS_FRONTEND_EVENT_RECORDING_STARTING";
-        break;
-    case OBS_FRONTEND_EVENT_RECORDING_STARTED:
-        qDebug() << "OBS_FRONTEND_EVENT_RECORDING_STARTED";
+			if (actionHelpPtr->getSendNotifyFlag())
+			{
+				QMetaObject::invokeMethod(ipcThreadPtr, "onNotify", Q_ARG(ShmID, ShmId_StreamDeck), Q_ARG(QStringList, QStringList("streaming_stopped")));
+			}
+		}
+		break;
+		
+		case OBS_FRONTEND_EVENT_RECORDING_STARTING:
+		{
+			qDebug() << "OBS_FRONTEND_EVENT_RECORDING_STARTING";
+		}
+		break;
+		
+		case OBS_FRONTEND_EVENT_RECORDING_STARTED:
+		{
+			qDebug() << "OBS_FRONTEND_EVENT_RECORDING_STARTED";
 
-        if (actionHelpPtr->getSendNotifyFlag()) {
-            QMetaObject::invokeMethod(ipcThreadPtr, "onNotify", Q_ARG(ShmID, ShmId_StreamDeck),
-                                                                Q_ARG(QStringList, QStringList("recording_started")));
-        }
-        break;
-    case OBS_FRONTEND_EVENT_RECORDING_STOPPING:
-        qDebug() << "OBS_FRONTEND_EVENT_RECORDING_STOPPING";
-        break;
-    case OBS_FRONTEND_EVENT_RECORDING_STOPPED:
-        qDebug() << "OBS_FRONTEND_EVENT_RECORDING_STOPPED";
-        if (actionHelpPtr->getSendNotifyFlag()) {
-            QMetaObject::invokeMethod(ipcThreadPtr, "onNotify", Q_ARG(ShmID, ShmId_StreamDeck),
-                                                                Q_ARG(QStringList, QStringList("recording_stopped")));
-        }
-        break;
-    case OBS_FRONTEND_EVENT_SCENE_CHANGED:
-        qDebug() << "OBS_FRONTEND_EVENT_SCENE_CHANGED";       
-        QMetaObject::invokeMethod(actionHelpPtr, "reqCurrentCollectionAndSceneName");
-        break;
-    case OBS_FRONTEND_EVENT_SCENE_LIST_CHANGED:
-        qDebug() << "OBS_FRONTEND_EVENT_SCENE_LIST_CHANGED";
-        if (actionHelpPtr->getSendNotifyFlag()) {
-            QMetaObject::invokeMethod(ipcThreadPtr, "onNotify", Q_ARG(ShmID, ShmId_StreamDeck),
-                                                                Q_ARG(QStringList, QStringList("update")));
-        }
-        break;
-    case OBS_FRONTEND_EVENT_TRANSITION_CHANGED:
-        qDebug() << "OBS_FRONTEND_EVENT_TRANSITION_CHANGED";
-        break;
-    case OBS_FRONTEND_EVENT_TRANSITION_STOPPED:
-        qDebug() << "OBS_FRONTEND_EVENT_TRANSITION_STOPPED";
-        break;
-    case OBS_FRONTEND_EVENT_TRANSITION_LIST_CHANGED:
-        qDebug() << "OBS_FRONTEND_EVENT_TRANSITION_LIST_CHANGED";
-        break;
-    case OBS_FRONTEND_EVENT_SCENE_COLLECTION_CHANGED:
-        qDebug() << "OBS_FRONTEND_EVENT_SCENE_COLLECTION_CHANGED";
-        UpdateSource();
-        UpdateScenes();
-        QMetaObject::invokeMethod(actionHelpPtr, "reqCurrentCollectionAndSceneName");
-        break;
-    case OBS_FRONTEND_EVENT_SCENE_COLLECTION_LIST_CHANGED:
-        qDebug() << "OBS_FRONTEND_EVENT_SCENE_COLLECTION_LIST_CHANGED";
+			if (actionHelpPtr->getSendNotifyFlag())
+			{
+				QMetaObject::invokeMethod(ipcThreadPtr, "onNotify", Q_ARG(ShmID, ShmId_StreamDeck), Q_ARG(QStringList, QStringList("recording_started")));
+			}
+		}
+		break;
+		
+		case OBS_FRONTEND_EVENT_RECORDING_STOPPING:
+		{
+			qDebug() << "OBS_FRONTEND_EVENT_RECORDING_STOPPING";
+		}
+		break;
+		
+		case OBS_FRONTEND_EVENT_RECORDING_STOPPED:
+		{
+			qDebug() << "OBS_FRONTEND_EVENT_RECORDING_STOPPED";
+			if (actionHelpPtr->getSendNotifyFlag())
+			{
+				QMetaObject::invokeMethod(ipcThreadPtr, "onNotify", Q_ARG(ShmID, ShmId_StreamDeck), Q_ARG(QStringList, QStringList("recording_stopped")));
+			}
+		}
+		break;
+		
+		case OBS_FRONTEND_EVENT_SCENE_CHANGED:
+		{
+			qDebug() << "OBS_FRONTEND_EVENT_SCENE_CHANGED";       
+			QMetaObject::invokeMethod(actionHelpPtr, "reqCurrentCollectionAndSceneName");
+		}
+		break;
+		
+		case OBS_FRONTEND_EVENT_SCENE_LIST_CHANGED:
+		{
+			qDebug() << "OBS_FRONTEND_EVENT_SCENE_LIST_CHANGED";
+			if (actionHelpPtr->getSendNotifyFlag())
+			{
+				QMetaObject::invokeMethod(ipcThreadPtr, "onNotify", Q_ARG(ShmID, ShmId_StreamDeck), Q_ARG(QStringList, QStringList("update")));
+			}
+		}
+		break;
+		
+		case OBS_FRONTEND_EVENT_TRANSITION_CHANGED:
+		{
+			qDebug() << "OBS_FRONTEND_EVENT_TRANSITION_CHANGED";
+		}
+		break;
+		
+		case OBS_FRONTEND_EVENT_TRANSITION_STOPPED:
+		{
+			qDebug() << "OBS_FRONTEND_EVENT_TRANSITION_STOPPED";
+		}
+		break;
+		
+		case OBS_FRONTEND_EVENT_TRANSITION_LIST_CHANGED:
+		{
+			qDebug() << "OBS_FRONTEND_EVENT_TRANSITION_LIST_CHANGED";
+		}
+		break;
+		
+		case OBS_FRONTEND_EVENT_SCENE_COLLECTION_CHANGED:
+		{
+			qDebug() << "OBS_FRONTEND_EVENT_SCENE_COLLECTION_CHANGED";
+			UpdateSource();
+			UpdateScenes();
+			QMetaObject::invokeMethod(actionHelpPtr, "reqCurrentCollectionAndSceneName");
+		}
+		break;
+		
+		case OBS_FRONTEND_EVENT_SCENE_COLLECTION_LIST_CHANGED:
+		{
+			qDebug() << "OBS_FRONTEND_EVENT_SCENE_COLLECTION_LIST_CHANGED";
 
-        if (actionHelpPtr->getSendNotifyFlag()) {
-            QMetaObject::invokeMethod(ipcThreadPtr, "onNotify", Q_ARG(ShmID, ShmId_StreamDeck),
-                                                                Q_ARG(QStringList, QStringList("update")));
-        }
-        break;
-    case OBS_FRONTEND_EVENT_PROFILE_CHANGED:
-        qDebug() << "OBS_FRONTEND_EVENT_PROFILE_CHANGED";
-        break;
-    case OBS_FRONTEND_EVENT_PROFILE_LIST_CHANGED:
-        qDebug() << "OBS_FRONTEND_EVENT_PROFILE_LIST_CHANGED";
-        break;
-    case OBS_FRONTEND_EVENT_EXIT:
-        qDebug() << "OBS_FRONTEND_EVENT_EXIT";
-        break;
-    }
+			if (actionHelpPtr->getSendNotifyFlag())
+			{
+				QMetaObject::invokeMethod(ipcThreadPtr, "onNotify", Q_ARG(ShmID, ShmId_StreamDeck), Q_ARG(QStringList, QStringList("update")));
+			}
+		}
+		break;
+		
+		case OBS_FRONTEND_EVENT_PROFILE_CHANGED:
+		{
+			qDebug() << "OBS_FRONTEND_EVENT_PROFILE_CHANGED";
+		}
+		break;
+		
+		case OBS_FRONTEND_EVENT_PROFILE_LIST_CHANGED:
+		{
+			qDebug() << "OBS_FRONTEND_EVENT_PROFILE_LIST_CHANGED";
+		}
+		break;
+		
+		case OBS_FRONTEND_EVENT_EXIT:
+		{
+			qDebug() << "OBS_FRONTEND_EVENT_EXIT";
+		}
+		break;
+		
+		default:
+		{
+			qDebug() << "Unsupported event " << event;
+		}
+		break;
+	}
 
     if (event == OBS_FRONTEND_EVENT_EXIT)
         FreeStreamDeckPlugin();
@@ -238,7 +300,8 @@ void SaveCallback(obs_data_t* save_data, bool saving, void*)
     qDebug() << __FUNCTION__ << QThread::currentThread() << "saving: " << saving;
 
     static bool first = true;
-    if (first) {
+    if (first)
+    {
         // connect source changing state signal.
         first = false;
 
@@ -246,27 +309,29 @@ void SaveCallback(obs_data_t* save_data, bool saving, void*)
         UpdateScenes();
 
         QTimer::singleShot(1500, actionHelpPtr, SLOT(reqCurrentCollectionAndSceneName()));
-
-    } else if (saving) {
+    }
+    else if (saving)
+    {
         UpdateSource();
         UpdateScenes();
 
-        if (actionHelpPtr->getSendNotifyFlag()) {
-            QMetaObject::invokeMethod(ipcThreadPtr, "onNotify", Q_ARG(ShmID, ShmId_StreamDeck),
-                                                                Q_ARG(QStringList, QStringList("update")));
+        if (actionHelpPtr->getSendNotifyFlag())
+        {
+            QMetaObject::invokeMethod(ipcThreadPtr, "onNotify", Q_ARG(ShmID, ShmId_StreamDeck), Q_ARG(QStringList, QStringList("update")));
         }
     }
 }
 
 void FreeStreamDeckPlugin()
 {
-    if (actionHelpPtr) {
+    if (actionHelpPtr)
+    {
         delete actionHelpPtr;
         actionHelpPtr = NULL;
-
     }
 
-    if (ipcThreadPtr) {
+    if (ipcThreadPtr)
+    {
         delete ipcThreadPtr;
         ipcThreadPtr = NULL;
     }
@@ -276,8 +341,7 @@ void InitStreamDeckPlugin()
 {
 #if 1
     // setup tools menu action for show pluging info
-    QAction* action
-        = (QAction*)obs_frontend_add_tools_menu_qaction(obs_module_text("Elgato Stream Deck Plugin"));
+    QAction* action = (QAction*)obs_frontend_add_tools_menu_qaction(obs_module_text("Elgato Stream Deck Plugin"));
 
     auto cb = []()
     {
@@ -305,8 +369,7 @@ void InitStreamDeckPlugin()
 
     if (actionHelpPtr->getSendNotifyFlag())
     {
-        QMetaObject::invokeMethod(ipcThreadPtr, "onNotify", Q_ARG(ShmID, ShmId_StreamDeck),
-                                                            Q_ARG(QStringList, QStringList("obs_started")));
+        QMetaObject::invokeMethod(ipcThreadPtr, "onNotify", Q_ARG(ShmID, ShmId_StreamDeck), Q_ARG(QStringList, QStringList("obs_started")));
     }
 }
 
