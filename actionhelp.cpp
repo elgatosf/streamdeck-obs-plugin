@@ -128,98 +128,80 @@ void ActionHelp::updateSourcesList(QString sceneName, QList<SourceInfo> &list, Q
     #endif
 
 
-    if (sceneName.isEmpty()) {
+	if (sceneName.isEmpty()) {
 		// enum all source items
 
-        auto enumFunc = [](void* param, obs_source_t* source)
-        {
-            if (!param) {
-                qDebug() << __FUNCTION__ << __LINE__ << "Err: param is NULL!";
-                return false;
-            }
-            QList<SourceInfo> *list = reinterpret_cast<QList<SourceInfo>*>(param);
+		auto enumFunc = [](void* param, obs_source_t* source)
+		{
+			if (!param) {
+				qDebug() << __FUNCTION__ << __LINE__ << "Err: param is NULL!";
+				return false;
+			}
+			QList<SourceInfo> *list = reinterpret_cast<QList<SourceInfo>*>(param);
 
-            // Get source
-            SourceInfo obsSource = {};
-			obsSource.source      = source;
-            obsSource.name        = obs_source_get_name(source);
-            obsSource.type        = obs_source_get_type(source);
-            obsSource.idStr       = obs_source_get_id(source);
+			// Get source
+			SourceInfo obsSource = {};
+			obsSource.source = source;
+			obsSource.name = obs_source_get_name(source);
+			obsSource.type = obs_source_get_type(source);
+			obsSource.idStr = obs_source_get_id(source);
 			const char* displayName = obs_source_get_display_name(obsSource.idStr.c_str());
-			if(displayName)
+			if (displayName)
 				obsSource.displayName = displayName;
 
-            list->append(obsSource);
-//            qDebug() << __FUNCTION__ << obsSource.name.c_str() << obsSource.idStr.c_str();
-            return true;
-        };
+			list->append(obsSource);
+			//            qDebug() << __FUNCTION__ << obsSource.name.c_str() << obsSource.idStr.c_str();
+			return true;
+		};
 
-        obs_enum_sources(enumFunc, &list);
+		obs_enum_sources(enumFunc, &list);
 
 		//find appropriate scene name
 		for (auto& obsSource : list)
 		{
-			// since Mic/Aux  not belong to any scene.
-			if (obsSource.idStr == "coreaudio_output_capture" || // mac
-				obsSource.idStr == "coreaudio_input_capture" || // mac
-				obsSource.idStr == "wasapi_output_capture" || // win
-				obsSource.idStr == "wasapi_input_capture")       // win
-			{
-				obsSource.sceneName = "";
-			}
-			else
-			{
-				//find scene name of source
-				QList<SceneInfo> sceneList;
+			//find scene name of source
+			QList<SceneInfo> sceneList;
 
-				updateScenesList(sceneList);
+			updateScenesList(sceneList);
 
-				for (auto sceneInList : sceneList)
+			for (auto sceneInList : sceneList)
+			{
+				auto sceneAsSource = sceneInList.scene;
+
+				if (!sceneAsSource) {
+					qDebug() << __FUNCTION__ << __LINE__ << "can't find match scene!";
+
+					continue;
+				}
+
+				obs_scene_t* scene = obs_scene_from_source(sceneAsSource);
+				if (!scene) {
+					qDebug() << __FUNCTION__ << __LINE__ << "not a scene!";
+					continue;
+				}
+
+				obs_sceneitem_t* item = obs_scene_find_source(scene, obsSource.name.c_str());
+				if (!item)
 				{
-					auto sceneAsSource = sceneInList.scene;
+					qDebug() << __FUNCTION__ << __LINE__ << "obs_scene_find_source() got NULL";
+					continue;
+				}
 
-					if (!sceneAsSource) {
-						qDebug() << __FUNCTION__ << __LINE__ << "can't find match scene!";
+				obs_source_t *source = obs_sceneitem_get_source(item);
+				auto type = obs_source_get_type(source);
+				auto idStr = obs_source_get_id(source);
+				auto name = obs_source_get_name(source);
 
-						continue;
-					}
-
-					obs_scene_t* scene = obs_scene_from_source(sceneAsSource);
-					if (!scene) {
-						qDebug() << __FUNCTION__ << __LINE__ << "not a scene!";
-						continue;
-					}
-
-					obs_sceneitem_t* item = obs_scene_find_source(scene, obsSource.name.c_str());
-					if (!item) 
-					{
-						qDebug() << __FUNCTION__ << __LINE__ << "obs_scene_find_sceneitem_by_id() got NULL";
-
-						item = obs_scene_find_source(scene, obsSource.sceneName.c_str());
-
-						if (!item)
-						{
-							qDebug() << __FUNCTION__ << __LINE__ << "obs_scene_find_source() got NULL";
-							continue;
-						}
-					}
-
-					obs_source_t *source = obs_sceneitem_get_source(item);
-					auto type = obs_source_get_type(source);
-					auto idStr = obs_source_get_id(source);
-					auto name = obs_source_get_name(source);
-
-					if (obsSource.name == name
-						&& obsSource.idStr == idStr
-						&& obsSource.type == type)
-					{
-						obsSource.sceneName = sceneInList.name;
-						return;
-					}
+				if (obsSource.name == name
+					&& obsSource.idStr == idStr
+					&& obsSource.type == type)
+				{
+					obsSource.sceneName = sceneInList.name;
+					break;
 				}
 			}
 		}
-    } 
+	}
 	else 
 	{
         // enum source in scene
