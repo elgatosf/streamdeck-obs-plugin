@@ -770,6 +770,8 @@ int ActionHelp::isMixerSource(OBS_SOURCE_TYPE srcType)
 		case OBS_SOURCE_TYPE_JACKIN_CLIENT:
 		case OBS_SOURCE_TYPE_MEDIA_SOURCE:
 		case OBS_SOURCE_TYPE_VLC_VIDEO_SOURCE:
+		case OBS_SOURCE_TYPE_NDI_SOURCE:
+
 #if defined(Q_OS_WIN64) || defined(Q_OS_WIN32)
 		case OBS_SOURCE_TYPE_VIDEO_CAPTURE_DEVICE:
 #endif
@@ -870,6 +872,13 @@ OBS_SOURCE_TYPE ActionHelp::getSourceType(const std::string& idStr)
     {
         return OBS_SOURCE_TYPE_JACKIN_CLIENT;
     }
+
+	// NDI source
+	else if (idStr == "ndi_source")
+	{
+		return OBS_SOURCE_TYPE_NDI_SOURCE;
+	}
+
 
     return OBS_SOURCE_TYPE_UNKNOWN;
 }
