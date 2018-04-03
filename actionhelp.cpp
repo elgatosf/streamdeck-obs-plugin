@@ -260,7 +260,6 @@ void ActionHelp::updateSourcesList(QString sceneName, QList<SourceInfo> &list, Q
             }
 
             SourceInfo obsSource = {};
-            obsSource.sceneName   = ActionHelp::getCurrentSceneName().toStdString();
             obsSource.source      = source;
             obsSource.name        = obs_source_get_name(source);
             obsSource.type        = obs_source_get_type(source);
@@ -277,6 +276,12 @@ void ActionHelp::updateSourcesList(QString sceneName, QList<SourceInfo> &list, Q
 
         list.clear();
         obs_scene_enum_items(scene, enumFunc, &list);
+
+		//add given scene name
+		for (auto& obsSource : list)
+		{
+			obsSource.sceneName = sceneName.toStdString();
+		}
     }
 }
 
