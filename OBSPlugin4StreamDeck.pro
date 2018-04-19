@@ -26,7 +26,7 @@ HEADERS +=\
 
 CONFIG += c++11
 
-VERSION = 0.1.2
+VERSION = 2.3.1
 
 QMAKE_TARGET_DESCRIPTION = "Stream Deck OBS Plugin"
 QMAKE_TARGET_COMPANY = "Elgato Systems GmbH"

@@ -76,6 +76,8 @@ public slots:
 	void reqToggleRecord();
 	void reqToggleStream();
 
+	void reqVersion();
+
     void reqCurrentCollectionAndSceneName();
     void reqSourcesState(bool isMixerSrc, QString scName, QString sceneName, QString sourceName, QString sourceIdStr, int sceneItemId);
 

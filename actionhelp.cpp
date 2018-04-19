@@ -309,6 +309,22 @@ void ActionHelp::reqUpdateSCList()
     sendNotifyFlag = true;
 }
 
+void ActionHelp::reqVersion()
+{
+	sendNotifyFlag = false;
+
+	QStringList list;
+	auto versionInfo = VERSION_STR;
+
+	list.append(versionInfo);
+	
+	QByteArray buf;
+	ipcThreadPtr->fillDataBuf(buf, list);
+	ipcThreadPtr->sendCmdToList(ShmId_StreamDeck, buf, SDIPCCMD_Req_VerInfo);
+
+	sendNotifyFlag = true;
+}
+
 void ActionHelp::reqUpdateSceneList(QString scName)
 {
     sendNotifyFlag = false;

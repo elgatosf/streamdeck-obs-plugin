@@ -379,6 +379,10 @@ void IPC_Thread::cmdHandle(const ShfPayload &payload, SDIPCCmd cmd, QDataStream 
 	}
 
     case SDIPCCMD_Req_VerInfo:
+	{
+		QMetaObject::invokeMethod(actionHelpPtr, "reqVersion");
+		break;
+	}
     case SDIPCCMD_ShowWindow:
     {
         qDebug() << "Err: unsupport cmd!" << cmd;
