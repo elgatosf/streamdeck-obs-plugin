@@ -66,7 +66,15 @@ typedef enum _StreamDeckIPCCmd {
 	// OBS error handling
 	SDIPCCMD_Select_OBS_Scene_Error,
 	SDIPCCMD_Toggle_OBS_Source_Error,
-    
+
+	//OBS for multi actions
+	SDIPCCMD_Start_OBS_Stream,
+	SDIPCCMD_Stop_OBS_Stream,
+	SDIPCCMD_Start_OBS_Record,
+	SDIPCCMD_Stop_OBS_Record,
+	SDIPCCMD_Activate_OBS_Source,
+	SDIPCCMD_Deactivate_OBS_Source,
+
 	SDIPCCMD_COUNT,
 }SDIPCCmd;
 

@@ -423,7 +423,7 @@ void ActionHelp::reqSelectScene(QString scName, QString sceneName)
 	}
 }
 
-void ActionHelp::reqToggleSource(bool isMixerSrc, QString scName, QString sceneName, QString sourceName, QString sourceIdStr, int sceneItemId)
+void ActionHelp::reqToggleSource(bool isMixerSrc, QString scName, QString sceneName, QString sourceName, QString sourceIdStr, int sceneItemId, int toggleInfo)
 {
     sendNotifyFlag = false;
 
@@ -431,7 +431,7 @@ void ActionHelp::reqToggleSource(bool isMixerSrc, QString scName, QString sceneN
 
 	if (scName == getCurrentSceneCollectionName())
 	{
-		isToggled = toggleSource(isMixerSrc, sceneName, sourceName, sourceIdStr, (int64_t)sceneItemId);
+		isToggled = toggleSource(isMixerSrc, sceneName, sourceName, sourceIdStr, (int64_t)sceneItemId, (ToggleInfo) toggleInfo);
 	}
     else
     {
@@ -460,6 +460,7 @@ void ActionHelp::reqToggleSource(bool isMixerSrc, QString scName, QString sceneN
 	}
 }
 
+
 void ActionHelp::reqToggleRecord()
 {
 	sendNotifyFlag = false;
@@ -473,6 +474,32 @@ void ActionHelp::reqToggleRecord()
 	{
 		obs_frontend_recording_start();
 		ipcThreadPtr->onNotify(ShmId_StreamDeck, QStringList("recording_started"));
+	}
+
+	sendNotifyFlag = true;
+}
+
+void ActionHelp::reqStartRecord()
+{
+	sendNotifyFlag = false;
+
+	if (!obs_frontend_recording_active())
+	{
+		obs_frontend_recording_start();
+		ipcThreadPtr->onNotify(ShmId_StreamDeck, QStringList("recording_started"));
+	}
+
+	sendNotifyFlag = true;
+}
+
+void ActionHelp::reqStopRecord()
+{
+	sendNotifyFlag = false;
+
+	if (obs_frontend_recording_active())
+	{
+		obs_frontend_recording_stop();
+		ipcThreadPtr->onNotify(ShmId_StreamDeck, QStringList("recording_stopped"));
 	}
 
 	sendNotifyFlag = true;
@@ -508,6 +535,35 @@ void ActionHelp::reqToggleStream()
 	sendNotifyFlag = true;
 }
 
+void ActionHelp::reqStartStream()
+{
+	if (!obs_frontend_streaming_active())
+	{
+		obs_frontend_streaming_start();
+
+		if (obs_frontend_recording_active())
+		{
+			ipcThreadPtr->onNotify(ShmId_StreamDeck, QStringList("recording_started"));
+		}
+
+		ipcThreadPtr->onNotify(ShmId_StreamDeck, QStringList("streaming_started"));
+	}
+}
+
+void ActionHelp::reqStopStream()
+{
+	if (obs_frontend_streaming_active())
+	{
+		obs_frontend_streaming_stop();
+
+		if (!obs_frontend_recording_active())
+		{
+			ipcThreadPtr->onNotify(ShmId_StreamDeck, QStringList("recording_stopped"));
+		}
+
+		ipcThreadPtr->onNotify(ShmId_StreamDeck, QStringList("streaming_stopped"));
+	}
+}
 
 void ActionHelp::reqCurrentCollectionAndSceneName()
 {
@@ -596,7 +652,7 @@ bool ActionHelp::selectScene(QString scName, QString sceneName, QString &errStr)
     return false;
 }
 
-bool ActionHelp::toggleSource(bool isMixerSrc, QString sceneName, QString srcName, QString sourceIdStr, int64_t sceneItemId)
+bool ActionHelp::toggleSource(bool isMixerSrc, QString sceneName, QString srcName, QString sourceIdStr, int64_t sceneItemId, ToggleInfo toggleInfo)
 {
     qDebug() << __FUNCTION__ << __LINE__ << sceneName << srcName << sourceIdStr << sceneItemId;
 
@@ -614,6 +670,15 @@ bool ActionHelp::toggleSource(bool isMixerSrc, QString sceneName, QString srcNam
             OBS_SOURCE_TYPE srcType = getSourceType(sourceIdStr.toStdString());
 
             qDebug() << __FUNCTION__ << __LINE__ << sceneName << srcName << sourceIdStr << !setFlag << "is mixer source: " << isMixerSource(srcType);
+
+			if (setFlag && toggleInfo == ToggleInfo::Deactivate)
+			{
+				return false;
+			}
+			else if (!setFlag && toggleInfo == ToggleInfo::Activate)
+			{
+				return false;
+			}
 
             obs_source_set_muted(src, !setFlag);
             obs_source_release(src);  // use obs_source_release to release it when complete.
@@ -681,14 +746,40 @@ bool ActionHelp::toggleSource(bool isMixerSrc, QString sceneName, QString srcNam
     {
         bool setFlag = obs_source_muted(source);
         qDebug() << __FUNCTION__ << __LINE__ << sceneName << srcName << sourceIdStr << "set mixer source: " << !setFlag;
-        obs_source_set_muted(source, !setFlag);
-		hasToggled = true;
+
+
+		if (setFlag && toggleInfo == ToggleInfo::Deactivate)
+		{
+			hasToggled = false;
+		}
+		else if (!setFlag && toggleInfo == ToggleInfo::Activate)
+		{
+			hasToggled = false;
+		}
+		else
+		{
+			obs_source_set_muted(source, !setFlag);
+			hasToggled = true;
+		}
     }
     else
     {
         bool setFlag = isSourceVisible(isMixerSrc, getCurrentSceneCollectionName(), sceneName, srcName, sourceIdStr, sceneItemId);
         qDebug() << __FUNCTION__ << __LINE__ << sceneName << srcName << sourceIdStr << sceneItemId << "set normal source: " << !setFlag;
-        hasToggled = obs_sceneitem_set_visible(item, !setFlag);
+       
+		if (!setFlag && toggleInfo == ToggleInfo::Deactivate)
+		{
+			hasToggled = false;
+		}
+		else if (setFlag && toggleInfo == ToggleInfo::Activate)
+		{
+			hasToggled = false;
+		}
+		else
+		{
+			hasToggled = obs_sceneitem_set_visible(item, !setFlag);
+		}
+		
     }
 
 	return hasToggled;

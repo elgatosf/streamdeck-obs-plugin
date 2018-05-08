@@ -362,9 +362,50 @@ void IPC_Thread::cmdHandle(const ShfPayload &payload, SDIPCCmd cmd, QDataStream 
                                                  Q_ARG(QString, sceneName),
                                                  Q_ARG(QString, srcName),
 												 Q_ARG(QString, srcIdStr),
-                                                 Q_ARG(int, (int) sceneItemId));
+                                                 Q_ARG(int, (int) sceneItemId),
+												 Q_ARG(int, (int) ToggleInfo::Toggle));
         break;
     }
+
+	case SDIPCCMD_Activate_OBS_Source:
+	{
+		bool isMixerSrc;
+		QString scName, sceneName, srcName, srcIdStr;
+		int64_t sceneItemId;
+
+		ds >> isMixerSrc >> scName >> sceneName >> srcName >> srcIdStr;
+		ds >> sceneItemId;
+
+		QMetaObject::invokeMethod(actionHelpPtr, "reqToggleSource",
+			Q_ARG(bool, isMixerSrc),
+			Q_ARG(QString, scName),
+			Q_ARG(QString, sceneName),
+			Q_ARG(QString, srcName),
+			Q_ARG(QString, srcIdStr),
+			Q_ARG(int, (int)sceneItemId),
+			Q_ARG(int, (int)ToggleInfo::Activate));
+		break;
+	}
+
+	case SDIPCCMD_Deactivate_OBS_Source:
+	{
+		bool isMixerSrc;
+		QString scName, sceneName, srcName, srcIdStr;
+		int64_t sceneItemId;
+
+		ds >> isMixerSrc >> scName >> sceneName >> srcName >> srcIdStr;
+		ds >> sceneItemId;
+
+		QMetaObject::invokeMethod(actionHelpPtr, "reqToggleSource",
+			Q_ARG(bool, isMixerSrc),
+			Q_ARG(QString, scName),
+			Q_ARG(QString, sceneName),
+			Q_ARG(QString, srcName),
+			Q_ARG(QString, srcIdStr),
+			Q_ARG(int, (int)sceneItemId),
+			Q_ARG(int, (int)ToggleInfo::Deactivate));
+		break;
+	}
 
 	case SDIPCCMD_Toggle_OBS_Record:
 	{
@@ -372,9 +413,33 @@ void IPC_Thread::cmdHandle(const ShfPayload &payload, SDIPCCmd cmd, QDataStream 
 		break;
 	}
 
+	case SDIPCCMD_Start_OBS_Record:
+	{
+		QMetaObject::invokeMethod(actionHelpPtr, "reqStartRecord");
+		break;
+	}
+
+	case SDIPCCMD_Stop_OBS_Record:
+	{
+		QMetaObject::invokeMethod(actionHelpPtr, "reqStopRecord");
+		break;
+	}	
+	
 	case SDIPCCMD_Toggle_OBS_Stream:
 	{
 		QMetaObject::invokeMethod(actionHelpPtr, "reqToggleStream");
+		break;
+	}
+
+	case SDIPCCMD_Start_OBS_Stream:
+	{
+		QMetaObject::invokeMethod(actionHelpPtr, "reqStartStream");
+		break;
+	}
+
+	case SDIPCCMD_Stop_OBS_Stream:
+	{
+		QMetaObject::invokeMethod(actionHelpPtr, "reqStopStream");
 		break;
 	}
 

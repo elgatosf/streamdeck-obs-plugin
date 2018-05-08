@@ -42,6 +42,12 @@ typedef struct _SourceInfo
     obs_source_type type;
 }SourceInfo;
 
+enum ToggleInfo
+{
+	Toggle,
+	Activate,
+	Deactivate
+};
 
 // ----------------------------------------------------------------------------
 class ActionHelp : public QObject
@@ -60,7 +66,7 @@ public:
 
     void selectSceneCollection(QString scName);
     bool selectScene(QString scName, QString sceneName, QString &errStr);
-    bool toggleSource(bool isMixerSrc, QString sceneName, QString srcName, QString sourceIdStr, int64_t sceneItemId);
+    bool toggleSource(bool isMixerSrc, QString sceneName, QString srcName, QString sourceIdStr, int64_t sceneItemId, ToggleInfo toggleInfo);
 
     bool isSourceVisible(bool isMixerSrc, QString scName, QString sceneName, QString sourceName, QString sourceIdStr, int64_t sceneItemId);
 
@@ -72,9 +78,15 @@ public slots:
     void reqUpdateSourcesList(QString inCollectionName, QString inSceneName);
     void reqUpdateSourcesListOfAll(QString scName);
     void reqSelectScene(QString scName, QString sceneName);
-    void reqToggleSource(bool isMixerSrc, QString scName, QString sceneName, QString sourceName, QString sourceIdStr, int sceneItemId);
+    void reqToggleSource(bool isMixerSrc, QString scName, QString sceneName, QString sourceName, QString sourceIdStr, int sceneItemId, int toggleInfo);
+
 	void reqToggleRecord();
+	void reqStartRecord();
+	void reqStopRecord();
+
 	void reqToggleStream();
+	void reqStartStream();
+	void reqStopStream();
 
 	void reqVersion();
 
