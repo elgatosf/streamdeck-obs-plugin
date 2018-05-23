@@ -27,10 +27,10 @@
 3. Configuration Manager is seen -> Change "Active solution configuration:" combo box on upper left to Release
 4. Click "Close"
 5. Change Settings to enable Debugging
-	- Click the C/C++ node. Set Debug Information Format to C7 compatible (/Z7) or Program Database (/Zi).
+	- Expand and Click the C/C++ node. Set Debug Information Format to C7 compatible (/Z7) or Program Database (/Zi).
 	- Select the Optimization node. Set Optimization to Disabled (/Od)/
     - Expand Linker and click the General node. Set Enable Incremental Linking to No (/INCREMENTAL:NO).
-	- Select the Debugging node. Set Generate Debug Info to Yes (/DEBUG).
+	- Select the Debugging node. Set Generate Debug Info to Optimize for Debugging (/DEBUG).
 	- Select the Optimization node. Set References to /OPT:REF and Enable COMDAT Folding to /OPT:ICF
 
 ## Building and Debugging in Visual Studio
