@@ -1,0 +1,3 @@
+[submodule "submodules/json"]
+	path = submodules/json
+	url = ssh://git@git.elgato.com:7999/tp-lib/json.git
