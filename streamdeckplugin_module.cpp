@@ -1,16 +1,21 @@
 #include "streamdeckplugin_module.h"
 #include "infodialog.h"
 #include "actionhelp.h"
-#include "ipc_thread.h"
 #include <QMainWindow>
 #include <QAction>
 #include <QDebug>
+#include <QThread>
+#include <QTimer>
+#include <QtNetwork>
+
+#include "JSONUtils.h"
 
 OBS_DECLARE_MODULE()
 OBS_MODULE_USE_DEFAULT_LOCALE("frontend-tools", "en-US")
 
-IPC_Thread *ipcThreadPtr  = NULL;
 ActionHelp *actionHelpPtr = NULL;
+
+QTcpServer *tcpServer = nullptr;
 
 // ----------------------------------------------------------------------------
 // OBS Module Callback
@@ -43,7 +48,7 @@ void ItemMuted(void* ptr, calldata_t* calldata)
         list << "syncSourceState" << isMixerSrcStr << scName << sceneName << name.c_str() << id.c_str() << "1" << activeFlagStr;
 
         // add to cmd list
-        QMetaObject::invokeMethod(ipcThreadPtr, "onNotify", Q_ARG(ShmID, ShmId_StreamDeck), Q_ARG(QStringList, list));
+        //QMetaObject::invokeMethod(ipcThreadPtr, "onNotify", Q_ARG(ShmID, ShmId_StreamDeck), Q_ARG(QStringList, list));
     }
 
 }
@@ -99,7 +104,7 @@ void ItemVisible(void* ptr, calldata_t* calldata)
         list << "syncSourceState" << isMixerSrcStr << scName << sceneName << name.c_str() << id.c_str() << sceneItemIdString << flagStr;
 
         // add to cmd list
-        QMetaObject::invokeMethod(ipcThreadPtr, "onNotify", Q_ARG(ShmID, ShmId_StreamDeck), Q_ARG(QStringList, list));
+        //QMetaObject::invokeMethod(ipcThreadPtr, "onNotify", Q_ARG(ShmID, ShmId_StreamDeck), Q_ARG(QStringList, list));
     }
 }
 
@@ -129,6 +134,12 @@ void OBSEvent(enum obs_frontend_event event, void* data)
 
     qDebug() << __FUNCTION__ << QThread::currentThread();
 
+	json eventJson;
+	eventJson["jsonrpc"] = "2.0";
+	json result = json::object();
+	result["_type"] = "EVENT";
+	eventJson["id"] = nullptr;
+
 	switch (event)
 	{
 		case OBS_FRONTEND_EVENT_STREAMING_STARTING:
@@ -143,7 +154,14 @@ void OBSEvent(enum obs_frontend_event event, void* data)
 
 			if (actionHelpPtr->getSendNotifyFlag())
 			{
-				QMetaObject::invokeMethod(ipcThreadPtr, "onNotify", Q_ARG(ShmID, ShmId_StreamDeck), Q_ARG(QStringList, QStringList("streaming_started")));
+				result["data"] = "live";
+				result["emitter"] = "STREAM";
+				result["resourceId"] = "StreamingService.streamingStatusChange";
+
+				eventJson["result"] = result;
+
+				std::string str = eventJson.dump() + "\n";
+				actionHelpPtr->WriteToSocket(str);
 			}
 		}
 		break;
@@ -160,7 +178,14 @@ void OBSEvent(enum obs_frontend_event event, void* data)
 
 			if (actionHelpPtr->getSendNotifyFlag())
 			{
-				QMetaObject::invokeMethod(ipcThreadPtr, "onNotify", Q_ARG(ShmID, ShmId_StreamDeck), Q_ARG(QStringList, QStringList("streaming_stopped")));
+				result["data"] = "offline";
+				result["emitter"] = "STREAM";
+				result["resourceId"] = "StreamingService.streamingStatusChange";
+
+				eventJson["result"] = result;
+
+				std::string str = eventJson.dump() + "\n";
+				actionHelpPtr->WriteToSocket(str);				actionHelpPtr->WriteToSocket(str);
 			}
 		}
 		break;
@@ -177,7 +202,17 @@ void OBSEvent(enum obs_frontend_event event, void* data)
 
 			if (actionHelpPtr->getSendNotifyFlag())
 			{
-				QMetaObject::invokeMethod(ipcThreadPtr, "onNotify", Q_ARG(ShmID, ShmId_StreamDeck), Q_ARG(QStringList, QStringList("recording_started")));
+				if (actionHelpPtr->getSendNotifyFlag())
+				{
+					result["data"] = "recording";
+					result["emitter"] = "RECORD";
+					result["resourceId"] = "RecordingService.recordingStatusChange";
+
+					eventJson["result"] = result;
+
+					std::string str = eventJson.dump() + "\n";
+					actionHelpPtr->WriteToSocket(str);
+				}
 			}
 		}
 		break;
@@ -191,9 +226,20 @@ void OBSEvent(enum obs_frontend_event event, void* data)
 		case OBS_FRONTEND_EVENT_RECORDING_STOPPED:
 		{
 			qDebug() << "OBS_FRONTEND_EVENT_RECORDING_STOPPED";
+
 			if (actionHelpPtr->getSendNotifyFlag())
 			{
-				QMetaObject::invokeMethod(ipcThreadPtr, "onNotify", Q_ARG(ShmID, ShmId_StreamDeck), Q_ARG(QStringList, QStringList("recording_stopped")));
+				if (actionHelpPtr->getSendNotifyFlag())
+				{
+					result["data"] = "offline";
+					result["emitter"] = "RECORD";
+					result["resourceId"] = "RecordingService.recordingStatusChange";
+
+					eventJson["result"] = result;
+
+					std::string str = eventJson.dump() + "\n";
+					actionHelpPtr->WriteToSocket(str);				actionHelpPtr->WriteToSocket(str);
+				}
 			}
 		}
 		break;
@@ -210,7 +256,7 @@ void OBSEvent(enum obs_frontend_event event, void* data)
 			qDebug() << "OBS_FRONTEND_EVENT_SCENE_LIST_CHANGED";
 			if (actionHelpPtr->getSendNotifyFlag())
 			{
-				QMetaObject::invokeMethod(ipcThreadPtr, "onNotify", Q_ARG(ShmID, ShmId_StreamDeck), Q_ARG(QStringList, QStringList("update")));
+				//QMetaObject::invokeMethod(ipcThreadPtr, "onNotify", Q_ARG(ShmID, ShmId_StreamDeck), Q_ARG(QStringList, QStringList("update")));
 			}
 		}
 		break;
@@ -248,7 +294,7 @@ void OBSEvent(enum obs_frontend_event event, void* data)
 
 			if (actionHelpPtr->getSendNotifyFlag())
 			{
-				QMetaObject::invokeMethod(ipcThreadPtr, "onNotify", Q_ARG(ShmID, ShmId_StreamDeck), Q_ARG(QStringList, QStringList("update")));
+				//QMetaObject::invokeMethod(ipcThreadPtr, "onNotify", Q_ARG(ShmID, ShmId_StreamDeck), Q_ARG(QStringList, QStringList("update")));
 			}
 		}
 		break;
@@ -317,7 +363,7 @@ void SaveCallback(obs_data_t* save_data, bool saving, void*)
 
         if (actionHelpPtr->getSendNotifyFlag())
         {
-            QMetaObject::invokeMethod(ipcThreadPtr, "onNotify", Q_ARG(ShmID, ShmId_StreamDeck), Q_ARG(QStringList, QStringList("update")));
+            //QMetaObject::invokeMethod(ipcThreadPtr, "onNotify", Q_ARG(ShmID, ShmId_StreamDeck), Q_ARG(QStringList, QStringList("update")));
         }
     }
 }
@@ -330,11 +376,11 @@ void FreeStreamDeckPlugin()
         actionHelpPtr = NULL;
     }
 
-    if (ipcThreadPtr)
-    {
-        delete ipcThreadPtr;
-        ipcThreadPtr = NULL;
-    }
+	if (tcpServer)
+	{
+	    delete tcpServer;
+		tcpServer = NULL;
+	}
 }
 
 void InitStreamDeckPlugin()
@@ -359,18 +405,18 @@ void InitStreamDeckPlugin()
     // action helper, some action must in main thread.
     actionHelpPtr = new ActionHelp(parent);
 
-    // communication thread
-    ipcThreadPtr = new IPC_Thread(parent);
-    ipcThreadPtr->start();
+	tcpServer = new QTcpServer(parent);
+
+	QObject::connect(tcpServer, &QTcpServer::newConnection, actionHelpPtr, &ActionHelp::SDClientConnected);
+
+	if (!tcpServer->listen(QHostAddress::LocalHost, 28194)) 
+	{
+		return;
+	}
 
     // setup obs event callback
     obs_frontend_add_save_callback(SaveCallback, nullptr);
     obs_frontend_add_event_callback(OBSEvent, nullptr);
-
-    if (actionHelpPtr->getSendNotifyFlag())
-    {
-        QMetaObject::invokeMethod(ipcThreadPtr, "onNotify", Q_ARG(ShmID, ShmId_StreamDeck), Q_ARG(QStringList, QStringList("obs_started")));
-    }
 }
 
 // ----------------------------------------------------------------------------

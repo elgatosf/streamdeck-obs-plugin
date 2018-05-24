@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += widgets
+QT       += widgets network
 
 TARGET   = StreamDeckPlugin
 TEMPLATE = lib
@@ -22,7 +22,9 @@ HEADERS +=\
     streamdeckplugin_module.h \
     infodialog.h \
     actionhelp.h \
-    ipc_thread.h
+    ipc_thread.h \
+	JSONUtils.h \
+	submodules/json/src/json.hpp
 
 CONFIG += c++11
 
@@ -36,6 +38,10 @@ DEFINES += VERSION_STR=\\\"$$VERSION\\\"
 
 include(./SharedFile/SharedFile.pri)   # IPC
 INCLUDEPATH += ./SharedFile/
+
+# json
+INCLUDEPATH += $$PWD/submodules/json/src/ 
+
 
 INCLUDEPATH += $$PWD/obs-dev/headers/libobs/ \
 				$$PWD/obs-dev/headers/UI/

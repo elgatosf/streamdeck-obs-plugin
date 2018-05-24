@@ -1,9 +1,12 @@
 #include "actionhelp.h"
-#include "ipc_thread.h"
 #include <QDebug>
+#include <QThread>
+#include <QTcpServer>
+#include <QObject>
+#include <QDataStream>
 
 // ----------------------------------------------------------------------------
-extern IPC_Thread *ipcThreadPtr;
+extern QTcpServer *tcpServer;
 
 
 // ----------------------------------------------------------------------------
@@ -303,8 +306,8 @@ void ActionHelp::reqUpdateSCList()
     }
 
     QByteArray buf;
-    ipcThreadPtr->fillDataBuf(buf, list, currScName);
-    ipcThreadPtr->sendCmdToList(ShmId_StreamDeck, buf, SDIPCCMD_Req_OBS_SCList);
+    //ipcThreadPtr->fillDataBuf(buf, list, currScName);
+    //ipcThreadPtr->sendCmdToList(ShmId_StreamDeck, buf, SDIPCCMD_Req_OBS_SCList);
 
     sendNotifyFlag = true;
 }
@@ -319,8 +322,8 @@ void ActionHelp::reqVersion()
 	list.append(versionInfo);
 	
 	QByteArray buf;
-	ipcThreadPtr->fillDataBuf(buf, list);
-	ipcThreadPtr->sendCmdToList(ShmId_StreamDeck, buf, SDIPCCMD_Req_VerInfo);
+	//ipcThreadPtr->fillDataBuf(buf, list);
+	//ipcThreadPtr->sendCmdToList(ShmId_StreamDeck, buf, SDIPCCMD_Req_VerInfo);
 
 	sendNotifyFlag = true;
 }
@@ -343,8 +346,8 @@ void ActionHelp::reqUpdateSceneList(QString scName)
 	selectSceneCollection(currentCollectionName);
 
     QByteArray buf;
-	ipcThreadPtr->fillDataBuf(buf, list);
-	ipcThreadPtr->sendCmdToList(ShmId_StreamDeck, buf, SDIPCCMD_Req_OBS_ScenesList);
+	//ipcThreadPtr->fillDataBuf(buf, list);
+	//ipcThreadPtr->sendCmdToList(ShmId_StreamDeck, buf, SDIPCCMD_Req_OBS_ScenesList);
 
     sendNotifyFlag = true;
 }
@@ -367,8 +370,8 @@ void ActionHelp::reqUpdateSourcesList(QString inCollectionName, QString inSceneN
 	selectSceneCollection(currentCollectionName);
 
     QByteArray buf;
-    ipcThreadPtr->fillDataBuf(buf, errStr, list);
-    ipcThreadPtr->sendCmdToList(ShmId_StreamDeck, buf, SDIPCCMD_Req_OBS_SourceList);
+    //ipcThreadPtr->fillDataBuf(buf, errStr, list);
+    //ipcThreadPtr->sendCmdToList(ShmId_StreamDeck, buf, SDIPCCMD_Req_OBS_SourceList);
 
     sendNotifyFlag = true;
 }
@@ -390,8 +393,8 @@ void ActionHelp::reqUpdateSourcesListOfAll(QString scName)
     updateSourcesList("", sourceStrList, errStr);
 
     QByteArray buf;
-    ipcThreadPtr->fillDataBuf(buf, errStr, sourceStrList);
-    ipcThreadPtr->sendCmdToList(ShmId_StreamDeck, buf, SDIPCCMD_Req_OBS_SourceListOfAll);
+    //ipcThreadPtr->fillDataBuf(buf, errStr, sourceStrList);
+    //ipcThreadPtr->sendCmdToList(ShmId_StreamDeck, buf, SDIPCCMD_Req_OBS_SourceListOfAll);
 
 	selectSceneCollection(currentCollectionName);
 
@@ -411,16 +414,16 @@ void ActionHelp::reqSelectScene(QString scName, QString sceneName)
 	list << scName << sceneName;
 
 	QByteArray buf;
-	ipcThreadPtr->fillDataBuf(buf, list);
+	//ipcThreadPtr->fillDataBuf(buf, list);
 
-	if (isSelected)
-	{
-		ipcThreadPtr->sendCmdToList(ShmId_StreamDeck, buf, SDIPCCMD_Req_OBS_CurrentCollectionAndSceneName);
-	}
-	else
-	{
-		ipcThreadPtr->sendCmdToList(ShmId_StreamDeck, buf, SDIPCCMD_Select_OBS_Scene_Error);
-	}
+	//if (isSelected)
+	//{
+	//	ipcThreadPtr->sendCmdToList(ShmId_StreamDeck, buf, SDIPCCMD_Req_OBS_CurrentCollectionAndSceneName);
+	//}
+	//else
+	//{
+	//	ipcThreadPtr->sendCmdToList(ShmId_StreamDeck, buf, SDIPCCMD_Select_OBS_Scene_Error);
+	//}
 }
 
 void ActionHelp::reqToggleSource(bool isMixerSrc, QString scName, QString sceneName, QString sourceName, QString sourceIdStr, int sceneItemId, int toggleInfo)
@@ -455,57 +458,122 @@ void ActionHelp::reqToggleSource(bool isMixerSrc, QString scName, QString sceneN
 		qDebug() << __FUNCTION__ << list;
 
 		QByteArray buf;
-		ipcThreadPtr->fillDataBuf(buf, list);
-		ipcThreadPtr->sendCmdToList(ShmId_StreamDeck, buf, SDIPCCMD_Toggle_OBS_Source_Error);
+		//ipcThreadPtr->fillDataBuf(buf, list);
+		//ipcThreadPtr->sendCmdToList(ShmId_StreamDeck, buf, SDIPCCMD_Toggle_OBS_Source_Error);
 	}
 }
 
 
-void ActionHelp::reqToggleRecord()
-{
-	sendNotifyFlag = false;
+//void ActionHelp::reqToggleRecord(json* inResponse)
+//{
+//	sendNotifyFlag = false;
+//
+//	if (obs_frontend_recording_active())
+//	{
+//		obs_frontend_recording_stop();
+//
+//		json refResponse = &inResponse;
+//
+//		refResponse["id"] = RPC_ID_startRecording;
+//		std::string str = refResponse.dump() + "\n";
+//		WriteToSocket(str);
+//	}
+//	else
+//	{
+//		obs_frontend_recording_start();
+//		//ipcThreadPtr->onNotify(ShmId_StreamDeck, QStringList("recording_started"));
+//	}
+//
+//	sendNotifyFlag = true;
+//}
 
-	if (obs_frontend_recording_active())
-	{
-		obs_frontend_recording_stop();
-		ipcThreadPtr->onNotify(ShmId_StreamDeck, QStringList("recording_stopped"));
-	}
-	else
-	{
-		obs_frontend_recording_start();
-		ipcThreadPtr->onNotify(ShmId_StreamDeck, QStringList("recording_started"));
-	}
-
-	sendNotifyFlag = true;
-}
-
-void ActionHelp::reqStartRecord()
+void ActionHelp::reqStartRecord(json* inResponse)
 {
 	sendNotifyFlag = false;
 
 	if (!obs_frontend_recording_active())
 	{
 		obs_frontend_recording_start();
-		ipcThreadPtr->onNotify(ShmId_StreamDeck, QStringList("recording_started"));
+
+		std::string str = inResponse->dump() + "\n";
+		WriteToSocket(str);
 	}
 
 	sendNotifyFlag = true;
 }
 
-void ActionHelp::reqStopRecord()
+void ActionHelp::reqStopRecord(json* inResponse)
 {
 	sendNotifyFlag = false;
 
 	if (obs_frontend_recording_active())
 	{
 		obs_frontend_recording_stop();
-		ipcThreadPtr->onNotify(ShmId_StreamDeck, QStringList("recording_stopped"));
+
+		std::string str = inResponse->dump() + "\n";
+		WriteToSocket(str);
 	}
 
 	sendNotifyFlag = true;
 }
 
-void ActionHelp::reqToggleStream()
+//void ActionHelp::reqToggleStream(json* inResponse)
+//{
+//	sendNotifyFlag = false;
+//
+//	if (obs_frontend_streaming_active())
+//	{
+//		obs_frontend_streaming_stop();
+//
+//		if (!obs_frontend_recording_active())
+//		{
+//			//ipcThreadPtr->onNotify(ShmId_StreamDeck, QStringList("recording_stopped"));
+//		}
+//
+//		//ipcThreadPtr->onNotify(ShmId_StreamDeck, QStringList("streaming_stopped"));
+//	}
+//	else
+//	{
+//		obs_frontend_streaming_start();
+//
+//		if (obs_frontend_recording_active())
+//		{
+//			//ipcThreadPtr->onNotify(ShmId_StreamDeck, QStringList("recording_started"));
+//		}
+//
+//		//ipcThreadPtr->onNotify(ShmId_StreamDeck, QStringList("streaming_started"));
+//	}
+//
+//	sendNotifyFlag = true;
+//}
+
+void ActionHelp::reqStartStream(json* inResponse)
+{
+	sendNotifyFlag = false;
+
+	if (!obs_frontend_streaming_active())
+	{
+		obs_frontend_streaming_start();
+
+				json refResponse = *inResponse;
+		
+				std::string str = refResponse.dump() + "\n";
+				WriteToSocket(str);
+
+		if (obs_frontend_recording_active())
+		{
+			refResponse["id"] = RPC_ID_startRecording;
+			std::string str = refResponse.dump() + "\n";
+			WriteToSocket(str);
+		}
+
+		//ipcThreadPtr->onNotify(ShmId_StreamDeck, QStringList("streaming_started"));
+	}
+
+	sendNotifyFlag = true;
+}
+
+void ActionHelp::reqStopStream(json* inResponse)
 {
 	sendNotifyFlag = false;
 
@@ -513,56 +581,20 @@ void ActionHelp::reqToggleStream()
 	{
 		obs_frontend_streaming_stop();
 
+		json refResponse = *inResponse;
+
+		std::string str = refResponse.dump() + "\n";
+		WriteToSocket(str);
+
 		if (!obs_frontend_recording_active())
 		{
-			ipcThreadPtr->onNotify(ShmId_StreamDeck, QStringList("recording_stopped"));
+			refResponse["id"] = RPC_ID_stopRecording;
+			std::string str = refResponse.dump() + "\n";
+			WriteToSocket(str);
 		}
-
-		ipcThreadPtr->onNotify(ShmId_StreamDeck, QStringList("streaming_stopped"));
-	}
-	else
-	{
-		obs_frontend_streaming_start();
-
-		if (obs_frontend_recording_active())
-		{
-			ipcThreadPtr->onNotify(ShmId_StreamDeck, QStringList("recording_started"));
-		}
-
-		ipcThreadPtr->onNotify(ShmId_StreamDeck, QStringList("streaming_started"));
 	}
 
 	sendNotifyFlag = true;
-}
-
-void ActionHelp::reqStartStream()
-{
-	if (!obs_frontend_streaming_active())
-	{
-		obs_frontend_streaming_start();
-
-		if (obs_frontend_recording_active())
-		{
-			ipcThreadPtr->onNotify(ShmId_StreamDeck, QStringList("recording_started"));
-		}
-
-		ipcThreadPtr->onNotify(ShmId_StreamDeck, QStringList("streaming_started"));
-	}
-}
-
-void ActionHelp::reqStopStream()
-{
-	if (obs_frontend_streaming_active())
-	{
-		obs_frontend_streaming_stop();
-
-		if (!obs_frontend_recording_active())
-		{
-			ipcThreadPtr->onNotify(ShmId_StreamDeck, QStringList("recording_stopped"));
-		}
-
-		ipcThreadPtr->onNotify(ShmId_StreamDeck, QStringList("streaming_stopped"));
-	}
 }
 
 void ActionHelp::reqCurrentCollectionAndSceneName()
@@ -577,8 +609,8 @@ void ActionHelp::reqCurrentCollectionAndSceneName()
     list << scName << sceneName;
 
     QByteArray buf;
-    ipcThreadPtr->fillDataBuf(buf, list);
-    ipcThreadPtr->sendCmdToList(ShmId_StreamDeck, buf, SDIPCCMD_Req_OBS_CurrentCollectionAndSceneName);
+    //ipcThreadPtr->fillDataBuf(buf, list);
+    //ipcThreadPtr->sendCmdToList(ShmId_StreamDeck, buf, SDIPCCMD_Req_OBS_CurrentCollectionAndSceneName);
 }
 
 void ActionHelp::reqSourcesState(bool isMixerSrc, QString scName, QString sceneName, QString sourceName, QString sourceIdStr, int sceneItemId)
@@ -594,8 +626,8 @@ void ActionHelp::reqSourcesState(bool isMixerSrc, QString scName, QString sceneN
     qDebug() << __FUNCTION__ << list << flagStr;
 
     QByteArray buf;
-    ipcThreadPtr->fillDataBuf(buf, list, flagStr);
-    ipcThreadPtr->sendCmdToList(ShmId_StreamDeck, buf, SDIPCCMD_Req_OBS_SourceState);
+    //ipcThreadPtr->fillDataBuf(buf, list, flagStr);
+    //ipcThreadPtr->sendCmdToList(ShmId_StreamDeck, buf, SDIPCCMD_Req_OBS_SourceState);
 }
 
 void ActionHelp::selectSceneCollection(QString scName)
@@ -904,6 +936,111 @@ int ActionHelp::isMixerSource(OBS_SOURCE_TYPE srcType)
 			qDebug() << __FUNCTION__ << "unknow type!";
 			return 0;
     }
+}
+
+void ActionHelp::SDClientConnected()
+{
+	while (tcpServer->hasPendingConnections())
+	{
+		mSocket = tcpServer->nextPendingConnection();
+		
+		QObject::connect(mSocket, SIGNAL(readyRead()), SLOT(ReadyRead()));
+		connect(mSocket, SIGNAL(disconnected()), SLOT(Disconnected()));
+	}
+}
+
+void ActionHelp::ReadyRead()
+{
+	QByteArray lineByteArray;
+
+	while (mSocket->canReadLine())
+	{
+		try
+		{
+			lineByteArray = mSocket->readLine();
+
+			auto j = json::parse(lineByteArray);
+
+			int rpcID = JSONUtils::GetIntByName(j, "id");
+
+			json responseJson;
+			responseJson["jsonrpc"] = "2.0";
+			responseJson["id"] = rpcID;
+
+			json result = json::object();
+
+			switch (rpcID)
+			{
+			case RPC_ID_startStreaming:
+			{
+				reqStartStream(&responseJson);
+			}
+			break;			
+			case RPC_ID_stopStreaming:
+			{
+				reqStopStream(&responseJson);
+			}
+			break;
+
+			case RPC_ID_startRecording:
+			{
+				reqStartRecord(&responseJson);
+			}
+			break;
+
+			case RPC_ID_stopRecording:
+			{
+				reqStopRecord(&responseJson);
+			}
+			break;
+
+			case RPC_ID_getRecordingAndStreamingState:
+			{
+				if (obs_frontend_streaming_active())
+				{ 
+					result["streamingStatus"] = "live";
+				}
+				else
+				{
+					result["streamingStatus"] = "offline";
+				}
+
+				if (obs_frontend_recording_active())
+				{
+					result["recordingStatus"] = "live";
+				}
+				else 
+				{
+					result["recordingStatus"] = "offline";
+				}
+				responseJson["result"] = result;
+
+				std::string str = responseJson.dump() + "\n";
+				WriteToSocket(str);
+
+			}
+			break;
+			}
+		}
+		catch (...)
+		{
+			// internal inconsistence, bail out
+		}
+	}
+}
+
+void ActionHelp::Disconnected()
+{
+	mSocket->deleteLater();
+	mSocket = NULL;
+}
+
+void ActionHelp::WriteToSocket(const std::string &inString)
+{
+	if (mSocket && mSocket->isValid())
+	{
+		mSocket->write(inString.c_str());
+	}
 }
 
 OBS_SOURCE_TYPE ActionHelp::getSourceType(const std::string& idStr)

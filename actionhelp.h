@@ -2,8 +2,11 @@
 #define ACTIONHELP_H
 
 #include <QObject>
+#include <QHash>
 #include <obs-frontend-api.h>
 #include <obs-module.h>
+#include <QTcpSocket>
+#include "JSONUtils.h"
 
 // ----------------------------------------------------------------------------
 typedef enum _OBS_SOURCE_TYPE
@@ -49,6 +52,38 @@ enum ToggleInfo
 	Deactivate
 };
 
+static const int RPC_ID_startStreaming = 1;
+static const int RPC_ID_stopStreaming = 2;
+static const int RPC_ID_startRecording = 3;
+static const int RPC_ID_stopRecording = 4;
+//static const int RPC_ID_getCollections = 5;
+static const int RPC_ID_makeCollectionActive = 6;
+static const int RPC_ID_fetchSceneCollectionsSchema = 8;
+static const int RPC_ID_getScenes = 9;
+static const int RPC_ID_getSources = 10;
+static const int RPC_ID_makeSceneActive = 11;
+static const int RPC_ID_getActiveSceneId = 12;
+static const int RPC_ID_muteMixerAudioSource = 13;
+static const int RPC_ID_unmuteMixerAudioSource = 14;
+static const int RPC_ID_hideScene = 15;
+static const int RPC_ID_showScene = 16;
+static const int RPC_ID_subscribeToSceneSwitched = 17;
+static const int RPC_ID_subscribeToSceneAdded = 18;
+static const int RPC_ID_subscribeToSceneRemoved = 19;
+static const int RPC_ID_subscribeToSouceAdded = 20;
+static const int RPC_ID_subscribeToSourceRemoved = 21;
+static const int RPC_ID_subscribeToSourceUpdated = 22;
+static const int RPC_ID_subscribeToItemAdded = 23;
+static const int RPC_ID_subscribeToItemRemoved = 24;
+static const int RPC_ID_subscribeToItemUpdated = 25;
+static const int RPC_ID_subscribeToStreamingStatusChanged = 26;
+static const int RPC_ID_getActiveCollection = 27;
+static const int RPC_ID_subscribeToCollectionAdded = 28;
+static const int RPC_ID_subscribeToCollectionRemoved = 29;
+static const int RPC_ID_subscribeToCollectionSwitched = 30;
+static const int RPC_ID_getRecordingAndStreamingState = 31;
+static const int RPC_ID_subscribeToCollectionUpdated = 32;
+
 // ----------------------------------------------------------------------------
 class ActionHelp : public QObject
 {
@@ -70,6 +105,8 @@ public:
 
     bool isSourceVisible(bool isMixerSrc, QString scName, QString sceneName, QString sourceName, QString sourceIdStr, int64_t sceneItemId);
 
+	void WriteToSocket(const std::string &inString);
+
 signals:
 
 public slots:
@@ -80,18 +117,14 @@ public slots:
     void reqSelectScene(QString scName, QString sceneName);
     void reqToggleSource(bool isMixerSrc, QString scName, QString sceneName, QString sourceName, QString sourceIdStr, int sceneItemId, int toggleInfo);
 
-	void reqToggleRecord();
-	void reqStartRecord();
-	void reqStopRecord();
-
-	void reqToggleStream();
-	void reqStartStream();
-	void reqStopStream();
-
 	void reqVersion();
 
     void reqCurrentCollectionAndSceneName();
     void reqSourcesState(bool isMixerSrc, QString scName, QString sceneName, QString sourceName, QString sourceIdStr, int sceneItemId);
+
+	void SDClientConnected();
+	void ReadyRead();
+	void Disconnected();
 
 private:
 
@@ -99,6 +132,17 @@ private:
     static OBS_SOURCE_TYPE getSourceType(const std::string& idStr);
 
     bool sendNotifyFlag;
+
+	//void reqToggleRecord(json* inResponse);
+	void reqStartRecord(json* inResponse);
+	void reqStopRecord(json* inResponse);
+
+	//void reqToggleStream(json* inResponse);
+	void reqStartStream(json* inResponse);
+	void reqStopStream(json* inResponse);
+
+
+	QTcpSocket *mSocket;
 };
 
 #endif // ACTIONHELP_H
