@@ -26,11 +26,18 @@ typedef enum _OBS_SOURCE_TYPE
 	OBS_SOURCE_TYPE_NDI_SOURCE
 }OBS_SOURCE_TYPE;
 
+typedef struct _SceneItemInfo
+{
+	std::string   sourceName;
+	bool   isVisible;
+	int64_t     sceneItemId;
+}SceneItemInfo;
+
 typedef struct _SceneInfo
 {
-    obs_source_t* scene;
-    std::string   name;
-	bool   isSelected;
+	obs_source_t* scene;
+	std::string   name;
+	QList<SceneItemInfo>  sceneItems;
 }SceneInfo;
 
 typedef struct _SourceInfo
@@ -41,7 +48,6 @@ typedef struct _SourceInfo
     std::string     name;
     std::string     idStr;
     std::string     displayName;
-	int64_t     sceneItemId;
     obs_source_type type;
 }SourceInfo;
 
@@ -91,16 +97,11 @@ class ActionHelp : public QObject
 public:
     explicit ActionHelp(QObject *parent = 0);
     bool getSendNotifyFlag();
-    static QString getCurrentSceneCollectionName();
-    static QString getCurrentSceneName();
-    static bool getCurrentCollectionAndSceneName(QString &scName, QString&sceneName);
+    QString getCurrentSceneName();
+    bool getCurrentCollectionAndSceneName(QString &scName, QString&sceneName);
 
-    void updateSceneCollectionList(QStringList &list);
-	void updateScenesList(QList<SceneInfo> &list);
 	void updateSourcesList(QString sceneName, QList<SourceInfo> &list, QString &errStr);
 
-    void selectSceneCollection(QString scName);
-    bool selectScene(QString scName, QString sceneName, QString &errStr);
     bool toggleSource(bool isMixerSrc, QString sceneName, QString srcName, QString sourceIdStr, int64_t sceneItemId, ToggleInfo toggleInfo);
 
     bool isSourceVisible(bool isMixerSrc, QString scName, QString sceneName, QString sourceName, QString sourceIdStr, int64_t sceneItemId);
@@ -110,16 +111,15 @@ public:
 signals:
 
 public slots:
-    void reqUpdateSCList();
-    void reqUpdateSceneList(QString scName);
     void reqUpdateSourcesList(QString inCollectionName, QString inSceneName);
     void reqUpdateSourcesListOfAll(QString scName);
-    void reqSelectScene(QString scName, QString sceneName);
+    //void reqSelectScene(QString scName, QString sceneName);
     void reqToggleSource(bool isMixerSrc, QString scName, QString sceneName, QString sourceName, QString sourceIdStr, int sceneItemId, int toggleInfo);
 
 	void reqVersion();
 
-    void reqCurrentCollectionAndSceneName();
+    void NotifySceneSwitched();
+    void NotifyCollectionChanged();
     void reqSourcesState(bool isMixerSrc, QString scName, QString sceneName, QString sourceName, QString sourceIdStr, int sceneItemId);
 
 	void SDClientConnected();
@@ -133,16 +133,26 @@ private:
 
     bool sendNotifyFlag;
 
+	//scenes and collections
+	void updateSceneCollectionList(QStringList &list);
+	QString getCurrentSceneCollectionName();
+	bool reqUpdateSceneList(QString inCollectionName, QList<SceneInfo>& outSceneList);
+	void updateScenesList(QList<SceneInfo> &list);
+
+	bool SelectSceneCollection(QString inCollectionName);
+	bool SelectScene(QString inSceneName);
+
+	//streaming and recording
 	//void reqToggleRecord(json* inResponse);
-	void reqStartRecord(json* inResponse);
-	void reqStopRecord(json* inResponse);
+	bool RequestStartRecording();
+	bool RequestStopRecording();
 
 	//void reqToggleStream(json* inResponse);
-	void reqStartStream(json* inResponse);
-	void reqStopStream(json* inResponse);
+	bool RequestStartStreaming();
+	bool RequestStopStreaming();
 
 
-	QTcpSocket *mSocket;
+	QTcpSocket *mSocket = nullptr;
 };
 
 #endif // ACTIONHELP_H

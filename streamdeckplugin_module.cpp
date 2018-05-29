@@ -67,7 +67,7 @@ void UpdateSource()
         SourceInfo srcInfo = list.at(i);
         signal_handler_t* signalHandler = obs_source_get_signal_handler(srcInfo.source);
         signal_handler_connect(signalHandler, "mute", ItemMuted, nullptr);
-    }
+	}
 }
 
 void ItemVisible(void* ptr, calldata_t* calldata)
@@ -108,6 +108,47 @@ void ItemVisible(void* ptr, calldata_t* calldata)
     }
 }
 
+void ItemAdd(void* ptr, calldata_t* calldata)
+{
+	Q_UNUSED(ptr);
+	Q_UNUSED(calldata);
+
+    // send to SD
+    if (actionHelpPtr && actionHelpPtr->getSendNotifyFlag())
+    {
+		json eventJson;
+		eventJson["jsonrpc"] = "2.0";
+		json result = json::object();
+		result["_type"] = "EVENT";
+		eventJson["id"] = nullptr;
+
+		result["resourceId"] = "ScenesService.itemAdded";
+
+		std::string str = eventJson.dump() + "\n";
+		actionHelpPtr->WriteToSocket(str);
+    }
+}
+
+void ItemRemove(void* ptr, calldata_t* calldata)
+{
+	Q_UNUSED(ptr);
+	Q_UNUSED(calldata);
+
+	if (actionHelpPtr && actionHelpPtr->getSendNotifyFlag())
+	{
+		json eventJson;
+		eventJson["jsonrpc"] = "2.0";
+		json result = json::object();
+		result["_type"] = "EVENT";
+		eventJson["id"] = nullptr;
+
+		result["resourceId"] = "ScenesService.itemRemoved";
+
+		std::string str = eventJson.dump() + "\n";
+		actionHelpPtr->WriteToSocket(str);
+	}
+}
+
 void UpdateScenes()
 {
     qDebug() << __FUNCTION__;
@@ -122,6 +163,8 @@ void UpdateScenes()
         // Connect signal handler
         signal_handler_t* signalHandler = obs_source_get_signal_handler(scenes.sources.array[i]);
         signal_handler_connect(signalHandler, "item_visible", ItemVisible, nullptr);
+        signal_handler_connect(signalHandler, "item_add", ItemAdd, nullptr);
+        signal_handler_connect(signalHandler, "item_remove", ItemRemove, nullptr);
     }
 
     // Cleanup
@@ -155,7 +198,6 @@ void OBSEvent(enum obs_frontend_event event, void* data)
 			if (actionHelpPtr->getSendNotifyFlag())
 			{
 				result["data"] = "live";
-				result["emitter"] = "STREAM";
 				result["resourceId"] = "StreamingService.streamingStatusChange";
 
 				eventJson["result"] = result;
@@ -179,7 +221,6 @@ void OBSEvent(enum obs_frontend_event event, void* data)
 			if (actionHelpPtr->getSendNotifyFlag())
 			{
 				result["data"] = "offline";
-				result["emitter"] = "STREAM";
 				result["resourceId"] = "StreamingService.streamingStatusChange";
 
 				eventJson["result"] = result;
@@ -205,7 +246,6 @@ void OBSEvent(enum obs_frontend_event event, void* data)
 				if (actionHelpPtr->getSendNotifyFlag())
 				{
 					result["data"] = "recording";
-					result["emitter"] = "RECORD";
 					result["resourceId"] = "RecordingService.recordingStatusChange";
 
 					eventJson["result"] = result;
@@ -229,17 +269,13 @@ void OBSEvent(enum obs_frontend_event event, void* data)
 
 			if (actionHelpPtr->getSendNotifyFlag())
 			{
-				if (actionHelpPtr->getSendNotifyFlag())
-				{
-					result["data"] = "offline";
-					result["emitter"] = "RECORD";
-					result["resourceId"] = "RecordingService.recordingStatusChange";
+				result["data"] = "offline";
+				result["resourceId"] = "RecordingService.recordingStatusChange";
 
-					eventJson["result"] = result;
+				eventJson["result"] = result;
 
-					std::string str = eventJson.dump() + "\n";
-					actionHelpPtr->WriteToSocket(str);				actionHelpPtr->WriteToSocket(str);
-				}
+				std::string str = eventJson.dump() + "\n";
+				actionHelpPtr->WriteToSocket(str);
 			}
 		}
 		break;
@@ -247,17 +283,22 @@ void OBSEvent(enum obs_frontend_event event, void* data)
 		case OBS_FRONTEND_EVENT_SCENE_CHANGED:
 		{
 			qDebug() << "OBS_FRONTEND_EVENT_SCENE_CHANGED";       
-			QMetaObject::invokeMethod(actionHelpPtr, "reqCurrentCollectionAndSceneName");
+
+			QMetaObject::invokeMethod(actionHelpPtr, "NotifySceneSwitched");
 		}
 		break;
 		
 		case OBS_FRONTEND_EVENT_SCENE_LIST_CHANGED:
 		{
 			qDebug() << "OBS_FRONTEND_EVENT_SCENE_LIST_CHANGED";
-			if (actionHelpPtr->getSendNotifyFlag())
-			{
-				//QMetaObject::invokeMethod(ipcThreadPtr, "onNotify", Q_ARG(ShmID, ShmId_StreamDeck), Q_ARG(QStringList, QStringList("update")));
-			}
+
+			UpdateScenes();
+
+			//Added signal used as "generic" changed signal. SD will request all collections then
+			result["resourceId"] = "ScenesService.sceneAdded";
+
+			std::string str = eventJson.dump() + "\n";
+			actionHelpPtr->WriteToSocket(str);
 		}
 		break;
 		
@@ -284,7 +325,7 @@ void OBSEvent(enum obs_frontend_event event, void* data)
 			qDebug() << "OBS_FRONTEND_EVENT_SCENE_COLLECTION_CHANGED";
 			UpdateSource();
 			UpdateScenes();
-			QMetaObject::invokeMethod(actionHelpPtr, "reqCurrentCollectionAndSceneName");
+			QMetaObject::invokeMethod(actionHelpPtr, "NotifyCollectionChanged");
 		}
 		break;
 		
@@ -292,10 +333,12 @@ void OBSEvent(enum obs_frontend_event event, void* data)
 		{
 			qDebug() << "OBS_FRONTEND_EVENT_SCENE_COLLECTION_LIST_CHANGED";
 
-			if (actionHelpPtr->getSendNotifyFlag())
-			{
-				//QMetaObject::invokeMethod(ipcThreadPtr, "onNotify", Q_ARG(ShmID, ShmId_StreamDeck), Q_ARG(QStringList, QStringList("update")));
-			}
+			//Added signal used as "generic" changed signal. SD will request all collections then
+			result["resourceId"] = "SceneCollectionsService.collectionAdded";
+
+			std::string str = eventJson.dump() + "\n";
+			actionHelpPtr->WriteToSocket(str);
+
 		}
 		break;
 		
@@ -341,7 +384,7 @@ void OBSEvent(enum obs_frontend_event event, void* data)
 
 void SaveCallback(obs_data_t* save_data, bool saving, void*)
 {
-    Q_UNUSED(save_data)
+	Q_UNUSED(save_data)
 
     qDebug() << __FUNCTION__ << QThread::currentThread() << "saving: " << saving;
 
@@ -359,12 +402,17 @@ void SaveCallback(obs_data_t* save_data, bool saving, void*)
     else if (saving)
     {
         UpdateSource();
-        UpdateScenes();
 
-        if (actionHelpPtr->getSendNotifyFlag())
-        {
-            //QMetaObject::invokeMethod(ipcThreadPtr, "onNotify", Q_ARG(ShmID, ShmId_StreamDeck), Q_ARG(QStringList, QStringList("update")));
-        }
+		json eventJson;
+		eventJson["jsonrpc"] = "2.0";
+		json result = json::object();
+		result["_type"] = "EVENT";
+		eventJson["id"] = nullptr;
+
+		result["resourceId"] = "SourcesService.sourceUpdated";
+
+		std::string str = eventJson.dump() + "\n";
+		actionHelpPtr->WriteToSocket(str);
     }
 }
 
@@ -409,7 +457,7 @@ void InitStreamDeckPlugin()
 
 	QObject::connect(tcpServer, &QTcpServer::newConnection, actionHelpPtr, &ActionHelp::SDClientConnected);
 
-	if (!tcpServer->listen(QHostAddress::LocalHost, 28194)) 
+	if (!tcpServer->listen(QHostAddress::LocalHost, 28195)) 
 	{
 		return;
 	}

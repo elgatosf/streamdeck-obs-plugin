@@ -72,7 +72,7 @@ void IPC_Thread::fillDataBuf(QByteArray &buf, const QString &errStr, const QList
         out << QString(list.at(i).sceneName.c_str());
         out << QString(list.at(i).name.c_str());
 		out << QString(list.at(i).idStr.c_str());
-		out << QString::number(list.at(i).sceneItemId);
+		//out << QString::number(list.at(i).sceneItemId);
     }
 }
 
@@ -85,7 +85,7 @@ void IPC_Thread::fillDataBuf(QByteArray &buf, const QList<SceneInfo> &list)
 
 	for (int i = 0; i<cnt; i++) {
 		out << QString(list.at(i).name.c_str());
-		out << bool(list.at(i).isSelected);
+		//out << bool(list.at(i).isSelected);
 	}
 }
 

@@ -135,4 +135,22 @@ public:
 		// Return value
 		return *iter;
 	}
+
+	//! Get float by name
+	static float GetFloatByName(const json& inJSON, const std::string& inName, float defaultValue = 0.0)
+	{
+		// Check desired value exists
+		json::const_iterator iter(inJSON.find(inName));
+		if (iter == inJSON.end())
+			return defaultValue;
+
+		// Check value is an integer
+		if (!iter->is_number_float())
+			if (!iter->is_number_float() && !iter->is_number_integer())
+				return defaultValue;
+
+		// Return value
+		return *iter;
+	}
+
 };

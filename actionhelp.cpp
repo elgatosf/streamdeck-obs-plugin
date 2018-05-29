@@ -97,18 +97,55 @@ void ActionHelp::updateScenesList(QList<SceneInfo> &list)
     struct obs_frontend_source_list scenes = {};
     obs_frontend_get_scenes(&scenes);
 
-
-	auto selectedSceneName = ActionHelp::getCurrentSceneName();
-
     for (size_t i = 0 ; i < scenes.sources.num ; i++) 
 	{
-        SceneInfo sceneInfo = {};
-        sceneInfo.scene = scenes.sources.array[i];
+		auto sceneEntry = scenes.sources.array[i];
 
-		std::string sceneName = obs_source_get_name(scenes.sources.array[i]);
+        SceneInfo sceneInfo = {};
+        sceneInfo.scene = sceneEntry;
+
+		std::string sceneName = obs_source_get_name(sceneEntry);
+
+		obs_scene_t *scene = obs_scene_from_source(sceneEntry);
+		if (!scene)
+		{
+			QString errStr = "Err: obs_scene_from_source(sceneSource) return NULL!";
+			qDebug() << errStr;
+		}
 
 		sceneInfo.name = sceneName;
-		sceneInfo.isSelected = selectedSceneName.toStdString() == sceneName;
+
+		// 3. enum items by scene
+		auto enumFunc = [](obs_scene_t*, obs_sceneitem_t* item, void* param)
+		{
+			if (!param)
+			{
+				qDebug() << __FUNCTION__ << __LINE__ << "Err: param is NULL!";
+				return false;
+			}
+
+			QList<SceneItemInfo> *list = reinterpret_cast<QList<SceneItemInfo>*>(param);
+
+			int64_t sceneItemId = obs_sceneitem_get_id(item);
+
+			obs_source_t *source = obs_sceneitem_get_source(item);
+			if (!source)
+			{
+				qDebug() << __FUNCTION__ << __LINE__ << "Err: obs_sceneitem_get_source(sceneSource) return NULL!";
+			}
+
+			SceneItemInfo sceneItemInfo = {};
+			sceneItemInfo.sceneItemId = sceneItemId;
+			sceneItemInfo.sourceName = obs_source_get_name(source);
+			sceneItemInfo.isVisible = obs_sceneitem_visible(item);
+			list->append(sceneItemInfo);
+			return true;
+		};
+
+		QList<SceneItemInfo>  sceneItems;
+		obs_scene_enum_items(scene, enumFunc, &sceneItems);
+
+		sceneInfo.sceneItems = sceneItems;
 
         list.append(sceneInfo);
     }
@@ -253,7 +290,6 @@ void ActionHelp::updateSourcesList(QString sceneName, QList<SourceInfo> &list, Q
             QList<SourceInfo> *list = reinterpret_cast<QList<SourceInfo>*>(param);
 
             // Get source
-			int64_t sceneItemId = obs_sceneitem_get_id(item);
 
             obs_source_t *source = obs_sceneitem_get_source(item);
             if (!source)
@@ -267,7 +303,7 @@ void ActionHelp::updateSourcesList(QString sceneName, QList<SourceInfo> &list, Q
             obsSource.name        = obs_source_get_name(source);
             obsSource.type        = obs_source_get_type(source);
 			obsSource.idStr		  = obs_source_get_id(source);
-			obsSource.sceneItemId = sceneItemId;
+			//obsSource.sceneItemId = sceneItemId;
 
 			const char* displayName = obs_source_get_display_name(obsSource.idStr.c_str());
 			if (displayName)
@@ -291,26 +327,26 @@ void ActionHelp::updateSourcesList(QString sceneName, QList<SourceInfo> &list, Q
 // ----------------------------------------------------------------------------
 // Slot functions
 // ----------------------------------------------------------------------------
-void ActionHelp::reqUpdateSCList()
-{
-    sendNotifyFlag = false;
-
-    QStringList list;
-    updateSceneCollectionList(list);
-
-    QString currScName = getCurrentSceneCollectionName();
-    if (currScName.isEmpty())
-    {
-        qDebug() << __FUNCTION__ << "Err: obs_frontend_get_current_scene_collection() got NULL";
-        currScName = list.first();
-    }
-
-    QByteArray buf;
-    //ipcThreadPtr->fillDataBuf(buf, list, currScName);
-    //ipcThreadPtr->sendCmdToList(ShmId_StreamDeck, buf, SDIPCCMD_Req_OBS_SCList);
-
-    sendNotifyFlag = true;
-}
+//void ActionHelp::reqUpdateSCList()
+//{
+//	sendNotifyFlag = false;
+//
+//	QStringList list;
+//	updateSceneCollectionList(list);
+//
+//	QString currScName = getCurrentSceneCollectionName();
+//	if (currScName.isEmpty())
+//	{
+//		qDebug() << __FUNCTION__ << "Err: obs_frontend_get_current_scene_collection() got NULL";
+//		currScName = list.first();
+//	}
+//
+//	QByteArray buf;
+//	//ipcThreadPtr->fillDataBuf(buf, list, currScName);
+//	//ipcThreadPtr->sendCmdToList(ShmId_StreamDeck, buf, SDIPCCMD_Req_OBS_SCList);
+//
+//	sendNotifyFlag = true;
+//}
 
 void ActionHelp::reqVersion()
 {
@@ -328,28 +364,28 @@ void ActionHelp::reqVersion()
 	sendNotifyFlag = true;
 }
 
-void ActionHelp::reqUpdateSceneList(QString scName)
+bool ActionHelp::reqUpdateSceneList(QString inCollectionName, QList<SceneInfo>& outSceneList)
 {
-    sendNotifyFlag = false;
-
 	QString currentCollectionName, currentSceneName;
 	if (!getCurrentCollectionAndSceneName(currentCollectionName, currentSceneName))
-		return;
+		return false;
 
+	bool isSuccessful = currentCollectionName == inCollectionName;
 
-    // ensure in correct scene collection
-    selectSceneCollection(scName);
+	if (!isSuccessful)
+	{
+		// ensure in correct scene collection
+		isSuccessful = SelectSceneCollection(inCollectionName);
+	}
 
-    QList<SceneInfo> list;
-    ActionHelp::updateScenesList(list);
+	if (isSuccessful)
+	{
+		ActionHelp::updateScenesList(outSceneList);
 
-	selectSceneCollection(currentCollectionName);
+		SelectSceneCollection(currentCollectionName);
+	}
 
-    QByteArray buf;
-	//ipcThreadPtr->fillDataBuf(buf, list);
-	//ipcThreadPtr->sendCmdToList(ShmId_StreamDeck, buf, SDIPCCMD_Req_OBS_ScenesList);
-
-    sendNotifyFlag = true;
+	return isSuccessful;
 }
 
 void ActionHelp::reqUpdateSourcesList(QString inCollectionName, QString inSceneName)
@@ -361,13 +397,13 @@ void ActionHelp::reqUpdateSourcesList(QString inCollectionName, QString inSceneN
 		return;
 
 	// ensure in correct scene collection
-	selectSceneCollection(inCollectionName);
+	SelectSceneCollection(inCollectionName);
 
     QList<SourceInfo> list;
     QString errStr;
     updateSourcesList(inSceneName, list, errStr);
 
-	selectSceneCollection(currentCollectionName);
+	SelectSceneCollection(currentCollectionName);
 
     QByteArray buf;
     //ipcThreadPtr->fillDataBuf(buf, errStr, list);
@@ -385,7 +421,7 @@ void ActionHelp::reqUpdateSourcesListOfAll(QString scName)
 		return;
 
     // ensure in correct scene collection
-    selectSceneCollection(scName);
+    SelectSceneCollection(scName);
 	
     QList<SourceInfo> sourceStrList;
     QString errStr;
@@ -396,22 +432,22 @@ void ActionHelp::reqUpdateSourcesListOfAll(QString scName)
     //ipcThreadPtr->fillDataBuf(buf, errStr, sourceStrList);
     //ipcThreadPtr->sendCmdToList(ShmId_StreamDeck, buf, SDIPCCMD_Req_OBS_SourceListOfAll);
 
-	selectSceneCollection(currentCollectionName);
+	SelectSceneCollection(currentCollectionName);
 
     sendNotifyFlag = true;
 }
 
-void ActionHelp::reqSelectScene(QString scName, QString sceneName)
-{
-    sendNotifyFlag = false;
-
-    QString errStr;
-    bool isSelected = selectScene(scName, sceneName, errStr);
-
-    sendNotifyFlag = true;
-
-	QStringList list;
-	list << scName << sceneName;
+//void ActionHelp::reqSelectScene(QString scName, QString sceneName)
+//{
+//    sendNotifyFlag = false;
+//
+//    QString errStr;
+//    bool isSelected = selectScene(scName, sceneName);
+//
+//    sendNotifyFlag = true;
+//
+//	QStringList list;
+//	list << scName << sceneName;
 
 	QByteArray buf;
 	//ipcThreadPtr->fillDataBuf(buf, list);
@@ -424,7 +460,7 @@ void ActionHelp::reqSelectScene(QString scName, QString sceneName)
 	//{
 	//	ipcThreadPtr->sendCmdToList(ShmId_StreamDeck, buf, SDIPCCMD_Select_OBS_Scene_Error);
 	//}
-}
+//}
 
 void ActionHelp::reqToggleSource(bool isMixerSrc, QString scName, QString sceneName, QString sourceName, QString sourceIdStr, int sceneItemId, int toggleInfo)
 {
@@ -487,34 +523,27 @@ void ActionHelp::reqToggleSource(bool isMixerSrc, QString scName, QString sceneN
 //	sendNotifyFlag = true;
 //}
 
-void ActionHelp::reqStartRecord(json* inResponse)
+bool ActionHelp::RequestStartRecording()
 {
-	sendNotifyFlag = false;
-
 	if (!obs_frontend_recording_active())
 	{
 		obs_frontend_recording_start();
-
-		std::string str = inResponse->dump() + "\n";
-		WriteToSocket(str);
+		return true;
 	}
 
-	sendNotifyFlag = true;
-}
+	return false;
+}	
 
-void ActionHelp::reqStopRecord(json* inResponse)
+bool ActionHelp::RequestStopRecording()
 {
-	sendNotifyFlag = false;
-
 	if (obs_frontend_recording_active())
 	{
 		obs_frontend_recording_stop();
 
-		std::string str = inResponse->dump() + "\n";
-		WriteToSocket(str);
+		return true;
 	}
 
-	sendNotifyFlag = true;
+	return false;
 }
 
 //void ActionHelp::reqToggleStream(json* inResponse)
@@ -547,57 +576,52 @@ void ActionHelp::reqStopRecord(json* inResponse)
 //	sendNotifyFlag = true;
 //}
 
-void ActionHelp::reqStartStream(json* inResponse)
+bool ActionHelp::RequestStartStreaming()
 {
-	sendNotifyFlag = false;
-
 	if (!obs_frontend_streaming_active())
 	{
 		obs_frontend_streaming_start();
 
-				json refResponse = *inResponse;
 		
-				std::string str = refResponse.dump() + "\n";
-				WriteToSocket(str);
-
 		if (obs_frontend_recording_active())
 		{
-			refResponse["id"] = RPC_ID_startRecording;
-			std::string str = refResponse.dump() + "\n";
+			json responseJson;
+			responseJson["jsonrpc"] = "2.0";
+			responseJson["id"] = RPC_ID_startRecording;
+
+			std::string str = responseJson.dump() + "\n";
 			WriteToSocket(str);
 		}
 
-		//ipcThreadPtr->onNotify(ShmId_StreamDeck, QStringList("streaming_started"));
+		return true;
 	}
 
-	sendNotifyFlag = true;
+	return false;
 }
 
-void ActionHelp::reqStopStream(json* inResponse)
+bool ActionHelp::RequestStopStreaming()
 {
-	sendNotifyFlag = false;
-
 	if (obs_frontend_streaming_active())
 	{
 		obs_frontend_streaming_stop();
 
-		json refResponse = *inResponse;
-
-		std::string str = refResponse.dump() + "\n";
-		WriteToSocket(str);
-
-		if (!obs_frontend_recording_active())
+		if (!obs_frontend_streaming_active())
 		{
-			refResponse["id"] = RPC_ID_stopRecording;
-			std::string str = refResponse.dump() + "\n";
+			json responseJson;
+			responseJson["jsonrpc"] = "2.0";
+			responseJson["id"] = RPC_ID_stopRecording;
+
+			std::string str = responseJson.dump() + "\n";
 			WriteToSocket(str);
 		}
+
+		return true;
 	}
 
-	sendNotifyFlag = true;
+	return false;
 }
 
-void ActionHelp::reqCurrentCollectionAndSceneName()
+void ActionHelp::NotifySceneSwitched()
 {
     qDebug() << __FUNCTION__ << __LINE__;
 
@@ -605,12 +629,49 @@ void ActionHelp::reqCurrentCollectionAndSceneName()
     if (!getCurrentCollectionAndSceneName(scName, sceneName))
         return;
 
-    QStringList list;
-    list << scName << sceneName;
+	json eventJson;
+	eventJson["jsonrpc"] = "2.0";
+	json result = json::object();
+	result["_type"] = "EVENT";
+	eventJson["id"] = nullptr;
 
-    QByteArray buf;
-    //ipcThreadPtr->fillDataBuf(buf, list);
-    //ipcThreadPtr->sendCmdToList(ShmId_StreamDeck, buf, SDIPCCMD_Req_OBS_CurrentCollectionAndSceneName);
+	json dataObj = json::object();
+	dataObj["id"] = sceneName.toStdString();
+
+	result["data"] = dataObj;
+	result["resourceId"] = "ScenesService.sceneSwitched";
+
+	eventJson["result"] = result;
+
+	std::string str = eventJson.dump() + "\n";
+	WriteToSocket(str);
+}
+
+void ActionHelp::NotifyCollectionChanged()
+{
+    qDebug() << __FUNCTION__ << __LINE__;
+
+    QString scName, sceneName;
+    if (!getCurrentCollectionAndSceneName(scName, sceneName))
+        return;
+
+	json eventJson;
+	eventJson["jsonrpc"] = "2.0";
+	json result = json::object();
+	result["_type"] = "EVENT";
+	eventJson["id"] = nullptr;
+
+	json dataObj = json::object();
+	dataObj["id"] = sceneName.toStdString();
+
+	result["data"] = dataObj;
+	result["resourceId"] = "SceneCollectionsService.collectionSwitched";
+
+	eventJson["result"] = result;
+
+	std::string str = eventJson.dump() + "\n";
+	WriteToSocket(str);
+
 }
 
 void ActionHelp::reqSourcesState(bool isMixerSrc, QString scName, QString sceneName, QString sourceName, QString sourceIdStr, int sceneItemId)
@@ -630,13 +691,13 @@ void ActionHelp::reqSourcesState(bool isMixerSrc, QString scName, QString sceneN
     //ipcThreadPtr->sendCmdToList(ShmId_StreamDeck, buf, SDIPCCMD_Req_OBS_SourceState);
 }
 
-void ActionHelp::selectSceneCollection(QString scName)
+bool ActionHelp::SelectSceneCollection(QString scName)
 {   
     QString curr_scName = getCurrentSceneCollectionName();
     if (curr_scName.isEmpty())
     {
         qDebug() << __FUNCTION__ << "Err: obs_frontend_get_current_scene_collection() got NULL!!";
-        return;
+        return false;
     }
 
     if (curr_scName!=scName)
@@ -644,12 +705,15 @@ void ActionHelp::selectSceneCollection(QString scName)
         qDebug() << __FUNCTION__ << QThread::currentThread() << QString("obs_frontend_set_current_scene_collection(%1)").arg(scName);
 
         obs_frontend_set_current_scene_collection(scName.toStdString().c_str());
+		return true;
     }
+
+	return false;
 }
 
-bool ActionHelp::selectScene(QString scName, QString sceneName, QString &errStr)
+bool ActionHelp::SelectScene(QString sceneName)
 {
-    selectSceneCollection(scName);
+	QString errStr;
 
     QString curr_sceneName = getCurrentSceneName();
     if (curr_sceneName.isEmpty())
@@ -959,9 +1023,9 @@ void ActionHelp::ReadyRead()
 		{
 			lineByteArray = mSocket->readLine();
 
-			auto j = json::parse(lineByteArray);
+			json receivedJson = json::parse(lineByteArray);
 
-			int rpcID = JSONUtils::GetIntByName(j, "id");
+			int rpcID = JSONUtils::GetIntByName(receivedJson, "id");
 
 			json responseJson;
 			responseJson["jsonrpc"] = "2.0";
@@ -969,35 +1033,53 @@ void ActionHelp::ReadyRead()
 
 			json result = json::object();
 
+			sendNotifyFlag = false;
+
 			switch (rpcID)
 			{
 			case RPC_ID_startStreaming:
 			{
-				reqStartStream(&responseJson);
+				if (RequestStartStreaming())
+				{
+					std::string str = responseJson.dump() + "\n";
+					WriteToSocket(str);
+				}
 			}
-			break;			
+			break;
 			case RPC_ID_stopStreaming:
 			{
-				reqStopStream(&responseJson);
+				if (RequestStopStreaming())
+				{
+					std::string str = responseJson.dump() + "\n";
+					WriteToSocket(str);
+				}
 			}
 			break;
 
 			case RPC_ID_startRecording:
 			{
-				reqStartRecord(&responseJson);
+				if (RequestStartRecording())
+				{
+					std::string str = responseJson.dump() + "\n";
+					WriteToSocket(str);
+				}
 			}
 			break;
 
 			case RPC_ID_stopRecording:
 			{
-				reqStopRecord(&responseJson);
+				if (RequestStopRecording())
+				{
+					std::string str = responseJson.dump() + "\n";
+					WriteToSocket(str);
+				}
 			}
 			break;
 
 			case RPC_ID_getRecordingAndStreamingState:
 			{
 				if (obs_frontend_streaming_active())
-				{ 
+				{
 					result["streamingStatus"] = "live";
 				}
 				else
@@ -1009,7 +1091,7 @@ void ActionHelp::ReadyRead()
 				{
 					result["recordingStatus"] = "live";
 				}
-				else 
+				else
 				{
 					result["recordingStatus"] = "offline";
 				}
@@ -1017,10 +1099,177 @@ void ActionHelp::ReadyRead()
 
 				std::string str = responseJson.dump() + "\n";
 				WriteToSocket(str);
+			}
+
+			break;
+
+			case RPC_ID_fetchSceneCollectionsSchema:
+			{
+				json data = json::array();
+
+				QStringList list;
+				updateSceneCollectionList(list);
+
+				for (const auto& i : list)
+				{
+					json collection = json::object();
+					collection["name"] = i.toStdString();
+					collection["id"] = i.toStdString();
+
+					data.push_back(collection);
+				}
+
+				result["data"] = data;
+				result["isRejected"] = false;
+				result["resourceId"] = "dummy";
+				result["_type"] = "EVENT";
+
+				responseJson["result"] = result;
+
+				std::string str = responseJson.dump() + "\n";
+				WriteToSocket(str);
 
 			}
 			break;
+
+			case RPC_ID_makeCollectionActive:
+			{
+				json params;
+				if (JSONUtils::GetObjectByName(receivedJson, "params", params))
+				{
+					json args;
+					if (JSONUtils::GetArrayByName(params, "args", args))
+					{
+						if (args[0].is_string())
+						{
+							std::string sceneCollectionId = args[0];
+
+							if (SelectSceneCollection(sceneCollectionId.c_str()))
+							{
+								std::string str = responseJson.dump() + "\n";
+								WriteToSocket(str);
+							}
+						}
+					}
+				}
 			}
+			break;
+
+			case RPC_ID_makeSceneActive:
+			{
+				bool isActive = false;
+
+				json params;
+				if (JSONUtils::GetObjectByName(receivedJson, "params", params))
+				{
+					json args;
+					if (JSONUtils::GetArrayByName(params, "args", args))
+					{
+						if (args[0].is_string())
+						{
+							std::string sceneId = args[0];
+
+							if (SelectScene(sceneId.c_str()))
+							{
+								isActive = true;
+							}
+						}
+					}
+				}
+
+				responseJson["result"] = isActive;
+				std::string str = responseJson.dump() + "\n";
+				WriteToSocket(str);
+			}
+			break;
+
+			case RPC_ID_getScenes:
+			{
+				json params;
+				if (JSONUtils::GetObjectByName(receivedJson, "params", params))
+				{
+					json args;
+					if (JSONUtils::GetArrayByName(params, "args", args))
+					{
+						json resultArray = json::array();
+
+						QString collectionName;
+
+						if (args[0].is_string())
+						{
+							if (args[0] == "")
+							{
+								collectionName = getCurrentSceneCollectionName();
+							}
+							else
+							{
+								collectionName = QString(JSONUtils::GetString(args[0]).c_str());
+							}
+
+							QList<SceneInfo> list;
+							if (reqUpdateSceneList(collectionName, list))
+							{
+								for (const auto& i : list)
+								{
+									auto nodesArray = json::array();
+
+									for (const auto& j : i.sceneItems)
+									{
+										json sceneItem = json::object();
+										sceneItem["sourceId"] = j.sourceName;
+										sceneItem["sceneItemId"] = (int) j.sceneItemId;
+										sceneItem["visible"] = j.isVisible;
+									
+										nodesArray.push_back(sceneItem);
+									}
+
+									json scene = json::object();
+									scene["name"] = i.name;
+									scene["id"] = i.name;
+
+									scene["nodes"] = nodesArray;
+
+									resultArray.push_back(scene);
+								}
+
+								result["_type"] = "HELPER";
+
+								responseJson["result"] = resultArray;
+								responseJson["collection"] = collectionName.toStdString();
+
+								std::string str = responseJson.dump() + "\n";
+								WriteToSocket(str);
+							}
+						}
+					}
+				}
+
+			}
+			break;
+
+			case RPC_ID_getActiveCollection:
+			{
+				QString activeCollection = getCurrentSceneCollectionName();
+				result["id"] = activeCollection.toStdString();
+				responseJson["result"] = result;
+
+				std::string str = responseJson.dump() + "\n";
+				WriteToSocket(str);
+			}
+			break;
+
+			case RPC_ID_getActiveSceneId:
+			{
+				QString activeSceneName = getCurrentSceneName();
+				responseJson["result"] = activeSceneName.toStdString();
+				std::string str = responseJson.dump() + "\n";
+				WriteToSocket(str);
+			}
+			break;
+		}
+
+		sendNotifyFlag = true;
+
 		}
 		catch (...)
 		{
@@ -1032,12 +1281,13 @@ void ActionHelp::ReadyRead()
 void ActionHelp::Disconnected()
 {
 	mSocket->deleteLater();
-	mSocket = NULL;
+	mSocket = nullptr;
 }
 
 void ActionHelp::WriteToSocket(const std::string &inString)
 {
-	if (mSocket && mSocket->isValid())
+	if (mSocket 
+		&& mSocket->isValid())
 	{
 		mSocket->write(inString.c_str());
 	}
