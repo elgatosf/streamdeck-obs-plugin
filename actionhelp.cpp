@@ -715,15 +715,21 @@ bool ActionHelp::SelectScene(QString sceneName)
 {
 	QString errStr;
 
-    QString curr_sceneName = getCurrentSceneName();
-    if (curr_sceneName.isEmpty())
+	QString scName, currentSceneName;
+	if (!getCurrentCollectionAndSceneName(scName, currentSceneName))
+		return false;
+
+	if (currentSceneName.isEmpty())
     {
         errStr = "Err: obs_frontend_get_current_scene() got NULL!";
         qDebug() << errStr;
         return false;
     }
 
-    if (curr_sceneName==sceneName)
+	//ToDo: Find better solution using real Id for scene
+	sceneName.remove(0, scName.size());
+
+    if (currentSceneName ==sceneName)
         return true;
 
     // update info
@@ -1148,6 +1154,8 @@ void ActionHelp::ReadyRead()
 							{
 								std::string str = responseJson.dump() + "\n";
 								WriteToSocket(str);
+
+								NotifyCollectionChanged();
 							}
 						}
 					}
@@ -1167,11 +1175,13 @@ void ActionHelp::ReadyRead()
 					{
 						if (args[0].is_string())
 						{
-							std::string sceneId = args[0];
+							std::string sceneName = args[0];
 
-							if (SelectScene(sceneId.c_str()))
+							if (SelectScene(sceneName.c_str()))
 							{
 								isActive = true;
+
+								NotifySceneSwitched();
 							}
 						}
 					}

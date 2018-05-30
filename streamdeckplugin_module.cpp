@@ -284,7 +284,10 @@ void OBSEvent(enum obs_frontend_event event, void* data)
 		{
 			qDebug() << "OBS_FRONTEND_EVENT_SCENE_CHANGED";       
 
-			QMetaObject::invokeMethod(actionHelpPtr, "NotifySceneSwitched");
+			if (actionHelpPtr->getSendNotifyFlag())
+			{
+				QMetaObject::invokeMethod(actionHelpPtr, "NotifySceneSwitched");
+			}
 		}
 		break;
 		
@@ -321,11 +324,15 @@ void OBSEvent(enum obs_frontend_event event, void* data)
 		break;
 		
 		case OBS_FRONTEND_EVENT_SCENE_COLLECTION_CHANGED:
-		{
+		{				
 			qDebug() << "OBS_FRONTEND_EVENT_SCENE_COLLECTION_CHANGED";
-			UpdateSource();
-			UpdateScenes();
-			QMetaObject::invokeMethod(actionHelpPtr, "NotifyCollectionChanged");
+
+			if (actionHelpPtr->getSendNotifyFlag())
+			{
+				UpdateSource();
+				UpdateScenes();
+				QMetaObject::invokeMethod(actionHelpPtr, "NotifyCollectionChanged");
+			}
 		}
 		break;
 		
@@ -403,16 +410,19 @@ void SaveCallback(obs_data_t* save_data, bool saving, void*)
     {
         UpdateSource();
 
-		json eventJson;
-		eventJson["jsonrpc"] = "2.0";
-		json result = json::object();
-		result["_type"] = "EVENT";
-		eventJson["id"] = nullptr;
+		if (actionHelpPtr-> getSendNotifyFlag())
+		{
+			json eventJson;
+			eventJson["jsonrpc"] = "2.0";
+			json result = json::object();
+			result["_type"] = "EVENT";
+			eventJson["id"] = nullptr;
 
-		result["resourceId"] = "SourcesService.sourceUpdated";
+			result["resourceId"] = "SourcesService.sourceUpdated";
 
-		std::string str = eventJson.dump() + "\n";
-		actionHelpPtr->WriteToSocket(str);
+			std::string str = eventJson.dump() + "\n";
+			actionHelpPtr->WriteToSocket(str);
+		}
     }
 }
 
