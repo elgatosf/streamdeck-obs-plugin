@@ -636,7 +636,7 @@ void ActionHelp::NotifySceneSwitched()
 	eventJson["id"] = nullptr;
 
 	json dataObj = json::object();
-	dataObj["id"] = sceneName.toStdString();
+	dataObj["id"] = scName.toStdString() + sceneName.toStdString();
 
 	result["data"] = dataObj;
 	result["resourceId"] = "ScenesService.sceneSwitched";
@@ -662,7 +662,7 @@ void ActionHelp::NotifyCollectionChanged()
 	eventJson["id"] = nullptr;
 
 	json dataObj = json::object();
-	dataObj["id"] = sceneName.toStdString();
+	dataObj["id"] = scName.toStdString();
 
 	result["data"] = dataObj;
 	result["resourceId"] = "SceneCollectionsService.collectionSwitched";
@@ -1225,7 +1225,7 @@ void ActionHelp::ReadyRead()
 
 									json scene = json::object();
 									scene["name"] = i.name;
-									scene["id"] = i.name;
+									scene["id"] = collectionName.toStdString() + i.name;
 
 									scene["nodes"] = nodesArray;
 
@@ -1260,8 +1260,9 @@ void ActionHelp::ReadyRead()
 
 			case RPC_ID_getActiveSceneId:
 			{
+				QString activeCollection = getCurrentSceneCollectionName();
 				QString activeSceneName = getCurrentSceneName();
-				responseJson["result"] = activeSceneName.toStdString();
+				responseJson["result"] = activeCollection.toStdString() + activeSceneName.toStdString();
 				std::string str = responseJson.dump() + "\n";
 				WriteToSocket(str);
 			}
