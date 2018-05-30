@@ -1095,7 +1095,7 @@ void ActionHelp::ReadyRead()
 
 				if (obs_frontend_recording_active())
 				{
-					result["recordingStatus"] = "live";
+					result["recordingStatus"] = "recording";
 				}
 				else
 				{
