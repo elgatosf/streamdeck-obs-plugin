@@ -61,19 +61,19 @@ void IPC_Thread::fillDataBuf(QByteArray &buf, const QStringList &list, const QSt
 
 void IPC_Thread::fillDataBuf(QByteArray &buf, const QString &errStr, const QList<SourceInfo> &list)
 {
-    QDataStream out(&buf, QIODevice::WriteOnly);
+  //  QDataStream out(&buf, QIODevice::WriteOnly);
 
-    out << errStr;
+  //  out << errStr;
 
-    quint16 cnt = list.count();
-    out << cnt;
+  //  quint16 cnt = list.count();
+  //  out << cnt;
 
-    for (int i=0; i<cnt; i++) {
-        out << QString(list.at(i).sceneName.c_str());
-        out << QString(list.at(i).name.c_str());
-		out << QString(list.at(i).idStr.c_str());
-		//out << QString::number(list.at(i).sceneItemId);
-    }
+  //  for (int i=0; i<cnt; i++) {
+  //      out << QString(list.at(i).sceneName.c_str());
+  //      out << QString(list.at(i).name.c_str());
+		//out << QString(list.at(i).idStr.c_str());
+		////out << QString::number(list.at(i).sceneItemId);
+  //  }
 }
 
 void IPC_Thread::fillDataBuf(QByteArray &buf, const QList<SceneInfo> &list)

@@ -22,35 +22,29 @@ QTcpServer *tcpServer = nullptr;
 // ----------------------------------------------------------------------------
 void ItemMuted(void* ptr, calldata_t* calldata)
 {
-    Q_UNUSED(ptr)
+	Q_UNUSED(ptr);
 
-    obs_source_t* source = (obs_source_t*)calldata_ptr(calldata, "source");
-    std::string name = obs_source_get_name(source);
-    std::string id = obs_source_get_id(source);
-    std::string displayName = obs_source_get_display_name(id.c_str());
+	//We could use the data, when introducing a new event, which may take them as parameter
+	Q_UNUSED(calldata);
+	
+	//obs_source_t* source = (obs_source_t*)calldata_ptr(calldata, "source");
+	//std::string name = obs_source_get_name(source);
+	//std::string id = obs_source_get_id(source);
+	//bool muted = calldata_bool(calldata, "muted");
 
-    bool muted = calldata_bool(calldata, "muted");
+	//    qDebug() << __FUNCTION__ << muted << QString::fromStdString(name) << type << QString::fromStdString(id) << QString::fromStdString(displayName);
 
-//    qDebug() << __FUNCTION__ << muted << QString::fromStdString(name) << type << QString::fromStdString(id) << QString::fromStdString(displayName);
+	json eventJson;
+	eventJson["jsonrpc"] = "2.0";
+	json result = json::object();
+	result["_type"] = "EVENT";
+	eventJson["id"] = nullptr;
 
-    // send to SD
-    if (actionHelpPtr && actionHelpPtr->getSendNotifyFlag())
-    {
-        QString scName, sceneName;
-        if (!actionHelpPtr->getCurrentCollectionAndSceneName(scName, sceneName))
-            return;
+	result["resourceId"] = "SourcesService.sourceUpdated";
+	eventJson["result"] = result;
 
-        // prepare source info
-        QStringList list;
-        QString isMixerSrcStr = QString("%1").arg(true);
-        QString activeFlagStr = QString("%1").arg(!muted);
-
-        list << "syncSourceState" << isMixerSrcStr << scName << sceneName << name.c_str() << id.c_str() << "1" << activeFlagStr;
-
-        // add to cmd list
-        //QMetaObject::invokeMethod(ipcThreadPtr, "onNotify", Q_ARG(ShmID, ShmId_StreamDeck), Q_ARG(QStringList, list));
-    }
-
+	std::string str = eventJson.dump() + "\n";
+	actionHelpPtr->WriteToSocket(str);
 }
 
 void UpdateSource()
@@ -60,7 +54,7 @@ void UpdateSource()
     QString errStr;
     QList<SourceInfo> list;
 
-    actionHelpPtr->updateSourcesList("", list, errStr);
+    actionHelpPtr->updateSourcesList(list);
 
     for (int i=0; i<list.count(); i++)
     {
@@ -72,40 +66,29 @@ void UpdateSource()
 
 void ItemVisible(void* ptr, calldata_t* calldata)
 {
-    Q_UNUSED(ptr)
+	Q_UNUSED(ptr);
 
-    obs_sceneitem_t* sceneItem = (obs_sceneitem_t*)calldata_ptr(calldata, "item");
+	//We could use the data, when introducing a new event, which may take them as parameter
+	Q_UNUSED(calldata);
 
-	int64_t sceneItemId = obs_sceneitem_get_id(sceneItem);
-	
-    obs_source_t* source = obs_sceneitem_get_source(sceneItem);
-    std::string name = obs_source_get_name(source);
-//    obs_source_type  type = obs_source_get_type(source);
-    std::string id = obs_source_get_id(source);
-//    std::string displayName = obs_source_get_display_name(id.c_str());
+	//obs_sceneitem_t* sceneItem = (obs_sceneitem_t*)calldata_ptr(calldata, "item");
+	//int64_t sceneItemId = obs_sceneitem_get_id(sceneItem);
+	//obs_source_t* source = obs_sceneitem_get_source(sceneItem);
+	//std::string name = obs_source_get_name(source);
+	//std::string id = obs_source_get_id(source);
+	//bool visible = calldata_bool(calldata, "visible");
 
-    bool visible = calldata_bool(calldata, "visible");
+	json eventJson;
+	eventJson["jsonrpc"] = "2.0";
+	json result = json::object();
+	result["_type"] = "EVENT";
+	eventJson["id"] = nullptr;
 
-//    qDebug() << __FUNCTION__ << name.c_str() << type << id.c_str() << displayName.c_str() << visible;
+	result["resourceId"] = "ScenesService.itemUpdated";
+	eventJson["result"] = result;
 
-    // send to SD
-    if (actionHelpPtr && actionHelpPtr->getSendNotifyFlag())
-    {
-        QString scName, sceneName;
-        if (!actionHelpPtr->getCurrentCollectionAndSceneName(scName, sceneName))
-            return;
-
-        // prepare source info
-        QStringList list;
-        QString isMixerSrcStr = QString("%1").arg(false);
-        QString flagStr = QString("%1").arg(visible);
-		QString sceneItemIdString = QString::number(sceneItemId);
-
-        list << "syncSourceState" << isMixerSrcStr << scName << sceneName << name.c_str() << id.c_str() << sceneItemIdString << flagStr;
-
-        // add to cmd list
-        //QMetaObject::invokeMethod(ipcThreadPtr, "onNotify", Q_ARG(ShmID, ShmId_StreamDeck), Q_ARG(QStringList, list));
-    }
+	std::string str = eventJson.dump() + "\n";
+	actionHelpPtr->WriteToSocket(str);
 }
 
 void ItemAdd(void* ptr, calldata_t* calldata)
@@ -123,6 +106,7 @@ void ItemAdd(void* ptr, calldata_t* calldata)
 		eventJson["id"] = nullptr;
 
 		result["resourceId"] = "ScenesService.itemAdded";
+		eventJson["result"] = result;
 
 		std::string str = eventJson.dump() + "\n";
 		actionHelpPtr->WriteToSocket(str);
@@ -143,6 +127,7 @@ void ItemRemove(void* ptr, calldata_t* calldata)
 		eventJson["id"] = nullptr;
 
 		result["resourceId"] = "ScenesService.itemRemoved";
+		eventJson["result"] = result;
 
 		std::string str = eventJson.dump() + "\n";
 		actionHelpPtr->WriteToSocket(str);
