@@ -99,18 +99,12 @@ class ActionHelp : public QObject
     Q_OBJECT
 public:
     explicit ActionHelp(QObject *parent = 0);
-    bool getSendNotifyFlag();
-    QString getCurrentSceneName();
-    bool getCurrentCollectionAndSceneName(QString &scName, QString&sceneName);
 
-	//void updateSourcesList(QString sceneName, QList<SourceInfo> &list, QString &errStr);
-
-
-    bool isSourceVisible(QString sceneName, QString sourceName, int64_t sceneItemId);
+    bool GetIsRespondingFlag();
 
 	void WriteToSocket(const std::string &inString);
 
-	void updateSourcesList(QList<SourceInfo> &outList);
+	void UpdateSourcesList(QList<SourceInfo> &outSourceList);
 
 signals:
 
@@ -126,21 +120,27 @@ public slots:
 	void Disconnected();
 
 private:
-    bool sendNotifyFlag;
-
 	//scenes and collections
-	void updateSceneCollectionList(QStringList &list);
-	QString getCurrentSceneCollectionName();
-	bool reqUpdateSceneList(QString inCollectionName, QList<SceneInfo>& outSceneList);
-	bool reqUpdateSourcesListOfAll(QString inCollectionName, QList<SourceInfo>& outSceneList);
+	QString GetCurrentSceneName();
+	bool GetCurrentCollectionAndSceneName(QString &inCollectionName, QString&inSceneName);
+	QString GetCurrentSceneCollectionName();
 
-	void updateScenesList(QList<SceneInfo> &outList);
+	void UpdateSceneCollectionList(QStringList &list);
+	bool RequestSceneListUpdate(QString inCollectionName, QList<SceneInfo>& outSceneList);
+
+	void UpdateScenesList(QList<SceneInfo> &outList);
 
 	bool SelectSceneCollection(QString inCollectionName);
 	bool SelectScene(QString inSceneName);
 
-	bool toggleSource(QString inSceneId, QString inSceneItemId, QString inSourceId, ToggleInfo toggleInfo);
-	bool muteMixerSource(QString inSourceId, ToggleInfo toggleInfo);
+	//sources
+	bool RequestSourcesListUpdate(QString inCollectionName, QList<SourceInfo>& outSceneList);
+
+	bool ToggleSourceVisibility(QString inSceneId, QString inSceneItemId, QString inSourceId, ToggleInfo inToggleInfo);
+	bool MuteMixerSource(QString inSourceId, ToggleInfo inToggleInfo);
+
+	bool IsSourceVisible(const QString& inSceneName, const QString& inSourceName, int64_t inSceneItemId);
+
 
 	//streaming and recording
 	//void reqToggleRecord(json* inResponse);
@@ -152,6 +152,8 @@ private:
 	bool RequestStopStreaming();
 
 	QTcpSocket *mSocket = nullptr;
+	bool mIsRespondingFlag;
+
 };
 
 #endif // ACTIONHELP_H

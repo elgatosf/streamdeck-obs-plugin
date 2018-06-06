@@ -14,15 +14,13 @@ DEFINES += OBSPLUGINSTREAMDECK_LIBRARY
 SOURCES += \
     streamdeckplugin_module.cpp \
     infodialog.cpp \
-    actionhelp.cpp \
-    ipc_thread.cpp
+    actionhelp.cpp
 
 HEADERS +=\
     obspluginstreamdeck_global.h \
     streamdeckplugin_module.h \
     infodialog.h \
     actionhelp.h \
-    ipc_thread.h \
 	JSONUtils.h \
 	submodules/json/src/json.hpp
 
@@ -36,8 +34,6 @@ QMAKE_TARGET_COPYRIGHT = "Copyright \\251 2017, Elgato Systems GmbH"
 
 DEFINES += VERSION_STR=\\\"$$VERSION\\\"
 
-include(./SharedFile/SharedFile.pri)   # IPC
-INCLUDEPATH += ./SharedFile/
 
 # json
 INCLUDEPATH += $$PWD/submodules/json/src/ 
