@@ -10,7 +10,7 @@ extern QTcpServer *tcpServer;
 
 
 // ----------------------------------------------------------------------------
-ActionHelp::ActionHelp(QObject *parent) : QObject(parent), mIsRespondingFlag(true)
+ActionHelp::ActionHelp(QObject *parent) : QObject(parent)
 {
 
 }
@@ -18,9 +18,14 @@ ActionHelp::ActionHelp(QObject *parent) : QObject(parent), mIsRespondingFlag(tru
 // ----------------------------------------------------------------------------
 // Public functions
 // ----------------------------------------------------------------------------
-bool ActionHelp::GetIsRespondingFlag()
+bool ActionHelp::GetIsRespondingStreamingFlag()
 {
-    return mIsRespondingFlag;
+    return mIsRespondingStreamingFlag;
+}
+
+bool ActionHelp::GetIsRespondingCollectionsSchemaFlag()
+{
+    return mIsRespondingCollectionsSchemaFlag;
 }
 
 void ActionHelp::UpdateSceneCollectionList(QStringList &list)
@@ -112,34 +117,34 @@ void ActionHelp::UpdateSourcesList(QList<SourceInfo> &outSourceList)
 {
 	outSourceList.clear();
 
-		// enum all source items
-		auto enumFunc = [](void* param, obs_source_t* source)
+	// enum all source items
+	auto enumFunc = [](void* param, obs_source_t* source)
+	{
+		if (!param)
 		{
-			if (!param)
-			{
-				qDebug() << __FUNCTION__ << __LINE__ << "Err: param is NULL!";
-				return false;
-			}
-			
-			QList<SourceInfo> *list = reinterpret_cast<QList<SourceInfo>*>(param);
+			qDebug() << __FUNCTION__ << __LINE__ << "Err: param is NULL!";
+			return false;
+		}
 
-			// Get source
-			SourceInfo obsSource = {};
-			obsSource.source = source;
-			obsSource.name = obs_source_get_name(source);
-			obsSource.type = obs_source_get_type(source);
-			obsSource.idStr = obs_source_get_id(source);
-			obsSource.isMuted = obs_source_muted(source);
+		QList<SourceInfo> *list = reinterpret_cast<QList<SourceInfo>*>(param);
 
-			uint32_t outputFlags = obs_source_get_output_flags(source);
-			bool isAudio = (outputFlags & OBS_SOURCE_AUDIO) != 0;
-			obsSource.isAudio = isAudio;
+		// Get source
+		SourceInfo obsSource = {};
+		obsSource.source = source;
+		obsSource.name = obs_source_get_name(source);
+		obsSource.type = obs_source_get_type(source);
+		obsSource.idStr = obs_source_get_id(source);
+		obsSource.isMuted = obs_source_muted(source);
 
-			list->append(obsSource);
-			return true;
-		};
+		uint32_t outputFlags = obs_source_get_output_flags(source);
+		bool isAudio = (outputFlags & OBS_SOURCE_AUDIO) != 0;
+		obsSource.isAudio = isAudio;
 
-		obs_enum_sources(enumFunc, &outSourceList);
+		list->append(obsSource);
+		return true;
+	};
+
+	obs_enum_sources(enumFunc, &outSourceList);
 }
 
 void ActionHelp::WriteToSocket(const std::string &inString)
@@ -244,7 +249,6 @@ void ActionHelp::ReadyRead()
 			lineByteArray = mSocket->readLine();
 
 			json receivedJson = json::parse(lineByteArray);
-			auto dump = receivedJson.dump();
 
 			int rpcID = JSONUtils::GetIntByName(receivedJson, "id");
 
@@ -254,51 +258,68 @@ void ActionHelp::ReadyRead()
 
 			json result = json::object();
 
-			mIsRespondingFlag = false;
-
 			switch (rpcID)
 			{
 			case RPC_ID_startStreaming:
 			{
+				mIsRespondingStreamingFlag = false;
+
 				if (RequestStartStreaming())
 				{
 					std::string str = responseJson.dump() + "\n";
 					WriteToSocket(str);
 				}
+
+				mIsRespondingStreamingFlag = true;
+
 			}
 			break;
 			case RPC_ID_stopStreaming:
 			{
+				mIsRespondingStreamingFlag = false;
+
 				if (RequestStopStreaming())
 				{
 					std::string str = responseJson.dump() + "\n";
 					WriteToSocket(str);
 				}
+
+				mIsRespondingStreamingFlag = true;
 			}
 			break;
 
 			case RPC_ID_startRecording:
 			{
+				mIsRespondingStreamingFlag = false;
+
 				if (RequestStartRecording())
 				{
 					std::string str = responseJson.dump() + "\n";
 					WriteToSocket(str);
 				}
+
+				mIsRespondingStreamingFlag = true;
 			}
 			break;
 
 			case RPC_ID_stopRecording:
 			{
+				mIsRespondingStreamingFlag = false;
+
 				if (RequestStopRecording())
 				{
 					std::string str = responseJson.dump() + "\n";
 					WriteToSocket(str);
 				}
+
+				mIsRespondingStreamingFlag = true;
 			}
 			break;
 
 			case RPC_ID_getRecordingAndStreamingState:
 			{
+				mIsRespondingStreamingFlag = false;
+
 				if (obs_frontend_streaming_active())
 				{
 					result["streamingStatus"] = "live";
@@ -320,12 +341,16 @@ void ActionHelp::ReadyRead()
 
 				std::string str = responseJson.dump() + "\n";
 				WriteToSocket(str);
+
+				mIsRespondingStreamingFlag = true;
 			}
 
 			break;
 
 			case RPC_ID_fetchSceneCollectionsSchema:
 			{
+				mIsRespondingCollectionsSchemaFlag = false;
+
 				json data = json::array();
 
 				QStringList list;
@@ -350,11 +375,14 @@ void ActionHelp::ReadyRead()
 				std::string str = responseJson.dump() + "\n";
 				WriteToSocket(str);
 
+				mIsRespondingCollectionsSchemaFlag = true;
 			}
 			break;
 
 			case RPC_ID_makeCollectionActive:
 			{
+				mIsRespondingCollectionsSchemaFlag = false;
+
 				json params;
 				if (JSONUtils::GetObjectByName(receivedJson, "params", params))
 				{
@@ -375,11 +403,15 @@ void ActionHelp::ReadyRead()
 						}
 					}
 				}
+
+				mIsRespondingCollectionsSchemaFlag = true;
 			}
 			break;
 
 			case RPC_ID_makeSceneActive:
 			{
+				mIsRespondingCollectionsSchemaFlag = false;
+
 				bool isActive = false;
 
 				json params;
@@ -405,6 +437,8 @@ void ActionHelp::ReadyRead()
 				responseJson["result"] = isActive;
 				std::string str = responseJson.dump() + "\n";
 				WriteToSocket(str);
+
+				mIsRespondingCollectionsSchemaFlag = true;
 			}
 			break;
 
@@ -412,6 +446,7 @@ void ActionHelp::ReadyRead()
 			case RPC_ID_showScene:
 			{
 				bool hasChangedVisibility = false;
+				mIsRespondingCollectionsSchemaFlag = false;
 
 				json params;
 
@@ -461,6 +496,8 @@ void ActionHelp::ReadyRead()
 				}
 				std::string str = responseJson.dump() + "\n";
 				WriteToSocket(str);
+
+				mIsRespondingCollectionsSchemaFlag = true;
 			}
 			break;
 
@@ -468,6 +505,7 @@ void ActionHelp::ReadyRead()
 			case RPC_ID_unmuteMixerAudioSource:
 			{
 				bool hasMuted = false;
+				mIsRespondingCollectionsSchemaFlag = false;
 
 				json params;
 
@@ -515,11 +553,15 @@ void ActionHelp::ReadyRead()
 				}
 				std::string str = responseJson.dump() + "\n";
 				WriteToSocket(str);
+
+				mIsRespondingCollectionsSchemaFlag = true;
 			}
 			break;
 
 			case RPC_ID_getScenes:
 			{
+				mIsRespondingCollectionsSchemaFlag = false;
+
 				json params;
 				if (JSONUtils::GetObjectByName(receivedJson, "params", params))
 				{
@@ -579,12 +621,14 @@ void ActionHelp::ReadyRead()
 						}
 					}
 				}
-
+				mIsRespondingCollectionsSchemaFlag = true;
 			}
 			break;
 
 			case RPC_ID_getSources:
 			{
+				mIsRespondingCollectionsSchemaFlag = false;
+
 				json params;
 				if (JSONUtils::GetObjectByName(receivedJson, "params", params))
 				{
@@ -634,6 +678,8 @@ void ActionHelp::ReadyRead()
 						}
 					}
 				}
+
+				mIsRespondingCollectionsSchemaFlag = true;
 			}
 
 			case RPC_ID_getActiveCollection:
@@ -657,9 +703,6 @@ void ActionHelp::ReadyRead()
 			}
 			break;
 			}
-
-			mIsRespondingFlag = true;
-
 		}
 		catch (...)
 		{
@@ -990,7 +1033,6 @@ bool ActionHelp::RequestStartStreaming()
 	if (!obs_frontend_streaming_active())
 	{
 		obs_frontend_streaming_start();
-
 
 		if (obs_frontend_recording_active())
 		{

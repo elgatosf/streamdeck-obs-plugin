@@ -100,7 +100,11 @@ class ActionHelp : public QObject
 public:
     explicit ActionHelp(QObject *parent = 0);
 
-    bool GetIsRespondingFlag();
+	//used to prevent sending event messages to Stream Deck, when updating streaming and recording states on request of Stream Deck
+    bool GetIsRespondingStreamingFlag();
+
+	//used to prevent sending event messages to Stream Deck, when updating collections, scenes or sources on request of Stream Deck
+	bool GetIsRespondingCollectionsSchemaFlag();
 
 	void WriteToSocket(const std::string &inString);
 
@@ -152,8 +156,13 @@ private:
 	bool RequestStopStreaming();
 
 	QTcpSocket *mSocket = nullptr;
-	bool mIsRespondingFlag;
 
+	//used to prevent sending event messages to Stream Deck, when updating streaming and recording states on request of Stream Deck
+	bool mIsRespondingStreamingFlag = false;
+	
+	//used to prevent sending event messages to Stream Deck, when updating collections, scenes or sources on request of Stream Deck
+	//so that we can be sure that SD doesn't get unnecessary messages
+	bool mIsRespondingCollectionsSchemaFlag = false;
 };
 
 #endif // ACTIONHELP_H

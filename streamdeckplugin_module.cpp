@@ -13,6 +13,8 @@
 OBS_DECLARE_MODULE()
 OBS_MODULE_USE_DEFAULT_LOCALE("frontend-tools", "en-US")
 
+#define OBS_PORT 28195  
+
 ActionHelp *actionHelpPtr = NULL;
 
 QTcpServer *tcpServer = nullptr;
@@ -97,7 +99,7 @@ void ItemAdd(void* ptr, calldata_t* calldata)
 	Q_UNUSED(calldata);
 
     // send to SD
-    if (actionHelpPtr && actionHelpPtr->GetIsRespondingFlag())
+    if (actionHelpPtr && actionHelpPtr->GetIsRespondingCollectionsSchemaFlag())
     {
 		json eventJson;
 		eventJson["jsonrpc"] = "2.0";
@@ -118,7 +120,7 @@ void ItemRemove(void* ptr, calldata_t* calldata)
 	Q_UNUSED(ptr);
 	Q_UNUSED(calldata);
 
-	if (actionHelpPtr && actionHelpPtr->GetIsRespondingFlag())
+	if (actionHelpPtr && actionHelpPtr->GetIsRespondingCollectionsSchemaFlag())
 	{
 		json eventJson;
 		eventJson["jsonrpc"] = "2.0";
@@ -174,7 +176,7 @@ void OBSEvent(enum obs_frontend_event event, void* data)
 		{
 			qDebug() << "OBS_FRONTEND_EVENT_STREAMING_STARTING";
 
-			if (actionHelpPtr->GetIsRespondingFlag())
+			if (actionHelpPtr->GetIsRespondingStreamingFlag())
 			{
 				result["data"] = "starting";
 				result["resourceId"] = "StreamingService.streamingStatusChange";
@@ -191,7 +193,7 @@ void OBSEvent(enum obs_frontend_event event, void* data)
 		{
 			qDebug() << "OBS_FRONTEND_EVENT_STREAMING_STARTED";
 
-			if (actionHelpPtr->GetIsRespondingFlag())
+			if (actionHelpPtr->GetIsRespondingStreamingFlag())
 			{
 				result["data"] = "live";
 				result["resourceId"] = "StreamingService.streamingStatusChange";
@@ -208,7 +210,7 @@ void OBSEvent(enum obs_frontend_event event, void* data)
 		{
 			qDebug() << "OBS_FRONTEND_EVENT_STREAMING_STOPPING";
 
-			if (actionHelpPtr->GetIsRespondingFlag())
+			if (actionHelpPtr->GetIsRespondingStreamingFlag())
 			{
 				result["data"] = "stopping";
 				result["resourceId"] = "StreamingService.streamingStatusChange";
@@ -225,7 +227,7 @@ void OBSEvent(enum obs_frontend_event event, void* data)
 		{
 			qDebug() << "OBS_FRONTEND_EVENT_STREAMING_STOPPED";
 
-			if (actionHelpPtr->GetIsRespondingFlag())
+			if (actionHelpPtr->GetIsRespondingStreamingFlag())
 			{
 				result["data"] = "offline";
 				result["resourceId"] = "StreamingService.streamingStatusChange";
@@ -240,7 +242,7 @@ void OBSEvent(enum obs_frontend_event event, void* data)
 		
 		case OBS_FRONTEND_EVENT_RECORDING_STARTING:
 		{
-			if (actionHelpPtr->GetIsRespondingFlag())
+			if (actionHelpPtr->GetIsRespondingStreamingFlag())
 			{
 				result["data"] = "starting";
 				result["resourceId"] = "StreamingService.recordingStatusChange";
@@ -259,25 +261,22 @@ void OBSEvent(enum obs_frontend_event event, void* data)
 		{
 			qDebug() << "OBS_FRONTEND_EVENT_RECORDING_STARTED";
 
-			if (actionHelpPtr->GetIsRespondingFlag())
+			if (actionHelpPtr->GetIsRespondingStreamingFlag())
 			{
-				if (actionHelpPtr->GetIsRespondingFlag())
-				{
-					result["data"] = "recording";
-					result["resourceId"] = "StreamingService.recordingStatusChange";
+				result["data"] = "recording";
+				result["resourceId"] = "StreamingService.recordingStatusChange";
 
-					eventJson["result"] = result;
+				eventJson["result"] = result;
 
-					std::string str = eventJson.dump() + "\n";
-					actionHelpPtr->WriteToSocket(str);
-				}
+				std::string str = eventJson.dump() + "\n";
+				actionHelpPtr->WriteToSocket(str);
 			}
 		}
 		break;
 		
 		case OBS_FRONTEND_EVENT_RECORDING_STOPPING:
 		{
-			if (actionHelpPtr->GetIsRespondingFlag())
+			if (actionHelpPtr->GetIsRespondingStreamingFlag())
 			{
 				result["data"] = "stopping";
 				result["resourceId"] = "StreamingService.recordingStatusChange";
@@ -295,7 +294,7 @@ void OBSEvent(enum obs_frontend_event event, void* data)
 		{
 			qDebug() << "OBS_FRONTEND_EVENT_RECORDING_STOPPED";
 
-			if (actionHelpPtr->GetIsRespondingFlag())
+			if (actionHelpPtr->GetIsRespondingStreamingFlag())
 			{
 				result["data"] = "offline";
 				result["resourceId"] = "StreamingService.recordingStatusChange";
@@ -312,7 +311,7 @@ void OBSEvent(enum obs_frontend_event event, void* data)
 		{
 			qDebug() << "OBS_FRONTEND_EVENT_SCENE_CHANGED";       
 
-			if (actionHelpPtr->GetIsRespondingFlag())
+			if (actionHelpPtr->GetIsRespondingCollectionsSchemaFlag())
 			{
 				QMetaObject::invokeMethod(actionHelpPtr, "NotifySceneSwitched");
 			}
@@ -325,11 +324,14 @@ void OBSEvent(enum obs_frontend_event event, void* data)
 
 			UpdateScenes();
 
-			//Added signal used as "generic" changed signal. SD will request all collections then
+			//"sceneAdded"-signal used as a generic changed signal. SD will request all collections then
 			result["resourceId"] = "ScenesService.sceneAdded";
 
-			std::string str = eventJson.dump() + "\n";
-			actionHelpPtr->WriteToSocket(str);
+			if (actionHelpPtr->GetIsRespondingCollectionsSchemaFlag())
+			{
+				std::string str = eventJson.dump() + "\n";
+				actionHelpPtr->WriteToSocket(str);
+			}
 		}
 		break;
 		
@@ -355,10 +357,11 @@ void OBSEvent(enum obs_frontend_event event, void* data)
 		{				
 			qDebug() << "OBS_FRONTEND_EVENT_SCENE_COLLECTION_CHANGED";
 
-			if (actionHelpPtr->GetIsRespondingFlag())
+			UpdateSource();
+			UpdateScenes();
+
+			if (actionHelpPtr->GetIsRespondingCollectionsSchemaFlag())
 			{
-				UpdateSource();
-				UpdateScenes();
 				QMetaObject::invokeMethod(actionHelpPtr, "NotifyCollectionChanged");
 			}
 		}
@@ -371,8 +374,11 @@ void OBSEvent(enum obs_frontend_event event, void* data)
 			//Added signal used as "generic" changed signal. SD will request all collections then
 			result["resourceId"] = "SceneCollectionsService.collectionAdded";
 
-			std::string str = eventJson.dump() + "\n";
-			actionHelpPtr->WriteToSocket(str);
+			if (actionHelpPtr->GetIsRespondingCollectionsSchemaFlag())
+			{
+				std::string str = eventJson.dump() + "\n";
+				actionHelpPtr->WriteToSocket(str);
+			}
 
 		}
 		break;
@@ -438,7 +444,7 @@ void SaveCallback(obs_data_t* save_data, bool saving, void*)
     {
         UpdateSource();
 
-		if (actionHelpPtr-> GetIsRespondingFlag())
+		if (actionHelpPtr-> GetIsRespondingCollectionsSchemaFlag())
 		{
 			json eventJson;
 			eventJson["jsonrpc"] = "2.0";
@@ -495,7 +501,7 @@ void InitStreamDeckPlugin()
 
 	QObject::connect(tcpServer, &QTcpServer::newConnection, actionHelpPtr, &ActionHelp::SDClientConnected);
 
-	if (!tcpServer->listen(QHostAddress::LocalHost, 28195)) 
+	if (!tcpServer->listen(QHostAddress::LocalHost, OBS_PORT)) 
 	{
 		return;
 	}
