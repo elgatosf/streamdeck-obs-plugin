@@ -75,3 +75,9 @@ StreamDeckPlugin.vcxproj
 ui_infodialog.h
 /release
 /debug
+/XCBuildData
+/StreamDeckPlugin.xcodeproj
+/StreamDeckPlugin.build
+/moc_predefs.h
+/moc_infodialog.cpp
+/moc_actionhelp.cpp
