@@ -98,7 +98,7 @@ void ActionHelp::UpdateScenesList(QList<SceneInfo> &outList)
 			sceneItemInfo.sceneItemId = sceneItemId;
 			sceneItemInfo.sourceName = obs_source_get_name(source);
 			sceneItemInfo.isVisible = obs_sceneitem_visible(item);
-			list->append(sceneItemInfo);
+			list->prepend(sceneItemInfo);
 			return true;
 		};
 
