@@ -7,6 +7,7 @@
 #include <QThread>
 #include <QTimer>
 #include <QtNetwork>
+#include <QLocalSocket>
 
 #include "JSONUtils.h"
 
@@ -505,6 +506,11 @@ void InitStreamDeckPlugin()
 	{
 		return;
 	}
+
+	QLocalSocket socket = new QLocalSocket();
+	socket.connectToServer("obsPluginSD");
+
+	socket.deleteLater();
 
     // setup obs event callback
     obs_frontend_add_save_callback(SaveCallback, nullptr);
