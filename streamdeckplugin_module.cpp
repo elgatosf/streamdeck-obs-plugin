@@ -7,7 +7,7 @@
 #include <QThread>
 #include <QTimer>
 #include <QtNetwork>
-//#include <QLocalSocket>
+#include <QLocalSocket>
 
 #include "JSONUtils.h"
 
@@ -507,8 +507,8 @@ void InitStreamDeckPlugin()
 		return;
 	}
 
-	//QLocalSocket socket = new QLocalSocket();
-	//socket.connectToServer("obsPluginSD");
+	QLocalSocket socket = new QLocalSocket();
+	socket.connectToServer("obsPluginSD");
 
 	//socket.deleteLater();
 
