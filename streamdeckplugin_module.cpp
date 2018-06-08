@@ -510,7 +510,7 @@ void InitStreamDeckPlugin()
 	QLocalSocket socket = new QLocalSocket();
 	socket.connectToServer("obsPluginSD");
 
-	//socket.deleteLater();
+	socket.deleteLater();
 
     // setup obs event callback
     obs_frontend_add_save_callback(SaveCallback, nullptr);
