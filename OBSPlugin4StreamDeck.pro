@@ -26,6 +26,9 @@ HEADERS +=\
 
 CONFIG += c++11
 
+# dead code stripping
+LIBS += -dead_strip
+
 VERSION = 2.3.1
 
 QMAKE_TARGET_DESCRIPTION = "Stream Deck OBS Plugin"
