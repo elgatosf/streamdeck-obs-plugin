@@ -266,9 +266,15 @@ void ActionHelp::ReadyRead()
 
 				if (RequestStartStreaming())
 				{
-					std::string str = responseJson.dump() + "\n";
-					WriteToSocket(str);
+					responseJson["error"] = false;
 				}
+				else 
+				{
+					responseJson["error"] = true;
+				}
+
+				std::string str = responseJson.dump() + "\n";
+				WriteToSocket(str);
 
 				mIsRespondingStreamingFlag = true;
 
@@ -280,9 +286,15 @@ void ActionHelp::ReadyRead()
 
 				if (RequestStopStreaming())
 				{
-					std::string str = responseJson.dump() + "\n";
-					WriteToSocket(str);
+					responseJson["error"] = false;
 				}
+				else
+				{
+					responseJson["error"] = true;
+				}
+
+				std::string str = responseJson.dump() + "\n";
+				WriteToSocket(str);
 
 				mIsRespondingStreamingFlag = true;
 			}
@@ -294,9 +306,15 @@ void ActionHelp::ReadyRead()
 
 				if (RequestStartRecording())
 				{
-					std::string str = responseJson.dump() + "\n";
-					WriteToSocket(str);
+					responseJson["error"] = false;
 				}
+				else
+				{
+					responseJson["error"] = true;
+				}
+
+				std::string str = responseJson.dump() + "\n";
+				WriteToSocket(str);
 
 				mIsRespondingStreamingFlag = true;
 			}
@@ -308,9 +326,15 @@ void ActionHelp::ReadyRead()
 
 				if (RequestStopRecording())
 				{
-					std::string str = responseJson.dump() + "\n";
-					WriteToSocket(str);
+					responseJson["error"] = false;
 				}
+				else
+				{
+					responseJson["error"] = true;
+				}
+
+				std::string str = responseJson.dump() + "\n";
+				WriteToSocket(str);
 
 				mIsRespondingStreamingFlag = true;
 			}
