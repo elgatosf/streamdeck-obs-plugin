@@ -148,11 +148,11 @@ private:
 	QTcpSocket *mSocket = nullptr;
 
 	//used to prevent sending event messages to Stream Deck, when updating streaming and recording states on request of Stream Deck
-	bool mIsRespondingStreamingFlag = false;
+	bool mIsRespondingStreamingFlag = true;
 	
 	//used to prevent sending event messages to Stream Deck, when updating collections, scenes or sources on request of Stream Deck
 	//so that we can be sure that SD doesn't get unnecessary messages
-	bool mIsRespondingCollectionsSchemaFlag = false;
+	bool mIsRespondingCollectionsSchemaFlag = true;
 };
 
 #endif // ACTIONHELP_H

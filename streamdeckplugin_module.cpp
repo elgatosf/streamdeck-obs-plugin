@@ -327,6 +327,7 @@ void OBSEvent(enum obs_frontend_event event, void* data)
 
 			//"sceneAdded"-signal used as a generic changed signal. SD will request all collections then
 			result["resourceId"] = "ScenesService.sceneAdded";
+			eventJson["result"] = result;
 
 			if (actionHelpPtr->GetIsRespondingCollectionsSchemaFlag())
 			{
@@ -374,6 +375,7 @@ void OBSEvent(enum obs_frontend_event event, void* data)
 
 			//Added signal used as "generic" changed signal. SD will request all collections then
 			result["resourceId"] = "SceneCollectionsService.collectionAdded";
+			eventJson["result"] = result;
 
 			if (actionHelpPtr->GetIsRespondingCollectionsSchemaFlag())
 			{
