@@ -7,6 +7,7 @@
 #include <obs-module.h>
 #include <QTcpSocket>
 #include "JSONUtils.h"
+#include "SourceInfo.h"
 
 // ----------------------------------------------------------------------------
 typedef enum _OBS_SOURCE_TYPE
@@ -30,6 +31,7 @@ typedef struct _SceneItemInfo
 {
 	std::string   sourceName;
 	bool   isVisible;
+	bool   isScene;
 	int64_t     sceneItemId;
 }SceneItemInfo;
 
@@ -39,19 +41,6 @@ typedef struct _SceneInfo
 	std::string   name;
 	QList<SceneItemInfo>  sceneItems;
 }SceneInfo;
-
-typedef struct _SourceInfo
-{
-    //std::string     sceneName;
-
-    obs_source_t*   source;
-    std::string     name;
-    std::string     idStr;
-    //std::string     displayName;
-    obs_source_type type;
-	bool isAudio;
-	bool isMuted;
-}SourceInfo;
 
 enum ToggleInfo
 {
@@ -133,6 +122,7 @@ private:
 	bool RequestSceneListUpdate(QString inCollectionName, QList<SceneInfo>& outSceneList);
 
 	void UpdateScenesList(QList<SceneInfo> &outList);
+	void UpdateScenesAsSourcesList(QList<SourceInfo> &outSet);
 
 	bool SelectSceneCollection(QString inCollectionName);
 	bool SelectScene(QString inSceneName);

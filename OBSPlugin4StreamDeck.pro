@@ -22,6 +22,7 @@ HEADERS +=\
     infodialog.h \
     actionhelp.h \
 	JSONUtils.h \
+	SourceInfo.h \
 	submodules/json/src/json.hpp
 
 CONFIG += c++11

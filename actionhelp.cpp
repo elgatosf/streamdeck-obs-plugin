@@ -113,6 +113,73 @@ void ActionHelp::UpdateScenesList(QList<SceneInfo> &outList)
     obs_frontend_source_list_free(&scenes);
 }
 
+void ActionHelp::UpdateScenesAsSourcesList(QList<SourceInfo> &outSet)
+{
+	// Enumerate scenes for current scene collection
+	struct obs_frontend_source_list scenes = {};
+	obs_frontend_get_scenes(&scenes);
+
+	for (size_t i = 0; i < scenes.sources.num; i++)
+	{
+		auto sceneEntry = scenes.sources.array[i];
+
+		SceneInfo sceneInfo = {};
+		sceneInfo.scene = sceneEntry;
+
+		std::string sceneName = obs_source_get_name(sceneEntry);
+
+		obs_scene_t *scene = obs_scene_from_source(sceneEntry);
+		if (!scene)
+		{
+			QString errStr = "Err: obs_scene_from_source(sceneSource) return NULL!";
+			qDebug() << errStr;
+		}
+
+		sceneInfo.name = sceneName;
+
+		// 3. enum items by scene
+		auto enumFunc = [](obs_scene_t*, obs_sceneitem_t* item, void* param)
+		{
+			if (!param)
+			{
+				qDebug() << __FUNCTION__ << __LINE__ << "Err: param is NULL!";
+				return false;
+			}
+
+			QList<SourceInfo> *list = reinterpret_cast<QList<SourceInfo>*>(param);
+
+			obs_source_t *source = obs_sceneitem_get_source(item);
+			if (!source)
+			{
+				qDebug() << __FUNCTION__ << __LINE__ << "Err: obs_sceneitem_get_source(sceneSource) return NULL!";
+			}
+
+			if (obs_source_get_type(source) == OBS_SOURCE_TYPE_SCENE)
+			{
+				SourceInfo obsSource = {};
+				obsSource.source = source;
+				obsSource.name = obs_source_get_name(source);
+				obsSource.type = OBS_SOURCE_TYPE_SCENE;
+				obsSource.idStr = obs_source_get_id(source);
+
+				obsSource.isMuted = obs_source_muted(source);
+				obsSource.isAudio = false;
+
+				if (!list->contains(obsSource))
+				{
+					list->append(obsSource);
+				}
+			}
+
+			return true;
+		};
+
+		obs_scene_enum_items(scene, enumFunc, &outSet);
+	}
+
+	obs_frontend_source_list_free(&scenes);
+}
+
 void ActionHelp::UpdateSourcesList(QList<SourceInfo> &outSourceList)
 {
 	outSourceList.clear();
@@ -145,6 +212,11 @@ void ActionHelp::UpdateSourcesList(QList<SourceInfo> &outSourceList)
 	};
 
 	obs_enum_sources(enumFunc, &outSourceList);
+
+	QList<SourceInfo> scenesAsSourcesList;
+	UpdateScenesAsSourcesList(scenesAsSourcesList);
+
+	outSourceList.append(scenesAsSourcesList);
 }
 
 void ActionHelp::WriteToSocket(const std::string &inString)
