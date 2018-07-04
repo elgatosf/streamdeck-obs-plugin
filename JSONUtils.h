@@ -18,7 +18,7 @@
 // Includes
 //------------------------------------------------------------------------------
 
-#include "submodules/json/src/json.hpp"
+#include "json.hpp"
 using json = nlohmann::json;
 
 class JSONUtils
