@@ -456,6 +456,7 @@ void SaveCallback(obs_data_t* save_data, bool saving, void*)
 			eventJson["id"] = nullptr;
 
 			result["resourceId"] = "SourcesService.sourceUpdated";
+			eventJson["result"] = result;
 
 			std::string str = eventJson.dump() + "\n";
 			actionHelpPtr->WriteToSocket(str);
