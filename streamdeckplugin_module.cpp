@@ -94,48 +94,8 @@ void ItemVisible(void* ptr, calldata_t* calldata)
 	actionHelpPtr->WriteToSocket(str);
 }
 
-void ItemAdd(void* ptr, calldata_t* calldata)
-{
-	Q_UNUSED(ptr);
-	Q_UNUSED(calldata);
 
-    // send to SD
-    if (actionHelpPtr && actionHelpPtr->GetIsRespondingCollectionsSchemaFlag())
-    {
-		json eventJson;
-		eventJson["jsonrpc"] = "2.0";
-		json result = json::object();
-		result["_type"] = "EVENT";
-		eventJson["id"] = nullptr;
 
-		result["resourceId"] = "ScenesService.itemAdded";
-		eventJson["result"] = result;
-
-		std::string str = eventJson.dump() + "\n";
-		actionHelpPtr->WriteToSocket(str);
-    }
-}
-
-void ItemRemove(void* ptr, calldata_t* calldata)
-{
-	Q_UNUSED(ptr);
-	Q_UNUSED(calldata);
-
-	if (actionHelpPtr && actionHelpPtr->GetIsRespondingCollectionsSchemaFlag())
-	{
-		json eventJson;
-		eventJson["jsonrpc"] = "2.0";
-		json result = json::object();
-		result["_type"] = "EVENT";
-		eventJson["id"] = nullptr;
-
-		result["resourceId"] = "ScenesService.itemRemoved";
-		eventJson["result"] = result;
-
-		std::string str = eventJson.dump() + "\n";
-		actionHelpPtr->WriteToSocket(str);
-	}
-}
 
 void UpdateScenes()
 {
@@ -151,8 +111,6 @@ void UpdateScenes()
         // Connect signal handler
         signal_handler_t* signalHandler = obs_source_get_signal_handler(scenes.sources.array[i]);
         signal_handler_connect(signalHandler, "item_visible", ItemVisible, nullptr);
-        signal_handler_connect(signalHandler, "item_add", ItemAdd, nullptr);
-        signal_handler_connect(signalHandler, "item_remove", ItemRemove, nullptr);
     }
 
     // Cleanup
@@ -440,8 +398,6 @@ void SaveCallback(obs_data_t* save_data, bool saving, void*)
 
         UpdateSource();
         UpdateScenes();
-
-        QTimer::singleShot(1500, actionHelpPtr, SLOT(reqCurrentCollectionAndSceneName()));
     }
     else if (saving)
     {
