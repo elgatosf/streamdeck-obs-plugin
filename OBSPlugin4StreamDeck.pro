@@ -32,7 +32,7 @@ LIBS += -dead_strip
 
 VERSION = 2.3.1
 
-QMAKE_TARGET_DESCRIPTION = "Stream Deck OBS Plugin"
+QMAKE_TARGET_DESCRIPTION = "Elgato Remote Control for OBS Studio"
 QMAKE_TARGET_COMPANY = "Corsair Memory, Inc"
 QMAKE_TARGET_COPYRIGHT = "Copyright \\251 2017-2018 Corsair Memory, Inc."
 
