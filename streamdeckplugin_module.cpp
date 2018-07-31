@@ -439,7 +439,7 @@ void InitStreamDeckPlugin()
 {
 #if 1
     // setup tools menu action for show pluging info
-    QAction* action = (QAction*)obs_frontend_add_tools_menu_qaction(obs_module_text("Elgato Stream Deck Plugin"));
+    QAction* action = (QAction*)obs_frontend_add_tools_menu_qaction(obs_module_text("Elgato Remote Control for OBS Studio"));
 
     auto cb = []()
     {
