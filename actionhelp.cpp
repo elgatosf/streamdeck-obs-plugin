@@ -8,6 +8,20 @@
 // ----------------------------------------------------------------------------
 extern QTcpServer *tcpServer;
 
+//Wrapper for converting strings from OBS
+static std::string GetOBSSourceName(const obs_source_t * inSource)
+{
+	if (inSource != NULL)
+	{
+		const char *sourceName = obs_source_get_name(inSource);
+		if (sourceName != NULL)
+		{
+			return std::string(sourceName);
+		}
+	}
+
+	return "";
+}
 
 // ----------------------------------------------------------------------------
 ActionHelp::ActionHelp(QObject *parent) : QObject(parent)
@@ -104,7 +118,7 @@ void ActionHelp::UpdateScenesList(QList<SceneInfo> &outList)
 
 			SceneItemInfo sceneItemInfo = {};
 			sceneItemInfo.sceneItemId = sceneItemId;
-			sceneItemInfo.sourceName = obs_source_get_name(source) == NULL ? "" : obs_source_get_name(source);
+			sceneItemInfo.sourceName = GetOBSSourceName(source);
 			sceneItemInfo.isVisible = obs_sceneitem_visible(item);
 			list->prepend(sceneItemInfo);
 			return true;
@@ -173,7 +187,7 @@ void ActionHelp::UpdateScenesAsSourcesList(QList<SourceInfo> &outSet)
 			{
 				SourceInfo obsSource = {};
 				obsSource.source = source;
-				obsSource.name = obs_source_get_name(source) == NULL ? "" : obs_source_get_name(source);
+				obsSource.name = GetOBSSourceName(source);
 				obsSource.type = OBS_SOURCE_TYPE_SCENE;
 				obsSource.idStr = obs_source_get_id(source);
 
@@ -213,7 +227,7 @@ void ActionHelp::UpdateSourcesList(QList<SourceInfo> &outSourceList)
 		// Get source
 		SourceInfo obsSource = {};
 		obsSource.source = source;
-		obsSource.name = obs_source_get_name(source) == NULL ? "" : obs_source_get_name(source);
+		obsSource.name = GetOBSSourceName(source);
 		obsSource.type = obs_source_get_type(source);
 		obsSource.idStr = obs_source_get_id(source);
 		obsSource.isMuted = obs_source_muted(source);
@@ -1237,18 +1251,4 @@ bool ActionHelp::RequestSourcesListUpdate(QString inCollectionName, QList<Source
 	SelectSceneCollection(currentCollectionName);
 
 	return isSuccessful;
-}
-
-std::string ActionHelp::GetOBSSourceName(const obs_source_t * inSource)
-{
-	if (inSource != NULL)
-	{
-		const char *sourceName = obs_source_get_name(inSource);
-		if (sourceName != NULL)
-		{
-			return std::string(sourceName);
-		}
-	}
-
-	return "";
 }

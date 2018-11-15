@@ -145,9 +145,6 @@ private:
 	bool RequestStartStreaming();
 	bool RequestStopStreaming();
 
-	//Wrapper for converting strings from OBS
-	std::string GetOBSSourceName(const obs_source_t *inSource);
-
 	QTcpSocket *mSocket = nullptr;
 
 	//used to prevent sending event messages to Stream Deck, when updating streaming and recording states on request of Stream Deck
