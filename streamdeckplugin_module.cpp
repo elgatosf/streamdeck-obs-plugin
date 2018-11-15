@@ -63,6 +63,12 @@ void UpdateSource()
     {
         SourceInfo srcInfo = list.at(i);
         signal_handler_t* signalHandler = obs_source_get_signal_handler(srcInfo.source);
+
+		if (signalHandler == NULL)
+		{
+			continue;
+		}
+
         signal_handler_connect(signalHandler, "mute", ItemMuted, nullptr);
 	}
 }
@@ -110,6 +116,12 @@ void UpdateScenes()
     {
         // Connect signal handler
         signal_handler_t* signalHandler = obs_source_get_signal_handler(scenes.sources.array[i]);
+
+		if (signalHandler == NULL)
+		{
+			continue;
+		}
+
         signal_handler_connect(signalHandler, "item_visible", ItemVisible, nullptr);
     }
 

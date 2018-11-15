@@ -53,24 +53,31 @@ void ActionHelp::UpdateScenesList(QList<SceneInfo> &outList)
 {
 	outList.clear();
 
-    // Enumerate scenes for current scene collection
-    struct obs_frontend_source_list scenes = {};
-    obs_frontend_get_scenes(&scenes);
+	// Enumerate scenes for current scene collection
+	struct obs_frontend_source_list scenes = {};
+	obs_frontend_get_scenes(&scenes);
 
-    for (size_t i = 0 ; i < scenes.sources.num ; i++) 
+	for (size_t i = 0; i < scenes.sources.num; i++)
 	{
 		auto sceneEntry = scenes.sources.array[i];
 
-        SceneInfo sceneInfo = {};
-        sceneInfo.scene = sceneEntry;
+		if (!sceneEntry)
+		{
+			continue;
+		}
 
-		std::string sceneName = obs_source_get_name(sceneEntry);
+		SceneInfo sceneInfo = {};
+		sceneInfo.scene = sceneEntry;
+
+		std::string sceneName = GetOBSSourceName(sceneEntry);
 
 		obs_scene_t *scene = obs_scene_from_source(sceneEntry);
 		if (!scene)
 		{
 			QString errStr = "Err: obs_scene_from_source(sceneSource) return NULL!";
 			qDebug() << errStr;
+
+			continue;
 		}
 
 		sceneInfo.name = sceneName;
@@ -92,11 +99,12 @@ void ActionHelp::UpdateScenesList(QList<SceneInfo> &outList)
 			if (!source)
 			{
 				qDebug() << __FUNCTION__ << __LINE__ << "Err: obs_sceneitem_get_source(sceneSource) return NULL!";
+				return false;
 			}
 
 			SceneItemInfo sceneItemInfo = {};
 			sceneItemInfo.sceneItemId = sceneItemId;
-			sceneItemInfo.sourceName = obs_source_get_name(source);
+			sceneItemInfo.sourceName = obs_source_get_name(source) == NULL ? "" : obs_source_get_name(source);
 			sceneItemInfo.isVisible = obs_sceneitem_visible(item);
 			list->prepend(sceneItemInfo);
 			return true;
@@ -106,11 +114,10 @@ void ActionHelp::UpdateScenesList(QList<SceneInfo> &outList)
 		obs_scene_enum_items(scene, enumFunc, &sceneItems);
 
 		sceneInfo.sceneItems = sceneItems;
-
 		outList.append(sceneInfo);
-    }
+	}
 
-    obs_frontend_source_list_free(&scenes);
+	obs_frontend_source_list_free(&scenes);
 }
 
 void ActionHelp::UpdateScenesAsSourcesList(QList<SourceInfo> &outSet)
@@ -123,6 +130,11 @@ void ActionHelp::UpdateScenesAsSourcesList(QList<SourceInfo> &outSet)
 	{
 		auto sceneEntry = scenes.sources.array[i];
 
+		if (!sceneEntry)
+		{
+			continue;
+		}
+
 		SceneInfo sceneInfo = {};
 		sceneInfo.scene = sceneEntry;
 
@@ -133,6 +145,8 @@ void ActionHelp::UpdateScenesAsSourcesList(QList<SourceInfo> &outSet)
 		{
 			QString errStr = "Err: obs_scene_from_source(sceneSource) return NULL!";
 			qDebug() << errStr;
+
+			continue;
 		}
 
 		sceneInfo.name = sceneName;
@@ -152,13 +166,14 @@ void ActionHelp::UpdateScenesAsSourcesList(QList<SourceInfo> &outSet)
 			if (!source)
 			{
 				qDebug() << __FUNCTION__ << __LINE__ << "Err: obs_sceneitem_get_source(sceneSource) return NULL!";
+				return false;
 			}
 
 			if (obs_source_get_type(source) == OBS_SOURCE_TYPE_SCENE)
 			{
 				SourceInfo obsSource = {};
 				obsSource.source = source;
-				obsSource.name = obs_source_get_name(source);
+				obsSource.name = obs_source_get_name(source) == NULL ? "" : obs_source_get_name(source);
 				obsSource.type = OBS_SOURCE_TYPE_SCENE;
 				obsSource.idStr = obs_source_get_id(source);
 
@@ -198,7 +213,7 @@ void ActionHelp::UpdateSourcesList(QList<SourceInfo> &outSourceList)
 		// Get source
 		SourceInfo obsSource = {};
 		obsSource.source = source;
-		obsSource.name = obs_source_get_name(source);
+		obsSource.name = obs_source_get_name(source) == NULL ? "" : obs_source_get_name(source);
 		obsSource.type = obs_source_get_type(source);
 		obsSource.idStr = obs_source_get_id(source);
 		obsSource.isMuted = obs_source_muted(source);
@@ -841,7 +856,7 @@ QString ActionHelp::GetCurrentSceneName()
 		return "";
 	}
 
-	QString current_sceneName = obs_source_get_name(current_scene);
+	QString current_sceneName = GetOBSSourceName(current_scene).c_str();
 	obs_source_release(current_scene);
 
 	return current_sceneName;
@@ -1028,6 +1043,13 @@ bool ActionHelp::MuteMixerSource(QString inSourceId, ToggleInfo toggleInfo)
 	srcName.remove(0, collectionName.size());
 
 	obs_source_t *src = obs_get_source_by_name(srcName.toStdString().c_str());
+
+	if (src == NULL)
+	{
+		qDebug() << __FUNCTION__ << "Err: obs_get_source_by_name() got NULL!";
+		return false;
+	}
+
 	bool setFlag = obs_source_muted(src);
 
 	if (setFlag && toggleInfo == ToggleInfo::Deactivate)
@@ -1215,4 +1237,18 @@ bool ActionHelp::RequestSourcesListUpdate(QString inCollectionName, QList<Source
 	SelectSceneCollection(currentCollectionName);
 
 	return isSuccessful;
+}
+
+std::string ActionHelp::GetOBSSourceName(const obs_source_t * inSource)
+{
+	if (inSource != NULL)
+	{
+		const char *sourceName = obs_source_get_name(inSource);
+		if (sourceName != NULL)
+		{
+			return std::string(sourceName);
+		}
+	}
+
+	return "";
 }
