@@ -124,6 +124,28 @@ static inline const char *get_video_format_name(enum video_format format)
 	return "None";
 }
 
+static inline const char *get_video_colorspace_name(enum video_colorspace cs)
+{
+	switch (cs) {
+	case VIDEO_CS_709: return "709";
+	case VIDEO_CS_601:
+	case VIDEO_CS_DEFAULT:;
+	}
+
+	return "601";
+}
+
+static inline const char *get_video_range_name(enum video_range_type range)
+{
+	switch (range) {
+	case VIDEO_RANGE_FULL: return "Full";
+	case VIDEO_RANGE_PARTIAL:
+	case VIDEO_RANGE_DEFAULT:;
+	}
+
+	return "Partial";
+}
+
 enum video_scale_type {
 	VIDEO_SCALE_DEFAULT,
 	VIDEO_SCALE_POINT,
@@ -179,6 +201,11 @@ EXPORT double video_output_get_frame_rate(const video_t *video);
 
 EXPORT uint32_t video_output_get_skipped_frames(const video_t *video);
 EXPORT uint32_t video_output_get_total_frames(const video_t *video);
+
+extern void video_output_inc_texture_encoders(video_t *video);
+extern void video_output_dec_texture_encoders(video_t *video);
+extern void video_output_inc_texture_frames(video_t *video);
+extern void video_output_inc_texture_skipped_frames(video_t *video);
 
 
 #ifdef __cplusplus

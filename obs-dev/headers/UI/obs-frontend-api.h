@@ -42,7 +42,8 @@ enum obs_frontend_event {
 	OBS_FRONTEND_EVENT_STUDIO_MODE_DISABLED,
 	OBS_FRONTEND_EVENT_PREVIEW_SCENE_CHANGED,
 
-	OBS_FRONTEND_EVENT_SCENE_COLLECTION_CLEANUP
+	OBS_FRONTEND_EVENT_SCENE_COLLECTION_CLEANUP,
+	OBS_FRONTEND_EVENT_FINISHED_LOADING
 };
 
 /* ------------------------------------------------------------------------- */
@@ -95,6 +96,7 @@ EXPORT void obs_frontend_set_current_transition(obs_source_t *transition);
 EXPORT char **obs_frontend_get_scene_collections(void);
 EXPORT char *obs_frontend_get_current_scene_collection(void);
 EXPORT void obs_frontend_set_current_scene_collection(const char *collection);
+EXPORT bool obs_frontend_add_scene_collection(const char *name);
 
 EXPORT char **obs_frontend_get_profiles(void);
 EXPORT char *obs_frontend_get_current_profile(void);
@@ -150,6 +152,8 @@ EXPORT void obs_frontend_replay_buffer_stop(void);
 EXPORT bool obs_frontend_replay_buffer_active(void);
 
 EXPORT void obs_frontend_save(void);
+EXPORT void obs_frontend_defer_save_begin(void);
+EXPORT void obs_frontend_defer_save_end(void);
 
 EXPORT obs_output_t *obs_frontend_get_streaming_output(void);
 EXPORT obs_output_t *obs_frontend_get_recording_output(void);
