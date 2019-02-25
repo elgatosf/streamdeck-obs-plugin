@@ -51,19 +51,11 @@ static inline util_uint128_t util_add128(util_uint128_t a, util_uint128_t b)
 	return out;
 }
 
-static inline util_uint128_t util_lshift64_internal_32(uint64_t a)
+static inline util_uint128_t util_lshift64(uint64_t a, int num)
 {
 	util_uint128_t val;
-	val.low = a << 32;
-	val.high = a >> 32;
-	return val;
-}
-
-static inline util_uint128_t util_lshift64_internal_64(uint64_t a)
-{
-	util_uint128_t val;
-	val.low = 0;
-	val.high = a;
+	val.low = a << num;
+	val.high = a >> (64 - num);
 	return val;
 }
 
@@ -77,13 +69,13 @@ static inline util_uint128_t util_mul64_64(uint64_t a, uint64_t b)
 	out.high = 0;
 
 	m = (a >> 32) * (b & 0xFFFFFFFFULL);
-	out = util_add128(out, util_lshift64_internal_32(m));
+	out = util_add128(out, util_lshift64(m, 32));
 
 	m = (a & 0xFFFFFFFFULL) * (b >> 32);
-	out = util_add128(out, util_lshift64_internal_32(m));
+	out = util_add128(out, util_lshift64(m, 32));
 
 	m = (a >> 32) * (b >> 32);
-	out = util_add128(out, util_lshift64_internal_64(m));
+	out = util_add128(out, util_lshift64(m, 64));
 
 	return out;
 }
