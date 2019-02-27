@@ -239,6 +239,12 @@ struct obs_source_frame {
 	bool                prev_frame;
 };
 
+/** Access to the argc/argv used to start OBS. What you see is what you get. */
+struct obs_cmdline_args {
+	int argc;
+	char **argv;
+};
+
 /* ------------------------------------------------------------------------- */
 /* OBS context */
 
@@ -290,6 +296,24 @@ EXPORT uint32_t obs_get_version(void);
 
 /** @return The current core version string */
 EXPORT const char *obs_get_version_string(void);
+
+/**
+ * Sets things up for calls to obs_get_cmdline_args. Called onl yonce at startup
+ * and safely copies argv/argc from main(). Subsequent calls do nothing.
+ *
+ * @param  argc  The count of command line arguments, from main()
+ * @param  argv  An array of command line arguments, copied from main() and ends
+ *               with NULL.
+ */
+EXPORT void obs_set_cmdline_args(int argc, const char * const *argv);
+
+/**
+ * Get the argc/argv used to start OBS
+ *
+ * @return  The command line arguments used for main(). Don't modify this or
+ *          you'll mess things up for other callers.
+ */
+EXPORT struct obs_cmdline_args obs_get_cmdline_args(void);
 
 /**
  * Sets a new locale to use for modules.  This will call obs_module_set_locale
@@ -511,6 +535,9 @@ EXPORT audio_t *obs_get_audio(void);
 /** Gets the main video output handler for this OBS context */
 EXPORT video_t *obs_get_video(void);
 
+/** Returns true if video is active, false otherwise */
+EXPORT bool obs_video_active(void);
+
 /** Sets the primary output source for a channel. */
 EXPORT void obs_set_output_source(uint32_t channel, obs_source_t *source);
 
@@ -531,6 +558,10 @@ EXPORT obs_source_t *obs_get_output_source(uint32_t channel);
  */
 EXPORT void obs_enum_sources(bool (*enum_proc)(void*, obs_source_t*),
 		void *param);
+
+/** Enumerates scenes */
+EXPORT void obs_enum_scenes(bool (*enum_proc)(void*, obs_source_t*),
+	void *param);
 
 /** Enumerates outputs */
 EXPORT void obs_enum_outputs(bool (*enum_proc)(void*, obs_output_t*),
@@ -570,6 +601,7 @@ enum obs_base_effect {
 	OBS_EFFECT_LANCZOS,            /**< Lanczos downscale */
 	OBS_EFFECT_BILINEAR_LOWRES,    /**< Bilinear low resolution downscale */
 	OBS_EFFECT_PREMULTIPLIED_ALPHA,/**< Premultiplied alpha */
+	OBS_EFFECT_REPEAT,             /**< RGB/YUV (repeating) */
 };
 
 /** Returns a commonly used base effect */
@@ -682,6 +714,8 @@ EXPORT uint64_t obs_get_average_frame_time_ns(void);
 EXPORT uint32_t obs_get_total_frames(void);
 EXPORT uint32_t obs_get_lagged_frames(void);
 
+EXPORT bool obs_nv12_tex_active(void);
+
 EXPORT void obs_apply_private_data(obs_data_t *settings);
 EXPORT void obs_set_private_data(obs_data_t *settings);
 EXPORT obs_data_t *obs_get_private_data(void);
@@ -724,7 +758,8 @@ EXPORT void obs_view_render(obs_view_t *view);
  * @return                The new display context, or NULL if failed.
  */
 EXPORT obs_display_t *obs_display_create(
-		const struct gs_init_data *graphics_data);
+		const struct gs_init_data *graphics_data,
+		uint32_t backround_color);
 
 /** Destroys a display context */
 EXPORT void obs_display_destroy(obs_display_t *display);
@@ -892,6 +927,15 @@ EXPORT void obs_source_set_volume(obs_source_t *source, float volume);
 
 /** Gets the user volume for a source that has audio output */
 EXPORT float obs_source_get_volume(const obs_source_t *source);
+
+/* Gets speaker layout of a source */
+EXPORT enum speaker_layout obs_source_get_speaker_layout(obs_source_t *source);
+
+/** Sets the balance value for a stereo audio source */
+EXPORT void obs_source_set_balance_value(obs_source_t *source, float balance);
+
+/** Gets the balance value for a stereo audio source */
+EXPORT float obs_source_get_balance_value(const obs_source_t *source);
 
 /** Sets the audio sync offset (in nanoseconds) for a source */
 EXPORT void obs_source_set_sync_offset(obs_source_t *source, int64_t offset);
@@ -1594,6 +1638,12 @@ EXPORT void obs_output_set_mixer(obs_output_t *output, size_t mixer_idx);
 /** Gets the current audio mixer for non-encoded outputs */
 EXPORT size_t obs_output_get_mixer(const obs_output_t *output);
 
+/** Sets the current audio mixes (mask) for a non-encoded multi-track output */
+EXPORT void obs_output_set_mixers(obs_output_t *output, size_t mixers);
+
+/** Gets the current audio mixes (mask) for a non-encoded multi-track output */
+EXPORT size_t obs_output_get_mixers(const obs_output_t *output);
+
 /**
  * Sets the current video encoder associated with this output,
  * required for encoded outputs
@@ -1871,6 +1921,7 @@ EXPORT void *obs_encoder_get_type_data(obs_encoder_t *encoder);
 EXPORT const char *obs_encoder_get_id(const obs_encoder_t *encoder);
 
 EXPORT uint32_t obs_get_encoder_caps(const char *encoder_id);
+EXPORT uint32_t obs_encoder_get_caps(const obs_encoder_t *encoder);
 
 #ifndef SWIG
 /** Duplicates an encoder packet */
@@ -1885,6 +1936,9 @@ EXPORT void obs_free_encoder_packet(struct encoder_packet *packet);
 EXPORT void obs_encoder_packet_ref(struct encoder_packet *dst,
 		struct encoder_packet *src);
 EXPORT void obs_encoder_packet_release(struct encoder_packet *packet);
+
+EXPORT void *obs_encoder_create_rerouted(obs_encoder_t *encoder,
+		const char *reroute_id);
 
 
 /* ------------------------------------------------------------------------- */
