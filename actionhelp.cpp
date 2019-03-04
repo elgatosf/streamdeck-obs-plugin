@@ -765,10 +765,13 @@ void ActionHelp::ReadyRead()
 										sceneItem["sceneItemId"] = (int)j.sceneItemId;
 										sceneItem["visible"] = j.isVisible;
 
+										std::list<json> groupItemsList = std::list<json>();
+
 										if (j.isGroup)
 										{
 											auto groupNodesArray = json::array();
 
+ 
 											for (const auto& k : j.groupSceneItems)
 											{
 												json groupItem = json::object();
@@ -779,7 +782,7 @@ void ActionHelp::ReadyRead()
 												groupItem["sceneNodeType"] = "item";
 												groupItem["parentId"] = (int)j.sceneItemId;
 
-												nodesArray.push_back(groupItem);
+												groupItemsList.push_back(groupItem);
 												groupNodesArray.push_back((int)k.sceneItemId);
 											}
 
@@ -794,6 +797,11 @@ void ActionHelp::ReadyRead()
 										}
 
 										nodesArray.push_back(sceneItem);
+
+										for (const auto& groupItem : groupItemsList)
+										{
+											nodesArray.push_back(groupItem);
+										}
 									}
 
 									json scene = json::object();
