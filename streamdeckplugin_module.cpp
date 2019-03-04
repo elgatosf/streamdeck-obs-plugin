@@ -99,7 +99,25 @@ void ItemVisible(void* ptr, calldata_t* calldata)
 	actionHelpPtr->WriteToSocket(str);
 }
 
+void ItemsReorder(void* ptr, calldata_t* calldata)
+{
+	Q_UNUSED(ptr);
 
+	//We could use the data, when introducing a new event, which may take them as parameter
+	Q_UNUSED(calldata);
+
+	json eventJson;
+	eventJson["jsonrpc"] = "2.0";
+	json result = json::object();
+	result["_type"] = "EVENT";
+	eventJson["id"] = nullptr;
+
+	result["resourceId"] = "ScenesService.itemUpdated";
+	eventJson["result"] = result;
+
+	std::string str = eventJson.dump() + "\n";
+	actionHelpPtr->WriteToSocket(str);
+}
 
 
 void UpdateScenes()
@@ -150,6 +168,7 @@ void UpdateScenes()
 		}
 
 		signal_handler_connect(signalHandler, "item_visible", ItemVisible, nullptr);
+		signal_handler_connect(signalHandler, "reorder", ItemsReorder, nullptr);
 	}
 }
 
