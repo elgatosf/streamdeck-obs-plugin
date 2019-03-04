@@ -119,6 +119,45 @@ void ActionHelp::UpdateScenesList(QList<SceneInfo> &outList)
 			SceneItemInfo sceneItemInfo = {};
 			sceneItemInfo.sceneItemId = sceneItemId;
 			sceneItemInfo.sourceName = GetOBSSourceName(source);
+			sceneItemInfo.isGroup = obs_sceneitem_is_group(item);
+
+			// 4. if is group, enum sources by group
+			if (sceneItemInfo.isGroup)
+			{
+				auto enumSourcesByGroupFunc = [](obs_scene_t*, obs_sceneitem_t* item, void* param)
+				{
+					if (!param)
+					{
+						qDebug() << __FUNCTION__ << __LINE__ << "Err: param is NULL!";
+						return false;
+					}
+
+					QList<GroupItemInfo> *list = reinterpret_cast<QList<GroupItemInfo>*>(param);
+
+					int64_t sceneItemId = obs_sceneitem_get_id(item);
+
+					obs_source_t *source = obs_sceneitem_get_source(item);
+					if (!source)
+					{
+						qDebug() << __FUNCTION__ << __LINE__ << "Err: obs_sceneitem_get_source(item) return NULL!";
+						return false;
+					}
+
+					GroupItemInfo sceneItemInfo = {};
+					sceneItemInfo.sceneItemId = sceneItemId;
+					sceneItemInfo.sourceName = GetOBSSourceName(source);
+					sceneItemInfo.isVisible = obs_sceneitem_visible(item);
+					list->prepend(sceneItemInfo);
+
+					return true;
+				};
+
+				QList<GroupItemInfo>  groupItems;
+
+				obs_sceneitem_group_enum_items(item, enumSourcesByGroupFunc, &groupItems);
+				sceneItemInfo.groupSceneItems = groupItems;
+			}
+
 			sceneItemInfo.isVisible = obs_sceneitem_visible(item);
 			list->prepend(sceneItemInfo);
 			return true;
@@ -235,6 +274,7 @@ void ActionHelp::UpdateSourcesList(QList<SourceInfo> &outSourceList)
 		uint32_t outputFlags = obs_source_get_output_flags(source);
 		bool isAudio = (outputFlags & OBS_SOURCE_AUDIO) != 0;
 		obsSource.isAudio = isAudio;
+		obsSource.isGroup = obs_source_is_group(source);
 
 		list->append(obsSource);
 		return true;
@@ -581,6 +621,8 @@ void ActionHelp::ReadyRead()
 					std::string sceneItemId = params["sceneItemId"];
 					std::string sourceId = params["sourceId"];
 
+					std::string groupParentId = params["groupSourceId"];
+
 					ToggleInfo toggleInfo;
 
 					if (rpcID == RPC_ID_hideScene)
@@ -592,7 +634,7 @@ void ActionHelp::ReadyRead()
 						toggleInfo = ToggleInfo::Activate;
 					}
 
-					if (ToggleSourceVisibility(sceneId.c_str(), sceneItemId.c_str(), sourceId.c_str(), toggleInfo))
+					if (ToggleSourceVisibility(sceneId.c_str(), sceneItemId.c_str(), sourceId.c_str(), groupParentId.c_str(), toggleInfo))
 					{
 						json eventJson;
 						eventJson["jsonrpc"] = "2.0";
@@ -721,7 +763,34 @@ void ActionHelp::ReadyRead()
 										sceneItem["sourceId"] = collectionName.toStdString() + j.sourceName;
 										sceneItem["sceneItemId"] = (int)j.sceneItemId;
 										sceneItem["visible"] = j.isVisible;
-										sceneItem["sceneNodeType"] = "item";
+
+										if (j.isGroup)
+										{
+											auto groupNodesArray = json::array();
+
+											for (const auto& k : j.groupSceneItems)
+											{
+												json groupItem = json::object();
+
+												groupItem["sourceId"] = collectionName.toStdString() + k.sourceName;
+												groupItem["sceneItemId"] = (int)k.sceneItemId;
+												groupItem["visible"] = k.isVisible;
+												groupItem["sceneNodeType"] = "item";
+												groupItem["parentId"] = (int)j.sceneItemId;
+
+												nodesArray.push_back(groupItem);
+												groupNodesArray.push_back((int)k.sceneItemId);
+											}
+
+											sceneItem["sceneNodeType"] = "folder";
+											sceneItem["childrenIds"] = groupNodesArray;
+											sceneItem["name"] = j.sourceName;
+										}
+										else
+										{
+											sceneItem["sceneNodeType"] = "item";
+											sceneItem["parentId"] = "";
+										}
 
 										nodesArray.push_back(sceneItem);
 									}
@@ -787,6 +856,7 @@ void ActionHelp::ReadyRead()
 								source["type"] = i.idStr;
 								source["muted"] = i.isMuted;
 								source["audio"] = i.isAudio;
+								source["group"] = i.isGroup;
 
 								source["id"] = collectionName.toStdString() + i.name;
 
@@ -954,7 +1024,7 @@ bool ActionHelp::SelectScene(QString sceneName)
 	return false;
 }
 
-bool ActionHelp::ToggleSourceVisibility(QString inSceneId, QString inSceneItemId, QString inSourceId, ToggleInfo toggleInfo)
+bool ActionHelp::ToggleSourceVisibility(QString inSceneId, QString inSceneItemId, QString inSourceId, QString inGroupParentId, ToggleInfo toggleInfo)
 {
 	QString collectionName = GetCurrentSceneCollectionName();
 
@@ -1000,26 +1070,77 @@ bool ActionHelp::ToggleSourceVisibility(QString inSceneId, QString inSceneItemId
 		return false;
 	}
 
-	obs_sceneitem_t* item = obs_scene_find_sceneitem_by_id(scene, sceneItemId);
-	if (!item)
-	{
-		qDebug() << __FUNCTION__ << __LINE__ << "obs_scene_find_sceneitem_by_id() got NULL";
+	obs_sceneitem_t* item = nullptr;
 
-		item = obs_scene_find_source(scene, srcName.toStdString().c_str());
+	if (inGroupParentId.isEmpty() || inGroupParentId.isNull())
+	{
+		item = obs_scene_find_sceneitem_by_id(scene, sceneItemId);
 		if (!item)
+		{
+			qDebug() << __FUNCTION__ << __LINE__ << "obs_scene_find_sceneitem_by_id() got NULL";
+
+			item = obs_scene_find_source(scene, srcName.toStdString().c_str());
+			if (!item)
+			{
+				qDebug() << __FUNCTION__ << __LINE__ << "obs_scene_find_source() got NULL";
+				return false;
+			}
+		}
+
+		obs_source_t *source = obs_sceneitem_get_source(item);
+		if (!source)
+		{
+			qDebug() << __FUNCTION__ << __LINE__ << "obs_sceneitem_get_source() got NULL";
+			return false;
+		}
+	}
+	else
+	{
+		//ToDo: Find better solution using real Id for source
+		QString srcGroupName = inGroupParentId;
+		srcGroupName.remove(0, collectionName.size());
+
+		obs_sceneitem_t* groupItem = obs_scene_find_source(scene, srcGroupName.toStdString().c_str());
+
+		if (!groupItem)
 		{
 			qDebug() << __FUNCTION__ << __LINE__ << "obs_scene_find_source() got NULL";
 			return false;
 		}
-	}
+		else
+		{
+			auto enumSourcesByGroupFunc = [](obs_scene_t*, obs_sceneitem_t* groupMemberItem, void* param)
+			{
+				if (!param)
+				{
+					qDebug() << __FUNCTION__ << __LINE__ << "Err: param is NULL!";
+					return false;
+				}
 
-	obs_source_t *source = obs_sceneitem_get_source(item);
-	if (!source)
-	{
-		qDebug() << __FUNCTION__ << __LINE__ << "obs_sceneitem_get_source() got NULL";
-		return false;
-	}
+				GroupItemInfo *groupItemInfo = reinterpret_cast<GroupItemInfo*>(param);
 
+				int64_t sceneItemId = obs_sceneitem_get_id(groupMemberItem);
+
+				if (sceneItemId == groupItemInfo->sceneItemId)
+				{
+					groupItemInfo->item = groupMemberItem;
+				}
+
+				return true;
+			};
+
+			GroupItemInfo groupItemInfo;
+			groupItemInfo.sceneItemId = sceneItemId;
+
+			obs_sceneitem_group_enum_items(groupItem, enumSourcesByGroupFunc, &groupItemInfo);
+
+			if (groupItemInfo.item)
+			{
+				item = groupItemInfo.item;
+			}
+		}
+	}
+	
 	//ToDo: Verify whether that is needed, then we would need another parameter in the api request
 	//const char *srcId = obs_source_get_id(source);
 	//if (sourceIdStr != srcId)
@@ -1030,7 +1151,7 @@ bool ActionHelp::ToggleSourceVisibility(QString inSceneId, QString inSceneItemId
 
 	bool hasToggled = false;
 
-	bool setFlag = IsSourceVisible(sceneName, srcName, sceneItemId);
+	bool setFlag = IsSourceVisible(item);
 	qDebug() << __FUNCTION__ << __LINE__ << sceneName << srcName << sceneItemId << "set normal source: " << !setFlag;
 
 	if (!setFlag && toggleInfo == ToggleInfo::Deactivate)
@@ -1080,62 +1201,11 @@ bool ActionHelp::MuteMixerSource(QString inSourceId, ToggleInfo toggleInfo)
 	return true;
 }
 
-bool ActionHelp::IsSourceVisible(const QString& inSceneName, const QString& inSourceName, int64_t inSceneItemId)
+bool ActionHelp::IsSourceVisible(obs_sceneitem_t* inItem)
 {
-	QList<SceneInfo> sceneList;
-	UpdateScenesList(sceneList);
 
-	obs_source_t *sceneAsSource = NULL;
-	for (int i = 0; i < sceneList.count(); i++)
-	{
-		if (inSceneName == sceneList.at(i).name.c_str())
-		{
-			sceneAsSource = sceneList.at(i).scene;
-			break;
-		}
-	}
 
-	if (!sceneAsSource)
-	{
-		qDebug() << __FUNCTION__ << __LINE__ << "can't find match scene!";
-		return false;
-	}
-
-	obs_scene_t* scene = obs_scene_from_source(sceneAsSource);
-	if (!scene)
-	{
-		qDebug() << __FUNCTION__ << __LINE__ << "not a scene!";
-		return false;
-	}
-
-	obs_sceneitem_t* item = obs_scene_find_sceneitem_by_id(scene, inSceneItemId);
-	if (!item)
-	{
-		qDebug() << __FUNCTION__ << __LINE__ << "obs_scene_find_sceneitem_by_id() got NULL";
-
-		item = obs_scene_find_source(scene, inSourceName.toStdString().c_str());
-		if (!item)
-		{
-			qDebug() << __FUNCTION__ << __LINE__ << "obs_scene_find_source() got NULL";
-			return false;
-		}
-	}
-
-	obs_source_t *source = obs_sceneitem_get_source(item);
-	if (!source)
-	{
-		qDebug() << __FUNCTION__ << __LINE__ << "obs_sceneitem_get_source() got NULL";
-		return false;
-	}
-
-	//const char *srcId = obs_source_get_id(source);
-	//if (sourceIdStr != srcId)
-	//{
-	//    qDebug() << __FUNCTION__ << __LINE__ << "source identifier not match," << "expect: " << sourceIdStr << "actual:"  << srcId;
-	//    return false;
-	//}
-
-	return obs_sceneitem_visible(item);
+	return obs_sceneitem_visible(inItem);
 }
 bool ActionHelp::RequestStartRecording()
 {

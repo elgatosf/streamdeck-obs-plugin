@@ -27,12 +27,22 @@ typedef enum _OBS_SOURCE_TYPE
 	OBS_SOURCE_TYPE_NDI_SOURCE
 }OBS_SOURCE_TYPE;
 
+typedef struct _GroupItemInfo
+{
+	std::string   sourceName;
+	bool   isVisible;
+	int64_t     sceneItemId;
+
+	obs_sceneitem_t * item;
+}GroupItemInfo;
+
 typedef struct _SceneItemInfo
 {
 	std::string   sourceName;
 	bool   isVisible;
-	bool   isScene;
+	bool   isGroup;
 	int64_t     sceneItemId;
+	QList<_GroupItemInfo>  groupSceneItems;
 }SceneItemInfo;
 
 typedef struct _SceneInfo
@@ -130,10 +140,10 @@ private:
 	//sources
 	bool RequestSourcesListUpdate(QString inCollectionName, QList<SourceInfo>& outSceneList);
 
-	bool ToggleSourceVisibility(QString inSceneId, QString inSceneItemId, QString inSourceId, ToggleInfo inToggleInfo);
+	bool ToggleSourceVisibility(QString inSceneId, QString inSceneItemId, QString inSourceId, QString inGroupParentId, ToggleInfo inToggleInfo);
 	bool MuteMixerSource(QString inSourceId, ToggleInfo inToggleInfo);
 
-	bool IsSourceVisible(const QString& inSceneName, const QString& inSourceName, int64_t inSceneItemId);
+	bool IsSourceVisible(obs_sceneitem_t* inItem);
 
 
 	//streaming and recording

@@ -13,6 +13,7 @@ public:
 	obs_source_type type;
 	bool isAudio;
 	bool isMuted;
+	bool isGroup;
 	
 	bool operator==(const SourceInfo &other) const 
 	{
