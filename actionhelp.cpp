@@ -120,6 +120,7 @@ void ActionHelp::UpdateScenesList(QList<SceneInfo> &outList)
 			sceneItemInfo.sceneItemId = sceneItemId;
 			sceneItemInfo.sourceName = GetOBSSourceName(source);
 			sceneItemInfo.isGroup = obs_sceneitem_is_group(item);
+			sceneItemInfo.source = source;
 
 			// 4. if is group, enum sources by group
 			if (sceneItemInfo.isGroup)

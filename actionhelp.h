@@ -32,12 +32,12 @@ typedef struct _GroupItemInfo
 	std::string   sourceName;
 	bool   isVisible;
 	int64_t     sceneItemId;
-
 	obs_sceneitem_t * item;
 }GroupItemInfo;
 
 typedef struct _SceneItemInfo
 {
+	obs_source_t* source;
 	std::string   sourceName;
 	bool   isVisible;
 	bool   isGroup;
@@ -108,6 +108,7 @@ public:
 	void WriteToSocket(const std::string &inString);
 
 	void UpdateSourcesList(QList<SourceInfo> &outSourceList);
+	void UpdateScenesList(QList<SceneInfo> &outList);
 
 signals:
 
@@ -131,7 +132,6 @@ private:
 	void UpdateSceneCollectionList(QStringList &list);
 	bool RequestSceneListUpdate(QString inCollectionName, QList<SceneInfo>& outSceneList);
 
-	void UpdateScenesList(QList<SceneInfo> &outList);
 	void UpdateScenesAsSourcesList(QList<SourceInfo> &outSet);
 
 	bool SelectSceneCollection(QString inCollectionName);

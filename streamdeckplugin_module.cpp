@@ -50,11 +50,10 @@ void ItemMuted(void* ptr, calldata_t* calldata)
 	actionHelpPtr->WriteToSocket(str);
 }
 
-void UpdateSource()
+void UpdateSources()
 {
     qDebug() << __FUNCTION__;
 
-    QString errStr;
     QList<SourceInfo> list;
 
     actionHelpPtr->UpdateSourcesList(list);
@@ -107,26 +106,51 @@ void UpdateScenes()
 {
     qDebug() << __FUNCTION__;
 
-    // Enumerate scenes for current scene collection
-    struct obs_frontend_source_list scenes = { };
-    obs_frontend_get_scenes(&scenes);
+	QList<SceneInfo> list;
 
-    // Cycle through scenes
-    for (size_t i = 0; i < scenes.sources.num; i++)
-    {
-        // Connect signal handler
-        signal_handler_t* signalHandler = obs_source_get_signal_handler(scenes.sources.array[i]);
+	actionHelpPtr->UpdateScenesList(list);
+
+	for (int i = 0; i<list.count(); i++)
+	{
+		SceneInfo srcInfo = list.at(i);
+
+		for (int j = 0; j < srcInfo.sceneItems.count(); j++)
+		{
+			SceneItemInfo sceneItemInfo = srcInfo.sceneItems.at(j);
+
+			for (int k = 0; k < sceneItemInfo.groupSceneItems.count(); k++)
+			{
+				GroupItemInfo groupItemInfo = sceneItemInfo.groupSceneItems.at(k);
+				auto source = obs_sceneitem_get_source(groupItemInfo.item);
+				signal_handler_t* groupItemSignalHandler = obs_source_get_signal_handler(source);
+
+				if (groupItemSignalHandler == NULL)
+				{
+					continue;
+				}
+
+				signal_handler_connect(groupItemSignalHandler, "item_visible", ItemVisible, nullptr);
+			}
+
+			signal_handler_t* sceneItemSignalHandler = obs_source_get_signal_handler(sceneItemInfo.source);
+
+			if (sceneItemSignalHandler == NULL)
+			{
+				continue;
+			}
+
+			signal_handler_connect(sceneItemSignalHandler, "item_visible", ItemVisible, nullptr);
+		}
+
+		signal_handler_t* signalHandler = obs_source_get_signal_handler(srcInfo.scene);
 
 		if (signalHandler == NULL)
 		{
 			continue;
 		}
 
-        signal_handler_connect(signalHandler, "item_visible", ItemVisible, nullptr);
-    }
-
-    // Cleanup
-    obs_frontend_source_list_free(&scenes);
+		signal_handler_connect(signalHandler, "item_visible", ItemVisible, nullptr);
+	}
 }
 
 void OBSEvent(enum obs_frontend_event event, void* data)
@@ -329,7 +353,7 @@ void OBSEvent(enum obs_frontend_event event, void* data)
 		{				
 			qDebug() << "OBS_FRONTEND_EVENT_SCENE_COLLECTION_CHANGED";
 
-			UpdateSource();
+			UpdateSources();
 			UpdateScenes();
 
 			if (actionHelpPtr->GetIsRespondingCollectionsSchemaFlag())
@@ -408,12 +432,12 @@ void SaveCallback(obs_data_t* save_data, bool saving, void*)
         // connect source changing state signal.
         first = false;
 
-        UpdateSource();
+        UpdateSources();
         UpdateScenes();
     }
     else if (saving)
     {
-        UpdateSource();
+        UpdateSources();
 
 		if (actionHelpPtr-> GetIsRespondingCollectionsSchemaFlag())
 		{
