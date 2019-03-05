@@ -223,6 +223,64 @@ void ActionHelp::UpdateScenesAsSourcesList(QList<SourceInfo> &outSet)
 				return false;
 			}
 
+			bool isGroup = obs_sceneitem_is_group(item);
+			QList<SourceInfo>  groupSceneSourceItems;
+
+			// 4. if is group, enum sources by group
+			if (isGroup)
+			{
+				auto enumSourcesByGroupFunc = [](obs_scene_t*, obs_sceneitem_t* item, void* param)
+				{
+					if (!param)
+					{
+						qDebug() << __FUNCTION__ << __LINE__ << "Err: param is NULL!";
+						return false;
+					}
+
+					QList<SourceInfo> *list = reinterpret_cast<QList<SourceInfo>*>(param);
+
+					obs_source_t *source = obs_sceneitem_get_source(item);
+					if (!source)
+					{
+						qDebug() << __FUNCTION__ << __LINE__ << "Err: obs_sceneitem_get_source(sceneSource) return NULL!";
+						return false;
+					}
+
+					if (obs_source_get_type(source) == OBS_SOURCE_TYPE_SCENE)
+					{
+						SourceInfo obsSource = {};
+						obsSource.source = source;
+						obsSource.name = GetOBSSourceName(source);
+						obsSource.type = OBS_SOURCE_TYPE_SCENE;
+						obsSource.idStr = obs_source_get_id(source);
+
+						obsSource.isMuted = obs_source_muted(source);
+						obsSource.isAudio = false;
+
+						if (!list->contains(obsSource))
+						{
+							list->append(obsSource);
+						}
+					}
+
+					return true;
+				};
+
+				obs_sceneitem_group_enum_items(item, enumSourcesByGroupFunc, &groupSceneSourceItems);
+			}
+
+			if (!groupSceneSourceItems.empty())
+			{
+				for (int i = 0; i < groupSceneSourceItems.count(); i++)
+				{
+					if (!list->contains(groupSceneSourceItems[i]))
+					{
+						list->append(groupSceneSourceItems[i]);
+					}
+				}
+			}
+
+
 			if (obs_source_get_type(source) == OBS_SOURCE_TYPE_SCENE)
 			{
 				SourceInfo obsSource = {};
