@@ -104,7 +104,7 @@ public:
 
 	//used to prevent sending event messages to Stream Deck, when updating collections, scenes or sources on request of Stream Deck
 	bool GetIsRespondingCollectionsSchemaFlag();
-
+	
 	void WriteToSocket(const std::string &inString);
 
 	void UpdateSourcesList(QList<SourceInfo> &outSourceList);
@@ -112,7 +112,8 @@ public:
 
 signals:
 
-public slots:
+public slots :
+	void WriteToSocketInMainThread(QString inString);
 	//void reqVersion();
 
     void NotifySceneSwitched();

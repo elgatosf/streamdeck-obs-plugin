@@ -4,6 +4,7 @@
 #include <QTcpServer>
 #include <QObject>
 #include <QDataStream>
+#include <QApplication>
 
 // ----------------------------------------------------------------------------
 extern QTcpServer *tcpServer;
@@ -349,10 +350,20 @@ void ActionHelp::UpdateSourcesList(QList<SourceInfo> &outSourceList)
 
 void ActionHelp::WriteToSocket(const std::string &inString)
 {
-	if (mSocket
-		&& mSocket->isValid())
+	bool isMainThread = qApp->thread() == QThread::currentThread();
+
+	if (!isMainThread)
 	{
-		mSocket->write(inString.c_str());
+		QString qString = QString(inString.c_str());
+		QMetaObject::invokeMethod(this, "WriteToSocketInMainThread", Qt::QueuedConnection, Q_ARG(QString, qString));
+	}
+	else
+	{
+		if (mSocket
+			&& mSocket->isValid())
+		{
+			mSocket->write(inString.c_str());
+		}
 	}
 }
 
@@ -435,6 +446,16 @@ void ActionHelp::SDClientConnected()
 
 		QObject::connect(mSocket, SIGNAL(readyRead()), SLOT(ReadyRead()));
 		connect(mSocket, SIGNAL(disconnected()), SLOT(Disconnected()));
+	}
+}
+
+
+void ActionHelp::WriteToSocketInMainThread(QString inString)
+{
+	if (mSocket
+		&& mSocket->isValid())
+	{
+		mSocket->write(inString.toStdString().c_str());
 	}
 }
 
@@ -841,7 +862,7 @@ void ActionHelp::ReadyRead()
 												groupItem["parentId"] = (int)j.sceneItemId;
 
 												groupItemsList.push_back(groupItem);
-												groupNodesArray.push_back((int)k.sceneItemId);
+												groupNodesArray.push_back(std::to_string((int)k.sceneItemId));
 											}
 
 											sceneItem["sceneNodeType"] = "folder";
@@ -1270,10 +1291,9 @@ bool ActionHelp::MuteMixerSource(QString inSourceId, ToggleInfo toggleInfo)
 
 bool ActionHelp::IsSourceVisible(obs_sceneitem_t* inItem)
 {
-
-
 	return obs_sceneitem_visible(inItem);
 }
+
 bool ActionHelp::RequestStartRecording()
 {
 	if (!obs_frontend_recording_active())
