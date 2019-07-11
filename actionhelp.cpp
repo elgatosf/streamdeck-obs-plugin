@@ -30,6 +30,15 @@ ActionHelp::ActionHelp(QObject *parent) : QObject(parent)
 
 }
 
+ActionHelp::~ActionHelp()
+{
+	if (mSocket)
+	{
+		delete(mSocket);
+	}
+}
+
+
 // ----------------------------------------------------------------------------
 // Public functions
 // ----------------------------------------------------------------------------

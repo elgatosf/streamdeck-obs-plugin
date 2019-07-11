@@ -98,6 +98,7 @@ class ActionHelp : public QObject
     Q_OBJECT
 public:
     explicit ActionHelp(QObject *parent = 0);
+    ~ActionHelp();
 
 	//used to prevent sending event messages to Stream Deck, when updating streaming and recording states on request of Stream Deck
     bool GetIsRespondingStreamingFlag();
