@@ -1096,9 +1096,6 @@ bool ActionHelp::SelectScene(QString sceneName)
 	//ToDo: Find better solution using real Id for scene
 	sceneName.remove(0, scName.size());
 
-	if (currentSceneName == sceneName)
-		return true;
-
 	// update info
 	QList<SceneInfo> sceneList;
 	UpdateScenesList(sceneList);
@@ -1110,7 +1107,7 @@ bool ActionHelp::SelectScene(QString sceneName)
 		{
 			qDebug() << __FUNCTION__ << QThread::currentThread() << QString("obs_frontend_set_current_scene(%1)").arg(sceneName);
 
-			obs_frontend_set_current_scene(sceneInfo.scene);
+			obs_frontend_set_current_preview_scene(sceneInfo.scene);
 			return true;
 		}
 	}

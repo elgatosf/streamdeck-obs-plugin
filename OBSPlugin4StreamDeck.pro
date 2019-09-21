@@ -17,6 +17,47 @@ SOURCES += \
     actionhelp.cpp
 
 HEADERS +=\
+    obs-dev/headers/UI/obs-frontend-api.h \
+    obs-dev/headers/libobs/callback/calldata.h \
+    obs-dev/headers/libobs/callback/decl.h \
+    obs-dev/headers/libobs/callback/proc.h \
+    obs-dev/headers/libobs/callback/signal.h \
+    obs-dev/headers/libobs/graphics/axisang.h \
+    obs-dev/headers/libobs/graphics/graphics.h \
+    obs-dev/headers/libobs/graphics/input.h \
+    obs-dev/headers/libobs/graphics/math-defs.h \
+    obs-dev/headers/libobs/graphics/matrix3.h \
+    obs-dev/headers/libobs/graphics/matrix4.h \
+    obs-dev/headers/libobs/graphics/vec2.h \
+    obs-dev/headers/libobs/graphics/vec3.h \
+    obs-dev/headers/libobs/graphics/vec4.h \
+    obs-dev/headers/libobs/media-io/audio-io.h \
+    obs-dev/headers/libobs/media-io/frame-rate.h \
+    obs-dev/headers/libobs/media-io/media-io-defs.h \
+    obs-dev/headers/libobs/media-io/video-io.h \
+    obs-dev/headers/libobs/obs-audio-controls.h \
+    obs-dev/headers/libobs/obs-config.h \
+    obs-dev/headers/libobs/obs-data.h \
+    obs-dev/headers/libobs/obs-defs.h \
+    obs-dev/headers/libobs/obs-encoder.h \
+    obs-dev/headers/libobs/obs-hotkey.h \
+    obs-dev/headers/libobs/obs-hotkeys.h \
+    obs-dev/headers/libobs/obs-interaction.h \
+    obs-dev/headers/libobs/obs-module.h \
+    obs-dev/headers/libobs/obs-output.h \
+    obs-dev/headers/libobs/obs-properties.h \
+    obs-dev/headers/libobs/obs-scene.h \
+    obs-dev/headers/libobs/obs-service.h \
+    obs-dev/headers/libobs/obs-source.h \
+    obs-dev/headers/libobs/obs-ui.h \
+    obs-dev/headers/libobs/obs.h \
+    obs-dev/headers/libobs/util/base.h \
+    obs-dev/headers/libobs/util/bmem.h \
+    obs-dev/headers/libobs/util/c99defs.h \
+    obs-dev/headers/libobs/util/darray.h \
+    obs-dev/headers/libobs/util/profiler.h \
+    obs-dev/headers/libobs/util/text-lookup.h \
+    obs-dev/headers/libobs/util/util_uint128.h \
     obspluginstreamdeck_global.h \
     streamdeckplugin_module.h \
     infodialog.h \
