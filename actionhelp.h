@@ -59,6 +59,8 @@ enum ToggleInfo
 	Deactivate
 };
 
+static bool StudioMode = NULL;
+
 static const int RPC_ID_startStreaming = 1;
 static const int RPC_ID_stopStreaming = 2;
 static const int RPC_ID_startRecording = 3;
@@ -119,6 +121,7 @@ public slots :
 
     void NotifySceneSwitched();
     void NotifyCollectionChanged();
+	void SetStudioMode();
 
 	//Socket connection
 	void SDClientConnected();
