@@ -1048,6 +1048,22 @@ QString ActionHelp::GetCurrentSceneName()
 	return current_sceneName;
 }
 
+QString ActionHelp::GetPreviewSceneName()
+{
+	// get current scene name
+	obs_source_t* preview_scene = obs_frontend_get_current_preview_scene();
+	if (!preview_scene)
+	{
+		qDebug() << __FUNCTION__ << "Err: obs_frontend_get_current_scene() got NULL!!";
+		return "";
+	}
+
+	QString preview_sceneName = GetOBSSourceName(preview_scene).c_str();
+	obs_source_release(preview_scene);
+
+	return preview_sceneName;
+}
+
 bool ActionHelp::GetCurrentCollectionAndSceneName(QString &scName, QString&sceneName)
 {
 	scName = GetCurrentSceneCollectionName();
@@ -1113,12 +1129,18 @@ bool ActionHelp::SelectScene(QString sceneName)
 				SetStudioMode();
 			}
 			if (StudioMode) {
+				if (GetPreviewSceneName() == sceneName) // Don't call set_current_preview_scene if we are already on the requested scene
+					return true;
+
 				qDebug() << __FUNCTION__ << QThread::currentThread() << QString("obs_frontend_set_current_preview_scene(%1)").arg(sceneName);
 
 				obs_frontend_set_current_preview_scene(sceneInfo.scene);
 				return true;
 			}
 			else {
+				if (currentSceneName == sceneName) // Don't call set_current_scene if we are already on the requested scene
+					return true;
+
 				qDebug() << __FUNCTION__ << QThread::currentThread() << QString("obs_frontend_set_current_scene(%1)").arg(sceneName);
 
 				obs_frontend_set_current_scene(sceneInfo.scene);

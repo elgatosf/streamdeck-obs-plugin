@@ -131,6 +131,7 @@ public slots :
 private:
 	//scenes and collections
 	QString GetCurrentSceneName();
+	QString GetPreviewSceneName();
 	bool GetCurrentCollectionAndSceneName(QString &inCollectionName, QString&inSceneName);
 	QString GetCurrentSceneCollectionName();
 
