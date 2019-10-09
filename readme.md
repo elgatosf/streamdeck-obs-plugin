@@ -4,7 +4,8 @@ This is the source code of the Stream Deck OBS plugin for Windows and macOS.
 
 ## Building
 
-Simply open OBSPlugin4StreamDeck.pro in QtCreator and compile the project.
+- Make sure you are using [Qt 5.10.1](https://www.qt.io). OBS is compiled using this Qt version.
+- Open OBSPlugin4StreamDeck.pro in QtCreator and compile the project.
 
 
 ## Updating libobs
@@ -16,7 +17,7 @@ The OBS plugin needs to be linked against:
 
 
 You can get the precompiled libraries and source code for Windows and macOS here:
-https://github.com/jp9000/obs-studio/releases
+[https://github.com/jp9000/obs-studio/releases](https://github.com/jp9000/obs-studio/releases)
 
 
 ### Windows
