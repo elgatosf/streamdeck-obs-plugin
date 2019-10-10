@@ -27,7 +27,6 @@ static std::string GetOBSSourceName(const obs_source_t * inSource)
 // ----------------------------------------------------------------------------
 ActionHelp::ActionHelp(QObject *parent) : QObject(parent)
 {
-
 }
 
 ActionHelp::~ActionHelp()
