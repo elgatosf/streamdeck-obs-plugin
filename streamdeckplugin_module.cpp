@@ -376,7 +376,19 @@ void OBSEvent(enum obs_frontend_event event, void* data)
 			}
 		}
 		break;
-		
+
+		case OBS_FRONTEND_EVENT_PREVIEW_SCENE_CHANGED:
+		{
+			qDebug() << "OBS_FRONTEND_EVENT_PREVIEW_SCENE_CHANGED";
+
+			if (actionHelpPtr
+				&& actionHelpPtr->GetIsRespondingCollectionsSchemaFlag())
+			{
+				QMetaObject::invokeMethod(actionHelpPtr, "NotifySceneSwitched");
+			}
+		}
+		break;
+
 		case OBS_FRONTEND_EVENT_SCENE_LIST_CHANGED:
 		{
 			qDebug() << "OBS_FRONTEND_EVENT_SCENE_LIST_CHANGED";
