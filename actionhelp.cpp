@@ -53,6 +53,10 @@ bool ActionHelp::GetIsRespondingCollectionsSchemaFlag()
 
 void ActionHelp::UpdateSceneCollectionList(QStringList &list)
 {
+	// UpdateSceneCollectionList() should always be called when a client connects
+	// so it's a good place to check if Studio Mode is enabled
+	CheckStudioMode();
+	
     list.clear();
 
     char **strList = obs_frontend_get_scene_collections();
@@ -1002,6 +1006,11 @@ void ActionHelp::ReadyRead()
 	}
 }
 
+void ActionHelp::CheckStudioMode()
+{
+	mIsStudioMode = obs_frontend_preview_program_mode_active();
+}
+
 void ActionHelp::Disconnected()
 {
 	mSocket->deleteLater();
@@ -1028,18 +1037,34 @@ QString ActionHelp::GetCurrentSceneCollectionName()
 
 QString ActionHelp::GetCurrentSceneName()
 {
-	// get current scene name
-	obs_source_t *current_scene = obs_frontend_get_current_scene();
-	if (!current_scene)
+	obs_source_t *current_scene = NULL;
+	if (mIsStudioMode)
 	{
-		qDebug() << __FUNCTION__ << "Err: obs_frontend_get_current_scene() got NULL!!";
+		current_scene = obs_frontend_get_current_preview_scene();
+		if (!current_scene)
+		{
+			qDebug() << __FUNCTION__ << "Err: obs_frontend_get_current_preview_scene() got NULL!!";
+		}
+	}
+	else
+	{
+		current_scene = obs_frontend_get_current_scene();
+		if (!current_scene)
+		{
+			qDebug() << __FUNCTION__ << "Err: obs_frontend_get_current_scene() got NULL!!";
+		}
+	}
+	
+	if (current_scene)
+	{
+		QString current_sceneName = GetOBSSourceName(current_scene).c_str();
+		obs_source_release(current_scene);
+		return current_sceneName;
+	}
+	else
+	{
 		return "";
 	}
-
-	QString current_sceneName = GetOBSSourceName(current_scene).c_str();
-	obs_source_release(current_scene);
-
-	return current_sceneName;
 }
 
 bool ActionHelp::GetCurrentCollectionAndSceneName(QString &scName, QString&sceneName)
@@ -1102,15 +1127,24 @@ bool ActionHelp::SelectScene(QString sceneName)
 	QList<SceneInfo> sceneList;
 	UpdateScenesList(sceneList);
 
-	for (int i = 0; i < sceneList.count(); i++)
+	for (SceneInfo sceneInfo : sceneList)
 	{
-		SceneInfo sceneInfo = sceneList.at(i);
 		if (sceneInfo.name.c_str() == sceneName)
 		{
-			qDebug() << __FUNCTION__ << QThread::currentThread() << QString("obs_frontend_set_current_scene(%1)").arg(sceneName);
+			if (mIsStudioMode)
+			{
+				qDebug() << __FUNCTION__ << QThread::currentThread() << QString("obs_frontend_set_current_preview_scene(%1)").arg(sceneName);
 
-			obs_frontend_set_current_scene(sceneInfo.scene);
-			return true;
+				obs_frontend_set_current_preview_scene(sceneInfo.scene);
+				return true;
+			}
+			else
+			{
+				qDebug() << __FUNCTION__ << QThread::currentThread() << QString("obs_frontend_set_current_scene(%1)").arg(sceneName);
+
+				obs_frontend_set_current_scene(sceneInfo.scene);
+				return true;
+			}
 		}
 	}
 
@@ -1144,11 +1178,11 @@ bool ActionHelp::ToggleSourceVisibility(QString inSceneId, QString inSceneItemId
 	UpdateScenesList(sceneList);
 
 	obs_source_t *sceneAsSource = NULL;
-	for (int i = 0; i < sceneList.count(); i++)
+	for (SceneInfo sceneInfo : sceneList)
 	{
-		if (sceneName == sceneList.at(i).name.c_str())
+		if (sceneName == sceneInfo.name.c_str())
 		{
-			sceneAsSource = sceneList.at(i).scene;
+			sceneAsSource = sceneInfo.scene;
 			break;
 		}
 	}

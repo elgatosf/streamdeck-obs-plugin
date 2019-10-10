@@ -119,6 +119,7 @@ public slots :
 
     void NotifySceneSwitched();
     void NotifyCollectionChanged();
+	void CheckStudioMode();
 
 	//Socket connection
 	void SDClientConnected();
@@ -165,6 +166,9 @@ private:
 	//used to prevent sending event messages to Stream Deck, when updating collections, scenes or sources on request of Stream Deck
 	//so that we can be sure that SD doesn't get unnecessary messages
 	bool mIsRespondingCollectionsSchemaFlag = true;
+	
+	//used to know when OBS is running in Studio Mode
+	bool mIsStudioMode = false;
 };
 
 #endif // ACTIONHELP_H

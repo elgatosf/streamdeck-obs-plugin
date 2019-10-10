@@ -464,6 +464,20 @@ void OBSEvent(enum obs_frontend_event event, void* data)
 			qDebug() << "OBS_FRONTEND_EVENT_EXIT";
 		}
 		break;
+
+		case OBS_FRONTEND_EVENT_STUDIO_MODE_ENABLED:
+		{
+			qDebug() << "OBS_FRONTEND_EVENT_STUDIO_MODE_ENABLED";
+			QMetaObject::invokeMethod(actionHelpPtr, "CheckStudioMode");
+		}
+		break;
+
+		case OBS_FRONTEND_EVENT_STUDIO_MODE_DISABLED:
+		{
+			qDebug() << "OBS_FRONTEND_EVENT_STUDIO_MODE_DISABLED";
+			QMetaObject::invokeMethod(actionHelpPtr, "CheckStudioMode");
+		}
+		break;
 		
 		default:
 		{
