@@ -455,6 +455,7 @@ void ActionHelp::SDClientConnected()
 	while (tcpServer->hasPendingConnections())
 	{
 		mSocket = tcpServer->nextPendingConnection();
+        mForceSendStudioMode = true;
 
 		QObject::connect(mSocket, SIGNAL(readyRead()), SLOT(ReadyRead()));
 		connect(mSocket, SIGNAL(disconnected()), SLOT(Disconnected()));
@@ -603,6 +604,23 @@ void ActionHelp::ReadyRead()
 			}
 
 			break;
+
+            case RPC_ID_setPushToProgramInStudioMode:
+            {
+                json params;
+                if (JSONUtils::GetObjectByName(receivedJson, "params", params))
+                {
+                    json args;
+                    if (JSONUtils::GetArrayByName(params, "args", args))
+                    {
+                        if (args.size() > 0 && args[0].is_boolean())
+                        {
+                            mPushToProgramInStudioMode = args[0];
+                        }
+                    }
+                }
+            }
+            break;
 
 			case RPC_ID_fetchSceneCollectionsSchema:
 			{
@@ -1008,7 +1026,24 @@ void ActionHelp::ReadyRead()
 
 void ActionHelp::CheckStudioMode()
 {
-	mIsStudioMode = obs_frontend_preview_program_mode_active();
+    bool isStudioMode = obs_frontend_preview_program_mode_active();
+    if(mIsStudioMode != isStudioMode || mForceSendStudioMode)
+    {
+        mIsStudioMode = isStudioMode;
+        mForceSendStudioMode = false;
+
+        json eventJson;
+        eventJson["jsonrpc"] = "2.0";
+        json result = json::object();
+        result["_type"] = "EVENT";
+        eventJson["id"] = nullptr;
+        result["enabled"] = isStudioMode;
+        result["resourceId"] = "StudioModeService.studioModeStatusChange";
+        eventJson["result"] = result;
+
+        std::string str = eventJson.dump() + "\n";
+        WriteToSocket(str);
+    }
 }
 
 void ActionHelp::Disconnected()
@@ -1038,7 +1073,7 @@ QString ActionHelp::GetCurrentSceneCollectionName()
 QString ActionHelp::GetCurrentSceneName()
 {
 	obs_source_t *current_scene = NULL;
-	if (mIsStudioMode)
+    if (mIsStudioMode && !mPushToProgramInStudioMode)
 	{
 		current_scene = obs_frontend_get_current_preview_scene();
 		if (!current_scene)
@@ -1131,7 +1166,7 @@ bool ActionHelp::SelectScene(QString sceneName)
 	{
 		if (sceneInfo.name.c_str() == sceneName)
 		{
-			if (mIsStudioMode)
+            if (mIsStudioMode && !mPushToProgramInStudioMode)
 			{
 				qDebug() << __FUNCTION__ << QThread::currentThread() << QString("obs_frontend_set_current_preview_scene(%1)").arg(sceneName);
 

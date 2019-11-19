@@ -91,6 +91,7 @@ static const int RPC_ID_subscribeToCollectionSwitched = 30;
 static const int RPC_ID_getRecordingAndStreamingState = 31;
 static const int RPC_ID_subscribeToCollectionUpdated = 32;
 static const int RPC_ID_subscribeToRecordingStatusChanged = 33;
+static const int RPC_ID_setPushToProgramInStudioMode = 34;
 
 // ----------------------------------------------------------------------------
 class ActionHelp : public QObject
@@ -169,6 +170,12 @@ private:
 	
 	//used to know when OBS is running in Studio Mode
 	bool mIsStudioMode = false;
+
+    //when a client connects, we want to force send the Studio Mode state even if the Studio Mode state did not change
+    bool mForceSendStudioMode = true;
+
+    //when changing the scene, push it to program if this bool is true
+    bool mPushToProgramInStudioMode = false;
 };
 
 #endif // ACTIONHELP_H
