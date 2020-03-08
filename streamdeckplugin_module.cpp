@@ -170,29 +170,18 @@ void UpdateScenes()
 		for (int j = 0; j < srcInfo.sceneItems.count(); j++)
 		{
 			SceneItemInfo sceneItemInfo = srcInfo.sceneItems.at(j);
-
-			for (int k = 0; k < sceneItemInfo.groupSceneItems.count(); k++)
+			if(sceneItemInfo.isGroup)
 			{
-				GroupItemInfo groupItemInfo = sceneItemInfo.groupSceneItems.at(k);
-				auto source = obs_sceneitem_get_source(groupItemInfo.item);
-				signal_handler_t* groupItemSignalHandler = obs_source_get_signal_handler(source);
 
-				if (groupItemSignalHandler == NULL)
+				signal_handler_t* sceneItemSignalHandler = obs_source_get_signal_handler(sceneItemInfo.source);
+
+				if (sceneItemSignalHandler == NULL)
 				{
 					continue;
 				}
 
-				signal_handler_connect(groupItemSignalHandler, "item_visible", ItemVisible, nullptr);
+				signal_handler_connect(sceneItemSignalHandler, "item_visible", ItemVisible, nullptr);
 			}
-
-			signal_handler_t* sceneItemSignalHandler = obs_source_get_signal_handler(sceneItemInfo.source);
-
-			if (sceneItemSignalHandler == NULL)
-			{
-				continue;
-			}
-
-			signal_handler_connect(sceneItemSignalHandler, "item_visible", ItemVisible, nullptr);
 		}
 
 		signal_handler_t* signalHandler = obs_source_get_signal_handler(srcInfo.scene);
