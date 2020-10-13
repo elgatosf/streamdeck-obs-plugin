@@ -994,6 +994,7 @@ void ActionHelp::ReadyRead()
 
 				mIsRespondingCollectionsSchemaFlag = true;
 			}
+			break;
 
 			case RPC_ID_getActiveCollection:
 			{
