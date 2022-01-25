@@ -30,11 +30,11 @@ CONFIG += c++11
 # dead code stripping
 LIBS += -dead_strip
 
-VERSION = 5.1.0
+VERSION = 5.2.0
 
 QMAKE_TARGET_DESCRIPTION = "Elgato Remote Control for OBS Studio"
 QMAKE_TARGET_COMPANY = "Corsair Memory, Inc"
-QMAKE_TARGET_COPYRIGHT = "Copyright \\251 2017-2018 Corsair Memory, Inc."
+QMAKE_TARGET_COPYRIGHT = "Copyright \\251 2017-2022 Corsair Memory, Inc."
 
 DEFINES += VERSION_STR=\\\"$$VERSION\\\"
 
