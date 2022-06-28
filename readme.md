@@ -1,4 +1,10 @@
 
+# Stream Deck OBS plugin (deprecated)
+
+This project is superseded by the new [Stream Deck - OBS Studio plugin 2.0](https://github.com/elgatosf/streamdeck-obs-plugin2)
+
+---
+
 This is the source code of the Stream Deck OBS plugin for Windows and macOS.
 
 
